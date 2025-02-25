@@ -25,6 +25,7 @@ namespace GameFrameX.UI.Runtime
         private int m_SerialId;
         private int m_OriginalLayer = 0;
         private string m_UIFormAssetName;
+        private string m_AssetPath;
         private IUIGroup m_UIGroup;
         private int m_DepthInUIGroup;
         private bool m_PauseCoveredUIForm;
@@ -124,6 +125,15 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
+        /// 获取界面资源名称。
+        /// </summary>
+        public string AssetPath
+        {
+            get { return m_AssetPath; }
+            protected set { m_AssetPath = value; }
+        }
+
+        /// <summary>
         /// 获取界面实例。
         /// </summary>
         public object Handle
@@ -134,9 +144,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面所属的界面组。
         /// </summary>
-        public IUIGroup UIGroup
+        public virtual IUIGroup UIGroup
         {
             get { return m_UIGroup; }
+            protected set { m_UIGroup = value; }
         }
 
         /// <summary>
@@ -153,6 +164,16 @@ namespace GameFrameX.UI.Runtime
         public bool PauseCoveredUIForm
         {
             get { return m_PauseCoveredUIForm; }
+        }
+
+        public bool IsAwake { get; private set; }
+
+        /// <summary>
+        /// 界面初始化前执行
+        /// </summary>
+        public virtual void OnAwake()
+        {
+            IsAwake = true;
         }
 
         /// <summary>

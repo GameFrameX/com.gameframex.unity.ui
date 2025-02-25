@@ -27,11 +27,10 @@ namespace GameFrameX.UI.Runtime
         /// 创建界面。
         /// </summary>
         /// <param name="uiFormInstance">界面实例。</param>
-        /// <param name="uiGroup">界面所属的界面组。</param>
         /// <param name="uiFormType">界面逻辑类型</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>界面。</returns>
-        public abstract IUIForm CreateUIForm(object uiFormInstance, IUIGroup uiGroup, Type uiFormType, object userData);
+        public abstract IUIForm CreateUIForm(object uiFormInstance, Type uiFormType, object userData);
 
         /// <summary>
         /// 释放界面。

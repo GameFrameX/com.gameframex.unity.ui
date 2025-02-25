@@ -30,6 +30,11 @@ namespace GameFrameX.UI.Runtime
         string UIFormAssetName { get; }
 
         /// <summary>
+        /// 获取界面资源名称。
+        /// </summary>
+        string AssetPath { get; }
+
+        /// <summary>
         /// 获取界面实例。
         /// </summary>
         object Handle { get; }
@@ -58,6 +63,16 @@ namespace GameFrameX.UI.Runtime
         /// 获取是否暂停被覆盖的界面。
         /// </summary>
         bool PauseCoveredUIForm { get; }
+
+        /// <summary>
+        /// 获取是否唤醒过
+        /// </summary>
+        bool IsAwake { get; }
+
+        /// <summary>
+        /// 界面初始化前执行
+        /// </summary>
+        void OnAwake();
 
         /// <summary>
         /// 初始化界面。

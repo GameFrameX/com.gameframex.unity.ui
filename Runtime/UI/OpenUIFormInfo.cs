@@ -9,7 +9,6 @@ namespace GameFrameX.UI.Runtime
     public sealed class OpenUIFormInfo : IReference
     {
         private int m_SerialId = 0;
-        private UIGroup m_UIGroup = null;
         private bool m_PauseCoveredUIForm = false;
         private object m_UserData = null;
         private Type m_FormType;
@@ -41,14 +40,6 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 获取界面所属的界面组。
-        /// </summary>
-        public UIGroup UIGroup
-        {
-            get { return m_UIGroup; }
-        }
-
-        /// <summary>
         /// 获取是否暂停被覆盖的界面。
         /// </summary>
         public bool PauseCoveredUIForm
@@ -74,11 +65,10 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">界面是否全屏。</param>
         /// <returns>创建的打开界面的信息。</returns>
-        public static OpenUIFormInfo Create(int serialId, UIGroup uiGroup, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen)
+        public static OpenUIFormInfo Create(int serialId, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen)
         {
             OpenUIFormInfo openUIFormInfo = ReferencePool.Acquire<OpenUIFormInfo>();
             openUIFormInfo.m_SerialId = serialId;
-            openUIFormInfo.m_UIGroup = uiGroup;
             openUIFormInfo.m_PauseCoveredUIForm = pauseCoveredUIForm;
             openUIFormInfo.m_UserData = userData;
             openUIFormInfo.m_FormType = uiFormType;
@@ -92,7 +82,6 @@ namespace GameFrameX.UI.Runtime
         public void Clear()
         {
             m_SerialId = 0;
-            m_UIGroup = null;
             m_PauseCoveredUIForm = false;
             m_UserData = null;
         }

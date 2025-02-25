@@ -28,7 +28,6 @@ namespace GameFrameX.UI.Runtime
         {
             SerialId = 0;
             UIFormAssetName = null;
-            UIGroupName = null;
             PauseCoveredUIForm = false;
             ErrorMessage = null;
             UserData = null;
@@ -52,10 +51,6 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         public string UIFormAssetName { get; private set; }
 
-        /// <summary>
-        /// 获取界面组名称。
-        /// </summary>
-        public string UIGroupName { get; private set; }
 
         /// <summary>
         /// 获取是否暂停被覆盖的界面。
@@ -82,12 +77,11 @@ namespace GameFrameX.UI.Runtime
         /// <param name="errorMessage">错误信息。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>创建的打开界面失败事件。</returns>
-        public static OpenUIFormFailureEventArgs Create(int serialId, string uiFormAssetName, string uiGroupName, bool pauseCoveredUIForm, string errorMessage, object userData)
+        public static OpenUIFormFailureEventArgs Create(int serialId, string uiFormAssetName, bool pauseCoveredUIForm, string errorMessage, object userData)
         {
             OpenUIFormFailureEventArgs openUIFormFailureEventArgs = ReferencePool.Acquire<OpenUIFormFailureEventArgs>();
             openUIFormFailureEventArgs.SerialId = serialId;
             openUIFormFailureEventArgs.UIFormAssetName = uiFormAssetName;
-            openUIFormFailureEventArgs.UIGroupName = uiGroupName;
             openUIFormFailureEventArgs.PauseCoveredUIForm = pauseCoveredUIForm;
             openUIFormFailureEventArgs.ErrorMessage = errorMessage;
             openUIFormFailureEventArgs.UserData = userData;
@@ -101,7 +95,6 @@ namespace GameFrameX.UI.Runtime
         {
             SerialId = 0;
             UIFormAssetName = null;
-            UIGroupName = null;
             PauseCoveredUIForm = false;
             ErrorMessage = null;
             UserData = null;

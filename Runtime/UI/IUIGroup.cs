@@ -17,52 +17,32 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组名称。
         /// </summary>
-        string Name
-        {
-            get;
-        }
+        string Name { get; }
 
         /// <summary>
         /// 获取或设置界面组深度。
         /// </summary>
-        int Depth
-        {
-            get;
-            set;
-        }
+        int Depth { get; set; }
 
         /// <summary>
         /// 获取或设置界面组是否暂停。
         /// </summary>
-        bool Pause
-        {
-            get;
-            set;
-        }
+        bool Pause { get; set; }
 
         /// <summary>
         /// 获取界面组中界面数量。
         /// </summary>
-        int UIFormCount
-        {
-            get;
-        }
+        int UIFormCount { get; }
 
         /// <summary>
         /// 获取当前界面。
         /// </summary>
-        IUIForm CurrentUIForm
-        {
-            get;
-        }
+        IUIForm CurrentUIForm { get; }
 
         /// <summary>
         /// 获取界面组辅助器。
         /// </summary>
-        IUIGroupHelper Helper
-        {
-            get;
-        }
+        IUIGroupHelper Helper { get; }
 
         /// <summary>
         /// 界面组中是否存在界面。
@@ -117,5 +97,24 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="results">界面组中的所有界面。</param>
         void GetAllUIForms(List<IUIForm> results);
+
+        /// <summary>
+        /// 检查界面组中是否存在指定界面。
+        /// </summary>
+        /// <param name="uiFormAssetName">界面资源名称。</param>
+        /// <param name="uiForm">要检查的界面。</param>
+        /// <returns>是否存在指定界面。</returns>
+        bool InternalHasInstanceUIForm(string uiFormAssetName, IUIForm uiForm);
+
+        /// <summary>
+        /// 往界面组增加界面。
+        /// </summary>
+        /// <param name="uiForm">要增加的界面。</param>
+        void AddUIForm(IUIForm uiForm);
+
+        /// <summary>
+        /// 刷新界面组。
+        /// </summary>
+        void Refresh();
     }
 }
