@@ -56,7 +56,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isMultiple">是否创建新界面</param>
         /// <returns>界面的序列编号。</returns>
-        private async Task<T> OpenUIFormAsync<T>(bool pauseCoveredUIForm, object userData = null, bool isFullScreen = false, bool isMultiple = false) where T : class, IUIForm
+        public async Task<T> OpenUIFormAsync<T>(bool pauseCoveredUIForm, object userData = null, bool isFullScreen = false, bool isMultiple = false) where T : class, IUIForm
         {
             var uiFormAssetName = typeof(T).Name;
             var uiFormAssetPath = Utility.Asset.Path.GetUIPath(uiFormAssetName);
@@ -74,6 +74,20 @@ namespace GameFrameX.UI.Runtime
         public async Task<T> OpenAsync<T>(string uiFormAssetPath, object userData = null, bool isFullScreen = false, bool isMultiple = false) where T : class, IUIForm
         {
             return await OpenUIFormAsync<T>(uiFormAssetPath, false, userData, isFullScreen, isMultiple);
+        }
+
+        /// <summary>
+        /// 打开界面。
+        /// </summary>
+        /// <param name="uiFormAssetPath">界面所在路径</param>
+        /// <param name="pauseCoveredUIForm">是否暂停覆盖的UI</param>
+        /// <param name="isFullScreen">是否全屏</param>
+        /// <param name="userData">用户自定义数据。</param>
+        /// <param name="isMultiple">是否创建新界面</param>
+        /// <returns>界面的序列编号。</returns>
+        public async Task<T> OpenAsync<T>(string uiFormAssetPath, bool pauseCoveredUIForm = false, object userData = null, bool isFullScreen = false, bool isMultiple = false) where T : class, IUIForm
+        {
+            return await OpenUIFormAsync<T>(uiFormAssetPath, pauseCoveredUIForm, userData, isFullScreen, isMultiple);
         }
 
         /// <summary>
