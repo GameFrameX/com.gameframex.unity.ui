@@ -85,7 +85,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isMultiple">是否创建新界面</param>
         /// <returns>界面的序列编号。</returns>
-        public async Task<T> OpenAsync<T>(string uiFormAssetPath, bool pauseCoveredUIForm = false, object userData = null, bool isFullScreen = false, bool isMultiple = false) where T : class, IUIForm
+        public async Task<T> OpenAsync<T>(string uiFormAssetPath, bool pauseCoveredUIForm, object userData = null, bool isFullScreen = false, bool isMultiple = false) where T : class, IUIForm
         {
             return await OpenUIFormAsync<T>(uiFormAssetPath, pauseCoveredUIForm, userData, isFullScreen, isMultiple);
         }
