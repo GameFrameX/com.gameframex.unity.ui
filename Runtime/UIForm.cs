@@ -196,18 +196,18 @@ namespace GameFrameX.UI.Runtime
         /// <param name="isFullScreen">是否全屏</param>
         public void Init(int serialId, string uiFormAssetName, IUIGroup uiGroup, Action<IUIForm> onInitAction, bool pauseCoveredUIForm, bool isNewInstance, object userData, bool isFullScreen = false)
         {
+            m_UserData = userData;
+            m_SerialId = serialId;
+            m_PauseCoveredUIForm = pauseCoveredUIForm;
+            m_UIGroup = uiGroup;
             if (m_IsInit)
             {
                 return;
             }
 
-            m_UserData = userData;
-            m_SerialId = serialId;
             m_UIFormAssetName = uiFormAssetName;
             m_FullName = GetType().FullName;
-            m_UIGroup = uiGroup;
             m_DepthInUIGroup = 0;
-            m_PauseCoveredUIForm = pauseCoveredUIForm;
             m_OriginalLayer = gameObject.layer;
             if (!isNewInstance)
             {
