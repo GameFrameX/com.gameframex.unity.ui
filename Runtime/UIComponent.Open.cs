@@ -37,6 +37,21 @@ namespace GameFrameX.UI.Runtime
         /// 打开界面。
         /// </summary>
         /// <param name="uiFormAssetPath">界面所在路径</param>
+        /// <param name="uiFormType">界面逻辑类型。</param>
+        /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
+        /// <param name="isFullScreen">是否全屏</param>
+        /// <param name="userData">用户自定义数据。</param>
+        /// <param name="isMultiple">是否创建新界面</param>
+        /// <returns>界面的序列编号。</returns>
+        public async Task OpenUIAsync(string uiFormAssetPath, Type uiFormType, bool pauseCoveredUIForm, object userData = null, bool isFullScreen = false, bool isMultiple = false)
+        {
+            await m_UIManager.OpenUIFormAsync(uiFormAssetPath, uiFormType, pauseCoveredUIForm, userData, isFullScreen, isMultiple);
+        }
+
+        /// <summary>
+        /// 打开界面。
+        /// </summary>
+        /// <param name="uiFormAssetPath">界面所在路径</param>
         /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
         /// <param name="isFullScreen">是否全屏</param>
         /// <param name="userData">用户自定义数据。</param>
