@@ -24,23 +24,6 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 订阅
-        /// </summary>
-        /// <param name="id">消息ID</param>
-        /// <param name="handler">处理对象</param>
-        /// <exception cref="Exception"></exception>
-        public void Subscribe(string id, EventHandler<GameEventArgs> handler)
-        {
-            if (handler == null)
-            {
-                throw new Exception("Event handler is invalid.");
-            }
-
-            m_DicEventHandler.Add(id, handler);
-            GameEntry.GetComponent<EventComponent>().Subscribe(id, handler);
-        }
-
-        /// <summary>
         /// 检查订阅
         /// </summary>
         /// <param name="id">消息ID</param>
