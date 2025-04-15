@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.2](https://github.com/GameFrameX/com.gameframex.unity.ui/tree/1.2.2) (2025-04-09)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.ui/compare/1.2.1...1.2.2)
+
+**Closed issues:**
+
+- UIComponent.Open的OpenAsync能否开放pauseCoveredUIForm参数 [\#2](https://github.com/GameFrameX/com.gameframex.unity.ui/issues/2)
+- UI回收后从对象池再次打开时 m\_SerialId等参数没有重置 [\#1](https://github.com/GameFrameX/com.gameframex.unity.ui/issues/1)
+
 ## [1.2.1](https://github.com/GameFrameX/com.gameframex.unity.ui/tree/1.2.1) (2025-03-14)
 
 [Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.ui/compare/1.2.0...1.2.1)
