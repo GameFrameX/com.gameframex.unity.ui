@@ -17,21 +17,22 @@ namespace GameFrameX.UI.Runtime
     /// 界面。
     /// </summary>
     [UnityEngine.Scripting.Preserve]
+    [Serializable]
     public abstract class UIForm : MonoBehaviour, IUIForm
     {
-        private bool m_Available = false;
-        private bool m_Visible = false;
-        private bool m_IsInit = false;
-        private int m_SerialId;
-        private int m_OriginalLayer = 0;
-        private string m_UIFormAssetName;
-        private string m_AssetPath;
+        [SerializeField] private bool m_Available = false;
+        [SerializeField] private bool m_Visible = false;
+        [SerializeField] private bool m_IsInit = false;
+        [SerializeField] private int m_SerialId;
+        [SerializeField] private int m_OriginalLayer = 0;
+        [SerializeField] private string m_UIFormAssetName;
+        [SerializeField] private string m_AssetPath;
+        [SerializeField] private int m_DepthInUIGroup;
+        [SerializeField] private bool m_PauseCoveredUIForm;
+        [SerializeField] private string m_FullName;
         private IUIGroup m_UIGroup;
-        private int m_DepthInUIGroup;
-        private bool m_PauseCoveredUIForm;
         private UIEventSubscriber m_EventSubscriber = null;
         private object m_UserData = null;
-        private string m_FullName;
 
         /// <summary>
         /// 获取用户自定义数据。
@@ -199,7 +200,7 @@ namespace GameFrameX.UI.Runtime
             m_UserData = userData;
             if (serialId >= 0)
             {
-            m_SerialId = serialId;
+                m_SerialId = serialId;
             }
 
             m_PauseCoveredUIForm = pauseCoveredUIForm;
