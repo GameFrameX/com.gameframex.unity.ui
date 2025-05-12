@@ -197,7 +197,11 @@ namespace GameFrameX.UI.Runtime
         public void Init(int serialId, string uiFormAssetName, IUIGroup uiGroup, Action<IUIForm> onInitAction, bool pauseCoveredUIForm, bool isNewInstance, object userData, bool isFullScreen = false)
         {
             m_UserData = userData;
+            if (serialId >= 0)
+            {
             m_SerialId = serialId;
+            }
+
             m_PauseCoveredUIForm = pauseCoveredUIForm;
             m_UIGroup = uiGroup;
             if (m_IsInit)
