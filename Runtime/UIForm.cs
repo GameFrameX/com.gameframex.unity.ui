@@ -261,6 +261,13 @@ namespace GameFrameX.UI.Runtime
             m_SerialId = 0;
             m_DepthInUIGroup = 0;
             m_PauseCoveredUIForm = true;
+            if (m_EventSubscriber != null)
+            {
+                m_EventSubscriber.UnSubscribeAll();
+                ReferencePool.Release(m_EventSubscriber);
+            }
+
+            m_EventSubscriber = null;
         }
 
         /// <summary>
@@ -291,6 +298,13 @@ namespace GameFrameX.UI.Runtime
             gameObject.SetLayerRecursively(m_OriginalLayer);
             m_Available = false;
             Visible = false;
+            if (m_EventSubscriber != null)
+            {
+                m_EventSubscriber.UnSubscribeAll();
+                ReferencePool.Release(m_EventSubscriber);
+            }
+
+            m_EventSubscriber = null;
         }
 
         /// <summary>
@@ -362,7 +376,13 @@ namespace GameFrameX.UI.Runtime
                 return;
             }
 
-            m_EventSubscriber.UnSubscribe(LocalizationLanguageChangeEventArgs.EventId, OnLocalizationLanguageChanged);
+            if (m_EventSubscriber != null)
+            {
+                m_EventSubscriber.UnSubscribeAll();
+                ReferencePool.Release(m_EventSubscriber);
+            }
+
+            m_EventSubscriber = null;
             IsDisposed = true;
         }
 
