@@ -298,13 +298,7 @@ namespace GameFrameX.UI.Runtime
             gameObject.SetLayerRecursively(m_OriginalLayer);
             m_Available = false;
             Visible = false;
-            if (m_EventSubscriber != null)
-            {
-                m_EventSubscriber.UnSubscribeAll();
-                ReferencePool.Release(m_EventSubscriber);
-            }
-
-            m_EventSubscriber = null;
+            m_EventSubscriber?.UnSubscribeAll();
         }
 
         /// <summary>
