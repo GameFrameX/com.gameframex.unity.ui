@@ -105,6 +105,24 @@ namespace GameFrameX.UI.Runtime
             return null;
         }
 
+        /// <summary>
+        /// 获取已加载且正在显示的UI
+        /// </summary>
+        /// <param name="uiFormAssetName"></param>
+        /// <returns></returns>
+        public bool HasLoadedAndShowing(string uiFormAssetName)
+        {
+            var uiForms = m_UIManager.GetAllLoadedUIForms();
+            foreach (var uiForm in uiForms)
+            {
+                if (uiForm.UIFormAssetName == uiFormAssetName && uiForm.Visible && uiForm.Available)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// 根据界面逻辑类型获取界面。只要找到任意的一个即返回
