@@ -20,6 +20,7 @@ namespace GameFrameX.UI.Editor
         private SerializedProperty m_Available = null;
         private SerializedProperty m_Visible = null;
         private SerializedProperty m_IsInit = null;
+        private SerializedProperty m_IsDisableRecycling = null;
         private SerializedProperty m_SerialId = null;
         private SerializedProperty m_OriginalLayer = null;
         private SerializedProperty m_UIFormAssetName = null;
@@ -39,6 +40,7 @@ namespace GameFrameX.UI.Editor
                 EditorGUILayout.PropertyField(m_FullName);
                 EditorGUILayout.PropertyField(m_SerialId);
                 EditorGUILayout.PropertyField(m_IsInit);
+                EditorGUILayout.PropertyField(m_IsDisableRecycling);
                 EditorGUILayout.PropertyField(m_OriginalLayer);
                 EditorGUILayout.PropertyField(m_UIFormAssetName);
                 EditorGUILayout.PropertyField(m_Available);
@@ -58,6 +60,7 @@ namespace GameFrameX.UI.Editor
             m_Available = serializedObject.FindProperty("m_Available");
             m_Visible = serializedObject.FindProperty("m_Visible");
             m_IsInit = serializedObject.FindProperty("m_IsInit");
+            m_IsDisableRecycling = serializedObject.FindProperty("m_IsDisableRecycling");
             m_SerialId = serializedObject.FindProperty("m_SerialId");
             m_OriginalLayer = serializedObject.FindProperty("m_OriginalLayer");
             m_UIFormAssetName = serializedObject.FindProperty("m_UIFormAssetName");

@@ -23,6 +23,7 @@ namespace GameFrameX.UI.Runtime
         [SerializeField] private bool m_Available = false;
         [SerializeField] private bool m_Visible = false;
         [SerializeField] private bool m_IsInit = false;
+        [SerializeField] private bool m_IsDisableRecycling = false;
         [SerializeField] private int m_SerialId;
         [SerializeField] private int m_OriginalLayer = 0;
         [SerializeField] private string m_UIFormAssetName;
@@ -123,6 +124,15 @@ namespace GameFrameX.UI.Runtime
         public string UIFormAssetName
         {
             get { return m_UIFormAssetName; }
+        }
+
+        /// <summary>
+        /// 是否禁用回收，禁用回收的界面不会被回收
+        /// </summary>
+        public bool IsDisableRecycling
+        {
+            get { return m_IsDisableRecycling; }
+            protected set { m_IsDisableRecycling = value; }
         }
 
         /// <summary>

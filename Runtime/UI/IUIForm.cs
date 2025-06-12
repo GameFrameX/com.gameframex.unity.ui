@@ -35,6 +35,11 @@ namespace GameFrameX.UI.Runtime
         string AssetPath { get; }
 
         /// <summary>
+        /// 是否禁用回收，禁用回收的界面不会被回收
+        /// </summary>
+        bool IsDisableRecycling { get; }
+
+        /// <summary>
         /// 获取界面实例。
         /// </summary>
         object Handle { get; }
