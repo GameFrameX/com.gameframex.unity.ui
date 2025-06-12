@@ -30,6 +30,7 @@ namespace GameFrameX.UI.Runtime
                 typeof(CloseUIFormCompleteEventArgs),
                 typeof(OpenUIFormFailureEventArgs),
                 typeof(OpenUIFormSuccessEventArgs),
+                typeof(BaseUIManager),
             };
         }
     }
