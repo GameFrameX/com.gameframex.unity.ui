@@ -215,6 +215,12 @@ namespace GameFrameX.UI.Runtime
 
             m_PauseCoveredUIForm = pauseCoveredUIForm;
             m_UIGroup = uiGroup;
+            if (m_EventSubscriber == null)
+            {
+                m_EventSubscriber = UIEventSubscriber.Create(this);
+            }
+
+            m_EventSubscriber.CheckSubscribe(LocalizationLanguageChangeEventArgs.EventId, OnLocalizationLanguageChanged);
             if (m_IsInit)
             {
                 return;
@@ -229,8 +235,6 @@ namespace GameFrameX.UI.Runtime
                 return;
             }
 
-            m_EventSubscriber = UIEventSubscriber.Create(this);
-
             try
             {
                 onInitAction?.Invoke(this);
@@ -241,7 +245,6 @@ namespace GameFrameX.UI.Runtime
                 }
 
                 OnInit();
-                m_EventSubscriber.CheckSubscribe(LocalizationLanguageChangeEventArgs.EventId, OnLocalizationLanguageChanged);
             }
             catch (Exception exception)
             {
