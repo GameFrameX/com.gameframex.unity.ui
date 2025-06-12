@@ -45,6 +45,9 @@ namespace GameFrameX.UI.Runtime
 
         [SerializeField] private float m_InstanceExpireTime = 60f;
 
+        [Tooltip("UI 回收间隔时间/秒")] [SerializeField]
+        private int m_RecycleInterval = 60;
+
         // [SerializeField] private int m_InstancePriority = 0;
 
         [SerializeField] private Transform m_InstanceUGUIRoot = null;
@@ -80,6 +83,15 @@ namespace GameFrameX.UI.Runtime
         public int UIGroupCount
         {
             get { return m_UIManager.UIGroupCount; }
+        }
+
+        /// <summary>
+        /// 获取或设置界面实例对象池自动回收可回收对象的间隔秒数。
+        /// </summary>
+        public int RecycleInterval
+        {
+            get { return m_UIManager.RecycleInterval; }
+            set { m_UIManager.RecycleInterval = m_RecycleInterval = value; }
         }
 
         /// <summary>
@@ -232,6 +244,7 @@ namespace GameFrameX.UI.Runtime
             m_UIManager.InstanceAutoReleaseInterval = m_InstanceAutoReleaseInterval;
             m_UIManager.InstanceCapacity = m_InstanceCapacity;
             m_UIManager.InstanceExpireTime = m_InstanceExpireTime;
+            m_UIManager.RecycleInterval = m_RecycleInterval;
             // m_UIManager.InstancePriority = m_InstancePriority;
 
             m_CustomUIGroupHelper = Helper.CreateHelper(m_UIGroupHelperTypeName, m_CustomUIGroupHelper);

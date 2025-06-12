@@ -38,6 +38,11 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         float InstanceExpireTime { get; set; }
 
+        /// <summary>
+        /// 获取或设置界面实例对象池的回收间隔秒数。
+        /// </summary>
+        int RecycleInterval { get; set; }
+
         /*/// <summary>
         /// 获取或设置界面实例对象池的优先级。
         /// </summary>

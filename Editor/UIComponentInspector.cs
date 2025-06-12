@@ -25,6 +25,7 @@ namespace GameFrameX.UI.Editor
         private SerializedProperty m_InstanceCapacity = null;
 
         private SerializedProperty m_InstanceExpireTime = null;
+        private SerializedProperty m_RecycleInterval = null;
 
         // private SerializedProperty m_InstancePriority = null;
         private SerializedProperty m_InstanceUGUIRoot = null;
@@ -54,6 +55,7 @@ namespace GameFrameX.UI.Editor
                 // EditorGUILayout.PropertyField(m_EnableOpenUIFormUpdateEvent);
                 // EditorGUILayout.PropertyField(m_EnableOpenUIFormDependencyAssetEvent);
                 EditorGUILayout.PropertyField(m_EnableCloseUIFormCompleteEvent);
+                EditorGUILayout.IntSlider(m_RecycleInterval, 10, 600, "Recycle Interval");
             }
             EditorGUI.EndDisabledGroup();
 
@@ -154,6 +156,7 @@ namespace GameFrameX.UI.Editor
             m_InstanceAutoReleaseInterval = serializedObject.FindProperty("m_InstanceAutoReleaseInterval");
             m_InstanceCapacity = serializedObject.FindProperty("m_InstanceCapacity");
             m_InstanceExpireTime = serializedObject.FindProperty("m_InstanceExpireTime");
+            m_RecycleInterval = serializedObject.FindProperty("m_RecycleInterval");
             // m_InstancePriority = serializedObject.FindProperty("m_InstancePriority");
             m_InstanceUGUIRoot = serializedObject.FindProperty("m_InstanceUGUIRoot");
             m_InstanceFairyGUIRoot = serializedObject.FindProperty("m_InstanceFairyGUIRoot");
