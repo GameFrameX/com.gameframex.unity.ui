@@ -249,67 +249,39 @@ namespace GameFrameX.UI.Runtime
         /// 关闭界面。
         /// </summary>
         /// <param name="serialId">要关闭界面的序列编号。</param>
-        void CloseUIForm(int serialId);
-
-        /// <summary>
-        /// 立即关闭界面。
-        /// </summary>
-        /// <param name="serialId">要关闭界面的序列编号。</param>
-        void CloseUIFormNow(int serialId);
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        void CloseUIForm(int serialId, bool isNowRecycle = false);
 
         /// <summary>
         /// 关闭界面。
         /// </summary>
         /// <param name="serialId">要关闭界面的序列编号。</param>
         /// <param name="userData">用户自定义数据。</param>
-        void CloseUIForm(int serialId, object userData);
-
-        /// <summary>
-        /// 立即关闭界面。
-        /// </summary>
-        /// <param name="serialId">要关闭界面的序列编号。</param>
-        /// <param name="userData">用户自定义数据。</param>
-        void CloseUIFormNow(int serialId, object userData);
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        void CloseUIForm(int serialId, object userData, bool isNowRecycle = false);
 
         /// <summary>
         /// 关闭界面。
         /// </summary>
         /// <param name="uiForm">要关闭的界面。</param>
-        void CloseUIForm(IUIForm uiForm);
-
-        /// <summary>
-        /// 立即关闭界面。
-        /// </summary>
-        /// <param name="uiForm">要关闭的界面。</param>
-        void CloseUIFormNow(IUIForm uiForm);
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        void CloseUIForm(IUIForm uiForm, bool isNowRecycle = false);
 
         /// <summary>
         /// 关闭界面。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
         /// <typeparam name="T"></typeparam>
-        void CloseUIForm<T>(object userData) where T : IUIForm;
-
-        /// <summary>
-        /// 立即关闭界面。
-        /// </summary>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <typeparam name="T"></typeparam>
-        void CloseUIFormNow<T>(object userData) where T : IUIForm;
+        void CloseUIForm<T>(object userData, bool isNowRecycle = false) where T : IUIForm;
 
         /// <summary>
         /// 关闭界面。
         /// </summary>
         /// <param name="uiForm">要关闭的界面。</param>
         /// <param name="userData">用户自定义数据。</param>
-        void CloseUIForm(IUIForm uiForm, object userData);
-
-        /// <summary>
-        /// 立即关闭界面。
-        /// </summary>
-        /// <param name="uiForm">要关闭的界面。</param>
-        /// <param name="userData">用户自定义数据。</param>
-        void CloseUIFormNow(IUIForm uiForm, object userData);
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        void CloseUIForm(IUIForm uiForm, object userData = null, bool isNowRecycle = false);
 
         /// <summary>
         /// 关闭所有已加载的界面。
