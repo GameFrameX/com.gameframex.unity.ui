@@ -125,7 +125,7 @@ namespace GameFrameX.UI.Runtime
                 {
                     var uiForm = m_RecycleQueue.Dequeue();
 
-                    RecycleUIForm(uiForm, true);
+                    RecycleUIForm(uiForm);
                 }
             }
 
