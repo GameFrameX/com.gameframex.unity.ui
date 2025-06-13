@@ -15,9 +15,7 @@ namespace GameFrameX.UI.Runtime
             m_Types = new[]
             {
                 typeof(IUIManager),
-                typeof(UIStringKey),
                 typeof(UIComponent),
-                typeof(UIIntKey),
                 typeof(UIGroupHelperBase),
                 typeof(UIFormHelperBase),
                 typeof(UIForm),
