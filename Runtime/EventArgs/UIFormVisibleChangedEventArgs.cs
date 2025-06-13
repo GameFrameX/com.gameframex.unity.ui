@@ -42,7 +42,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取打开成功的界面。
         /// </summary>
-        public UIForm UIForm { get; private set; }
+        public IUIForm UIForm { get; private set; }
 
         /// <summary>
         /// 获取加载持续时间。
@@ -61,10 +61,10 @@ namespace GameFrameX.UI.Runtime
         /// <param name="visible">显示状态。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>创建的打开界面成功事件。</returns>
-        public static UIFormVisibleChangedEventArgs Create(IUIForm uiForm, bool visible, object userData)
+        public static UIFormVisibleChangedEventArgs Create(IUIForm uiForm, bool visible, object userData = null)
         {
             UIFormVisibleChangedEventArgs uiFormSuccessEventArgs = ReferencePool.Acquire<UIFormVisibleChangedEventArgs>();
-            uiFormSuccessEventArgs.UIForm = (UIForm)uiForm;
+            uiFormSuccessEventArgs.UIForm = uiForm;
             uiFormSuccessEventArgs.Visible = visible;
             uiFormSuccessEventArgs.UserData = userData;
             return uiFormSuccessEventArgs;
