@@ -14,7 +14,37 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 隐藏
         /// </summary>
-        public static readonly UIGroupDefine Hidden = new UIGroupDefine(20, "Hidden");
+        public static readonly UIGroupDefine Hidden = new UIGroupDefine(40, "Hidden");
+
+        /// <summary>
+        /// 背景
+        /// </summary>
+        public static readonly UIGroupDefine Background = new UIGroupDefine(35, "Background");
+
+        /// <summary>
+        /// 场景
+        /// </summary>
+        public static readonly UIGroupDefine Scene = new UIGroupDefine(30, "Scene");
+
+        /// <summary>
+        /// 世界
+        /// </summary>
+        public static readonly UIGroupDefine World = new UIGroupDefine(27, "World");
+
+        /// <summary>
+        /// 战斗
+        /// </summary>
+        public static readonly UIGroupDefine Battle = new UIGroupDefine(25, "Battle");
+
+        /// <summary>
+        /// 头顶
+        /// </summary>
+        public static readonly UIGroupDefine Hud = new UIGroupDefine(22, "Hud");
+
+        /// <summary>
+        /// 地图
+        /// </summary>
+        public static readonly UIGroupDefine Map = new UIGroupDefine(20, "Map");
 
         /// <summary>
         /// 底板

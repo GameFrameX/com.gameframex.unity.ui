@@ -63,6 +63,13 @@ namespace GameFrameX.UI.Runtime
         [SerializeField] private UIGroup[] m_UIGroups = new UIGroup[]
         {
             new UIGroup(UIGroupConstants.Hidden.Depth, UIGroupConstants.Hidden.Name),
+            new UIGroup(UIGroupConstants.Background.Depth, UIGroupConstants.Background.Name),
+            new UIGroup(UIGroupConstants.Scene.Depth, UIGroupConstants.Scene.Name),
+            new UIGroup(UIGroupConstants.World.Depth, UIGroupConstants.World.Name),
+            new UIGroup(UIGroupConstants.Battle.Depth, UIGroupConstants.Battle.Name),
+            new UIGroup(UIGroupConstants.Hud.Depth, UIGroupConstants.Hud.Name),
+            new UIGroup(UIGroupConstants.Map.Depth, UIGroupConstants.Map.Name),
+            new UIGroup(UIGroupConstants.Hidden.Depth, UIGroupConstants.Hidden.Name),
             new UIGroup(UIGroupConstants.Floor.Depth, UIGroupConstants.Floor.Name),
             new UIGroup(UIGroupConstants.Normal.Depth, UIGroupConstants.Normal.Name),
             new UIGroup(UIGroupConstants.Fixed.Depth, UIGroupConstants.Fixed.Name),
