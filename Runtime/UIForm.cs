@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using GameFrameX.Event.Runtime;
 using GameFrameX.Localization.Runtime;
 using GameFrameX.Runtime;
@@ -188,6 +189,62 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
+        /// Unity生命周期Awake方法
+        /// 在此处初始化事件订阅器并订阅本地化语言变更事件
+        /// </summary>
+        private void Awake()
+        {
+            m_EventSubscriber = UIEventSubscriber.Create(this);
+            m_EventSubscriber.CheckSubscribe(LocalizationLanguageChangeEventArgs.EventId, OnLocalizationLanguageChanged);
+        }
+
+        /// <summary>
+        /// Unity生命周期OnEnable方法
+        /// 在界面启用时触发事件订阅
+        /// </summary>
+        private void OnEnable()
+        {
+            OnEventSubscribe();
+        }
+
+        /// <summary>
+        /// Unity生命周期OnDisable方法
+        /// 在界面禁用时取消事件订阅,忽略本地化语言变更事件的订阅
+        /// </summary>
+        private void OnDisable()
+        {
+            OnEventUnSubscribe();
+            m_EventSubscriber?.UnSubscribeAll(new List<string>() { LocalizationLanguageChangeEventArgs.EventId });
+        }
+
+        /// <summary>
+        /// Unity生命周期OnDestroy方法
+        /// 在界面销毁时执行清理操作
+        /// </summary>
+        private void OnDestroy()
+        {
+            Dispose();
+        }
+
+        /// <summary>
+        /// 订阅事件时调用
+        /// 在界面启用(OnEnable)时触发,可在此处订阅界面所需的事件
+        /// 继承类通过重写此方法来注册自己需要的事件
+        /// </summary>
+        protected virtual void OnEventSubscribe()
+        {
+        }
+
+        /// <summary>
+        /// 取消订阅事件时调用
+        /// 在界面禁用(OnDisable)时触发,可在此处取消订阅界面的事件
+        /// 继承类通过重写此方法来取消注册自己的事件
+        /// </summary>
+        protected virtual void OnEventUnSubscribe()
+        {
+        }
+
+        /// <summary>
         /// 界面初始化。
         /// </summary>
         protected virtual void InitView()
@@ -215,12 +272,6 @@ namespace GameFrameX.UI.Runtime
 
             m_PauseCoveredUIForm = pauseCoveredUIForm;
             m_UIGroup = uiGroup;
-            if (m_EventSubscriber == null)
-            {
-                m_EventSubscriber = UIEventSubscriber.Create(this);
-            }
-
-            m_EventSubscriber.CheckSubscribe(LocalizationLanguageChangeEventArgs.EventId, OnLocalizationLanguageChanged);
             if (m_IsInit)
             {
                 return;
@@ -274,13 +325,6 @@ namespace GameFrameX.UI.Runtime
             m_SerialId = 0;
             m_DepthInUIGroup = 0;
             m_PauseCoveredUIForm = true;
-            if (m_EventSubscriber != null)
-            {
-                m_EventSubscriber.UnSubscribeAll();
-                ReferencePool.Release(m_EventSubscriber);
-            }
-
-            m_EventSubscriber = null;
         }
 
         /// <summary>
@@ -311,7 +355,6 @@ namespace GameFrameX.UI.Runtime
             gameObject.SetLayerRecursively(m_OriginalLayer);
             m_Available = false;
             Visible = false;
-            m_EventSubscriber?.UnSubscribeAll();
         }
 
         /// <summary>
