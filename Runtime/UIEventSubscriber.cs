@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
 using GameFrameX.Event.Runtime;
 using GameFrameX.Runtime;
 
@@ -10,15 +12,18 @@ namespace GameFrameX.UI.Runtime
     [UnityEngine.Scripting.Preserve]
     public sealed class UIEventSubscriber : IReference
     {
-        private readonly GameFrameworkMultiDictionary<string, EventHandler<GameEventArgs>> m_DicEventHandler = new GameFrameworkMultiDictionary<string, EventHandler<GameEventArgs>>();
+        private readonly GameFrameworkMultiDictionary<string, EventHandler<GameEventArgs>> m_DicEventHandler;
 
         /// <summary>
         /// 持有者
         /// </summary>
         public object Owner { get; private set; }
 
+        private readonly List<string> m_removeList;
+
         public UIEventSubscriber()
         {
+            m_removeList = new List<string>();
             m_DicEventHandler = new GameFrameworkMultiDictionary<string, EventHandler<GameEventArgs>>();
             Owner = null;
         }
@@ -84,7 +89,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 取消所有订阅
         /// </summary>
-        public void UnSubscribeAll()
+        public void UnSubscribeAll(List<string> ignoreList = null)
         {
             if (m_DicEventHandler == null)
             {
@@ -93,13 +98,29 @@ namespace GameFrameX.UI.Runtime
 
             foreach (var item in m_DicEventHandler)
             {
+                if (ignoreList != null && ignoreList.Contains(item.Key))
+                {
+                    continue;
+                }
+
+                m_removeList.Add(item.Key);
                 foreach (var eventHandler in item.Value)
                 {
                     GameEntry.GetComponent<EventComponent>().Unsubscribe(item.Key, eventHandler);
                 }
             }
 
-            m_DicEventHandler.Clear();
+            if (ignoreList == null)
+            {
+                m_DicEventHandler.Clear();
+            }
+            else
+            {
+                foreach (var key in m_removeList)
+                {
+                    m_DicEventHandler.RemoveAll(key);
+                }
+            }
         }
 
         /// <summary>
@@ -121,6 +142,7 @@ namespace GameFrameX.UI.Runtime
         public void Clear()
         {
             m_DicEventHandler.Clear();
+            m_removeList.Clear();
             Owner = null;
         }
     }
