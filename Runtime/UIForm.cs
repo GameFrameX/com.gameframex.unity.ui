@@ -337,6 +337,21 @@ namespace GameFrameX.UI.Runtime
             m_UserData = userData;
         }
 
+
+        /// <summary>
+        /// 绑定事件
+        /// </summary>
+        public virtual void BindEvent()
+        {
+        }
+
+        /// <summary>
+        /// 加载数据
+        /// </summary>
+        public virtual void LoadData()
+        {
+        }
+
         /// <summary>
         /// 界面更新本地化。
         /// </summary>
