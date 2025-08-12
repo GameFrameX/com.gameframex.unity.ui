@@ -25,11 +25,6 @@ namespace GameFrameX.UI.Runtime
         protected readonly HashSet<int> m_UIFormsToReleaseOnLoad = new HashSet<int>();
 
         /// <summary>
-        /// 界面实例对象池回收队列。
-        /// </summary>
-        protected readonly Queue<IUIForm> m_RecycleQueue = new Queue<IUIForm>();
-
-        /// <summary>
         /// 界面实例对象池回收间隔秒数。
         /// </summary>
         protected int m_RecycleInterval = 60;
@@ -106,7 +101,6 @@ namespace GameFrameX.UI.Runtime
             if (m_RecycleTime >= m_RecycleInterval)
             {
                 m_RecycleTime = 0;
-                // Log.Debug($"回收界面实例。=>{m_UIFormsToReleaseOnLoad.Count + m_RecycleQueue.Count}");
                 if (m_UIFormsToReleaseOnLoad.Count > 0)
                 {
                     foreach (var serialId in m_UIFormsToReleaseOnLoad)
@@ -114,18 +108,11 @@ namespace GameFrameX.UI.Runtime
                         var uiForm = GetUIForm(serialId);
                         if (uiForm != null)
                         {
-                            m_RecycleQueue.Enqueue(uiForm);
+                            RecycleUIForm(uiForm);
                         }
                     }
 
                     m_UIFormsToReleaseOnLoad.Clear();
-                }
-
-                while (m_RecycleQueue.Count > 0)
-                {
-                    var uiForm = m_RecycleQueue.Dequeue();
-
-                    RecycleUIForm(uiForm);
                 }
             }
 
@@ -145,7 +132,6 @@ namespace GameFrameX.UI.Runtime
             m_UIGroups.Clear();
             m_UIFormsBeingLoaded.Clear();
             m_UIFormsToReleaseOnLoad.Clear();
-            m_RecycleQueue.Clear();
         }
 
         /// <summary>

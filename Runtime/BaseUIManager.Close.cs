@@ -134,7 +134,7 @@ namespace GameFrameX.UI.Runtime
 
             if (uiForm.IsDisableRecycling == false && isRecycled == false)
             {
-                m_RecycleQueue.Enqueue(uiForm);
+                m_UIFormsToReleaseOnLoad.Add(serialId);
             }
 
             if (m_CloseUIFormCompleteEventHandler != null)
