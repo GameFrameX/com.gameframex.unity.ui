@@ -63,6 +63,16 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
+        /// 关闭界面组。
+        /// </summary>
+        /// <param name="uiGroupName">界面组名称。</param>
+        /// <param name="userData">用户自定义数据。</param>
+        public void CloseUIGroup(string uiGroupName, object userData = null)
+        {
+            m_UIManager.CloseUIGroup(uiGroupName, userData);
+        }
+
+        /// <summary>
         /// 关闭所有已加载的界面。
         /// </summary>
         public void CloseAllLoadedUIForms()

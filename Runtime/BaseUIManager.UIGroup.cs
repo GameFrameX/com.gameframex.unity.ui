@@ -115,5 +115,30 @@ namespace GameFrameX.UI.Runtime
 
             return true;
         }
+
+        /// <summary>
+        /// 关闭界面组。
+        /// </summary>
+        /// <param name="uiGroupName">界面组名称。</param>
+        /// <param name="userData">用户自定义数据。</param>
+        public void CloseUIGroup(string uiGroupName, object userData)
+        {
+            GameFrameworkGuard.NotNullOrEmpty(uiGroupName, nameof(uiGroupName));
+            if (!m_UIGroups.TryGetValue(uiGroupName, out var uiGroup))
+            {
+                throw new GameFrameworkException($"UI group '{uiGroupName}' is not exist.");
+            }
+
+            var uiForms = uiGroup.GetAllUIForms();
+            foreach (var uiForm in uiForms)
+            {
+                if (!HasUIForm(uiForm.SerialId))
+                {
+                    continue;
+                }
+
+                CloseUIForm(uiForm, userData);
+            }
+        }
     }
 }

@@ -317,5 +317,12 @@ namespace GameFrameX.UI.Runtime
         /// <param name="uiFormInstance">要设置是否被加锁的界面实例。</param>
         /// <param name="locked">界面实例是否被加锁。</param>
         void SetUIFormInstanceLocked(object uiFormInstance, bool locked);
+
+        /// <summary>
+        /// 关闭界面组。
+        /// </summary>
+        /// <param name="uiGroupName">界面组名称。</param>
+        /// <param name="userData">用户自定义数据。</param>
+        void CloseUIGroup(string uiGroupName, object userData);
     }
 }
