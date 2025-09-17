@@ -6,6 +6,7 @@
 
 using System.Threading.Tasks;
 using System;
+using System.Reflection;
 using GameFrameX.Runtime;
 
 namespace GameFrameX.UI.Runtime
@@ -121,7 +122,14 @@ namespace GameFrameX.UI.Runtime
         public async Task<T> OpenAsync<T>(object userData = null, bool isFullScreen = false, bool isMultiple = false) where T : class, IUIForm
         {
             var uiFormAssetName = typeof(T).Name;
+
             var uiFormAssetPath = Utility.Asset.Path.GetUIPath(uiFormAssetName);
+            var attribute = typeof(T).GetCustomAttribute(typeof(OptionUIConfig));
+            if (attribute is OptionUIConfig optionUIConfig)
+            {
+                uiFormAssetPath = Utility.Asset.Path.GetUIPath(optionUIConfig.PackageName);
+            }
+
             return await OpenAsync<T>(uiFormAssetPath, userData, isFullScreen, isMultiple);
         }
     }
