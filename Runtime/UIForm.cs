@@ -24,6 +24,7 @@ namespace GameFrameX.UI.Runtime
         [SerializeField] private bool m_Visible = false;
         [SerializeField] private bool m_IsInit = false;
         [SerializeField] private bool m_IsDisableRecycling = false;
+        [SerializeField] private bool m_IsDisableClosing = false;
         [SerializeField] private int m_SerialId;
         [SerializeField] private int m_OriginalLayer = 0;
         [SerializeField] private string m_UIFormAssetName;
@@ -133,6 +134,15 @@ namespace GameFrameX.UI.Runtime
         {
             get { return m_IsDisableRecycling; }
             protected set { m_IsDisableRecycling = value; }
+        }
+
+        /// <summary>
+        /// 是否禁用关闭，禁用关闭的界面不会被关闭
+        /// </summary>
+        public bool IsDisableClosing
+        {
+            get { return m_IsDisableClosing; }
+            protected set { m_IsDisableClosing = value; }
         }
 
         /// <summary>

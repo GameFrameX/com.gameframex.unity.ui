@@ -51,13 +51,6 @@ namespace GameFrameX.UI.Runtime
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
         public void CloseUIForm(int serialId, object userData, bool isNowRecycle = false)
         {
-            if (IsLoadingUIForm(serialId))
-            {
-                m_UIFormsToReleaseOnLoad.Add(serialId);
-                m_UIFormsBeingLoaded.Remove(serialId);
-                return;
-            }
-
             IUIForm uiForm = GetUIForm(serialId);
             if (uiForm == null)
             {
@@ -113,6 +106,12 @@ namespace GameFrameX.UI.Runtime
         public void CloseUIForm(IUIForm uiForm, object userData, bool isNowRecycle = false)
         {
             GameFrameworkGuard.NotNull(uiForm, nameof(uiForm));
+
+            if (uiForm.IsDisableClosing)
+            {
+                return;
+            }
+
             GameFrameworkGuard.NotNull(uiForm.UIGroup, nameof(uiForm.UIGroup));
             UIGroup uiGroup = (UIGroup)uiForm.UIGroup;
             var serialId = uiForm.SerialId;

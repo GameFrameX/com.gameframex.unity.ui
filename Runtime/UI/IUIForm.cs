@@ -39,6 +39,11 @@ namespace GameFrameX.UI.Runtime
         bool IsDisableRecycling { get; }
 
         /// <summary>
+        /// 是否禁用关闭，禁用关闭的界面不会被关闭
+        /// </summary>
+        bool IsDisableClosing { get; }
+
+        /// <summary>
         /// 获取界面实例。
         /// </summary>
         object Handle { get; }
