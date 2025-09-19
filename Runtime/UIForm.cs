@@ -24,6 +24,7 @@ namespace GameFrameX.UI.Runtime
         [SerializeField] private bool m_Visible = false;
         [SerializeField] private bool m_IsInit = false;
         [SerializeField] private bool m_IsDisableRecycling = false;
+        [SerializeField] private bool m_IsCenter = false;
         [SerializeField] private bool m_IsDisableClosing = false;
         [SerializeField] private int m_SerialId;
         [SerializeField] private int m_OriginalLayer = 0;
@@ -145,6 +146,14 @@ namespace GameFrameX.UI.Runtime
             protected set { m_IsDisableClosing = value; }
         }
 
+        /// <summary>
+        /// 是否开启组件居中，true:组件生成后默认父组件居中
+        /// </summary>
+        public bool IsCenter
+        {
+            get { return m_IsCenter; }
+            protected set { m_IsCenter = value; }
+        }
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>

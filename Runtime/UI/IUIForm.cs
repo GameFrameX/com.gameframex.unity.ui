@@ -44,6 +44,10 @@ namespace GameFrameX.UI.Runtime
         bool IsDisableClosing { get; }
 
         /// <summary>
+        /// 是否开启组件居中，true:组件生成后默认父组件居中
+        /// </summary>
+        bool IsCenter { get; }
+        /// <summary>
         /// 获取界面实例。
         /// </summary>
         object Handle { get; }
