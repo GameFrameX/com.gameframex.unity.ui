@@ -127,7 +127,14 @@ namespace GameFrameX.UI.Runtime
             var attribute = typeof(T).GetCustomAttribute(typeof(OptionUIConfig));
             if (attribute is OptionUIConfig optionUIConfig)
             {
-                uiFormAssetPath = Utility.Asset.Path.GetUIPath(optionUIConfig.PackageName);
+                if (optionUIConfig.Path.IsNullOrWhiteSpace())
+                {
+                    uiFormAssetPath = Utility.Asset.Path.GetUIPath(optionUIConfig.PackageName);
+                }
+                else
+                {
+                    uiFormAssetPath = optionUIConfig.Path;
+                }
             }
 
             return await OpenAsync<T>(uiFormAssetPath, userData, isFullScreen, isMultiple);
