@@ -120,7 +120,7 @@ namespace GameFrameX.UI.Runtime
             uiGroup.Refresh();
             if (IsLoadingUIForm(serialId))
             {
-                m_UIFormsToReleaseOnLoad.Add(serialId);
+                m_UIFormsToReleaseOnLoad[serialId] = uiForm;
                 m_UIFormsBeingLoaded.Remove(serialId);
             }
 
@@ -133,7 +133,7 @@ namespace GameFrameX.UI.Runtime
 
             if (uiForm.IsDisableRecycling == false && isRecycled == false)
             {
-                m_UIFormsToReleaseOnLoad.Add(serialId);
+                m_UIFormsToReleaseOnLoad[serialId] = uiForm;
             }
 
             if (m_CloseUIFormCompleteEventHandler != null)
@@ -176,7 +176,7 @@ namespace GameFrameX.UI.Runtime
         {
             foreach (KeyValuePair<int, string> uiFormBeingLoaded in m_UIFormsBeingLoaded)
             {
-                m_UIFormsToReleaseOnLoad.Add(uiFormBeingLoaded.Key);
+                m_UIFormsToReleaseOnLoad[uiFormBeingLoaded.Key] = GetUIForm(uiFormBeingLoaded.Key);
             }
 
             m_UIFormsBeingLoaded.Clear();

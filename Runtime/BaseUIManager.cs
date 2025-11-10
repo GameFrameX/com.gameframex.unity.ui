@@ -22,7 +22,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 需要释放的界面实例对象池。
         /// </summary>
-        protected readonly HashSet<int> m_UIFormsToReleaseOnLoad = new HashSet<int>();
+        protected readonly Dictionary<int, IUIForm> m_UIFormsToReleaseOnLoad = new Dictionary<int, IUIForm>();
 
         /// <summary>
         /// 界面实例对象池回收间隔秒数。
@@ -103,12 +103,12 @@ namespace GameFrameX.UI.Runtime
                 m_RecycleTime = 0;
                 if (m_UIFormsToReleaseOnLoad.Count > 0)
                 {
-                    foreach (var serialId in m_UIFormsToReleaseOnLoad)
+                    foreach (var keyValuePair in m_UIFormsToReleaseOnLoad)
                     {
-                        var uiForm = GetUIForm(serialId);
+                        var uiForm = keyValuePair.Value;
                         if (uiForm != null)
                         {
-                            RecycleUIForm(uiForm);
+                            RecycleUIForm(uiForm, true);
                         }
                     }
 
