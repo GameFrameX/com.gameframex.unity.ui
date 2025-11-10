@@ -33,6 +33,11 @@ namespace GameFrameX.UI.Runtime
         int InstanceCapacity { get; set; }
 
         /// <summary>
+        /// 获取或设置界面实例对象池是否回收到对象池。
+        /// </summary>
+        bool IsRecycleToPool { get; set; }
+
+        /// <summary>
         /// 获取或设置界面实例对象池对象过期秒数。
         /// </summary>
         float InstanceExpireTime { get; set; }

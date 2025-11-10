@@ -87,6 +87,17 @@ namespace GameFrameX.UI.Runtime
             set { m_InstancePool.ExpireTime = value; }
         }
 
+        private bool m_IsRecycleToPool = false;
+
+        /// <summary>
+        /// 获取或设置界面实例对象池是否回收到对象池。
+        /// </summary>
+        public bool IsRecycleToPool
+        {
+            get { return m_IsRecycleToPool; }
+            set { m_IsRecycleToPool = value; }
+        }
+
         protected IObjectPool<UIFormInstanceObject> m_InstancePool = null;
         protected bool m_IsShutdown = false;
 
@@ -108,7 +119,7 @@ namespace GameFrameX.UI.Runtime
                         var uiForm = keyValuePair.Value;
                         if (uiForm != null)
                         {
-                            RecycleUIForm(uiForm, true);
+                            RecycleUIForm(uiForm, !m_IsRecycleToPool);
                         }
                     }
 
