@@ -124,8 +124,8 @@ namespace GameFrameX.UI.Runtime
             var uiFormAssetName = typeof(T).Name;
 
             var uiFormAssetPath = Utility.Asset.Path.GetUIPath(uiFormAssetName);
-            var attribute = typeof(T).GetCustomAttribute(typeof(OptionUIConfig));
-            if (attribute is OptionUIConfig optionUIConfig)
+            var attribute = typeof(T).GetCustomAttribute(typeof(OptionUIConfigAttribute));
+            if (attribute is OptionUIConfigAttribute optionUIConfig)
             {
                 if (optionUIConfig.Path.IsNullOrWhiteSpace())
                 {
