@@ -84,9 +84,10 @@ namespace GameFrameX.UI.Runtime
         /// 释放所有已加载的界面。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
-        public void ReleaseAllLoadedUIForms(object userData = default)
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        public void ReleaseAllLoadedUIForms(bool isNowRecycle = false, object userData = null)
         {
-            m_UIManager.ReleaseAllLoadedUIForms(userData);
+            m_UIManager.ReleaseAllLoadedUIForms(isNowRecycle, userData);
         }
 
         /// <summary>

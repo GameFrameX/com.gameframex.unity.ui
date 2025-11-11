@@ -153,16 +153,18 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭所有已加载的界面。
         /// </summary>
-        public void CloseAllLoadedUIForms()
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        public void CloseAllLoadedUIForms(bool isNowRecycle = false)
         {
-            CloseAllLoadedUIForms(null);
+            CloseAllLoadedUIForms(null, isNowRecycle);
         }
 
         /// <summary>
         /// 关闭所有已加载的界面。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
-        public void CloseAllLoadedUIForms(object userData)
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        public void CloseAllLoadedUIForms(object userData, bool isNowRecycle = false)
         {
             IUIForm[] uiForms = GetAllLoadedUIForms();
             foreach (IUIForm uiForm in uiForms)
@@ -172,7 +174,7 @@ namespace GameFrameX.UI.Runtime
                     continue;
                 }
 
-                CloseUIForm(uiForm, userData);
+                CloseUIForm(uiForm, userData, isNowRecycle);
             }
         }
 
@@ -193,14 +195,15 @@ namespace GameFrameX.UI.Runtime
         /// 释放所有已加载的界面。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
-        public void ReleaseAllLoadedUIForms(object userData)
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        public void ReleaseAllLoadedUIForms(bool isNowRecycle = false, object userData = null)
         {
             foreach (var keyValuePair in m_UIFormsToReleaseOnLoad)
             {
                 var uiForm = keyValuePair.Value;
                 if (uiForm != null)
                 {
-                    RecycleUIForm(uiForm, !m_IsRecycleToPool);
+                    RecycleUIForm(uiForm, isNowRecycle);
                 }
             }
 

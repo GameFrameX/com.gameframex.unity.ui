@@ -290,13 +290,15 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭所有已加载的界面。
         /// </summary>
-        void CloseAllLoadedUIForms();
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        void CloseAllLoadedUIForms(bool isNowRecycle = false);
 
         /// <summary>
         /// 关闭所有已加载的界面。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
-        void CloseAllLoadedUIForms(object userData);
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        void CloseAllLoadedUIForms(object userData, bool isNowRecycle = false);
 
         /// <summary>
         /// 关闭所有正在加载的界面。
@@ -334,6 +336,7 @@ namespace GameFrameX.UI.Runtime
         /// 释放所有已加载的界面。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
-        void ReleaseAllLoadedUIForms(object userData);
+        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        void ReleaseAllLoadedUIForms(bool isNowRecycle = false, object userData = null);
     }
 }
