@@ -154,6 +154,7 @@ namespace GameFrameX.UI.Runtime
             get { return m_IsCenter; }
             protected set { m_IsCenter = value; }
         }
+
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
@@ -177,7 +178,7 @@ namespace GameFrameX.UI.Runtime
         public virtual IUIGroup UIGroup
         {
             get { return m_UIGroup; }
-            protected set { m_UIGroup = value; }
+            set { m_UIGroup = value; }
         }
 
         /// <summary>

@@ -47,6 +47,7 @@ namespace GameFrameX.UI.Runtime
         /// 是否开启组件居中，true:组件生成后默认父组件居中
         /// </summary>
         bool IsCenter { get; }
+
         /// <summary>
         /// 获取界面实例。
         /// </summary>
@@ -65,7 +66,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面所属的界面组。
         /// </summary>
-        IUIGroup UIGroup { get; }
+        IUIGroup UIGroup { get; set; }
 
         /// <summary>
         /// 获取界面在界面组中的深度。
