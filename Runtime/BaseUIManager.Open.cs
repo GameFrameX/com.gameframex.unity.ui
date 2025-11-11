@@ -6,7 +6,6 @@
 
 using System;
 using System.Threading.Tasks;
-using GameFrameX.Asset.Runtime;
 using GameFrameX.Runtime;
 
 namespace GameFrameX.UI.Runtime
@@ -60,23 +59,6 @@ namespace GameFrameX.UI.Runtime
             remove { m_OpenUIFormDependencyAssetEventHandler -= value; }
         }*/
 
-        /// <summary>
-        /// 打开界面。
-        /// </summary>
-        /// <param name="uiFormAssetPath">界面所在路径</param>
-        /// <param name="uiFormType">界面逻辑类型。</param>
-        /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <param name="isFullScreen">是否全屏</param>
-        /// <returns>界面的序列编号。</returns>
-        public async Task<IUIForm> OpenUIFormAsync(string uiFormAssetPath, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen = false)
-        {
-            GameFrameworkGuard.NotNull(m_AssetManager, nameof(m_AssetManager));
-            GameFrameworkGuard.NotNull(m_UIFormHelper, nameof(m_UIFormHelper));
-            GameFrameworkGuard.NotNull(uiFormType, nameof(uiFormType));
-
-            return await InnerOpenUIFormAsync(uiFormAssetPath, uiFormType, pauseCoveredUIForm, userData, isFullScreen);
-        }
 
         /// <summary>
         /// 打开界面。
@@ -92,6 +74,16 @@ namespace GameFrameX.UI.Runtime
             return InnerOpenUIFormAsync(uiFormAssetPath, typeof(T), pauseCoveredUIForm, userData, isFullScreen, isMultiple);
         }
 
+        /// <summary>
+        /// 打开界面。
+        /// </summary>
+        /// <param name="uiFormAssetPath">界面所在路径</param>
+        /// <param name="uiFormType">界面逻辑类型。</param>
+        /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
+        /// <param name="userData">用户自定义数据。</param>
+        /// <param name="isFullScreen">是否全屏</param>
+        /// <param name="isMultiple">是否创建新界面</param>
+        /// <returns>界面的序列编号。</returns>
         public async Task<IUIForm> OpenUIFormAsync(string uiFormAssetPath, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen = false, bool isMultiple = false)
         {
             return await InnerOpenUIFormAsync(uiFormAssetPath, uiFormType, pauseCoveredUIForm, userData, isFullScreen, isMultiple);
