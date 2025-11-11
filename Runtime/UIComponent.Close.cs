@@ -81,6 +81,15 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
+        /// 释放所有已加载的界面。
+        /// </summary>
+        /// <param name="userData">用户自定义数据。</param>
+        public void ReleaseAllLoadedUIForms(object userData = default)
+        {
+            m_UIManager.ReleaseAllLoadedUIForms(userData);
+        }
+
+        /// <summary>
         /// 关闭所有已加载的界面。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>

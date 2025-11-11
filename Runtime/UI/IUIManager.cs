@@ -329,5 +329,11 @@ namespace GameFrameX.UI.Runtime
         /// <param name="uiGroupName">界面组名称。</param>
         /// <param name="userData">用户自定义数据。</param>
         void CloseUIGroup(string uiGroupName, object userData);
+
+        /// <summary>
+        /// 释放所有已加载的界面。
+        /// </summary>
+        /// <param name="userData">用户自定义数据。</param>
+        void ReleaseAllLoadedUIForms(object userData);
     }
 }

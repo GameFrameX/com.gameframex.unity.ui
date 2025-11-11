@@ -181,5 +181,23 @@ namespace GameFrameX.UI.Runtime
 
             m_UIFormsBeingLoaded.Clear();
         }
+
+        /// <summary>
+        /// 释放所有已加载的界面。
+        /// </summary>
+        /// <param name="userData">用户自定义数据。</param>
+        public void ReleaseAllLoadedUIForms(object userData)
+        {
+            foreach (var keyValuePair in m_UIFormsToReleaseOnLoad)
+            {
+                var uiForm = keyValuePair.Value;
+                if (uiForm != null)
+                {
+                    RecycleUIForm(uiForm, !m_IsRecycleToPool);
+                }
+            }
+
+            m_UIFormsToReleaseOnLoad.Clear();
+        }
     }
 }
