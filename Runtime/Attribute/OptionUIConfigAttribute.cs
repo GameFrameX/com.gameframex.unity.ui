@@ -13,7 +13,7 @@ namespace GameFrameX.UI.Runtime
     /// 通过指定包名或路径，实现 UI 资源的自动定位和加载。
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public sealed class OptionUIConfig : Attribute
+    public sealed class OptionUIConfigAttribute : Attribute
     {
         /// <summary>
         /// FairyGUI 使用的包名。用于定位 FairyGUI 的 UI 资源包。
@@ -31,7 +31,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="packageName">FairyGUI 使用的包名，若为 null 则不使用 FairyGUI。</param>
         /// <param name="path">UGUI 使用的资源路径，若为 null 则不使用 UGUI。</param>
         /// <exception cref="Exception">当 packageName 和 path 均为 null 或空字符串时抛出异常。</exception>
-        public OptionUIConfig(string packageName = null, string path = null)
+        public OptionUIConfigAttribute(string packageName = null, string path = null)
         {
             PackageName = packageName;
             Path = path;
