@@ -34,6 +34,12 @@ namespace GameFrameX.UI.Runtime
         protected abstract void RecycleUIForm(IUIForm uiForm, bool isDispose = false);
 
         /// <summary>
+        /// 回收界面实例对象到实例池。
+        /// </summary>
+        /// <param name="uiForm">要回收的界面实例对象。</param>
+        protected abstract void RecycleToPoolUIForm(IUIForm uiForm);
+
+        /// <summary>
         /// 关闭界面。
         /// </summary>
         /// <param name="serialId">要关闭界面的序列编号。</param>
@@ -134,6 +140,7 @@ namespace GameFrameX.UI.Runtime
             if (uiForm.IsDisableRecycling == false && isRecycled == false)
             {
                 m_UIFormsToReleaseOnLoad[serialId] = uiForm;
+                RecycleToPoolUIForm(uiForm);
             }
 
             if (m_CloseUIFormCompleteEventHandler != null)
