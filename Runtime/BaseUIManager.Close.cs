@@ -121,8 +121,17 @@ namespace GameFrameX.UI.Runtime
             GameFrameworkGuard.NotNull(uiForm.UIGroup, nameof(uiForm.UIGroup));
             UIGroup uiGroup = (UIGroup)uiForm.UIGroup;
             var serialId = uiForm.SerialId;
-            uiGroup.RemoveUIForm(uiForm);
-            uiForm.OnClose(m_IsShutdown, userData);
+            if (uiForm.EnableHideAnimation)
+            {
+                uiGroup.RemoveUIForm(uiForm, true);
+                uiForm.Hide(m_UIFormHideHandler, () => { uiForm.OnClose(m_IsShutdown, userData); });
+            }
+            else
+            {
+                uiGroup.RemoveUIForm(uiForm);
+                uiForm.OnClose(m_IsShutdown, userData);
+            }
+
             uiGroup.Refresh();
             if (IsLoadingUIForm(serialId))
             {

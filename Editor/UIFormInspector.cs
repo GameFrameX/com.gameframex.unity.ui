@@ -29,6 +29,10 @@ namespace GameFrameX.UI.Editor
         private SerializedProperty m_DepthInUIGroup = null;
         private SerializedProperty m_PauseCoveredUIForm = null;
         private SerializedProperty m_FullName = null;
+        private SerializedProperty m_EnableShowAnimation = null;
+        private SerializedProperty m_ShowAnimationName = null;
+        private SerializedProperty m_EnableHideAnimation = null;
+        private SerializedProperty m_HideAnimationName = null;
 
         public override void OnInspectorGUI()
         {
@@ -50,6 +54,10 @@ namespace GameFrameX.UI.Editor
                 EditorGUILayout.PropertyField(m_AssetPath);
                 EditorGUILayout.PropertyField(m_DepthInUIGroup);
                 EditorGUILayout.PropertyField(m_PauseCoveredUIForm);
+                EditorGUILayout.PropertyField(m_EnableShowAnimation);
+                EditorGUILayout.PropertyField(m_ShowAnimationName);
+                EditorGUILayout.PropertyField(m_EnableHideAnimation);
+                EditorGUILayout.PropertyField(m_HideAnimationName);
             }
             EditorGUI.EndDisabledGroup();
 
@@ -71,6 +79,10 @@ namespace GameFrameX.UI.Editor
             m_DepthInUIGroup = serializedObject.FindProperty("m_DepthInUIGroup");
             m_PauseCoveredUIForm = serializedObject.FindProperty("m_PauseCoveredUIForm");
             m_FullName = serializedObject.FindProperty("m_FullName");
+            m_EnableShowAnimation = serializedObject.FindProperty("m_EnableShowAnimation");
+            m_ShowAnimationName = serializedObject.FindProperty("m_ShowAnimationName");
+            m_EnableHideAnimation = serializedObject.FindProperty("m_EnableHideAnimation");
+            m_HideAnimationName = serializedObject.FindProperty("m_HideAnimationName");
         }
     }
 }

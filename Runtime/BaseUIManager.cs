@@ -101,6 +101,8 @@ namespace GameFrameX.UI.Runtime
 
         protected IObjectPool<UIFormInstanceObject> m_InstancePool = null;
         protected bool m_IsShutdown = false;
+        protected IUIFormShowHandler m_UIFormShowHandler;
+        private IUIFormHideHandler m_UIFormHideHandler;
 
         /// <summary>
         /// 界面管理器轮询。
@@ -188,6 +190,24 @@ namespace GameFrameX.UI.Runtime
             GameFrameworkGuard.NotNull(uiFormHelper, nameof(uiFormHelper));
 
             m_UIFormHelper = uiFormHelper;
+        }
+
+        /// <summary>
+        /// 设置界面显示处理接口
+        /// </summary>
+        /// <param name="handler">界面显示处理接口</param>
+        public void SetUIFormShowHandler(IUIFormShowHandler handler)
+        {
+            m_UIFormShowHandler = handler;
+        }
+
+        /// <summary>
+        /// 设置界面隐藏处理接口
+        /// </summary>
+        /// <param name="handler">界面隐藏处理接口</param>
+        public void SetUIFormHideHandler(IUIFormHideHandler handler)
+        {
+            m_UIFormHideHandler = handler;
         }
     }
 }

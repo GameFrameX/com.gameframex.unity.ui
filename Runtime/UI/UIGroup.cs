@@ -341,7 +341,8 @@ namespace GameFrameX.UI.Runtime
         /// 从界面组移除界面。
         /// </summary>
         /// <param name="uiForm">要移除的界面。</param>
-        public void RemoveUIForm(IUIForm uiForm)
+        /// <param name="isSkipPause">是否跳过暂停。</param>
+        public void RemoveUIForm(IUIForm uiForm, bool isSkipPause = false)
         {
             UIFormInfo uiFormInfo = GetUIFormInfo(uiForm);
             if (uiFormInfo == null)
@@ -358,7 +359,10 @@ namespace GameFrameX.UI.Runtime
             if (!uiFormInfo.Paused)
             {
                 uiFormInfo.Paused = true;
-                uiForm.OnPause();
+                if (!isSkipPause)
+                {
+                    uiForm.OnPause();
+                }
             }
 
             if (m_CachedNode != null && m_CachedNode.Value.UIForm == uiForm)

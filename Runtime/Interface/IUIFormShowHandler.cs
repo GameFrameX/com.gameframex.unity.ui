@@ -34,31 +34,17 @@ using System;
 namespace GameFrameX.UI.Runtime
 {
     /// <summary>
-    /// 用于指定UI关闭时播放的动画特性
-    /// 可以应用于类，指定动画名称和是否启用动画
+    /// 界面显示处理接口定义，用于处理界面显示时的逻辑
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class)]
-    public sealed class OptionUICloseAnimationAttribute : Attribute
+    public interface IUIFormShowHandler
     {
         /// <summary>
-        /// 动画名称
+        /// 界面显示处理
         /// </summary>
-        public string AnimationName { get; private set; }
-
-        /// <summary>
-        /// 是否启用动画
-        /// </summary>
-        public bool Enable { get; private set; }
-
-        /// <summary>
-        /// 构造函数，初始化动画名称和启用状态
-        /// </summary>
+        /// <param name="uiForm">界面表单</param>
+        /// <param name="enableAnimation">是否启用动画</param>
         /// <param name="animationName">动画名称</param>
-        /// <param name="enable">是否启用动画，默认为true</param>
-        public OptionUICloseAnimationAttribute(string animationName, bool enable = true)
-        {
-            AnimationName = animationName;
-            Enable = enable;
-        }
+        /// <param name="complete">完成回调</param>
+        void Handler(object uiForm, bool enableAnimation, string animationName, Action complete);
     }
 }

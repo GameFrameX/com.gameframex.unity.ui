@@ -405,6 +405,16 @@ namespace GameFrameX.UI.Runtime
             }
         }
 
+        public void SetShowUIFormHandler(IUIFormShowHandler uiFormShowHandler)
+        {
+            m_UIManager.SetUIFormShowHandler(uiFormShowHandler);
+        }
+
+        public void SetHideUIFormHandler(IUIFormHideHandler uiFormHideHandler)
+        {
+            m_UIManager.SetUIFormHideHandler(uiFormHideHandler);
+        }
+
         /*
         private void OnOpenUIFormUpdate(object sender, OpenUIFormUpdateEventArgs e)
         {

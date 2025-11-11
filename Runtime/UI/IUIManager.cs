@@ -338,5 +338,17 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
         void ReleaseAllLoadedUIForms(bool isNowRecycle = false, object userData = null);
+
+        /// <summary>
+        /// 设置界面显示处理接口
+        /// </summary>
+        /// <param name="handler">界面显示处理接口</param>
+        void SetUIFormShowHandler(IUIFormShowHandler handler);
+
+        /// <summary>
+        /// 设置界面隐藏处理接口
+        /// </summary>
+        /// <param name="handler">界面隐藏处理接口</param>
+        void SetUIFormHideHandler(IUIFormHideHandler handler);
     }
 }

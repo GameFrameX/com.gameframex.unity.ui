@@ -38,7 +38,7 @@ namespace GameFrameX.UI.Runtime
     /// 可以应用于类，指定动画名称和是否启用动画
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public sealed class OptionUIOpenAnimationAttribute : Attribute
+    public sealed class OptionUIShowAnimationAttribute : Attribute
     {
         /// <summary>
         /// 动画名称
@@ -55,7 +55,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="animationName">动画名称</param>
         /// <param name="enable">是否启用动画，默认为true</param>
-        public OptionUIOpenAnimationAttribute(string animationName, bool enable = true)
+        public OptionUIShowAnimationAttribute(string animationName, bool enable = true)
         {
             AnimationName = animationName;
             Enable = enable;

@@ -33,6 +33,10 @@ namespace GameFrameX.UI.Runtime
         [SerializeField] private int m_DepthInUIGroup;
         [SerializeField] private bool m_PauseCoveredUIForm;
         [SerializeField] private string m_FullName;
+        [SerializeField] private bool m_EnableShowAnimation;
+        [SerializeField] private string m_ShowAnimationName;
+        [SerializeField] private bool m_EnableHideAnimation;
+        [SerializeField] private string m_HideAnimationName;
         private IUIGroup m_UIGroup;
         private UIEventSubscriber m_EventSubscriber = null;
         private object m_UserData = null;
@@ -94,6 +98,42 @@ namespace GameFrameX.UI.Runtime
         public bool Available
         {
             get { return m_Available; }
+        }
+
+        /// <summary>
+        /// 是否启用显示动画
+        /// </summary>
+        public bool EnableShowAnimation
+        {
+            get { return m_EnableShowAnimation; }
+            set { m_EnableShowAnimation = value; }
+        }
+
+        /// <summary>
+        /// 显示动画名称
+        /// </summary>
+        public string ShowAnimationName
+        {
+            get { return m_ShowAnimationName; }
+            set { m_ShowAnimationName = value; }
+        }
+
+        /// <summary>
+        /// 是否启用隐藏动画
+        /// </summary>
+        public bool EnableHideAnimation
+        {
+            get { return m_EnableHideAnimation; }
+            set { m_EnableHideAnimation = value; }
+        }
+
+        /// <summary>
+        /// 隐藏动画名称
+        /// </summary>
+        public string HideAnimationName
+        {
+            get { return m_HideAnimationName; }
+            set { m_HideAnimationName = value; }
         }
 
         /// <summary>
@@ -379,6 +419,23 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
+        /// 界面显示。
+        /// </summary>
+        /// <param name="handler"></param>
+        /// <param name="complete"></param>
+        public void Show(IUIFormShowHandler handler, Action complete)
+        {
+            if (handler != null)
+            {
+                handler.Handler(Handle, EnableShowAnimation, ShowAnimationName, complete);
+            }
+            else
+            {
+                complete?.Invoke();
+            }
+        }
+
+        /// <summary>
         /// 界面关闭。
         /// </summary>
         /// <param name="isShutdown">是否是关闭界面管理器时触发。</param>
@@ -388,6 +445,23 @@ namespace GameFrameX.UI.Runtime
             gameObject.SetLayerRecursively(m_OriginalLayer);
             m_Available = false;
             Visible = false;
+        }
+
+        /// <summary>
+        /// 界面隐藏。
+        /// </summary>
+        /// <param name="handler"></param>
+        /// <param name="complete"></param>
+        public void Hide(IUIFormHideHandler handler, Action complete)
+        {
+            if (handler != null)
+            {
+                handler.Handler(Handle, EnableHideAnimation, HideAnimationName, complete);
+            }
+            else
+            {
+                complete?.Invoke();
+            }
         }
 
         /// <summary>

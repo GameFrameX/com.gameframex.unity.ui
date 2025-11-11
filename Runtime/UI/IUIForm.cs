@@ -59,6 +59,26 @@ namespace GameFrameX.UI.Runtime
         bool Available { get; }
 
         /// <summary>
+        /// 是否启用显示动画
+        /// </summary>
+        bool EnableShowAnimation { get; set; }
+
+        /// <summary>
+        /// 显示动画名称
+        /// </summary>
+        string ShowAnimationName { get; set; }
+
+        /// <summary>
+        /// 是否启用隐藏动画
+        /// </summary>
+        bool EnableHideAnimation { get; set; }
+
+        /// <summary>
+        /// 隐藏动画名称
+        /// </summary>
+        string HideAnimationName { get; set; }
+
+        /// <summary>
         /// 获取界面是否可见。
         /// </summary>
         bool Visible { get; }
@@ -133,11 +153,25 @@ namespace GameFrameX.UI.Runtime
         void UpdateLocalization();
 
         /// <summary>
+        /// 界面显示。
+        /// </summary>
+        /// <param name="handler">界面显示处理接口</param>
+        /// <param name="complete">完成回调</param>
+        void Show(IUIFormShowHandler handler, Action complete);
+
+        /// <summary>
         /// 界面关闭。
         /// </summary>
         /// <param name="isShutdown">是否是关闭界面管理器时触发。</param>
         /// <param name="userData">用户自定义数据。</param>
         void OnClose(bool isShutdown, object userData);
+
+        /// <summary>
+        /// 界面隐藏。
+        /// </summary>
+        /// <param name="handler">界面隐藏处理接口</param>
+        /// <param name="complete">完成回调</param>
+        void Hide(IUIFormHideHandler handler, Action complete);
 
         /// <summary>
         /// 界面暂停。
