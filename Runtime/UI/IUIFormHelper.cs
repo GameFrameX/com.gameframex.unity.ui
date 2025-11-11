@@ -34,6 +34,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAsset">要释放的界面资源。</param>
         /// <param name="uiFormInstance">要释放的界面实例。</param>
-        void ReleaseUIForm(object uiFormAsset, object uiFormInstance);
+        /// <param name="assetHandle">界面资源句柄。</param>
+        void ReleaseUIForm(object uiFormAsset, object uiFormInstance, object assetHandle);
     }
 }

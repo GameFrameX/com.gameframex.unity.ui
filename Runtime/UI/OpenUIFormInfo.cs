@@ -18,6 +18,7 @@ namespace GameFrameX.UI.Runtime
         private bool m_PauseCoveredUIForm = false;
         private object m_UserData = null;
         private Type m_FormType;
+        public object m_AssetHandle;
 
         private bool m_IsFullScreen = false;
 
@@ -59,6 +60,23 @@ namespace GameFrameX.UI.Runtime
         public object UserData
         {
             get { return m_UserData; }
+        }
+
+        /// <summary>
+        /// 获取用户自定义数据。
+        /// </summary>
+        public object AssetHandle
+        {
+            get { return m_AssetHandle; }
+        }
+
+        /// <summary>
+        /// 设置界面资源句柄。
+        /// </summary>
+        /// <param name="assetHandle">界面资源句柄。</param>
+        public void SetAssetHandle(object assetHandle)
+        {
+            m_AssetHandle = assetHandle;
         }
 
         /// <summary>

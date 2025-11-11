@@ -18,8 +18,9 @@ namespace GameFrameX.UI.Runtime
         {
             private object m_UIFormAsset = null;
             private IUIFormHelper m_UIFormHelper = null;
+            private object m_AssetHandle = null;
 
-            public static UIFormInstanceObject Create(string name, object uiFormAsset, object uiFormInstance, IUIFormHelper uiFormHelper)
+            public static UIFormInstanceObject Create(string name, object uiFormAsset, object uiFormInstance, IUIFormHelper uiFormHelper, object assetHandle)
             {
                 if (uiFormAsset == null)
                 {
@@ -35,6 +36,7 @@ namespace GameFrameX.UI.Runtime
                 uiFormInstanceObject.Initialize(name, uiFormInstance);
                 uiFormInstanceObject.m_UIFormAsset = uiFormAsset;
                 uiFormInstanceObject.m_UIFormHelper = uiFormHelper;
+                uiFormInstanceObject.m_AssetHandle = assetHandle;
                 return uiFormInstanceObject;
             }
 
@@ -47,7 +49,7 @@ namespace GameFrameX.UI.Runtime
 
             protected override void Release(bool isShutdown)
             {
-                m_UIFormHelper.ReleaseUIForm(m_UIFormAsset, Target);
+                m_UIFormHelper.ReleaseUIForm(m_UIFormAsset, Target, m_AssetHandle);
             }
         }
     }
