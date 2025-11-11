@@ -340,7 +340,6 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         public virtual void OnRecycle()
         {
-            m_SerialId = 0;
             m_DepthInUIGroup = 0;
             m_PauseCoveredUIForm = true;
         }
