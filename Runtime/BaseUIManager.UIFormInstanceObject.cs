@@ -45,6 +45,7 @@ namespace GameFrameX.UI.Runtime
                 base.Clear();
                 m_UIFormAsset = null;
                 m_UIFormHelper = null;
+                m_AssetHandle = null;
             }
 
             protected override void Release(bool isShutdown)
