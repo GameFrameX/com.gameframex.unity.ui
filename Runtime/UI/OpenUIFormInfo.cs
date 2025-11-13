@@ -108,6 +108,9 @@ namespace GameFrameX.UI.Runtime
             m_SerialId = 0;
             m_PauseCoveredUIForm = false;
             m_UserData = null;
+            m_FormType = null;
+            m_AssetHandle = null;
+            m_IsFullScreen = false;
         }
     }
 }
