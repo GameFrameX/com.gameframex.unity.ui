@@ -23,6 +23,8 @@ namespace GameFrameX.UI.Editor
         private SerializedProperty m_EnableCloseUIFormCompleteEvent = null;
         private SerializedProperty m_InstanceAutoReleaseInterval = null;
         private SerializedProperty m_InstanceCapacity = null;
+        private SerializedProperty m_IsEnableUIShowAnimation = null;
+        private SerializedProperty m_IsEnableUIHideAnimation = null;
 
         private SerializedProperty m_InstanceExpireTime = null;
         private SerializedProperty m_RecycleInterval = null;
@@ -59,6 +61,8 @@ namespace GameFrameX.UI.Editor
                 EditorGUILayout.IntSlider(m_RecycleInterval, 10, 600, "Recycle Interval");
                 EditorGUILayout.HelpBox("是否回收到对象池，建议设置为 true", MessageType.Info);
                 EditorGUILayout.PropertyField(m_IsRecycleToPool);
+                EditorGUILayout.PropertyField(m_IsEnableUIShowAnimation);
+                EditorGUILayout.PropertyField(m_IsEnableUIHideAnimation);
             }
             EditorGUI.EndDisabledGroup();
 
@@ -164,6 +168,8 @@ namespace GameFrameX.UI.Editor
             // m_InstancePriority = serializedObject.FindProperty("m_InstancePriority");
             m_InstanceUGUIRoot = serializedObject.FindProperty("m_InstanceUGUIRoot");
             m_InstanceFairyGUIRoot = serializedObject.FindProperty("m_InstanceFairyGUIRoot");
+            m_IsEnableUIShowAnimation = serializedObject.FindProperty("m_IsEnableUIShowAnimation");
+            m_IsEnableUIHideAnimation = serializedObject.FindProperty("m_IsEnableUIHideAnimation");
             m_UIGroups = serializedObject.FindProperty("m_UIGroups");
 
             m_UIFormHelperInfo.Init(serializedObject);

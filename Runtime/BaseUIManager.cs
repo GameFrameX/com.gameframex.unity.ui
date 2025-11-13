@@ -79,6 +79,17 @@ namespace GameFrameX.UI.Runtime
             set { m_InstancePool.Capacity = value; }
         }
 
+        private bool m_IsEnableUIHideAnimation = false;
+
+        /// <summary>
+        /// 获取或设置是否启用界面隐藏动画。
+        /// </summary>
+        public bool IsEnableUIHideAnimation
+        {
+            get { return m_IsEnableUIHideAnimation; }
+            set { m_IsEnableUIHideAnimation = value; }
+        }
+
         /// <summary>
         /// 获取或设置界面实例对象池对象过期秒数。
         /// </summary>
@@ -97,6 +108,20 @@ namespace GameFrameX.UI.Runtime
         {
             get { return m_IsRecycleToPool; }
             set { m_IsRecycleToPool = value; }
+        }
+
+        /// <summary>
+        /// 获取或设置是否启用界面显示动画。
+        /// </summary>
+        private bool m_IsEnableUIShowAnimation = false;
+
+        /// <summary>
+        /// 获取或设置是否启用界面显示动画。
+        /// </summary>
+        public bool IsEnableUIShowAnimation
+        {
+            get { return m_IsEnableUIShowAnimation; }
+            set { m_IsEnableUIShowAnimation = value; }
         }
 
         protected IObjectPool<UIFormInstanceObject> m_InstancePool = null;

@@ -37,6 +37,8 @@ namespace GameFrameX.UI.Runtime
         // [SerializeField] private bool m_EnableOpenUIFormDependencyAssetEvent = false;
 
         [SerializeField] private bool m_EnableCloseUIFormCompleteEvent = true;
+        [SerializeField] private bool m_IsEnableUIShowAnimation = false;
+        [SerializeField] private bool m_IsEnableUIHideAnimation = false;
 
         [SerializeField] private float m_InstanceAutoReleaseInterval = 60f;
 
@@ -88,6 +90,22 @@ namespace GameFrameX.UI.Runtime
             new UIGroup(UIGroupConstants.Notify.Depth, UIGroupConstants.Notify.Name),
             new UIGroup(UIGroupConstants.System.Depth, UIGroupConstants.System.Name),
         };
+
+        /// <summary>
+        /// 获取是否启用界面显示动画。
+        /// </summary>
+        public bool IsEnableUIShowAnimation
+        {
+            get { return m_UIManager.IsEnableUIShowAnimation; }
+        }
+
+        /// <summary>
+        /// 获取是否启用界面隐藏动画。
+        /// </summary>
+        public bool IsEnableUIHideAnimation
+        {
+            get { return m_UIManager.IsEnableUIHideAnimation; }
+        }
 
         /// <summary>
         /// 获取界面组数量。
@@ -257,6 +275,8 @@ namespace GameFrameX.UI.Runtime
             m_UIManager.InstanceCapacity = m_InstanceCapacity;
             m_UIManager.InstanceExpireTime = m_InstanceExpireTime;
             m_UIManager.RecycleInterval = m_RecycleInterval;
+            m_UIManager.IsEnableUIHideAnimation = m_IsEnableUIHideAnimation;
+            m_UIManager.IsEnableUIShowAnimation = m_IsEnableUIShowAnimation;
             // m_UIManager.InstancePriority = m_InstancePriority;
 
             m_CustomUIGroupHelper = Helper.CreateHelper(m_UIGroupHelperTypeName, m_CustomUIGroupHelper);

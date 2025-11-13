@@ -38,6 +38,16 @@ namespace GameFrameX.UI.Runtime
         bool IsRecycleToPool { get; set; }
 
         /// <summary>
+        /// 获取或设置是否启用界面显示动画。
+        /// </summary>
+        bool IsEnableUIShowAnimation { get; set; }
+
+        /// <summary>
+        /// 获取或设置是否启用界面隐藏动画。
+        /// </summary>
+        bool IsEnableUIHideAnimation { get; set; }
+
+        /// <summary>
         /// 获取或设置界面实例对象池对象过期秒数。
         /// </summary>
         float InstanceExpireTime { get; set; }
