@@ -18,8 +18,7 @@ namespace GameFrameX.UI.Runtime
         private bool m_PauseCoveredUIForm = false;
         private object m_UserData = null;
         private Type m_FormType;
-        public object m_AssetHandle;
-
+        private object m_AssetHandle;
         private bool m_IsFullScreen = false;
 
         /// <summary>
@@ -83,7 +82,6 @@ namespace GameFrameX.UI.Runtime
         /// 创建打开界面的信息。
         /// </summary>
         /// <param name="serialId">界面序列编号。</param>
-        /// <param name="uiGroup">界面所属的界面组。</param>
         /// <param name="uiFormType">界面类型。</param>
         /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
         /// <param name="userData">用户自定义数据。</param>
@@ -105,12 +103,12 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         public void Clear()
         {
-            m_SerialId = 0;
-            m_PauseCoveredUIForm = false;
-            m_UserData = null;
-            m_FormType = null;
-            m_AssetHandle = null;
-            m_IsFullScreen = false;
+            m_SerialId = default;
+            m_PauseCoveredUIForm = default;
+            m_UserData = default;
+            m_FormType = default;
+            m_AssetHandle = default;
+            m_IsFullScreen = default;
         }
     }
 }
