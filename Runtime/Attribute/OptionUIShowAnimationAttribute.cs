@@ -60,5 +60,15 @@ namespace GameFrameX.UI.Runtime
             AnimationName = animationName;
             Enable = enable;
         }
+
+        /// <summary>
+        /// 构造函数，初始化动画名称和启用状态
+        /// </summary>
+        /// <param name="enable">是否启用动画，默认为true</param>
+        public OptionUIShowAnimationAttribute(bool enable = true)
+        {
+            AnimationName = string.Empty;
+            Enable = enable;
+        }
     }
 }
