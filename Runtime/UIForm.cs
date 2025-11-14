@@ -421,19 +421,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面显示。
         /// </summary>
-        /// <param name="handler"></param>
-        /// <param name="complete"></param>
-        public void Show(IUIFormShowHandler handler, Action complete)
-        {
-            if (handler != null)
-            {
-                handler.Handler(Handle, EnableShowAnimation, ShowAnimationName, complete);
-            }
-            else
-            {
-                complete?.Invoke();
-            }
-        }
+        /// <param name="handler">界面显示处理接口</param>
+        /// <param name="complete">完成回调</param>
+        public abstract void Show(IUIFormShowHandler handler, Action complete);
 
         /// <summary>
         /// 界面关闭。
@@ -447,22 +437,13 @@ namespace GameFrameX.UI.Runtime
             Visible = false;
         }
 
+
         /// <summary>
         /// 界面隐藏。
         /// </summary>
-        /// <param name="handler"></param>
-        /// <param name="complete"></param>
-        public void Hide(IUIFormHideHandler handler, Action complete)
-        {
-            if (handler != null)
-            {
-                handler.Handler(Handle, EnableHideAnimation, HideAnimationName, complete);
-            }
-            else
-            {
-                complete?.Invoke();
-            }
-        }
+        /// <param name="handler">界面隐藏处理接口</param>
+        /// <param name="complete">完成回调</param>
+        public abstract void Hide(IUIFormHideHandler handler, Action complete);
 
         /// <summary>
         /// 界面暂停。
