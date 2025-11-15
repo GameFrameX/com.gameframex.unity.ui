@@ -57,7 +57,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
         public void CloseUIForm(int serialId, object userData, bool isNowRecycle = false)
         {
-            IUIForm uiForm = GetUIForm(serialId);
+            var uiForm = GetUIForm(serialId);
             if (uiForm == null)
             {
                 throw new GameFrameworkException(Utility.Text.Format("Can not find UI form '{0}'.", serialId));
@@ -85,8 +85,8 @@ namespace GameFrameX.UI.Runtime
         public void CloseUIForm<T>(object userData, bool isNowRecycle = false) where T : IUIForm
         {
             var fullName = typeof(T).FullName;
-            IUIForm[] uiForms = GetAllLoadedUIForms();
-            foreach (IUIForm uiForm in uiForms)
+            var uiForms = GetAllLoadedUIForms();
+            foreach (var uiForm in uiForms)
             {
                 if (uiForm.FullName != fullName)
                 {
@@ -119,43 +119,51 @@ namespace GameFrameX.UI.Runtime
             }
 
             GameFrameworkGuard.NotNull(uiForm.UIGroup, nameof(uiForm.UIGroup));
-            UIGroup uiGroup = (UIGroup)uiForm.UIGroup;
+            var uiGroup = (UIGroup)uiForm.UIGroup;
             var serialId = uiForm.SerialId;
             if (uiForm.EnableHideAnimation)
             {
                 uiGroup.RemoveUIForm(uiForm, true);
-                uiForm.Hide(m_UIFormHideHandler, () => { uiForm.OnClose(m_IsShutdown, userData); });
+                uiForm.Hide(m_UIFormHideHandler, () =>
+                {
+                    uiForm.OnClose(m_IsShutdown, userData);
+                    uiGroup.Refresh();
+                });
             }
             else
             {
                 uiGroup.RemoveUIForm(uiForm);
                 uiForm.OnClose(m_IsShutdown, userData);
+                uiGroup.Refresh();
             }
 
-            uiGroup.Refresh();
             if (IsLoadingUIForm(serialId))
             {
                 m_UIFormsToReleaseOnLoad[serialId] = uiForm;
                 m_UIFormsBeingLoaded.Remove(serialId);
             }
 
-            bool isRecycled = false;
-            if (isNowRecycle && !uiForm.IsDisableRecycling)
+            // 回收界面实例对象
+            if (!uiForm.IsDisableRecycling)
             {
-                isRecycled = true;
-                RecycleUIForm(uiForm, true);
-                m_UIFormsToReleaseOnLoad.Remove(serialId);
-            }
-
-            if (uiForm.IsDisableRecycling == false && isRecycled == false)
-            {
-                m_UIFormsToReleaseOnLoad[serialId] = uiForm;
-                RecycleToPoolUIForm(uiForm);
+                if (isNowRecycle)
+                {
+                    // 立即回收界面实例对象到实例池。
+                    RecycleToPoolUIForm(uiForm);
+                    RecycleUIForm(uiForm, true);
+                    m_UIFormsToReleaseOnLoad.Remove(serialId);
+                }
+                else
+                {
+                    // 界面实例对象未立即回收,需要在实例池回收时间点回收。
+                    m_UIFormsToReleaseOnLoad[serialId] = uiForm;
+                    RecycleToPoolUIForm(uiForm);
+                }
             }
 
             if (m_CloseUIFormCompleteEventHandler != null)
             {
-                CloseUIFormCompleteEventArgs closeUIFormCompleteEventArgs = CloseUIFormCompleteEventArgs.Create(uiForm.SerialId, uiForm.UIFormAssetName, uiGroup, userData);
+                var closeUIFormCompleteEventArgs = CloseUIFormCompleteEventArgs.Create(uiForm.SerialId, uiForm.UIFormAssetName, uiGroup, userData);
                 m_CloseUIFormCompleteEventHandler(this, closeUIFormCompleteEventArgs);
             }
         }
@@ -176,8 +184,8 @@ namespace GameFrameX.UI.Runtime
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
         public void CloseAllLoadedUIForms(object userData, bool isNowRecycle = false)
         {
-            IUIForm[] uiForms = GetAllLoadedUIForms();
-            foreach (IUIForm uiForm in uiForms)
+            var uiForms = GetAllLoadedUIForms();
+            foreach (var uiForm in uiForms)
             {
                 if (!HasUIForm(uiForm.SerialId))
                 {
@@ -193,7 +201,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         public void CloseAllLoadingUIForms()
         {
-            foreach (KeyValuePair<int, string> uiFormBeingLoaded in m_UIFormsBeingLoaded)
+            foreach (var uiFormBeingLoaded in m_UIFormsBeingLoaded)
             {
                 m_UIFormsToReleaseOnLoad[uiFormBeingLoaded.Key] = GetUIForm(uiFormBeingLoaded.Key);
             }
