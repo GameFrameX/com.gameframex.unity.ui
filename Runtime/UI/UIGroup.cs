@@ -372,7 +372,8 @@ namespace GameFrameX.UI.Runtime
             UIFormInfo uiFormInfo = GetUIFormInfo(uiForm);
             if (uiFormInfo == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find UI form info for serial id '{0}', UI form asset name is '{1}'.", uiForm.SerialId, uiForm.UIFormAssetName));
+                Log.Error(Utility.Text.Format("Can not find UI form info for serial id '{0}', UI form asset name is '{1}'.", uiForm.SerialId, uiForm.UIFormAssetName));
+                return;
             }
 
             if (!uiFormInfo.Covered)
@@ -397,7 +398,7 @@ namespace GameFrameX.UI.Runtime
 
             if (!m_UIFormInfos.Remove(uiFormInfo))
             {
-                throw new GameFrameworkException(Utility.Text.Format("UI group '{0}' not exists specified UI form '[{1}]{2}'.", m_Name, uiForm.SerialId, uiForm.UIFormAssetName));
+                Log.Error(Utility.Text.Format("UI group '{0}' not exists specified UI form '[{1}]{2}'.", m_Name, uiForm.SerialId, uiForm.UIFormAssetName));
             }
 
             ReferencePool.Release(uiFormInfo);
@@ -413,7 +414,8 @@ namespace GameFrameX.UI.Runtime
             UIFormInfo uiFormInfo = GetUIFormInfo(uiForm);
             if (uiFormInfo == null)
             {
-                throw new GameFrameworkException("Can not find UI form info.");
+                Log.Error(Utility.Text.Format("Can not find UI form info for serial id '{0}', UI form asset name is '{1}'.", uiForm.SerialId, uiForm.UIFormAssetName));
+                return;
             }
 
             m_UIFormInfos.Remove(uiFormInfo);
@@ -561,7 +563,8 @@ namespace GameFrameX.UI.Runtime
         {
             if (uiForm == null)
             {
-                throw new GameFrameworkException("UI form is invalid.");
+                Log.Warning("UI form is invalid.");
+                return null;
             }
 
             foreach (var uiFormInfo in m_UIFormInfos)
