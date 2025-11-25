@@ -149,7 +149,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            LinkedListNode<UIFormInfo> current = m_UIFormInfos.First;
+            var current = m_UIFormInfos.First;
             while (current != null)
             {
                 if (current.Value.Paused)
@@ -171,7 +171,7 @@ namespace GameFrameX.UI.Runtime
         /// <returns>界面组中是否存在界面。</returns>
         public bool HasUIForm(int serialId)
         {
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 if (uiFormInfo.UIForm.SerialId == serialId)
                 {
@@ -194,7 +194,7 @@ namespace GameFrameX.UI.Runtime
                 throw new GameFrameworkException("UI form asset name is invalid.");
             }
 
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 if (uiFormInfo.UIForm.FullName == fullName)
                 {
@@ -217,7 +217,7 @@ namespace GameFrameX.UI.Runtime
                 throw new GameFrameworkException("UI form asset name is invalid.");
             }
 
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 if (uiFormInfo.UIForm.UIFormAssetName == uiFormAssetName)
                 {
@@ -235,7 +235,7 @@ namespace GameFrameX.UI.Runtime
         /// <returns>要获取的界面。</returns>
         public IUIForm GetUIForm(int serialId)
         {
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 if (uiFormInfo.UIForm.SerialId == serialId)
                 {
@@ -258,7 +258,7 @@ namespace GameFrameX.UI.Runtime
                 throw new GameFrameworkException("UI form asset name is invalid.");
             }
 
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 if (uiFormInfo.UIForm.UIFormAssetName == uiFormAssetName)
                 {
@@ -281,8 +281,8 @@ namespace GameFrameX.UI.Runtime
                 throw new GameFrameworkException("UI form asset name is invalid.");
             }
 
-            List<IUIForm> results = new List<IUIForm>();
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            var results = new List<IUIForm>();
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 if (uiFormInfo.UIForm.UIFormAssetName == uiFormAssetName)
                 {
@@ -311,7 +311,7 @@ namespace GameFrameX.UI.Runtime
             }
 
             results.Clear();
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 if (uiFormInfo.UIForm.UIFormAssetName == uiFormAssetName)
                 {
@@ -326,8 +326,8 @@ namespace GameFrameX.UI.Runtime
         /// <returns>界面组中的所有界面。</returns>
         public IUIForm[] GetAllUIForms()
         {
-            List<IUIForm> results = new List<IUIForm>();
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            var results = new List<IUIForm>();
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 results.Add(uiFormInfo.UIForm);
             }
@@ -347,7 +347,7 @@ namespace GameFrameX.UI.Runtime
             }
 
             results.Clear();
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 results.Add(uiFormInfo.UIForm);
             }
@@ -517,7 +517,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="results">要获取的界面列表。</param>
         public void InternalGetUIForms(string uiFormAssetName, List<IUIForm> results)
         {
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 if (uiFormInfo.UIForm.UIFormAssetName == uiFormAssetName)
                 {
@@ -534,7 +534,7 @@ namespace GameFrameX.UI.Runtime
         /// <returns>是否存在指定界面。</returns>
         public bool InternalHasInstanceUIForm(string uiFormAssetName, IUIForm uiForm)
         {
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 if (uiFormInfo.UIForm.UIFormAssetName == uiFormAssetName && uiFormInfo.UIForm == uiForm)
                 {
@@ -551,7 +551,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="results">要获取的界面列表。</param>
         public void InternalGetAllUIForms(List<IUIForm> results)
         {
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 results.Add(uiFormInfo.UIForm);
             }
@@ -564,7 +564,7 @@ namespace GameFrameX.UI.Runtime
                 throw new GameFrameworkException("UI form is invalid.");
             }
 
-            foreach (UIFormInfo uiFormInfo in m_UIFormInfos)
+            foreach (var uiFormInfo in m_UIFormInfos)
             {
                 if (uiFormInfo.UIForm == uiForm)
                 {
