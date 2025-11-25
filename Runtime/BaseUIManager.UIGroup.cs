@@ -85,8 +85,8 @@ namespace GameFrameX.UI.Runtime
         public IUIGroup[] GetAllUIGroups()
         {
             int index = 0;
-            IUIGroup[] results = new IUIGroup[m_UIGroups.Count];
-            foreach (KeyValuePair<string, UIGroup> uiGroup in m_UIGroups)
+            var results = new IUIGroup[m_UIGroups.Count];
+            foreach (var uiGroup in m_UIGroups)
             {
                 results[index++] = uiGroup.Value;
             }
@@ -103,7 +103,7 @@ namespace GameFrameX.UI.Runtime
             GameFrameworkGuard.NotNull(results, nameof(results));
 
             results.Clear();
-            foreach (KeyValuePair<string, UIGroup> uiGroup in m_UIGroups)
+            foreach (var uiGroup in m_UIGroups)
             {
                 results.Add(uiGroup.Value);
             }
@@ -151,7 +151,8 @@ namespace GameFrameX.UI.Runtime
             GameFrameworkGuard.NotNullOrEmpty(uiGroupName, nameof(uiGroupName));
             if (!m_UIGroups.TryGetValue(uiGroupName, out var uiGroup))
             {
-                throw new GameFrameworkException($"UI group '{uiGroupName}' is not exist.");
+                Log.Error($"UI group '{uiGroupName}' is not exist.");
+                return;
             }
 
             var uiForms = uiGroup.GetAllUIForms();
