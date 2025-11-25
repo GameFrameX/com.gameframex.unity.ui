@@ -29,7 +29,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using System;
 using System.Collections.Generic;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.ObjectPool;
@@ -48,7 +47,12 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 需要释放的界面实例对象池。
         /// </summary>
-        protected readonly Dictionary<int, IUIForm> m_UIFormsToReleaseOnLoad = new Dictionary<int, IUIForm>();
+        protected readonly HashSet<int> m_UIFormsToReleaseOnLoad = new HashSet<int>();
+
+        /// <summary>
+        /// 待释放的界面实例队列。
+        /// </summary>
+        private Queue<IUIForm> m_RecycleQueue = new Queue<IUIForm>();
 
         /// <summary>
         /// 界面实例对象池回收间隔秒数。
@@ -124,16 +128,6 @@ namespace GameFrameX.UI.Runtime
             set { m_InstancePool.ExpireTime = value; }
         }
 
-        private bool m_IsRecycleToPool = false;
-
-        /// <summary>
-        /// 获取或设置界面实例对象池是否回收到对象池。
-        /// </summary>
-        public bool IsRecycleToPool
-        {
-            get { return m_IsRecycleToPool; }
-            set { m_IsRecycleToPool = value; }
-        }
 
         /// <summary>
         /// 获取或设置是否启用界面显示动画。
@@ -161,35 +155,13 @@ namespace GameFrameX.UI.Runtime
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
         protected override void Update(float elapseSeconds, float realElapseSeconds)
         {
-            m_RecycleTime += elapseSeconds;
-            if (m_RecycleTime >= m_RecycleInterval)
+            while (m_RecycleQueue.Count > 0)
             {
-                m_RecycleTime = 0;
-                if (m_UIFormsToReleaseOnLoad.Count > 0)
-                {
-                    foreach (var keyValuePair in m_UIFormsToReleaseOnLoad)
-                    {
-                        var uiForm = keyValuePair.Value;
-                        if (uiForm == null || uiForm.IsCanRecycle == false)
-                        {
-                            continue;
-                        }
-
-                        try
-                        {
-                            RecycleUIForm(uiForm, !m_IsRecycleToPool);
-                        }
-                        catch (Exception e)
-                        {
-                            Log.Error(e);
-                        }
-                    }
-
-                    m_UIFormsToReleaseOnLoad.Clear();
-                }
+                var uiForm = m_RecycleQueue.Dequeue();
+                RecycleUIForm(uiForm);
             }
 
-            foreach (KeyValuePair<string, UIGroup> uiGroup in m_UIGroups)
+            foreach (var uiGroup in m_UIGroups)
             {
                 uiGroup.Value.Update(elapseSeconds, realElapseSeconds);
             }
@@ -205,6 +177,7 @@ namespace GameFrameX.UI.Runtime
             m_UIGroups.Clear();
             m_UIFormsBeingLoaded.Clear();
             m_UIFormsToReleaseOnLoad.Clear();
+            m_RecycleQueue.Clear();
         }
 
         /// <summary>
@@ -229,7 +202,6 @@ namespace GameFrameX.UI.Runtime
 
             m_AssetManager = assetManager;
         }
-
 
         /// <summary>
         /// 设置界面辅助器。

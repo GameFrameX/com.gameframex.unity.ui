@@ -52,7 +52,6 @@ namespace GameFrameX.UI.Editor
 
         private SerializedProperty m_InstanceExpireTime = null;
         private SerializedProperty m_RecycleInterval = null;
-        private SerializedProperty m_IsRecycleToPool = null;
 
         // private SerializedProperty m_InstancePriority = null;
         private SerializedProperty m_InstanceUGUIRoot = null;
@@ -83,8 +82,6 @@ namespace GameFrameX.UI.Editor
                 // EditorGUILayout.PropertyField(m_EnableOpenUIFormDependencyAssetEvent);
                 EditorGUILayout.PropertyField(m_EnableCloseUIFormCompleteEvent);
                 EditorGUILayout.IntSlider(m_RecycleInterval, 10, 600, "Recycle Interval");
-                EditorGUILayout.HelpBox("是否回收到对象池，建议设置为 true", MessageType.Info);
-                EditorGUILayout.PropertyField(m_IsRecycleToPool);
                 EditorGUILayout.PropertyField(m_IsEnableUIShowAnimation);
                 EditorGUILayout.PropertyField(m_IsEnableUIHideAnimation);
             }
@@ -188,7 +185,6 @@ namespace GameFrameX.UI.Editor
             m_InstanceCapacity = serializedObject.FindProperty("m_InstanceCapacity");
             m_InstanceExpireTime = serializedObject.FindProperty("m_InstanceExpireTime");
             m_RecycleInterval = serializedObject.FindProperty("m_RecycleInterval");
-            m_IsRecycleToPool = serializedObject.FindProperty("m_IsRecycleToPool");
             // m_InstancePriority = serializedObject.FindProperty("m_InstancePriority");
             m_InstanceUGUIRoot = serializedObject.FindProperty("m_InstanceUGUIRoot");
             m_InstanceFairyGUIRoot = serializedObject.FindProperty("m_InstanceFairyGUIRoot");

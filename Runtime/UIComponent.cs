@@ -74,11 +74,6 @@ namespace GameFrameX.UI.Runtime
         [Tooltip("UI 回收间隔时间/秒")] [SerializeField]
         private int m_RecycleInterval = 60;
 
-        /// <summary>
-        /// 获取或设置界面实例对象池是否回收到对象池。
-        /// </summary>
-        [Tooltip("UI 是否回收到对象池")] [SerializeField]
-        private bool m_IsRecycleToPool = true;
         // [SerializeField] private int m_InstancePriority = 0;
 
         [SerializeField] private Transform m_InstanceUGUIRoot = null;
@@ -260,7 +255,6 @@ namespace GameFrameX.UI.Runtime
             }
 
             m_UIManager.OpenUIFormFailure += OnOpenUIFormFailure;
-            m_UIManager.IsRecycleToPool = m_IsRecycleToPool;
             /*
             if (m_EnableOpenUIFormUpdateEvent)
             {

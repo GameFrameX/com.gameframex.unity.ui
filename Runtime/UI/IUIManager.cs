@@ -58,11 +58,6 @@ namespace GameFrameX.UI.Runtime
         int InstanceCapacity { get; set; }
 
         /// <summary>
-        /// 获取或设置界面实例对象池是否回收到对象池。
-        /// </summary>
-        bool IsRecycleToPool { get; set; }
-
-        /// <summary>
         /// 获取或设置是否启用界面显示动画。
         /// </summary>
         bool IsEnableUIShowAnimation { get; set; }
