@@ -170,7 +170,7 @@ namespace GameFrameX.UI.Runtime
                     foreach (var keyValuePair in m_UIFormsToReleaseOnLoad)
                     {
                         var uiForm = keyValuePair.Value;
-                        if (uiForm == null)
+                        if (uiForm == null || uiForm.IsCanRecycle == false)
                         {
                             continue;
                         }

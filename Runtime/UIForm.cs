@@ -93,6 +93,11 @@ namespace GameFrameX.UI.Runtime
         protected bool IsDisposed { get; set; }
 
         /// <summary>
+        /// 界面回收开始时间
+        /// </summary>
+        public DateTime ReleaseStartTime { get; private set; } = DateTime.MaxValue;
+
+        /// <summary>
         /// 获取界面序列编号。
         /// </summary>
         public int SerialId
@@ -210,6 +215,27 @@ namespace GameFrameX.UI.Runtime
             get { return m_IsDisableClosing; }
             protected set { m_IsDisableClosing = value; }
         }
+
+        /// <summary>
+        /// 是否可以回收，true:界面可以被回收，false:界面不可以被回收
+        /// </summary>
+        public bool IsCanRecycle
+        {
+            get
+            {
+                if (m_IsDisableRecycling)
+                {
+                    return false;
+                }
+
+                return (DateTime.Now - ReleaseStartTime).TotalSeconds >= RecycleInterval;
+            }
+        }
+
+        /// <summary>
+        /// 界面回收间隔，单位：秒
+        /// </summary>
+        public int RecycleInterval { get; private set; }
 
         /// <summary>
         /// 是否开启组件居中，true:组件生成后默认父组件居中
@@ -346,8 +372,11 @@ namespace GameFrameX.UI.Runtime
         /// <param name="isNewInstance">是否是新实例。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">是否全屏</param>
-        public void Init(int serialId, string uiFormAssetName, IUIGroup uiGroup, Action<IUIForm> onInitAction, bool pauseCoveredUIForm, bool isNewInstance, object userData, bool isFullScreen = false)
+        /// <param name="recycleInterval"></param>
+        public void Init(int serialId, string uiFormAssetName, IUIGroup uiGroup, Action<IUIForm> onInitAction, bool pauseCoveredUIForm, bool isNewInstance, object userData, int recycleInterval, bool isFullScreen = false)
         {
+            RecycleInterval = recycleInterval;
+            ReleaseStartTime = DateTime.MaxValue;
             m_UserData = userData;
             if (serialId >= 0)
             {
@@ -460,6 +489,12 @@ namespace GameFrameX.UI.Runtime
             gameObject.SetLayerRecursively(m_OriginalLayer);
             m_Available = false;
             Visible = false;
+            if (m_IsDisableRecycling)
+            {
+                return;
+            }
+
+            ReleaseStartTime = DateTime.Now;
         }
 
 

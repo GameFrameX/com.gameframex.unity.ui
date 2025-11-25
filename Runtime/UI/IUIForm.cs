@@ -39,6 +39,11 @@ namespace GameFrameX.UI.Runtime
     public interface IUIForm
     {
         /// <summary>
+        /// 界面回收开始时间
+        /// </summary>
+        DateTime ReleaseStartTime { get; }
+
+        /// <summary>
         /// 获取界面序列编号。
         /// </summary>
         int SerialId { get; }
@@ -67,6 +72,16 @@ namespace GameFrameX.UI.Runtime
         /// 是否禁用关闭，禁用关闭的界面不会被关闭
         /// </summary>
         bool IsDisableClosing { get; }
+
+        /// <summary>
+        /// 是否可以回收，true:界面可以被回收，false:界面不可以被回收
+        /// </summary>
+        bool IsCanRecycle { get; }
+
+        /// <summary>
+        /// 界面回收间隔，单位：秒
+        /// </summary>
+        int RecycleInterval { get; }
 
         /// <summary>
         /// 是否开启组件居中，true:组件生成后默认父组件居中
@@ -144,7 +159,8 @@ namespace GameFrameX.UI.Runtime
         /// <param name="isNewInstance">是否是新实例。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">是否全屏</param>
-        void Init(int serialId, string uiFormAssetName, IUIGroup uiGroup, Action<IUIForm> onInitAction, bool pauseCoveredUIForm, bool isNewInstance, object userData, bool isFullScreen = false);
+        /// <param name="recycleInterval">界面回收间隔，单位：秒</param>
+        void Init(int serialId, string uiFormAssetName, IUIGroup uiGroup, Action<IUIForm> onInitAction, bool pauseCoveredUIForm, bool isNewInstance, object userData, int recycleInterval, bool isFullScreen = false);
 
         /// <summary>
         /// 界面初始化。
