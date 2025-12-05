@@ -306,6 +306,7 @@ namespace GameFrameX.UI.Runtime
         {
             m_EventSubscriber = UIEventSubscriber.Create(this);
             m_EventSubscriber.CheckSubscribe(LocalizationLanguageChangeEventArgs.EventId, OnLocalizationLanguageChanged);
+            OnAwake();
         }
 
         /// <summary>
