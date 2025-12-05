@@ -92,7 +92,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">是否全屏</param>
-        /// <returns>界面的序列编号。</returns>
+        /// <returns>界面的实例。</returns>
         public Task<IUIForm> OpenUIFormAsync<T>(string uiFormAssetPath, bool pauseCoveredUIForm, object userData, bool isFullScreen = false) where T : class, IUIForm
         {
             return InnerOpenUIFormAsync(uiFormAssetPath, typeof(T), pauseCoveredUIForm, userData, isFullScreen);
@@ -106,15 +106,22 @@ namespace GameFrameX.UI.Runtime
         /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">是否全屏</param>
-        /// <param name="isMultiple">是否创建新界面</param>
-        /// <returns>界面的序列编号。</returns>
+        /// <returns>界面的实例。</returns>
         public async Task<IUIForm> OpenUIFormAsync(string uiFormAssetPath, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen = false)
         {
             return await InnerOpenUIFormAsync(uiFormAssetPath, uiFormType, pauseCoveredUIForm, userData, isFullScreen);
         }
 
+        /// <summary>
+        /// 内部打开界面。
+        /// </summary>
+        /// <param name="uiFormAssetPath">界面所在路径</param>
+        /// <param name="uiFormType">界面逻辑类型。</param>
+        /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
+        /// <param name="userData">用户自定义数据。</param>
+        /// <param name="isFullScreen">是否全屏</param>
+        /// <returns>界面的实例。</returns>
         protected abstract Task<IUIForm> InnerOpenUIFormAsync(string uiFormAssetPath, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen = false);
-
 
         /// <summary>
         /// 激活界面。
