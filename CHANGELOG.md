@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.2.0...2.3.0) (2026-01-05)
+
+
+### Features
+
+* **UI组件:** 添加根据类型获取已加载UI的方法 ([21b63ac](https://github.com/gameframex/com.gameframex.unity.ui/commit/21b63ac515fff5217115e4afbe1f7fda8b3b56a6))
+
 # [2.2.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.1.1...2.2.0) (2025-12-23)
 
 
