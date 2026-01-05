@@ -29,6 +29,7 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
+using System;
 using System.Collections.Generic;
 using GameFrameX.Runtime;
 
@@ -115,6 +116,25 @@ namespace GameFrameX.UI.Runtime
             return results;
         }
 
+        /// <summary>
+        /// 获取已加载且正在显示的UI。
+        /// </summary>
+        /// <param name="type">UI的具体类型。</param>
+        /// <returns>返回已加载且正在显示的UI实例，如果未找到则返回null。</returns>
+        public IUIForm GetLoadedAndShowing(Type type)
+        {
+            var fullName = type.FullName;
+            var uiForms = m_UIManager.GetAllLoadedUIForms();
+            foreach (var uiForm in uiForms)
+            {
+                if (uiForm.FullName == fullName && uiForm.Visible && uiForm.Available)
+                {
+                    return uiForm;
+                }
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// 获取已加载且正在显示的UI。
@@ -153,6 +173,26 @@ namespace GameFrameX.UI.Runtime
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// 根据界面逻辑类型获取界面。只要找到任意的一个即返回
+        /// </summary>
+        /// <param name="type">逻辑界面类型</param>
+        /// <returns>返回已加载的UI实例，如果未找到则返回null。</returns>
+        public IUIForm GetLoaded(Type type)
+        {
+            var fullName = type.FullName;
+            var uiForms = m_UIManager.GetAllLoadedUIForms();
+            foreach (var uiForm in uiForms)
+            {
+                if (uiForm.FullName == fullName)
+                {
+                    return uiForm;
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
