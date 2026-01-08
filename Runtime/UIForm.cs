@@ -487,7 +487,11 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         public virtual void OnClose(bool isShutdown, object userData)
         {
-            gameObject.SetLayerRecursively(m_OriginalLayer);
+            if (gameObject != null)
+            {
+                gameObject.SetLayerRecursively(m_OriginalLayer);
+            }
+
             m_Available = false;
             Visible = false;
             if (m_IsDisableRecycling)
