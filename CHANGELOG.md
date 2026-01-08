@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.3.0...2.3.1) (2026-01-08)
+
+
+### Bug Fixes
+
+* **UIForm:** 在OnClose方法中添加gameObject空检查 ([de70843](https://github.com/gameframex/com.gameframex.unity.ui/commit/de70843de677947729e48d70608eeeaebf727e9b))
+
 # [2.3.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.2.0...2.3.0) (2026-01-05)
 
 
