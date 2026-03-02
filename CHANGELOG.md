@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.3.1...2.4.0) (2026-03-02)
+
+
+### Features
+
+* **UI:** 添加UGUI和FairyGUI根节点属性 ([5718a44](https://github.com/gameframex/com.gameframex.unity.ui/commit/5718a448124c2e8f5c170ec27f6de873d79b756e))
+
 ## [2.3.1](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.3.0...2.3.1) (2026-01-08)
 
 
