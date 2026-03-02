@@ -112,6 +112,22 @@ namespace GameFrameX.UI.Runtime
         };
 
         /// <summary>
+        /// 获取 UGUI 根节点变换组件。
+        /// </summary>
+        public Transform UGUIRoot
+        {
+            get { return m_InstanceUGUIRoot; }
+        }
+
+        /// <summary>
+        /// 获取 FairyGUI 根节点变换组件。
+        /// </summary>
+        public Transform FairyGUIRoot
+        {
+            get { return m_InstanceFairyGUIRoot; }
+        }
+
+        /// <summary>
         /// 获取是否启用界面显示动画。
         /// </summary>
         public bool IsEnableUIShowAnimation
