@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.5.0...2.6.0) (2026-03-05)
+
+
+### Features
+
+* **UI:** 为OptionUIConfigAttribute添加IsResource属性 ([722ef2b](https://github.com/gameframex/com.gameframex.unity.ui/commit/722ef2bca53f0b055a1506ec2a09495ec212c986))
+
 # [2.5.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.4.0...2.5.0) (2026-03-05)
 
 
