@@ -98,9 +98,9 @@ namespace GameFrameX.UI.Runtime
             }
 
 #if ENABLE_UI_FAIRYGUI
-            UIGroupHelperBase uiGroupHelper = (UIGroupHelperBase)m_CustomUIGroupHelper.Handler(m_InstanceFairyGUIRoot, uiGroupName, m_UIGroupHelperTypeName, m_CustomUIGroupHelper);
+            UIGroupHelperBase uiGroupHelper = (UIGroupHelperBase)m_CustomUIGroupHelper.Handler(m_InstanceFairyGUIRoot, uiGroupName, m_UIGroupHelperTypeName, m_CustomUIGroupHelper, depth);
 #else
-            UIGroupHelperBase uiGroupHelper = (UIGroupHelperBase)m_CustomUIGroupHelper.Handler(m_InstanceUGUIRoot, uiGroupName, m_UIGroupHelperTypeName, m_CustomUIGroupHelper);
+            UIGroupHelperBase uiGroupHelper = (UIGroupHelperBase)m_CustomUIGroupHelper.Handler(m_InstanceUGUIRoot, uiGroupName, m_UIGroupHelperTypeName, m_CustomUIGroupHelper, depth);
 #endif
             if (uiGroupHelper == null)
             {

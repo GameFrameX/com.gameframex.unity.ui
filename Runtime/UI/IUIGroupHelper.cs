@@ -39,6 +39,11 @@ namespace GameFrameX.UI.Runtime
     public interface IUIGroupHelper
     {
         /// <summary>
+        /// 获取界面组深度。
+        /// </summary>
+        int Depth { get; }
+
+        /// <summary>
         /// 设置界面组深度。
         /// </summary>
         /// <param name="depth">界面组深度。</param>
@@ -51,6 +56,8 @@ namespace GameFrameX.UI.Runtime
         /// <param name="groupName">界面组名称。</param>
         /// <param name="uiGroupHelperTypeName">界面组辅助器类型名。</param>
         /// <param name="customUIGroupHelper">自定义的界面组辅助器.</param>
-        IUIGroupHelper Handler(Transform root, string groupName, string uiGroupHelperTypeName, IUIGroupHelper customUIGroupHelper);
+        /// <param name="depth">界面组深度。</param>
+        /// <returns>界面组辅助器。</returns>
+        IUIGroupHelper Handler(Transform root, string groupName, string uiGroupHelperTypeName, IUIGroupHelper customUIGroupHelper, int depth = 0);
     }
 }
