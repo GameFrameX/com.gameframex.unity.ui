@@ -351,9 +351,10 @@ namespace GameFrameX.UI.Runtime
 #endif
             for (int i = 0; i < m_UIGroups.Length; i++)
             {
-                if (!AddUIGroup(m_UIGroups[i].Name, m_UIGroups[i].Depth))
+                var uiGroup = m_UIGroups[i];
+                if (!AddUIGroup(uiGroup.Name, uiGroup.Depth))
                 {
-                    Log.Warning("Add UI group '{0}' failure.", m_UIGroups[i].Name);
+                    Log.Warning("Add UI group '{0}' failure.", uiGroup.Name);
                     continue;
                 }
             }
