@@ -51,6 +51,11 @@ namespace GameFrameX.UI.Runtime
         public string Path { get; private set; }
 
         /// <summary>
+        /// 是否为资源路径。若为 true，则 Path 为资源路径；若为 false，则 Path 为 UI 预制体路径。
+        /// </summary>
+        public bool IsResource { get; private set; }
+
+        /// <summary>
         /// 构造 UI 配置特性。
         /// </summary>
         /// <param name="packageName">FairyGUI 使用的包名，若为 null 则不使用 FairyGUI。</param>
@@ -64,6 +69,15 @@ namespace GameFrameX.UI.Runtime
             {
                 throw new Exception("PackageName or Path is null");
             }
+        }
+
+        /// <summary>
+        /// 构造 UI 配置特性。
+        /// </summary>
+        /// <param name="isResource">是否为资源路径。若为 true，则 Path 为资源路径；若为 false，则 Path 为 UI 预制体路径。</param>
+        public OptionUIConfigAttribute(bool isResource = false)
+        {
+            IsResource = isResource;
         }
     }
 }

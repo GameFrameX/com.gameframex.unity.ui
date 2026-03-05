@@ -152,6 +152,11 @@ namespace GameFrameX.UI.Runtime
                 {
                     uiFormAssetPath = optionUIConfig.Path;
                 }
+
+                if (optionUIConfig.IsResource)
+                {
+                    uiFormAssetPath = "UI";
+                }
             }
 
             return await OpenAsync<T>(uiFormAssetPath, userData, isFullScreen);
