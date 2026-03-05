@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.4.0...2.5.0) (2026-03-05)
+
+
+### Features
+
+* **UI:** 向IUIGroupHelper接口添加Depth属性并修改Handler方法签名 ([5268526](https://github.com/gameframex/com.gameframex.unity.ui/commit/52685264470c04cfd8d0da9385b68e8887cedd31))
+
 # [2.4.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.3.1...2.4.0) (2026-03-02)
 
 
