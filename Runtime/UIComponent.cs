@@ -97,7 +97,6 @@ namespace GameFrameX.UI.Runtime
             new UIGroup(UIGroupConstants.Battle.Depth, UIGroupConstants.Battle.Name),
             new UIGroup(UIGroupConstants.Hud.Depth, UIGroupConstants.Hud.Name),
             new UIGroup(UIGroupConstants.Map.Depth, UIGroupConstants.Map.Name),
-            new UIGroup(UIGroupConstants.Hidden.Depth, UIGroupConstants.Hidden.Name),
             new UIGroup(UIGroupConstants.Floor.Depth, UIGroupConstants.Floor.Name),
             new UIGroup(UIGroupConstants.Normal.Depth, UIGroupConstants.Normal.Name),
             new UIGroup(UIGroupConstants.Fixed.Depth, UIGroupConstants.Fixed.Name),
