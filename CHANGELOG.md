@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.6.0...2.7.0) (2026-03-06)
+
+
+### Features
+
+* **UI:** 为ReleaseUIForm方法添加uiFormAssetPath参数 ([01cda73](https://github.com/gameframex/com.gameframex.unity.ui/commit/01cda736475abb879a9592351c891af2ec89b58f))
+
 # [2.6.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.5.0...2.6.0) (2026-03-05)
 
 
