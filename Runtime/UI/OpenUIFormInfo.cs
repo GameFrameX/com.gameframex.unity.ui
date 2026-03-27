@@ -45,7 +45,7 @@ namespace GameFrameX.UI.Runtime
         private Type m_FormType;
         private object m_AssetHandle;
         private bool m_IsFullScreen = false;
-        private string m_AssetPath = string.Empty;
+        private string m_AssetPath;
         private string m_AssetName;
 
         /// <summary>
@@ -154,6 +154,8 @@ namespace GameFrameX.UI.Runtime
             m_FormType = default;
             m_AssetHandle = default;
             m_IsFullScreen = default;
+            m_AssetPath = default;
+            m_AssetName = default;
         }
     }
 }
