@@ -1,3 +1,15 @@
+# [2.8.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.7.0...2.8.0) (2026-03-27)
+
+
+### Bug Fixes
+
+* **UI:** 修复文件末尾缺少换行符和初始化问题 ([9d5d6b4](https://github.com/gameframex/com.gameframex.unity.ui/commit/9d5d6b495c39c54547f64d2f959c68a42f88b76a))
+
+
+### Features
+
+* **UI:** 为UI系统添加资源路径和名称参数支持 ([3cb3f03](https://github.com/gameframex/com.gameframex.unity.ui/commit/3cb3f036387086eab5d9c36135b1ddb42a70e026))
+
 # [2.7.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.6.0...2.7.0) (2026-03-06)
 
 
