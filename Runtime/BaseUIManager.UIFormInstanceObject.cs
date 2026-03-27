@@ -43,10 +43,22 @@ namespace GameFrameX.UI.Runtime
         {
             private object m_UIFormAsset = null;
             private string m_UIFormAssetPath = null;
+            private string m_UIFormAssetName = null;
             private IUIFormHelper m_UIFormHelper = null;
             private object m_AssetHandle = null;
 
-            public static UIFormInstanceObject Create(string uiFormAssetPath, object uiFormAsset, object uiFormInstance, IUIFormHelper uiFormHelper, object assetHandle)
+            /// <summary>
+            /// 创建界面实例对象。
+            /// </summary>
+            /// <param name="uiFormAssetPath">界面资源路径。</param>
+            /// <param name="uiFormAssetName">界面资源名称。</param>
+            /// <param name="uiFormAsset">界面资源。</param>
+            /// <param name="uiFormInstance">界面实例。</param>
+            /// <param name="uiFormHelper">界面助手。</param>
+            /// <param name="assetHandle">界面资源句柄。</param>
+            /// <returns>界面实例对象。</returns>
+            /// <exception cref="GameFrameworkException">界面资源或界面助手无效。</exception>
+            public static UIFormInstanceObject Create(string uiFormAssetPath, string uiFormAssetName, object uiFormAsset, object uiFormInstance, IUIFormHelper uiFormHelper, object assetHandle)
             {
                 if (uiFormAsset == null)
                 {
@@ -62,6 +74,7 @@ namespace GameFrameX.UI.Runtime
                 uiFormInstanceObject.Initialize(uiFormAssetPath, uiFormInstance);
                 uiFormInstanceObject.m_UIFormAsset = uiFormAsset;
                 uiFormInstanceObject.m_UIFormAssetPath = uiFormAssetPath;
+                uiFormInstanceObject.m_UIFormAssetName = uiFormAssetName;
                 uiFormInstanceObject.m_UIFormHelper = uiFormHelper;
                 uiFormInstanceObject.m_AssetHandle = assetHandle;
                 return uiFormInstanceObject;
@@ -74,11 +87,12 @@ namespace GameFrameX.UI.Runtime
                 m_UIFormHelper = null;
                 m_AssetHandle = null;
                 m_UIFormAssetPath = null;
+                m_UIFormAssetName = null;
             }
 
             protected override void Release(bool isShutdown)
             {
-                m_UIFormHelper.ReleaseUIForm(m_UIFormAsset, Target, m_AssetHandle, m_UIFormAssetPath);
+                m_UIFormHelper.ReleaseUIForm(m_UIFormAsset, Target, m_AssetHandle, m_UIFormAssetPath, m_UIFormAssetName);
             }
         }
     }

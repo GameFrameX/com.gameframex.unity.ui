@@ -366,6 +366,7 @@ namespace GameFrameX.UI.Runtime
         /// 初始化界面。
         /// </summary>
         /// <param name="serialId">界面序列编号。</param>
+        /// <param name="uiFormAssetPath">界面资源路径。</param>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <param name="uiGroup">界面所处的界面组。</param>
         /// <param name="onInitAction">初始化界面前的委托。</param>
@@ -374,7 +375,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">是否全屏</param>
         /// <param name="recycleInterval"></param>
-        public void Init(int serialId, string uiFormAssetName, IUIGroup uiGroup, Action<IUIForm> onInitAction, bool pauseCoveredUIForm, bool isNewInstance, object userData, int recycleInterval, bool isFullScreen = false)
+        public void Init(int serialId, string uiFormAssetPath, string uiFormAssetName, IUIGroup uiGroup, Action<IUIForm> onInitAction, bool pauseCoveredUIForm, bool isNewInstance, object userData, int recycleInterval, bool isFullScreen = false)
         {
             RecycleInterval = recycleInterval;
             ReleaseStartTime = DateTime.MaxValue;
@@ -391,6 +392,7 @@ namespace GameFrameX.UI.Runtime
                 return;
             }
 
+            m_AssetPath = uiFormAssetPath;
             m_UIFormAssetName = uiFormAssetName;
             m_FullName = GetType().FullName;
             m_DepthInUIGroup = 0;

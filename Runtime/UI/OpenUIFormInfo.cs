@@ -45,6 +45,8 @@ namespace GameFrameX.UI.Runtime
         private Type m_FormType;
         private object m_AssetHandle;
         private bool m_IsFullScreen = false;
+        private string m_AssetPath = string.Empty;
+        private string m_AssetName;
 
         /// <summary>
         /// 获取界面是否全屏。
@@ -52,6 +54,22 @@ namespace GameFrameX.UI.Runtime
         public bool IsFullScreen
         {
             get { return m_IsFullScreen; }
+        }
+
+        /// <summary>
+        /// 获取界面资源路径。
+        /// </summary>
+        public string AssetPath
+        {
+            get { return m_AssetPath; }
+        }
+
+        /// <summary>
+        /// 获取界面资源名称。
+        /// </summary>
+        public string AssetName
+        {
+            get { return m_AssetName; }
         }
 
         /// <summary>
@@ -112,12 +130,14 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">界面是否全屏。</param>
         /// <returns>创建的打开界面的信息。</returns>
-        public static OpenUIFormInfo Create(int serialId, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen)
+        public static OpenUIFormInfo Create(int serialId, string assetPath, string assetName, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen)
         {
             OpenUIFormInfo openUIFormInfo = ReferencePool.Acquire<OpenUIFormInfo>();
             openUIFormInfo.m_SerialId = serialId;
             openUIFormInfo.m_PauseCoveredUIForm = pauseCoveredUIForm;
             openUIFormInfo.m_UserData = userData;
+            openUIFormInfo.m_AssetPath = assetPath;
+            openUIFormInfo.m_AssetName = assetName;
             openUIFormInfo.m_FormType = uiFormType;
             openUIFormInfo.m_IsFullScreen = isFullScreen;
             return openUIFormInfo;
