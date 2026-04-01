@@ -77,18 +77,33 @@ namespace GameFrameX.UI.Editor
 
                 EditorGUILayout.HelpBox("以上的组件前缀的命名空间必须设置为一致，否则将会初始化失败", MessageType.Warning);
 
+                EditorGUILayout.HelpBox("是否启用打开界面成功事件。启用后，当界面打开成功时会触发相应事件。", MessageType.Info);
                 EditorGUILayout.PropertyField(m_EnableOpenUIFormSuccessEvent);
+
+                EditorGUILayout.HelpBox("是否启用打开界面失败事件。启用后，当界面打开失败时会触发相应事件。", MessageType.Info);
                 EditorGUILayout.PropertyField(m_EnableOpenUIFormFailureEvent);
+
                 // EditorGUILayout.PropertyField(m_EnableOpenUIFormUpdateEvent);
                 // EditorGUILayout.PropertyField(m_EnableOpenUIFormDependencyAssetEvent);
+
+                EditorGUILayout.HelpBox("是否启用关闭界面完成事件。启用后，当界面关闭完成时会触发相应事件。", MessageType.Info);
                 EditorGUILayout.PropertyField(m_EnableCloseUIFormCompleteEvent);
+
+                EditorGUILayout.HelpBox("是否启用自动回收界面。禁用后，关闭界面时不会自动释放资源，适用于需要缓存复用的场景。", MessageType.Info);
                 EditorGUILayout.PropertyField(m_EnableAutoReleaseUIForm);
+
+                EditorGUILayout.HelpBox("界面回收间隔时间（秒）。设置对象池自动回收可回收对象的时间间隔，范围 10-600 秒。", MessageType.Info);
                 EditorGUILayout.IntSlider(m_RecycleInterval, 10, 600, "Recycle Interval");
+
+                EditorGUILayout.HelpBox("是否启用界面显示动画。启用后，界面打开时会播放显示动画效果。", MessageType.Info);
                 EditorGUILayout.PropertyField(m_IsEnableUIShowAnimation);
+
+                EditorGUILayout.HelpBox("是否启用界面隐藏动画。启用后，界面关闭时会播放隐藏动画效果。", MessageType.Info);
                 EditorGUILayout.PropertyField(m_IsEnableUIHideAnimation);
             }
             EditorGUI.EndDisabledGroup();
 
+            EditorGUILayout.HelpBox("界面实例对象池自动释放可释放对象的间隔秒数。对象池将按此间隔定期检查并释放过期对象。", MessageType.Info);
             float instanceAutoReleaseInterval = EditorGUILayout.DelayedFloatField("Instance Auto Release Interval", m_InstanceAutoReleaseInterval.floatValue);
             if (instanceAutoReleaseInterval != m_InstanceAutoReleaseInterval.floatValue)
             {
@@ -102,6 +117,7 @@ namespace GameFrameX.UI.Editor
                 }
             }
 
+            EditorGUILayout.HelpBox("界面实例对象池的容量。池中最多可缓存的界面实例数量，超出容量的实例将被释放。", MessageType.Info);
             int instanceCapacity = EditorGUILayout.DelayedIntField("Instance Capacity", m_InstanceCapacity.intValue);
             if (instanceCapacity != m_InstanceCapacity.intValue)
             {
@@ -115,6 +131,7 @@ namespace GameFrameX.UI.Editor
                 }
             }
 
+            EditorGUILayout.HelpBox("界面实例对象池对象过期秒数。界面关闭后在此时间内可被复用，超过此时间将被自动释放。", MessageType.Info);
             float instanceExpireTime = EditorGUILayout.DelayedFloatField("Instance Expire Time", m_InstanceExpireTime.floatValue);
             if (instanceExpireTime != m_InstanceExpireTime.floatValue)
             {
