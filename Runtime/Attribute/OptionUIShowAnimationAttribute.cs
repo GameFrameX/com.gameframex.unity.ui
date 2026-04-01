@@ -37,6 +37,10 @@ namespace GameFrameX.UI.Runtime
     /// 用于指定UI打开时播放的动画特性
     /// 可以应用于类，指定动画名称和是否启用动画
     /// </summary>
+    /// <remarks>
+    /// Attribute for specifying the animation to play when a UI is opened.
+    /// Can be applied to classes to specify the animation name and whether to enable the animation.
+    /// </remarks>
     [AttributeUsage(AttributeTargets.Class)]
     [UnityEngine.Scripting.Preserve]
     public sealed class OptionUIShowAnimationAttribute : Attribute
@@ -44,20 +48,31 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 动画名称
         /// </summary>
+        /// <remarks>
+        /// The animation name.
+        /// </remarks>
+        /// <value>动画名称 / Animation name</value>
         [UnityEngine.Scripting.Preserve]
         public string AnimationName { get; private set; }
 
         /// <summary>
         /// 是否启用动画
         /// </summary>
+        /// <remarks>
+        /// Whether to enable the animation.
+        /// </remarks>
+        /// <value>是否启用动画 / Whether to enable the animation</value>
         [UnityEngine.Scripting.Preserve]
         public bool Enable { get; private set; }
 
         /// <summary>
         /// 构造函数，初始化动画名称和启用状态
         /// </summary>
-        /// <param name="animationName">动画名称</param>
-        /// <param name="enable">是否启用动画，默认为true</param>
+        /// <remarks>
+        /// Constructor that initializes the animation name and enabled state.
+        /// </remarks>
+        /// <param name="animationName">动画名称 / Animation name</param>
+        /// <param name="enable">是否启用动画，默认为true / Whether to enable the animation, defaults to true</param>
         [UnityEngine.Scripting.Preserve]
         public OptionUIShowAnimationAttribute(string animationName, bool enable = true)
         {
@@ -68,7 +83,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 构造函数，初始化动画名称和启用状态
         /// </summary>
-        /// <param name="enable">是否启用动画，默认为true</param>
+        /// <remarks>
+        /// Constructor that initializes the enabled state.
+        /// </remarks>
+        /// <param name="enable">是否启用动画，默认为true / Whether to enable the animation, defaults to true</param>
         [UnityEngine.Scripting.Preserve]
         public OptionUIShowAnimationAttribute(bool enable = true)
         {

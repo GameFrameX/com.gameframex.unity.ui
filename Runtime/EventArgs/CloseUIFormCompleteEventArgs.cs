@@ -38,18 +38,27 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 关闭界面完成事件。
     /// </summary>
+    /// <remarks>
+    /// Event arguments for UI form close completion.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class CloseUIFormCompleteEventArgs : GameEventArgs
     {
         /// <summary>
         /// 关闭界面完成事件编号。
         /// </summary>
+        /// <remarks>
+        /// The event ID for UI form close completion.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly string EventId = typeof(CloseUIFormCompleteEventArgs).FullName;
 
         /// <summary>
         /// 初始化关闭界面完成事件的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the <see cref="CloseUIFormCompleteEventArgs"/> class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public CloseUIFormCompleteEventArgs()
         {
@@ -62,6 +71,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取关闭界面完成事件编号。
         /// </summary>
+        /// <remarks>
+        /// Gets the event ID for UI form close completion.
+        /// </remarks>
+        /// <value>事件编号 / Event ID</value>
         [UnityEngine.Scripting.Preserve]
         public override string Id
         {
@@ -71,35 +84,54 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面序列编号。
         /// </summary>
+        /// <remarks>
+        /// Gets the serial ID of the UI form.
+        /// </remarks>
+        /// <value>界面序列编号 / UI form serial ID</value>
         [UnityEngine.Scripting.Preserve]
         public int SerialId { get; private set; }
 
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the asset name of the UI form.
+        /// </remarks>
+        /// <value>界面资源名称 / UI form asset name</value>
         [UnityEngine.Scripting.Preserve]
         public string UIFormAssetName { get; private set; }
 
         /// <summary>
         /// 获取界面所属的界面组。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI group to which the UI form belongs.
+        /// </remarks>
+        /// <value>界面所属的界面组 / The UI group that contains the UI form</value>
         [UnityEngine.Scripting.Preserve]
         public IUIGroup UIGroup { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        /// <remarks>
+        /// Gets the user custom data.
+        /// </remarks>
+        /// <value>用户自定义数据 / User custom data</value>
         [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
         /// 创建关闭界面完成事件。
         /// </summary>
-        /// <param name="serialId">界面序列编号。</param>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <param name="uiGroup">界面所属的界面组。</param>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <returns>创建的关闭界面完成事件。</returns>
+        /// <remarks>
+        /// Creates a UI form close completion event.
+        /// </remarks>
+        /// <param name="serialId">界面序列编号 / UI form serial ID</param>
+        /// <param name="uiFormAssetName">界面资源名称 / UI form asset name</param>
+        /// <param name="uiGroup">界面所属的界面组 / The UI group that contains the UI form</param>
+        /// <param name="userData">用户自定义数据 / User custom data</param>
+        /// <returns>创建的关闭界面完成事件 / The created close UI form completion event</returns>
         [UnityEngine.Scripting.Preserve]
         public static CloseUIFormCompleteEventArgs Create(int serialId, string uiFormAssetName, IUIGroup uiGroup, object userData)
         {
@@ -114,6 +146,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 清理关闭界面完成事件。
         /// </summary>
+        /// <remarks>
+        /// Clears the close UI form completion event.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public override void Clear()
         {

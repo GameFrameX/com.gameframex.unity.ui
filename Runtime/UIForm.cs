@@ -41,6 +41,9 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面。
     /// </summary>
+    /// <remarks>
+    /// UI form base class.
+    /// </remarks>
     [Serializable]
     [UnityEngine.Scripting.Preserve]
     public abstract class UIForm : MonoBehaviour, IUIForm
@@ -89,6 +92,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        /// <remarks>
+        /// Gets the user custom data.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public object UserData
         {
@@ -98,6 +104,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面事件订阅器。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI form event subscriber.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected UIEventSubscriber EventSubscriber
         {
@@ -107,24 +116,36 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面是否来自对象池。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the UI form is from the object pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected bool IsFromPool { get; set; }
 
         /// <summary>
         /// 获取界面是否已被销毁。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the UI form has been disposed.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected bool IsDisposed { get; set; }
 
         /// <summary>
         /// 界面回收开始时间
         /// </summary>
+        /// <remarks>
+        /// The start time of UI form recycling.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public DateTime ReleaseStartTime { get; private set; } = DateTime.MaxValue;
 
         /// <summary>
         /// 获取界面序列编号。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI form serial number.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int SerialId
         {
@@ -134,6 +155,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面完整名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI form full name.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public string FullName
         {
@@ -143,6 +167,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面名称。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the UI form name.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public string Name
         {
@@ -153,6 +180,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面是否可用。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the UI form is available.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool Available
         {
@@ -162,6 +192,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否启用显示动画
         /// </summary>
+        /// <remarks>
+        /// Whether to enable show animation.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool EnableShowAnimation
         {
@@ -172,6 +205,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 显示动画名称
         /// </summary>
+        /// <remarks>
+        /// The name of the show animation.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public string ShowAnimationName
         {
@@ -182,6 +218,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否启用隐藏动画
         /// </summary>
+        /// <remarks>
+        /// Whether to enable hide animation.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool EnableHideAnimation
         {
@@ -192,6 +231,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 隐藏动画名称
         /// </summary>
+        /// <remarks>
+        /// The name of the hide animation.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public string HideAnimationName
         {
@@ -202,6 +244,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面是否可见。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets whether the UI form is visible.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual bool Visible
         {
@@ -228,6 +273,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI form asset name.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public string UIFormAssetName
         {
@@ -237,6 +285,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否禁用回收，禁用回收的界面不会被回收
         /// </summary>
+        /// <remarks>
+        /// Whether recycling is disabled. UI forms with recycling disabled will not be recycled.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool IsDisableRecycling
         {
@@ -248,6 +299,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否禁用关闭，禁用关闭的界面不会被关闭
         /// </summary>
+        /// <remarks>
+        /// Whether closing is disabled. UI forms with closing disabled will not be closed.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool IsDisableClosing
         {
@@ -259,6 +313,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否可以回收，true:界面可以被回收，false:界面不可以被回收
         /// </summary>
+        /// <remarks>
+        /// Whether the UI form can be recycled. true: the UI form can be recycled, false: the UI form cannot be recycled.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool IsCanRecycle
         {
@@ -276,12 +333,18 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面回收间隔，单位：秒
         /// </summary>
+        /// <remarks>
+        /// UI form recycling interval in seconds.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int RecycleInterval { get; private set; }
 
         /// <summary>
         /// 是否开启组件居中，true:组件生成后默认父组件居中
         /// </summary>
+        /// <remarks>
+        /// Whether to enable component centering. true: components are centered to parent component after creation.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool IsCenter
         {
@@ -293,6 +356,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI form asset path.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public string AssetPath
         {
@@ -304,6 +370,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面实例。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI form instance handle.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public object Handle
         {
@@ -313,6 +382,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面所属的界面组。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI group that the UI form belongs to.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual IUIGroup UIGroup
         {
@@ -323,6 +395,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面深度。
         /// </summary>
+        /// <remarks>
+        /// Gets the depth of the UI form.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int DepthInUIGroup
         {
@@ -332,18 +407,30 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取是否暂停被覆盖的界面。
         /// </summary>
+        /// <remarks>
+        /// Gets whether to pause covered UI forms.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool PauseCoveredUIForm
         {
             get { return m_PauseCoveredUIForm; }
         }
 
+        /// <summary>
+        /// 获取界面是否已唤醒。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether the UI form has been awakened.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool IsAwake { get; private set; }
 
         /// <summary>
         /// 界面初始化前执行
         /// </summary>
+        /// <remarks>
+        /// Executed before UI form initialization.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnAwake()
         {
@@ -354,6 +441,10 @@ namespace GameFrameX.UI.Runtime
         /// Unity生命周期Awake方法
         /// 在此处初始化事件订阅器并订阅本地化语言变更事件
         /// </summary>
+        /// <remarks>
+        /// Unity lifecycle Awake method.
+        /// Initializes event subscriber and subscribes to localization language change events here.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         private void Awake()
         {
@@ -366,6 +457,10 @@ namespace GameFrameX.UI.Runtime
         /// Unity生命周期OnEnable方法
         /// 在界面启用时触发事件订阅
         /// </summary>
+        /// <remarks>
+        /// Unity lifecycle OnEnable method.
+        /// Triggers event subscription when the UI form is enabled.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         private void OnEnable()
         {
@@ -376,6 +471,10 @@ namespace GameFrameX.UI.Runtime
         /// Unity生命周期OnDisable方法
         /// 在界面禁用时取消事件订阅,忽略本地化语言变更事件的订阅
         /// </summary>
+        /// <remarks>
+        /// Unity lifecycle OnDisable method.
+        /// Unsubscribes events when the UI form is disabled, ignoring localization language change event subscription.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         private void OnDisable()
         {
@@ -387,6 +486,10 @@ namespace GameFrameX.UI.Runtime
         /// Unity生命周期OnDestroy方法
         /// 在界面销毁时执行清理操作
         /// </summary>
+        /// <remarks>
+        /// Unity lifecycle OnDestroy method.
+        /// Performs cleanup operations when the UI form is destroyed.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         private void OnDestroy()
         {
@@ -398,6 +501,11 @@ namespace GameFrameX.UI.Runtime
         /// 在界面启用(OnEnable)时触发,可在此处订阅界面所需的事件
         /// 继承类通过重写此方法来注册自己需要的事件
         /// </summary>
+        /// <remarks>
+        /// Called when subscribing to events.
+        /// Triggered when the UI form is enabled (OnEnable). Subscribe to required events here.
+        /// Derived classes override this method to register their own events.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected virtual void OnEventSubscribe()
         {
@@ -408,6 +516,11 @@ namespace GameFrameX.UI.Runtime
         /// 在界面禁用(OnDisable)时触发,可在此处取消订阅界面的事件
         /// 继承类通过重写此方法来取消注册自己的事件
         /// </summary>
+        /// <remarks>
+        /// Called when unsubscribing from events.
+        /// Triggered when the UI form is disabled (OnDisable). Unsubscribe from UI form events here.
+        /// Derived classes override this method to unregister their own events.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected virtual void OnEventUnSubscribe()
         {
@@ -416,6 +529,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面初始化。
         /// </summary>
+        /// <remarks>
+        /// UI form initialization.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected virtual void InitView()
         {
@@ -424,16 +540,19 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 初始化界面。
         /// </summary>
-        /// <param name="serialId">界面序列编号。</param>
-        /// <param name="uiFormAssetPath">界面资源路径。</param>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <param name="uiGroup">界面所处的界面组。</param>
-        /// <param name="onInitAction">初始化界面前的委托。</param>
-        /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
-        /// <param name="isNewInstance">是否是新实例。</param>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <param name="isFullScreen">是否全屏</param>
-        /// <param name="recycleInterval"></param>
+        /// <remarks>
+        /// Initializes the UI form.
+        /// </remarks>
+        /// <param name="serialId">界面序列编号。 / The UI form serial number.</param>
+        /// <param name="uiFormAssetPath">界面资源路径。 / The UI form asset path.</param>
+        /// <param name="uiFormAssetName">界面资源名称。 / The UI form asset name.</param>
+        /// <param name="uiGroup">界面所处的界面组。 / The UI group that the form belongs to.</param>
+        /// <param name="onInitAction">初始化界面前的委托。 / The delegate to invoke before initializing the UI form.</param>
+        /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。 / Whether to pause covered UI forms.</param>
+        /// <param name="isNewInstance">是否是新实例。 / Whether this is a new instance.</param>
+        /// <param name="userData">用户自定义数据。 / The user custom data.</param>
+        /// <param name="recycleInterval">回收间隔（秒）。 / The recycle interval in seconds.</param>
+        /// <param name="isFullScreen">是否全屏。 / Whether the UI form is full screen.</param>
         [UnityEngine.Scripting.Preserve]
         public void Init(int serialId, string uiFormAssetPath, string uiFormAssetName, IUIGroup uiGroup, Action<IUIForm> onInitAction, bool pauseCoveredUIForm, bool isNewInstance, object userData, int recycleInterval, bool isFullScreen = false)
         {
@@ -484,6 +603,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 初始化界面。
         /// </summary>
+        /// <remarks>
+        /// Initializes the UI form.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnInit()
         {
@@ -498,6 +620,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面回收。
         /// </summary>
+        /// <remarks>
+        /// Recycles the UI form.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnRecycle()
         {
@@ -508,7 +633,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面打开。
         /// </summary>
-        /// <param name="userData">用户自定义数据。</param>
+        /// <remarks>
+        /// Opens the UI form.
+        /// </remarks>
+        /// <param name="userData">用户自定义数据。 / The user custom data.</param>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnOpen(object userData)
         {
@@ -521,6 +649,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 绑定事件
         /// </summary>
+        /// <remarks>
+        /// Binds events.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void BindEvent()
         {
@@ -529,6 +660,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 加载数据
         /// </summary>
+        /// <remarks>
+        /// Loads data.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void LoadData()
         {
@@ -537,6 +671,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面更新本地化。
         /// </summary>
+        /// <remarks>
+        /// Updates UI form localization.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void UpdateLocalization()
         {
@@ -545,16 +682,22 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面显示。
         /// </summary>
-        /// <param name="handler">界面显示处理接口</param>
-        /// <param name="complete">完成回调</param>
+        /// <remarks>
+        /// Shows the UI form.
+        /// </remarks>
+        /// <param name="handler">界面显示处理接口。 / The UI form show handler interface.</param>
+        /// <param name="complete">完成回调。 / The completion callback.</param>
         [UnityEngine.Scripting.Preserve]
         public abstract void Show(IUIFormShowHandler handler, Action complete);
 
         /// <summary>
         /// 界面关闭。
         /// </summary>
-        /// <param name="isShutdown">是否是关闭界面管理器时触发。</param>
-        /// <param name="userData">用户自定义数据。</param>
+        /// <remarks>
+        /// Closes the UI form.
+        /// </remarks>
+        /// <param name="isShutdown">是否是关闭界面管理器时触发。 / Whether this is triggered when closing the UI manager.</param>
+        /// <param name="userData">用户自定义数据。 / The user custom data.</param>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnClose(bool isShutdown, object userData)
         {
@@ -577,14 +720,20 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面隐藏。
         /// </summary>
-        /// <param name="handler">界面隐藏处理接口</param>
-        /// <param name="complete">完成回调</param>
+        /// <remarks>
+        /// Hides the UI form.
+        /// </remarks>
+        /// <param name="handler">界面隐藏处理接口。 / The UI form hide handler interface.</param>
+        /// <param name="complete">完成回调。 / The completion callback.</param>
         [UnityEngine.Scripting.Preserve]
         public abstract void Hide(IUIFormHideHandler handler, Action complete);
 
         /// <summary>
         /// 界面暂停。
         /// </summary>
+        /// <remarks>
+        /// Pauses the UI form.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnPause()
         {
@@ -595,6 +744,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面暂停恢复。
         /// </summary>
+        /// <remarks>
+        /// Resumes the UI form from pause.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnResume()
         {
@@ -605,6 +757,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面遮挡。
         /// </summary>
+        /// <remarks>
+        /// Called when the UI form is covered.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnCover()
         {
@@ -613,6 +768,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面遮挡恢复。
         /// </summary>
+        /// <remarks>
+        /// Called when the UI form is revealed after being covered.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnReveal()
         {
@@ -621,7 +779,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面激活。
         /// </summary>
-        /// <param name="userData">用户自定义数据。</param>
+        /// <remarks>
+        /// Activates the UI form.
+        /// </remarks>
+        /// <param name="userData">用户自定义数据。 / The user custom data.</param>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnRefocus(object userData)
         {
@@ -630,8 +791,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面轮询。
         /// </summary>
-        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
-        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        /// <remarks>
+        /// Updates the UI form.
+        /// </remarks>
+        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。 / The logical elapsed time in seconds.</param>
+        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。 / The real elapsed time in seconds.</param>
         [UnityEngine.Scripting.Preserve]
         public virtual void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
@@ -640,8 +804,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面深度改变。
         /// </summary>
-        /// <param name="uiGroupDepth">界面组深度。</param>
-        /// <param name="depthInUIGroup">界面在界面组中的深度。</param>
+        /// <remarks>
+        /// Called when the UI form depth changes.
+        /// </remarks>
+        /// <param name="uiGroupDepth">界面组深度。 / The UI group depth.</param>
+        /// <param name="depthInUIGroup">界面在界面组中的深度。 / The depth of the UI form within the UI group.</param>
         [UnityEngine.Scripting.Preserve]
         public void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
         {
@@ -651,6 +818,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 销毁界面.
         /// </summary>
+        /// <remarks>
+        /// Disposes the UI form.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void Dispose()
         {
@@ -672,13 +842,19 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 设置界面的可见性。
         /// </summary>
-        /// <param name="visible">界面的可见性。</param>
+        /// <remarks>
+        /// Sets the visibility of the UI form.
+        /// </remarks>
+        /// <param name="visible">界面的可见性。 / The visibility of the UI form.</param>
         [UnityEngine.Scripting.Preserve]
         protected abstract void InternalSetVisible(bool visible);
 
         /// <summary>
         /// 设置界面为全屏
         /// </summary>
+        /// <remarks>
+        /// Sets the UI form to full screen.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected internal abstract void MakeFullScreen();
     }

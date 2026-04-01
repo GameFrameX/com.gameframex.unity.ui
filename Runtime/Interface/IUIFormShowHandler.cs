@@ -36,15 +36,21 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面显示处理接口定义，用于处理界面显示时的逻辑
     /// </summary>
+    /// <remarks>
+    /// UI form show handler interface definition, used to handle logic when a UI form is displayed.
+    /// </remarks>
     public interface IUIFormShowHandler
     {
         /// <summary>
         /// 界面显示处理
         /// </summary>
-        /// <param name="uiForm">界面表单</param>
-        /// <param name="enableAnimation">是否启用动画</param>
-        /// <param name="animationName">动画名称</param>
-        /// <param name="complete">完成回调</param>
+        /// <remarks>
+        /// Handles the UI form display process.
+        /// </remarks>
+        /// <param name="uiForm">界面表单 / The UI form instance to be displayed</param>
+        /// <param name="enableAnimation">是否启用动画 / Whether to enable animation during display</param>
+        /// <param name="animationName">动画名称 / The name of the animation to play</param>
+        /// <param name="complete">完成回调 / Callback invoked when the display process is complete</param>
         void Handler(object uiForm, bool enableAnimation, string animationName, Action complete);
     }
 }

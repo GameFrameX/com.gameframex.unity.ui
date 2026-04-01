@@ -36,18 +36,27 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 打开界面更新事件。
     /// </summary>
+    /// <remarks>
+    /// Event arguments for UI form open update.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class OpenUIFormUpdateEventArgs : GameEventArgs
     {
         /// <summary>
         /// 打开界面更新事件编号。
         /// </summary>
+        /// <remarks>
+        /// The event ID for UI form open update.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly string EventId = typeof(OpenUIFormUpdateEventArgs).FullName;
 
         /// <summary>
         /// 初始化打开界面更新事件的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the <see cref="OpenUIFormUpdateEventArgs"/> class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public OpenUIFormUpdateEventArgs()
         {
@@ -62,6 +71,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取打开界面更新事件编号。
         /// </summary>
+        /// <remarks>
+        /// Gets the event ID for UI form open update.
+        /// </remarks>
+        /// <value>事件编号 / Event ID</value>
         [UnityEngine.Scripting.Preserve]
         public override string Id
         {
@@ -71,49 +84,76 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面序列编号。
         /// </summary>
+        /// <remarks>
+        /// Gets the serial ID of the UI form.
+        /// </remarks>
+        /// <value>界面序列编号 / UI form serial ID</value>
         [UnityEngine.Scripting.Preserve]
         public int SerialId { get; private set; }
 
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the asset name of the UI form.
+        /// </remarks>
+        /// <value>界面资源名称 / UI form asset name</value>
         [UnityEngine.Scripting.Preserve]
         public string UIFormAssetName { get; private set; }
 
         /// <summary>
         /// 获取界面组名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI group name.
+        /// </remarks>
+        /// <value>界面组名称 / UI group name</value>
         [UnityEngine.Scripting.Preserve]
         public string UIGroupName { get; private set; }
 
         /// <summary>
         /// 获取是否暂停被覆盖的界面。
         /// </summary>
+        /// <remarks>
+        /// Gets whether to pause covered UI forms.
+        /// </remarks>
+        /// <value>是否暂停被覆盖的界面 / Whether to pause covered UI forms</value>
         [UnityEngine.Scripting.Preserve]
         public bool PauseCoveredUIForm { get; private set; }
 
         /// <summary>
         /// 获取打开界面进度。
         /// </summary>
+        /// <remarks>
+        /// Gets the progress of opening the UI form.
+        /// </remarks>
+        /// <value>打开界面进度（0-1） / Progress of opening the UI form (0-1)</value>
         [UnityEngine.Scripting.Preserve]
         public float Progress { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        /// <remarks>
+        /// Gets the user custom data.
+        /// </remarks>
+        /// <value>用户自定义数据 / User custom data</value>
         [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
         /// 创建打开界面更新事件。
         /// </summary>
-        /// <param name="serialId">界面序列编号。</param>
-        /// <param name="uiFormAssetName"></param>
-        /// <param name="uiGroupName"></param>
-        /// <param name="pauseCoveredUIForm"></param>
-        /// <param name="progress"></param>
-        /// <param name="userData"></param>
-        /// <returns>创建的打开界面更新事件。</returns>
+        /// <remarks>
+        /// Creates a UI form open update event.
+        /// </remarks>
+        /// <param name="serialId">界面序列编号 / UI form serial ID</param>
+        /// <param name="uiFormAssetName">界面资源名称 / UI form asset name</param>
+        /// <param name="uiGroupName">界面组名称 / UI group name</param>
+        /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面 / Whether to pause covered UI forms</param>
+        /// <param name="progress">打开界面进度 / Progress of opening the UI form</param>
+        /// <param name="userData">用户自定义数据 / User custom data</param>
+        /// <returns>创建的打开界面更新事件 / The created open UI form update event</returns>
         [UnityEngine.Scripting.Preserve]
         public static OpenUIFormUpdateEventArgs Create(int serialId, string uiFormAssetName, string uiGroupName, bool pauseCoveredUIForm, float progress, object userData)
         {
@@ -130,6 +170,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 清理打开界面更新事件。
         /// </summary>
+        /// <remarks>
+        /// Clears the open UI form update event.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public override void Clear()
         {

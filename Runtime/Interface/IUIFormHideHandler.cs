@@ -36,15 +36,21 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面显示处理接口定义，用于处理界面显示时的逻辑
     /// </summary>
+    /// <remarks>
+    /// UI form hide handler interface definition, used to handle logic when hiding UI forms.
+    /// </remarks>
     public interface IUIFormHideHandler
     {
         /// <summary>
         /// 界面隐藏处理
         /// </summary>
-        /// <param name="uiForm">界面表单</param>
-        /// <param name="enableAnimation">是否启用动画</param>
-        /// <param name="animationName">动画名称</param>
-        /// <param name="complete">完成回调</param>
+        /// <remarks>
+        /// Handles the hiding process of a UI form.
+        /// </remarks>
+        /// <param name="uiForm">界面表单 / The UI form instance to hide</param>
+        /// <param name="enableAnimation">是否启用动画 / Whether to enable animation during hiding</param>
+        /// <param name="animationName">动画名称 / The name of the animation to play</param>
+        /// <param name="complete">完成回调 / The callback to invoke when hiding is complete</param>
         void Handler(object uiForm, bool enableAnimation, string animationName, Action complete);
     }
 }

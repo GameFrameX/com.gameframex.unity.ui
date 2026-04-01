@@ -37,18 +37,27 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 打开界面失败事件。
     /// </summary>
+    /// <remarks>
+    /// Event arguments for UI form open failure.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class OpenUIFormFailureEventArgs : GameEventArgs
     {
         /// <summary>
         /// 打开界面失败事件编号。
         /// </summary>
+        /// <remarks>
+        /// The event ID for UI form open failure.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly string EventId = typeof(OpenUIFormFailureEventArgs).FullName;
 
         /// <summary>
         /// 初始化打开界面失败事件的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the <see cref="OpenUIFormFailureEventArgs"/> class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public OpenUIFormFailureEventArgs()
         {
@@ -62,6 +71,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取打开界面失败事件编号。
         /// </summary>
+        /// <remarks>
+        /// Gets the event ID for UI form open failure.
+        /// </remarks>
+        /// <value>事件编号 / Event ID</value>
         [UnityEngine.Scripting.Preserve]
         public override string Id
         {
@@ -71,12 +84,20 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面序列编号。
         /// </summary>
+        /// <remarks>
+        /// Gets the serial ID of the UI form.
+        /// </remarks>
+        /// <value>界面序列编号 / UI form serial ID</value>
         [UnityEngine.Scripting.Preserve]
         public int SerialId { get; private set; }
 
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the asset name of the UI form.
+        /// </remarks>
+        /// <value>界面资源名称 / UI form asset name</value>
         [UnityEngine.Scripting.Preserve]
         public string UIFormAssetName { get; private set; }
 
@@ -84,31 +105,45 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取是否暂停被覆盖的界面。
         /// </summary>
+        /// <remarks>
+        /// Gets whether to pause covered UI forms.
+        /// </remarks>
+        /// <value>是否暂停被覆盖的界面 / Whether to pause covered UI forms</value>
         [UnityEngine.Scripting.Preserve]
         public bool PauseCoveredUIForm { get; private set; }
 
         /// <summary>
         /// 获取错误信息。
         /// </summary>
+        /// <remarks>
+        /// Gets the error message.
+        /// </remarks>
+        /// <value>错误信息 / Error message</value>
         [UnityEngine.Scripting.Preserve]
         public string ErrorMessage { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        /// <remarks>
+        /// Gets the user custom data.
+        /// </remarks>
+        /// <value>用户自定义数据 / User custom data</value>
         [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
         /// 创建打开界面失败事件。
         /// </summary>
-        /// <param name="serialId">界面序列编号。</param>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <param name="uiGroupName">界面组名称。</param>
-        /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
-        /// <param name="errorMessage">错误信息。</param>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <returns>创建的打开界面失败事件。</returns>
+        /// <remarks>
+        /// Creates a UI form open failure event.
+        /// </remarks>
+        /// <param name="serialId">界面序列编号 / UI form serial ID</param>
+        /// <param name="uiFormAssetName">界面资源名称 / UI form asset name</param>
+        /// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面 / Whether to pause covered UI forms</param>
+        /// <param name="errorMessage">错误信息 / Error message</param>
+        /// <param name="userData">用户自定义数据 / User custom data</param>
+        /// <returns>创建的打开界面失败事件 / The created open UI form failure event</returns>
         [UnityEngine.Scripting.Preserve]
         public static OpenUIFormFailureEventArgs Create(int serialId, string uiFormAssetName, bool pauseCoveredUIForm, string errorMessage, object userData)
         {
@@ -124,6 +159,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 清理打开界面失败事件。
         /// </summary>
+        /// <remarks>
+        /// Clears the open UI form failure event.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public override void Clear()
         {

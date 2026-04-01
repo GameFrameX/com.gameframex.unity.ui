@@ -37,18 +37,27 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 打开界面成功事件。
     /// </summary>
+    /// <remarks>
+    /// Event arguments for UI form open success.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class OpenUIFormSuccessEventArgs : GameEventArgs
     {
         /// <summary>
         /// 打开界面成功事件编号。
         /// </summary>
+        /// <remarks>
+        /// The event ID for UI form open success.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly string EventId = typeof(OpenUIFormSuccessEventArgs).FullName;
 
         /// <summary>
         /// 初始化打开界面成功事件的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the <see cref="OpenUIFormSuccessEventArgs"/> class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public OpenUIFormSuccessEventArgs()
         {
@@ -60,6 +69,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取打开界面成功事件编号。
         /// </summary>
+        /// <remarks>
+        /// Gets the event ID for UI form open success.
+        /// </remarks>
+        /// <value>事件编号 / Event ID</value>
         [UnityEngine.Scripting.Preserve]
         public override string Id
         {
@@ -69,28 +82,43 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取打开成功的界面。
         /// </summary>
+        /// <remarks>
+        /// Gets the successfully opened UI form.
+        /// </remarks>
+        /// <value>打开成功的界面 / The successfully opened UI form</value>
         [UnityEngine.Scripting.Preserve]
         public UIForm UIForm { get; private set; }
 
         /// <summary>
         /// 获取加载持续时间。
         /// </summary>
+        /// <remarks>
+        /// Gets the loading duration.
+        /// </remarks>
+        /// <value>加载持续时间（秒） / Loading duration in seconds</value>
         [UnityEngine.Scripting.Preserve]
         public float Duration { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        /// <remarks>
+        /// Gets the user custom data.
+        /// </remarks>
+        /// <value>用户自定义数据 / User custom data</value>
         [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
         /// 创建打开界面成功事件。
         /// </summary>
-        /// <param name="uiForm">打开成功的界面。</param>
-        /// <param name="duration">加载持续时间。</param>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <returns>创建的打开界面成功事件。</returns>
+        /// <remarks>
+        /// Creates a UI form open success event.
+        /// </remarks>
+        /// <param name="uiForm">打开成功的界面 / The successfully opened UI form</param>
+        /// <param name="duration">加载持续时间 / Loading duration</param>
+        /// <param name="userData">用户自定义数据 / User custom data</param>
+        /// <returns>创建的打开界面成功事件 / The created open UI form success event</returns>
         [UnityEngine.Scripting.Preserve]
         public static OpenUIFormSuccessEventArgs Create(IUIForm uiForm, float duration, object userData)
         {
@@ -104,6 +132,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 清理打开界面成功事件。
         /// </summary>
+        /// <remarks>
+        /// Clears the open UI form success event.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public override void Clear()
         {

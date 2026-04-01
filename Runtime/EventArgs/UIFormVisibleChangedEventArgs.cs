@@ -37,18 +37,27 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面激活状态变化事件。
     /// </summary>
+    /// <remarks>
+    /// Event arguments for UI form visibility state change.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class UIFormVisibleChangedEventArgs : GameEventArgs
     {
         /// <summary>
         /// 界面激活状态变化事件编号。
         /// </summary>
+        /// <remarks>
+        /// The event ID for UI form visibility state change.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly string EventId = typeof(UIFormVisibleChangedEventArgs).FullName;
 
         /// <summary>
-        /// 初始化打开界面成功事件的新实例。
+        /// 初始化界面激活状态变化事件的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the <see cref="UIFormVisibleChangedEventArgs"/> class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public UIFormVisibleChangedEventArgs()
         {
@@ -58,8 +67,12 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 获取打开界面成功事件编号。
+        /// 获取界面激活状态变化事件编号。
         /// </summary>
+        /// <remarks>
+        /// Gets the event ID for UI form visibility state change.
+        /// </remarks>
+        /// <value>事件编号 / Event ID</value>
         [UnityEngine.Scripting.Preserve]
         public override string Id
         {
@@ -67,30 +80,45 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 获取打开成功的界面。
+        /// 获取激活状态变化的界面。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI form whose visibility state changed.
+        /// </remarks>
+        /// <value>激活状态变化的界面 / The UI form whose visibility state changed</value>
         [UnityEngine.Scripting.Preserve]
         public IUIForm UIForm { get; private set; }
 
         /// <summary>
-        /// 获取加载持续时间。
+        /// 获取界面是否可见。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the UI form is visible.
+        /// </remarks>
+        /// <value>界面是否可见 / Whether the UI form is visible</value>
         [UnityEngine.Scripting.Preserve]
         public bool Visible { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        /// <remarks>
+        /// Gets the user custom data.
+        /// </remarks>
+        /// <value>用户自定义数据 / User custom data</value>
         [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
-        /// 创建打开界面成功事件。
+        /// 创建界面激活状态变化事件。
         /// </summary>
-        /// <param name="uiForm">打开成功的界面。</param>
-        /// <param name="visible">显示状态。</param>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <returns>创建的打开界面成功事件。</returns>
+        /// <remarks>
+        /// Creates a UI form visibility state change event.
+        /// </remarks>
+        /// <param name="uiForm">激活状态变化的界面 / The UI form whose visibility state changed</param>
+        /// <param name="visible">显示状态 / Visibility state</param>
+        /// <param name="userData">用户自定义数据 / User custom data</param>
+        /// <returns>创建的界面激活状态变化事件 / The created visibility state change event</returns>
         [UnityEngine.Scripting.Preserve]
         public static UIFormVisibleChangedEventArgs Create(IUIForm uiForm, bool visible, object userData = null)
         {
@@ -102,8 +130,11 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 清理打开界面成功事件。
+        /// 清理界面激活状态变化事件。
         /// </summary>
+        /// <remarks>
+        /// Clears the UI form visibility state change event.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public override void Clear()
         {

@@ -36,6 +36,9 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面组界面信息。
     /// </summary>
+    /// <remarks>
+    /// UI form information within a UI group.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class UIFormInfo : IReference
     {
@@ -49,6 +52,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI form.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public IUIForm UIForm
         {
@@ -58,6 +64,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面是否暂停。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets whether the UI form is paused.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool Paused
         {
@@ -68,6 +77,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面是否被覆盖。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets whether the UI form is covered by other forms.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool Covered
         {
@@ -78,9 +90,12 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 创建界面组界面信息。
         /// </summary>
-        /// <param name="uiForm">界面。</param>
-        /// <returns>创建的界面组界面信息。</returns>
-        /// <exception cref="GameFrameworkException">界面为空时抛出。</exception>
+        /// <remarks>
+        /// Creates UI form information for a UI group.
+        /// </remarks>
+        /// <param name="uiForm">界面 / The UI form instance.</param>
+        /// <returns>创建的界面组界面信息 / The created UI form information.</returns>
+        /// <exception cref="GameFrameworkException">界面为空时抛出 / Thrown when the UI form is null.</exception>
         [UnityEngine.Scripting.Preserve]
         public static UIFormInfo Create(IUIForm uiForm)
         {
@@ -99,6 +114,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 清理界面组界面信息。
         /// </summary>
+        /// <remarks>
+        /// Clears the UI form information and resets all properties to default values.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void Clear()
         {

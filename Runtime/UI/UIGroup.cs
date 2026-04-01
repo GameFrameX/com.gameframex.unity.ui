@@ -37,6 +37,9 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面组。
     /// </summary>
+    /// <remarks>
+    /// UI group.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed partial class UIGroup : IUIGroup
     {
@@ -56,9 +59,12 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 初始化界面组的新实例。
         /// </summary>
-        /// <param name="name">界面组名称。</param>
-        /// <param name="depth">界面组深度。</param>
-        /// <param name="uiGroupHelper">界面组辅助器。</param>
+        /// <remarks>
+        /// Initializes a new instance of the UI group.
+        /// </remarks>
+        /// <param name="name">界面组名称 / The name of the UI group.</param>
+        /// <param name="depth">界面组深度 / The depth of the UI group.</param>
+        /// <param name="uiGroupHelper">界面组辅助器 / The UI group helper.</param>
         [UnityEngine.Scripting.Preserve]
         public UIGroup(string name, int depth, IUIGroupHelper uiGroupHelper)
         {
@@ -83,6 +89,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the name of the UI group.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public string Name
         {
@@ -92,6 +101,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面组深度。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the depth of the UI group.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int Depth
         {
@@ -112,6 +124,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面组是否暂停。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets whether the UI group is paused.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool Pause
         {
@@ -131,6 +146,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组中界面数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the number of UI forms in the UI group.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int UIFormCount
         {
@@ -140,6 +158,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取当前界面。
         /// </summary>
+        /// <remarks>
+        /// Gets the current UI form.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public IUIForm CurrentUIForm
         {
@@ -149,6 +170,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组辅助器。
         /// </summary>
+        /// <remarks>
+        /// Gets the UI group helper.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public IUIGroupHelper Helper
         {
@@ -158,8 +182,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面组轮询。
         /// </summary>
-        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
-        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        /// <remarks>
+        /// Updates the UI group.
+        /// </remarks>
+        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位 / The logical elapsed time in seconds.</param>
+        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位 / The real elapsed time in seconds.</param>
         [UnityEngine.Scripting.Preserve]
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
@@ -181,8 +208,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面组中是否存在界面。
         /// </summary>
-        /// <param name="serialId">界面序列编号。</param>
-        /// <returns>界面组中是否存在界面。</returns>
+        /// <remarks>
+        /// Checks whether a UI form exists in the UI group.
+        /// </remarks>
+        /// <param name="serialId">界面序列编号 / The serial ID of the UI form.</param>
+        /// <returns>界面组中是否存在界面 / Whether the UI form exists in the UI group.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool HasUIForm(int serialId)
         {
@@ -200,8 +230,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面组中是否存在界面。
         /// </summary>
-        /// <param name="fullName">界面资源完整名称。</param>
-        /// <returns>界面组中是否存在界面。</returns>
+        /// <remarks>
+        /// Checks whether a UI form exists in the UI group by full name.
+        /// </remarks>
+        /// <param name="fullName">界面资源完整名称 / The full name of the UI form asset.</param>
+        /// <returns>界面组中是否存在界面 / Whether the UI form exists in the UI group.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool HasUIFormFullName(string fullName)
         {
@@ -224,8 +257,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面组中是否存在界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <returns>界面组中是否存在界面。</returns>
+        /// <remarks>
+        /// Checks whether a UI form exists in the UI group by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称 / The asset name of the UI form.</param>
+        /// <returns>界面组中是否存在界面 / Whether the UI form exists in the UI group.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool HasUIForm(string uiFormAssetName)
         {
@@ -248,8 +284,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 从界面组中获取界面。
         /// </summary>
-        /// <param name="serialId">界面序列编号。</param>
-        /// <returns>要获取的界面。</returns>
+        /// <remarks>
+        /// Gets a UI form from the UI group by serial ID.
+        /// </remarks>
+        /// <param name="serialId">界面序列编号 / The serial ID of the UI form.</param>
+        /// <returns>要获取的界面 / The UI form to get.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm GetUIForm(int serialId)
         {
@@ -267,8 +306,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 从界面组中获取界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <returns>要获取的界面。</returns>
+        /// <remarks>
+        /// Gets a UI form from the UI group by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称 / The asset name of the UI form.</param>
+        /// <returns>要获取的界面 / The UI form to get.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm GetUIForm(string uiFormAssetName)
         {
@@ -291,8 +333,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 从界面组中获取界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <returns>要获取的界面。</returns>
+        /// <remarks>
+        /// Gets all UI forms from the UI group by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称 / The asset name of the UI form.</param>
+        /// <returns>要获取的界面 / The UI forms to get.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm[] GetUIForms(string uiFormAssetName)
         {
@@ -316,8 +361,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 从界面组中获取界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <param name="results">要获取的界面。</param>
+        /// <remarks>
+        /// Gets all UI forms from the UI group by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称 / The asset name of the UI form.</param>
+        /// <param name="results">要获取的界面 / The list to store the UI forms.</param>
         [UnityEngine.Scripting.Preserve]
         public void GetUIForms(string uiFormAssetName, List<IUIForm> results)
         {
@@ -344,7 +392,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 从界面组中获取所有界面。
         /// </summary>
-        /// <returns>界面组中的所有界面。</returns>
+        /// <remarks>
+        /// Gets all UI forms from the UI group.
+        /// </remarks>
+        /// <returns>界面组中的所有界面 / All UI forms in the UI group.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm[] GetAllUIForms()
         {
@@ -360,7 +411,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 从界面组中获取所有界面。
         /// </summary>
-        /// <param name="results">界面组中的所有界面。</param>
+        /// <remarks>
+        /// Gets all UI forms from the UI group.
+        /// </remarks>
+        /// <param name="results">界面组中的所有界面 / The list to store all UI forms in the UI group.</param>
         [UnityEngine.Scripting.Preserve]
         public void GetAllUIForms(List<IUIForm> results)
         {
@@ -379,7 +433,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 往界面组增加界面。
         /// </summary>
-        /// <param name="uiForm">要增加的界面。</param>
+        /// <remarks>
+        /// Adds a UI form to the UI group.
+        /// </remarks>
+        /// <param name="uiForm">要增加的界面 / The UI form to add.</param>
         [UnityEngine.Scripting.Preserve]
         public void AddUIForm(IUIForm uiForm)
         {
@@ -389,8 +446,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 从界面组移除界面。
         /// </summary>
-        /// <param name="uiForm">要移除的界面。</param>
-        /// <param name="isSkipPause">是否跳过暂停。</param>
+        /// <remarks>
+        /// Removes a UI form from the UI group.
+        /// </remarks>
+        /// <param name="uiForm">要移除的界面 / The UI form to remove.</param>
+        /// <param name="isSkipPause">是否跳过暂停 / Whether to skip the pause operation.</param>
         [UnityEngine.Scripting.Preserve]
         public void RemoveUIForm(IUIForm uiForm, bool isSkipPause = false)
         {
@@ -432,8 +492,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 激活界面。
         /// </summary>
-        /// <param name="uiForm">要激活的界面。</param>
-        /// <param name="userData">用户自定义数据。</param>
+        /// <remarks>
+        /// Refocuses a UI form.
+        /// </remarks>
+        /// <param name="uiForm">要激活的界面 / The UI form to refocus.</param>
+        /// <param name="userData">用户自定义数据 / The user custom data.</param>
         [UnityEngine.Scripting.Preserve]
         public void RefocusUIForm(IUIForm uiForm, object userData)
         {
@@ -452,6 +515,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 刷新界面组。
         /// </summary>
+        /// <remarks>
+        /// Refreshes the UI group.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void Refresh()
         {
@@ -542,8 +608,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组中指定资源名称的所有界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <param name="results">要获取的界面列表。</param>
+        /// <remarks>
+        /// Gets all UI forms with the specified asset name from the UI group.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称 / The asset name of the UI form.</param>
+        /// <param name="results">要获取的界面列表 / The list to store the UI forms.</param>
         [UnityEngine.Scripting.Preserve]
         public void InternalGetUIForms(string uiFormAssetName, List<IUIForm> results)
         {
@@ -559,9 +628,12 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 检查界面组中是否存在指定界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <param name="uiForm">要检查的界面。</param>
-        /// <returns>是否存在指定界面。</returns>
+        /// <remarks>
+        /// Checks whether a specific UI form instance exists in the UI group.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称 / The asset name of the UI form.</param>
+        /// <param name="uiForm">要检查的界面 / The UI form to check.</param>
+        /// <returns>是否存在指定界面 / Whether the specified UI form exists.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool InternalHasInstanceUIForm(string uiFormAssetName, IUIForm uiForm)
         {
@@ -579,7 +651,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组中的所有界面。
         /// </summary>
-        /// <param name="results">要获取的界面列表。</param>
+        /// <remarks>
+        /// Gets all UI forms in the UI group.
+        /// </remarks>
+        /// <param name="results">要获取的界面列表 / The list to store all UI forms.</param>
         [UnityEngine.Scripting.Preserve]
         public void InternalGetAllUIForms(List<IUIForm> results)
         {

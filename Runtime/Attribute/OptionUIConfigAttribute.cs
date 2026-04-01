@@ -37,6 +37,10 @@ namespace GameFrameX.UI.Runtime
     /// 用于标记 UI 配置的特性类，支持 FairyGUI 和 UGUI 两种 UI 框架。
     /// 通过指定包名或路径，实现 UI 资源的自动定位和加载。
     /// </summary>
+    /// <remarks>
+    /// Attribute class for marking UI configurations, supporting both FairyGUI and UGUI frameworks.
+    /// Enables automatic location and loading of UI resources by specifying package names or paths.
+    /// </remarks>
     [AttributeUsage(AttributeTargets.Class)]
     [UnityEngine.Scripting.Preserve]
     public sealed class OptionUIConfigAttribute : Attribute
@@ -44,27 +48,42 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// FairyGUI 使用的包名。用于定位 FairyGUI 的 UI 资源包。
         /// </summary>
+        /// <remarks>
+        /// The package name used by FairyGUI for locating UI resource packages.
+        /// </remarks>
+        /// <value>FairyGUI 包名 / FairyGUI package name</value>
         [UnityEngine.Scripting.Preserve]
         public string PackageName { get; private set; }
 
         /// <summary>
         /// UGUI 使用的资源路径。用于定位 UGUI 的 UI 预制体或资源。
         /// </summary>
+        /// <remarks>
+        /// The resource path used by UGUI for locating UI prefabs or resources.
+        /// </remarks>
+        /// <value>UGUI 资源路径 / UGUI resource path</value>
         [UnityEngine.Scripting.Preserve]
         public string Path { get; private set; }
 
         /// <summary>
         /// 是否为资源路径。若为 true，则 Path 为资源路径；若为 false，则 Path 为 UI 预制体路径。
         /// </summary>
+        /// <remarks>
+        /// Whether it is a resource path. If true, Path is a resource path; if false, Path is a UI prefab path.
+        /// </remarks>
+        /// <value>是否为资源路径 / Whether it is a resource path</value>
         [UnityEngine.Scripting.Preserve]
         public bool IsResource { get; private set; }
 
         /// <summary>
         /// 构造 UI 配置特性。
         /// </summary>
-        /// <param name="packageName">FairyGUI 使用的包名，若为 null 则不使用 FairyGUI。</param>
-        /// <param name="path">UGUI 使用的资源路径，若为 null 则不使用 UGUI。</param>
-        /// <exception cref="Exception">当 packageName 和 path 均为 null 或空字符串时抛出异常。</exception>
+        /// <remarks>
+        /// Constructs a UI configuration attribute.
+        /// </remarks>
+        /// <param name="packageName">FairyGUI 使用的包名，若为 null 则不使用 FairyGUI / The package name for FairyGUI, null to not use FairyGUI</param>
+        /// <param name="path">UGUI 使用的资源路径，若为 null 则不使用 UGUI / The resource path for UGUI, null to not use UGUI</param>
+        /// <exception cref="Exception">当 packageName 和 path 均为 null 或空字符串时抛出异常 / Thrown when both packageName and path are null or empty strings</exception>
         [UnityEngine.Scripting.Preserve]
         public OptionUIConfigAttribute(string packageName = null, string path = null)
         {
@@ -79,7 +98,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 构造 UI 配置特性。
         /// </summary>
-        /// <param name="isResource">是否为资源路径。若为 true，则 Path 为资源路径；若为 false，则 Path 为 UI 预制体路径。</param>
+        /// <remarks>
+        /// Constructs a UI configuration attribute.
+        /// </remarks>
+        /// <param name="isResource">是否为资源路径。若为 true，则 Path 为资源路径；若为 false，则 Path 为 UI 预制体路径 / Whether it is a resource path. If true, Path is a resource path; if false, Path is a UI prefab path</param>
         [UnityEngine.Scripting.Preserve]
         public OptionUIConfigAttribute(bool isResource = false)
         {

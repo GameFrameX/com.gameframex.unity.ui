@@ -37,6 +37,10 @@ namespace GameFrameX.UI.Runtime
     /// 用于为类指定 UI 选项分组的特性。
     /// 只能应用于类，分组名称不能为空。
     /// </summary>
+    /// <remarks>
+    /// Attribute for specifying UI option groups for classes.
+    /// Can only be applied to classes, and the group name cannot be empty.
+    /// </remarks>
     [AttributeUsage(AttributeTargets.Class)]
     [UnityEngine.Scripting.Preserve]
     public sealed class OptionUIGroupAttribute : Attribute
@@ -44,14 +48,21 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 分组名称
         /// </summary>
+        /// <remarks>
+        /// The group name.
+        /// </remarks>
+        /// <value>分组名称 / Group name</value>
         [UnityEngine.Scripting.Preserve]
         public string GroupName { get; private set; }
 
         /// <summary>
         /// 构造函数，初始化分组名称
         /// </summary>
-        /// <param name="groupName">分组名称，不能为空</param>
-        /// <exception cref="Exception">分组名称为空时抛出异常</exception>
+        /// <remarks>
+        /// Constructor that initializes the group name.
+        /// </remarks>
+        /// <param name="groupName">分组名称，不能为空 / Group name, cannot be empty</param>
+        /// <exception cref="Exception">分组名称为空时抛出异常 / Thrown when the group name is empty</exception>
         [UnityEngine.Scripting.Preserve]
         public OptionUIGroupAttribute(string groupName)
         {
