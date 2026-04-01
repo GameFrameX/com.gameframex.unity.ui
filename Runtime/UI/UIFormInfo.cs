@@ -39,13 +39,17 @@ namespace GameFrameX.UI.Runtime
     [UnityEngine.Scripting.Preserve]
     public sealed class UIFormInfo : IReference
     {
+        [UnityEngine.Scripting.Preserve]
         private IUIForm m_UIForm = null;
+        [UnityEngine.Scripting.Preserve]
         private bool m_Paused = false;
+        [UnityEngine.Scripting.Preserve]
         private bool m_Covered = false;
 
         /// <summary>
         /// 获取界面。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public IUIForm UIForm
         {
             get { return m_UIForm; }
@@ -54,6 +58,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面是否暂停。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool Paused
         {
             get { return m_Paused; }
@@ -63,6 +68,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面是否被覆盖。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool Covered
         {
             get { return m_Covered; }
@@ -75,6 +81,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="uiForm">界面。</param>
         /// <returns>创建的界面组界面信息。</returns>
         /// <exception cref="GameFrameworkException">界面为空时抛出。</exception>
+        [UnityEngine.Scripting.Preserve]
         public static UIFormInfo Create(IUIForm uiForm)
         {
             if (uiForm == null)
@@ -92,6 +99,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 清理界面组界面信息。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public void Clear()
         {
             m_UIForm = null;

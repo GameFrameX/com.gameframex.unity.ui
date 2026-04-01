@@ -42,48 +42,58 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 当前加载的界面实例对象池。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected readonly Dictionary<int, string> m_UIFormsBeingLoaded = new Dictionary<int, string>();
 
         /// <summary>
         /// 需要释放的界面实例对象池。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected readonly HashSet<int> m_UIFormsToReleaseOnLoad = new HashSet<int>();
 
         /// <summary>
         /// 待释放的界面实例队列。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         private Queue<IUIForm> m_RecycleQueue = new Queue<IUIForm>();
 
         /// <summary>
         /// 界面实例对象池回收间隔秒数。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected int m_RecycleInterval = 60;
 
         /// <summary>
         /// 界面实例对象池回收时间。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected float m_RecycleTime = 0;
 
+        [UnityEngine.Scripting.Preserve]
         protected int m_Serial;
 
         /// <summary>
         /// 资源管理器。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected IAssetManager m_AssetManager;
 
         /// <summary>
         /// 界面辅助器。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected IUIFormHelper m_UIFormHelper;
 
         /// <summary>
         /// 对象池管理器。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected IObjectPoolManager m_ObjectPoolManager;
 
         /// <summary>
         /// 获取或设置界面实例对象池自动释放可释放对象的间隔秒数。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public float InstanceAutoReleaseInterval
         {
             get { return m_InstancePool.AutoReleaseInterval; }
@@ -93,6 +103,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池的回收间隔秒数。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int RecycleInterval
         {
             get { return m_RecycleInterval; }
@@ -102,17 +113,20 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池的容量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int InstanceCapacity
         {
             get { return m_InstancePool.Capacity; }
             set { m_InstancePool.Capacity = value; }
         }
 
+        [UnityEngine.Scripting.Preserve]
         private bool m_IsEnableUIHideAnimation = false;
 
         /// <summary>
         /// 获取或设置是否启用界面隐藏动画。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool IsEnableUIHideAnimation
         {
             get { return m_IsEnableUIHideAnimation; }
@@ -122,6 +136,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池对象过期秒数。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public float InstanceExpireTime
         {
             get { return m_InstancePool.ExpireTime; }
@@ -132,20 +147,26 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置是否启用界面显示动画。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         private bool m_IsEnableUIShowAnimation = false;
 
         /// <summary>
         /// 获取或设置是否启用界面显示动画。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool IsEnableUIShowAnimation
         {
             get { return m_IsEnableUIShowAnimation; }
             set { m_IsEnableUIShowAnimation = value; }
         }
 
+        [UnityEngine.Scripting.Preserve]
         protected IObjectPool<UIFormInstanceObject> m_InstancePool = null;
+        [UnityEngine.Scripting.Preserve]
         protected bool m_IsShutdown = false;
+        [UnityEngine.Scripting.Preserve]
         protected IUIFormShowHandler m_UIFormShowHandler;
+        [UnityEngine.Scripting.Preserve]
         private IUIFormHideHandler m_UIFormHideHandler;
 
         /// <summary>
@@ -153,6 +174,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        [UnityEngine.Scripting.Preserve]
         protected override void Update(float elapseSeconds, float realElapseSeconds)
         {
             while (m_RecycleQueue.Count > 0)
@@ -170,6 +192,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭并清理界面管理器。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected override void Shutdown()
         {
             m_IsShutdown = true;
@@ -184,6 +207,7 @@ namespace GameFrameX.UI.Runtime
         /// 设置对象池管理器。
         /// </summary>
         /// <param name="objectPoolManager">对象池管理器。</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetObjectPoolManager(IObjectPoolManager objectPoolManager)
         {
             GameFrameworkGuard.NotNull(objectPoolManager, nameof(objectPoolManager));
@@ -196,6 +220,7 @@ namespace GameFrameX.UI.Runtime
         /// 设置资源管理器。
         /// </summary>
         /// <param name="assetManager">资源管理器。</param>
+        [UnityEngine.Scripting.Preserve]
         public virtual void SetResourceManager(IAssetManager assetManager)
         {
             GameFrameworkGuard.NotNull(assetManager, nameof(assetManager));
@@ -207,6 +232,7 @@ namespace GameFrameX.UI.Runtime
         /// 设置界面辅助器。
         /// </summary>
         /// <param name="uiFormHelper">界面辅助器。</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetUIFormHelper(IUIFormHelper uiFormHelper)
         {
             GameFrameworkGuard.NotNull(uiFormHelper, nameof(uiFormHelper));
@@ -218,6 +244,7 @@ namespace GameFrameX.UI.Runtime
         /// 设置界面显示处理接口
         /// </summary>
         /// <param name="handler">界面显示处理接口</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetUIFormShowHandler(IUIFormShowHandler handler)
         {
             m_UIFormShowHandler = handler;
@@ -227,6 +254,7 @@ namespace GameFrameX.UI.Runtime
         /// 设置界面隐藏处理接口
         /// </summary>
         /// <param name="handler">界面隐藏处理接口</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetUIFormHideHandler(IUIFormHideHandler handler)
         {
             m_UIFormHideHandler = handler;

@@ -44,6 +44,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="serialId">界面序列编号。</param>
         /// <returns>是否存在界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasUIForm(int serialId)
         {
             foreach (var uiGroup in m_UIGroups)
@@ -62,6 +63,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <returns>是否存在界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasUIForm(string uiFormAssetName)
         {
             GameFrameworkGuard.NotNullOrEmpty(uiFormAssetName, nameof(uiFormAssetName));
@@ -82,6 +84,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="serialId">界面序列编号。</param>
         /// <returns>要获取的界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IUIForm GetUIForm(int serialId)
         {
             foreach (var uiGroup in m_UIGroups)
@@ -101,6 +104,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <returns>要获取的界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IUIForm GetUIForm(string uiFormAssetName)
         {
             GameFrameworkGuard.NotNullOrEmpty(uiFormAssetName, nameof(uiFormAssetName));
@@ -122,6 +126,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <returns>要获取的界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IUIForm[] GetUIForms(string uiFormAssetName)
         {
             GameFrameworkGuard.NotNullOrEmpty(uiFormAssetName, nameof(uiFormAssetName));
@@ -140,6 +145,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <param name="results">要获取的界面。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetUIForms(string uiFormAssetName, List<IUIForm> results)
         {
             GameFrameworkGuard.NotNullOrEmpty(uiFormAssetName, nameof(uiFormAssetName));
@@ -155,6 +161,7 @@ namespace GameFrameX.UI.Runtime
         /// 获取所有已加载的界面。
         /// </summary>
         /// <returns>所有已加载的界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IUIForm[] GetAllLoadedUIForms()
         {
             List<IUIForm> results = new List<IUIForm>();
@@ -170,6 +177,7 @@ namespace GameFrameX.UI.Runtime
         /// 获取所有已加载的界面。
         /// </summary>
         /// <param name="results">所有已加载的界面。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetAllLoadedUIForms(List<IUIForm> results)
         {
             GameFrameworkGuard.NotNull(results, nameof(results));
@@ -185,6 +193,7 @@ namespace GameFrameX.UI.Runtime
         /// 获取所有正在加载界面的序列编号。
         /// </summary>
         /// <returns>所有正在加载界面的序列编号。</returns>
+        [UnityEngine.Scripting.Preserve]
         public int[] GetAllLoadingUIFormSerialIds()
         {
             int index = 0;
@@ -201,6 +210,7 @@ namespace GameFrameX.UI.Runtime
         /// 获取所有正在加载界面的序列编号。
         /// </summary>
         /// <param name="results">所有正在加载界面的序列编号。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetAllLoadingUIFormSerialIds(List<int> results)
         {
             GameFrameworkGuard.NotNull(results, nameof(results));
@@ -217,6 +227,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="serialId">界面序列编号。</param>
         /// <returns>是否正在加载界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool IsLoadingUIForm(int serialId)
         {
             return m_UIFormsBeingLoaded.ContainsKey(serialId);
@@ -227,6 +238,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <returns>是否正在加载界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool IsLoadingUIForm(string uiFormAssetName)
         {
             GameFrameworkGuard.NotNullOrEmpty(uiFormAssetName, nameof(uiFormAssetName));
@@ -239,6 +251,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiForm">界面。</param>
         /// <returns>界面是否合法。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool IsValidUIForm(IUIForm uiForm)
         {
             if (uiForm == null)
@@ -254,6 +267,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="fullName">完整界面名称</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasUIFormFullName(string fullName)
         {
             GameFrameworkGuard.NotNullOrEmpty(fullName, nameof(fullName));

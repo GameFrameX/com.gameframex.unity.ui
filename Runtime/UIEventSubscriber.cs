@@ -42,15 +42,19 @@ namespace GameFrameX.UI.Runtime
     [UnityEngine.Scripting.Preserve]
     public sealed class UIEventSubscriber : IReference
     {
+        [UnityEngine.Scripting.Preserve]
         private readonly GameFrameworkMultiDictionary<string, EventHandler<GameEventArgs>> m_DicEventHandler;
 
         /// <summary>
         /// 持有者
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object Owner { get; private set; }
 
+        [UnityEngine.Scripting.Preserve]
         private readonly List<string> m_removeList;
 
+        [UnityEngine.Scripting.Preserve]
         public UIEventSubscriber()
         {
             m_removeList = new List<string>();
@@ -64,6 +68,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="id">消息ID</param>
         /// <param name="handler">处理对象</param>
         /// <exception cref="Exception"></exception>
+        [UnityEngine.Scripting.Preserve]
         public void CheckSubscribe(string id, EventHandler<GameEventArgs> handler)
         {
             if (handler == null)
@@ -81,6 +86,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="id">消息ID</param>
         /// <param name="handler">处理对象</param>
         /// <exception cref="Exception"></exception>
+        [UnityEngine.Scripting.Preserve]
         public void UnSubscribe(string id, EventHandler<GameEventArgs> handler)
         {
             if (!m_DicEventHandler.Remove(id, handler))
@@ -96,6 +102,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="id">消息ID</param>
         /// <param name="e">消息对象</param>
+        [UnityEngine.Scripting.Preserve]
         public void Fire(string id, GameEventArgs e)
         {
             if (m_DicEventHandler.TryGetValue(id, out var handlers))
@@ -119,6 +126,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 取消所有订阅
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public void UnSubscribeAll(List<string> ignoreList = null)
         {
             if (m_DicEventHandler == null)
@@ -158,6 +166,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="owner">持有者</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static UIEventSubscriber Create(object owner)
         {
             var eventSubscriber = ReferencePool.Acquire<UIEventSubscriber>();
@@ -169,6 +178,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 清理
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public void Clear()
         {
             m_DicEventHandler.Clear();

@@ -39,11 +39,13 @@ namespace GameFrameX.UI.Runtime
     /// </summary>
     public partial class BaseUIManager
     {
+        [UnityEngine.Scripting.Preserve]
         protected EventHandler<CloseUIFormCompleteEventArgs> m_CloseUIFormCompleteEventHandler;
 
         /// <summary>
         /// 关闭界面完成事件。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public event EventHandler<CloseUIFormCompleteEventArgs> CloseUIFormComplete
         {
             add { m_CloseUIFormCompleteEventHandler += value; }
@@ -55,6 +57,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiForm"></param>
         /// <param name="isDispose">是否销毁释放</param>
+        [UnityEngine.Scripting.Preserve]
         protected abstract void RecycleUIForm(IUIForm uiForm, bool isDispose = false);
 
         /// <summary>
@@ -62,6 +65,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="serialId">要关闭界面的序列编号。</param>
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        [UnityEngine.Scripting.Preserve]
         public void CloseUIForm(int serialId, bool isNowRecycle = false)
         {
             CloseUIForm(serialId, null, isNowRecycle);
@@ -73,6 +77,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="serialId">要关闭界面的序列编号。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        [UnityEngine.Scripting.Preserve]
         public void CloseUIForm(int serialId, object userData, bool isNowRecycle = false)
         {
             var uiForm = GetUIForm(serialId);
@@ -90,6 +95,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiForm">要关闭的界面。</param>
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        [UnityEngine.Scripting.Preserve]
         public void CloseUIForm(IUIForm uiForm, bool isNowRecycle = false)
         {
             CloseUIForm(uiForm, null, isNowRecycle);
@@ -101,6 +107,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
         /// <typeparam name="T"></typeparam>
+        [UnityEngine.Scripting.Preserve]
         public void CloseUIForm<T>(object userData, bool isNowRecycle = false) where T : IUIForm
         {
             var fullName = typeof(T).FullName;
@@ -128,6 +135,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="uiForm">要关闭的界面。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        [UnityEngine.Scripting.Preserve]
         public void CloseUIForm(IUIForm uiForm, object userData, bool isNowRecycle = false)
         {
             GameFrameworkGuard.NotNull(uiForm, nameof(uiForm));
@@ -196,6 +204,7 @@ namespace GameFrameX.UI.Runtime
         /// 关闭所有已加载的界面。
         /// </summary>
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        [UnityEngine.Scripting.Preserve]
         public void CloseAllLoadedUIForms(bool isNowRecycle = false)
         {
             CloseAllLoadedUIForms(null, isNowRecycle);
@@ -206,6 +215,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        [UnityEngine.Scripting.Preserve]
         public void CloseAllLoadedUIForms(object userData, bool isNowRecycle = false)
         {
             var uiForms = GetAllLoadedUIForms();
@@ -223,6 +233,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭所有正在加载的界面。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public void CloseAllLoadingUIForms()
         {
             foreach (var uiFormBeingLoaded in m_UIFormsBeingLoaded)
@@ -238,6 +249,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        [UnityEngine.Scripting.Preserve]
         public void ReleaseAllLoadedUIForms(bool isNowRecycle = false, object userData = null)
         {
             foreach (var id in m_UIFormsToReleaseOnLoad)

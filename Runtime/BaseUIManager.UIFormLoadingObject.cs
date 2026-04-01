@@ -41,26 +41,31 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面加载对象。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public sealed class UIFormLoadingObject : IReference
         {
             /// <summary>
             /// 界面资源路径。
             /// </summary>
+            [UnityEngine.Scripting.Preserve]
             public string UIFormAssetPath { get; private set; }
 
             /// <summary>
             /// 界面资源名称。
             /// </summary>
+            [UnityEngine.Scripting.Preserve]
             public string UIFormAssetName { get; private set; }
 
             /// <summary>
             /// 界面类型。
             /// </summary>
+            [UnityEngine.Scripting.Preserve]
             public Type UIFormType { get; private set; }
 
             /// <summary>
             /// 界面加载任务。
             /// </summary>
+            [UnityEngine.Scripting.Preserve]
             public Task<IUIForm> Task { get; private set; }
 
             /// <summary>
@@ -71,6 +76,7 @@ namespace GameFrameX.UI.Runtime
             /// <param name="uiFormType">界面类型。</param>
             /// <param name="task">界面加载任务。</param>
             /// <returns>界面实例对象。</returns>
+            [UnityEngine.Scripting.Preserve]
             public static UIFormLoadingObject Create(string uiFormAssetPath, string uiFormAssetName, Type uiFormType, Task<IUIForm> task)
             {
                 var uiFormLoadingObject = ReferencePool.Acquire<UIFormLoadingObject>();
@@ -81,6 +87,7 @@ namespace GameFrameX.UI.Runtime
                 return uiFormLoadingObject;
             }
 
+            [UnityEngine.Scripting.Preserve]
             public void Clear()
             {
                 UIFormAssetPath = null;

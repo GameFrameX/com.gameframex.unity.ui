@@ -40,8 +40,10 @@ namespace GameFrameX.UI.Runtime
     /// </summary>
     public partial class BaseUIManager
     {
+        [UnityEngine.Scripting.Preserve]
         protected EventHandler<OpenUIFormSuccessEventArgs> m_OpenUIFormSuccessEventHandler;
 
+        [UnityEngine.Scripting.Preserve]
         protected EventHandler<OpenUIFormFailureEventArgs> m_OpenUIFormFailureEventHandler;
 
         // private EventHandler<OpenUIFormUpdateEventArgs> m_OpenUIFormUpdateEventHandler;
@@ -50,6 +52,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 打开界面成功事件。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public event EventHandler<OpenUIFormSuccessEventArgs> OpenUIFormSuccess
         {
             add { m_OpenUIFormSuccessEventHandler += value; }
@@ -59,6 +62,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 打开界面失败事件。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public event EventHandler<OpenUIFormFailureEventArgs> OpenUIFormFailure
         {
             add { m_OpenUIFormFailureEventHandler += value; }
@@ -69,6 +73,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 打开界面更新事件。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public event EventHandler<OpenUIFormUpdateEventArgs> OpenUIFormUpdate
         {
             add { m_OpenUIFormUpdateEventHandler += value; }
@@ -78,6 +83,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 打开界面时加载依赖资源事件。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public event EventHandler<OpenUIFormDependencyAssetEventArgs> OpenUIFormDependencyAsset
         {
             add { m_OpenUIFormDependencyAssetEventHandler += value; }
@@ -107,6 +113,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">是否全屏</param>
         /// <returns>界面的实例。</returns>
+        [UnityEngine.Scripting.Preserve]
         public async Task<IUIForm> OpenUIFormAsync(string uiFormAssetPath, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen = false)
         {
             return await InnerOpenUIFormAsync(uiFormAssetPath, uiFormType, pauseCoveredUIForm, userData, isFullScreen);
@@ -121,12 +128,14 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">是否全屏</param>
         /// <returns>界面的实例。</returns>
+        [UnityEngine.Scripting.Preserve]
         protected abstract Task<IUIForm> InnerOpenUIFormAsync(string uiFormAssetPath, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen = false);
 
         /// <summary>
         /// 激活界面。
         /// </summary>
         /// <param name="uiForm">要激活的界面。</param>
+        [UnityEngine.Scripting.Preserve]
         public void RefocusUIForm(IUIForm uiForm)
         {
             RefocusUIForm(uiForm, null);
@@ -137,6 +146,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiForm">要激活的界面。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void RefocusUIForm(IUIForm uiForm, object userData)
         {
             GameFrameworkGuard.NotNull(uiForm, nameof(uiForm));
@@ -152,6 +162,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormInstance">要设置是否被加锁的界面实例。</param>
         /// <param name="locked">界面实例是否被加锁。</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetUIFormInstanceLocked(object uiFormInstance, bool locked)
         {
             GameFrameworkGuard.NotNull(uiFormInstance, nameof(uiFormInstance));
@@ -164,6 +175,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormInstance">要设置优先级的界面实例。</param>
         /// <param name="priority">界面实例优先级。</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetUIFormInstancePriority(object uiFormInstance, int priority)
         {
             GameFrameworkGuard.NotNull(uiFormInstance, nameof(uiFormInstance));

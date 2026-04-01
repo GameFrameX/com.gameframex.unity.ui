@@ -34,96 +34,115 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面组名称常量
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class UIGroupNameConstants
     {
         /// <summary>
         /// 隐藏
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Hidden = "Hidden";
 
         /// <summary>
         /// 背景
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Background = "Background";
 
         /// <summary>
         /// 场景
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Scene = "Scene";
 
         /// <summary>
         /// 世界
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string World = "World";
 
         /// <summary>
         /// 战斗
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Battle = "Battle";
 
         /// <summary>
         /// 头顶
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Hud = "Hud";
 
         /// <summary>
         /// 地图
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Map = "Map";
 
         /// <summary>
         /// 底板
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Floor = "Floor";
 
         /// <summary>
         /// 正常
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Normal = "Normal";
 
         /// <summary>
         /// 固定
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Fixed = "Fixed";
 
         /// <summary>
         /// 窗口
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Window = "Window";
 
         /// <summary>
         /// 提示
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Tip = "Tip";
 
         /// <summary>
         /// 引导
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Guide = "Guide";
 
         /// <summary>
         /// 黑板
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string BlackBoard = "BlackBoard";
 
         /// <summary>
         /// 对话
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Dialogue = "Dialogue";
 
         /// <summary>
         /// Loading 
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Loading = "Loading";
 
         /// <summary>
         /// 通知
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string Notify = "Notify";
 
         /// <summary>
         /// 系统顶级
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public const string System = "System";
     }
 }

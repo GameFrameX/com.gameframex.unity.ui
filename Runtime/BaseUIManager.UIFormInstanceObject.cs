@@ -39,12 +39,18 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面实例对象。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public sealed class UIFormInstanceObject : ObjectBase
         {
+            [UnityEngine.Scripting.Preserve]
             private object m_UIFormAsset = null;
+            [UnityEngine.Scripting.Preserve]
             private string m_UIFormAssetPath = null;
+            [UnityEngine.Scripting.Preserve]
             private string m_UIFormAssetName = null;
+            [UnityEngine.Scripting.Preserve]
             private IUIFormHelper m_UIFormHelper = null;
+            [UnityEngine.Scripting.Preserve]
             private object m_AssetHandle = null;
 
             /// <summary>
@@ -58,6 +64,7 @@ namespace GameFrameX.UI.Runtime
             /// <param name="assetHandle">界面资源句柄。</param>
             /// <returns>界面实例对象。</returns>
             /// <exception cref="GameFrameworkException">界面资源或界面助手无效。</exception>
+            [UnityEngine.Scripting.Preserve]
             public static UIFormInstanceObject Create(string uiFormAssetPath, string uiFormAssetName, object uiFormAsset, object uiFormInstance, IUIFormHelper uiFormHelper, object assetHandle)
             {
                 if (uiFormAsset == null)
@@ -80,6 +87,7 @@ namespace GameFrameX.UI.Runtime
                 return uiFormInstanceObject;
             }
 
+            [UnityEngine.Scripting.Preserve]
             public override void Clear()
             {
                 base.Clear();
@@ -90,6 +98,7 @@ namespace GameFrameX.UI.Runtime
                 m_UIFormAssetName = null;
             }
 
+            [UnityEngine.Scripting.Preserve]
             protected override void Release(bool isShutdown)
             {
                 m_UIFormHelper.ReleaseUIForm(m_UIFormAsset, Target, m_AssetHandle, m_UIFormAssetPath, m_UIFormAssetName);

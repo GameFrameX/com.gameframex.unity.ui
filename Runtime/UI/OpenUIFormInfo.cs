@@ -37,20 +37,30 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 打开界面的信息。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed class OpenUIFormInfo : IReference
     {
+        [UnityEngine.Scripting.Preserve]
         private int m_SerialId = 0;
+        [UnityEngine.Scripting.Preserve]
         private bool m_PauseCoveredUIForm = false;
+        [UnityEngine.Scripting.Preserve]
         private object m_UserData = null;
+        [UnityEngine.Scripting.Preserve]
         private Type m_FormType;
+        [UnityEngine.Scripting.Preserve]
         private object m_AssetHandle;
+        [UnityEngine.Scripting.Preserve]
         private bool m_IsFullScreen = false;
+        [UnityEngine.Scripting.Preserve]
         private string m_AssetPath;
+        [UnityEngine.Scripting.Preserve]
         private string m_AssetName;
 
         /// <summary>
         /// 获取界面是否全屏。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool IsFullScreen
         {
             get { return m_IsFullScreen; }
@@ -59,6 +69,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面资源路径。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string AssetPath
         {
             get { return m_AssetPath; }
@@ -67,6 +78,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string AssetName
         {
             get { return m_AssetName; }
@@ -75,6 +87,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面类型。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public Type FormType
         {
             get { return m_FormType; }
@@ -83,6 +96,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面序列编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int SerialId
         {
             get { return m_SerialId; }
@@ -91,6 +105,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取是否暂停被覆盖的界面。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool PauseCoveredUIForm
         {
             get { return m_PauseCoveredUIForm; }
@@ -99,6 +114,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object UserData
         {
             get { return m_UserData; }
@@ -107,6 +123,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object AssetHandle
         {
             get { return m_AssetHandle; }
@@ -116,6 +133,7 @@ namespace GameFrameX.UI.Runtime
         /// 设置界面资源句柄。
         /// </summary>
         /// <param name="assetHandle">界面资源句柄。</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetAssetHandle(object assetHandle)
         {
             m_AssetHandle = assetHandle;
@@ -130,6 +148,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">界面是否全屏。</param>
         /// <returns>创建的打开界面的信息。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static OpenUIFormInfo Create(int serialId, string assetPath, string assetName, Type uiFormType, bool pauseCoveredUIForm, object userData, bool isFullScreen)
         {
             OpenUIFormInfo openUIFormInfo = ReferencePool.Acquire<OpenUIFormInfo>();
@@ -146,6 +165,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 清理打开界面的信息。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public void Clear()
         {
             m_SerialId = default;

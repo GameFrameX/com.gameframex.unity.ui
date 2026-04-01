@@ -1,4 +1,4 @@
-﻿// ==========================================================================================
+// ==========================================================================================
 //  GameFrameX 组织及其衍生项目的版权、商标、专利及其他相关权利
 //  GameFrameX organization and its derivative projects' copyrights, trademarks, patents, and related rights
 //  均受中华人民共和国及相关国际法律法规保护。
@@ -46,48 +46,117 @@ namespace GameFrameX.UI.Runtime
     [UnityEngine.Scripting.Preserve]
     public partial class UIComponent : GameFrameworkComponent
     {
+        [UnityEngine.Scripting.Preserve]
         private const int DefaultPriority = 0;
 
+        [UnityEngine.Scripting.Preserve]
         private IUIManager m_UIManager = null;
+        [UnityEngine.Scripting.Preserve]
         private EventComponent m_EventComponent = null;
 
+        [UnityEngine.Scripting.Preserve]
         private readonly List<IUIForm> m_InternalUIFormResults = new List<IUIForm>();
 
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_EnableOpenUIFormSuccessEvent = true;
 
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_EnableOpenUIFormFailureEvent = true;
 
         // [SerializeField] private bool m_EnableOpenUIFormUpdateEvent = false;
         //
         // [SerializeField] private bool m_EnableOpenUIFormDependencyAssetEvent = false;
+        /// <summary>
+        /// 是否自动回收 UI 。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
+        [SerializeField] private bool m_EnableAutoReleaseUIForm = true;
 
+        /// <summary>
+        /// 是否在关闭 UI 时触发完成事件。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_EnableCloseUIFormCompleteEvent = true;
+
+        /// <summary>
+        /// 是否启用 UI 显示动画。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_IsEnableUIShowAnimation = false;
+
+        /// <summary>
+        /// 是否启用 UI 隐藏动画。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_IsEnableUIHideAnimation = false;
 
+        /// <summary>
+        /// UI 自动回收间隔时间/秒。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private float m_InstanceAutoReleaseInterval = 60f;
 
+        /// <summary>
+        /// UI 实例容量。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private int m_InstanceCapacity = 16;
 
+        /// <summary>
+        /// UI 实例过期时间/秒。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private float m_InstanceExpireTime = 60f;
 
+        /// <summary>
+        /// UI 回收间隔时间/秒。
+        /// </summary>
         [Tooltip("UI 回收间隔时间/秒")] [SerializeField]
+        [UnityEngine.Scripting.Preserve]
         private int m_RecycleInterval = 60;
 
         // [SerializeField] private int m_InstancePriority = 0;
 
+        /// <summary>
+        /// UI 实例根节点。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private Transform m_InstanceUGUIRoot = null;
 
+        /// <summary>
+        /// FairyGUI 实例根节点。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private Transform m_InstanceFairyGUIRoot = null;
 
+        /// <summary>
+        /// UI 表单帮助器类型名。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private string m_UIFormHelperTypeName = "GameFrameX.UI.FairyGUI.Runtime.FairyGUIFormHelper";
 
+        /// <summary>
+        /// 自定义 UI 表单帮助器。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private UIFormHelperBase m_CustomUIFormHelper = null;
 
+        /// <summary>
+        /// UI 组帮助器类型名。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private string m_UIGroupHelperTypeName = "GameFrameX.UI.FairyGUI.Runtime.FairyGUIUIGroupHelper";
 
+        /// <summary>
+        /// 自定义 UI 组帮助器。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private UIGroupHelperBase m_CustomUIGroupHelper = null;
 
+        /// <summary>
+        /// UI 组数组。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private UIGroup[] m_UIGroups = new UIGroup[]
         {
             new UIGroup(UIGroupConstants.Hidden.Depth, UIGroupConstants.Hidden.Name),
@@ -113,6 +182,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取 UGUI 根节点变换组件。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public Transform UGUIRoot
         {
             get { return m_InstanceUGUIRoot; }
@@ -121,6 +191,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取 FairyGUI 根节点变换组件。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public Transform FairyGUIRoot
         {
             get { return m_InstanceFairyGUIRoot; }
@@ -129,6 +200,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取是否启用界面显示动画。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool IsEnableUIShowAnimation
         {
             get { return m_UIManager.IsEnableUIShowAnimation; }
@@ -137,6 +209,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取是否启用界面隐藏动画。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool IsEnableUIHideAnimation
         {
             get { return m_UIManager.IsEnableUIHideAnimation; }
@@ -145,6 +218,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int UIGroupCount
         {
             get { return m_UIManager.UIGroupCount; }
@@ -153,6 +227,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池自动回收可回收对象的间隔秒数。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int RecycleInterval
         {
             get { return m_UIManager.RecycleInterval; }
@@ -162,6 +237,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池自动释放可释放对象的间隔秒数。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public float InstanceAutoReleaseInterval
         {
             get { return m_UIManager.InstanceAutoReleaseInterval; }
@@ -171,6 +247,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池的容量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int InstanceCapacity
         {
             get { return m_UIManager.InstanceCapacity; }
@@ -180,6 +257,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池对象过期秒数。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public float InstanceExpireTime
         {
             get { return m_UIManager.InstanceExpireTime; }
@@ -190,6 +268,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池的优先级。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int InstancePriority
         {
             get { return m_UIManager.InstancePriority; }
@@ -199,6 +278,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 游戏框架组件初始化。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected override void Awake()
         {
             ImplementationComponentType = Utility.Assembly.GetType(componentType);
@@ -287,6 +367,7 @@ namespace GameFrameX.UI.Runtime
             }
         }
 
+        [UnityEngine.Scripting.Preserve]
         private void Start()
         {
             BaseComponent baseComponent = GameEntry.GetComponent<BaseComponent>();
@@ -365,6 +446,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="serialId">界面序列编号。</param>
         /// <returns>是否存在界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasUIForm(int serialId)
         {
             return m_UIManager.HasUIForm(serialId);
@@ -375,6 +457,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <returns>是否存在界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasUIForm(string uiFormAssetName)
         {
             return m_UIManager.HasUIForm(uiFormAssetName);
@@ -385,6 +468,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="serialId">界面序列编号。</param>
         /// <returns>是否正在加载界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool IsLoadingUIForm(int serialId)
         {
             return m_UIManager.IsLoadingUIForm(serialId);
@@ -395,6 +479,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <returns>是否正在加载界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool IsLoadingUIForm(string uiFormAssetName)
         {
             return m_UIManager.IsLoadingUIForm(uiFormAssetName);
@@ -405,6 +490,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiForm">界面。</param>
         /// <returns>界面是否合法。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool IsValidUIForm(IUIForm uiForm)
         {
             return m_UIManager.IsValidUIForm(uiForm);
@@ -415,6 +501,7 @@ namespace GameFrameX.UI.Runtime
         /// 激活界面。
         /// </summary>
         /// <param name="uiForm">要激活的界面。</param>
+        [UnityEngine.Scripting.Preserve]
         public void RefocusUIForm(UIForm uiForm)
         {
             m_UIManager.RefocusUIForm(uiForm);
@@ -425,6 +512,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiForm">要激活的界面。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void RefocusUIForm(UIForm uiForm, object userData)
         {
             m_UIManager.RefocusUIForm(uiForm, userData);
@@ -435,6 +523,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiForm">要设置是否被加锁的界面。</param>
         /// <param name="locked">界面是否被加锁。</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetUIFormInstanceLocked(UIForm uiForm, bool locked)
         {
             if (uiForm == null)
@@ -446,11 +535,13 @@ namespace GameFrameX.UI.Runtime
             m_UIManager.SetUIFormInstanceLocked(uiForm.gameObject, locked);
         }
 
+        [UnityEngine.Scripting.Preserve]
         private void OnOpenUIFormSuccess(object sender, OpenUIFormSuccessEventArgs e)
         {
             m_EventComponent.Fire(this, e);
         }
 
+        [UnityEngine.Scripting.Preserve]
         private void OnOpenUIFormFailure(object sender, OpenUIFormFailureEventArgs e)
         {
             Log.Warning($"Open UI form failure, asset name '{e.UIFormAssetName}',  pause covered UI form '{e.PauseCoveredUIForm}', error message '{e.ErrorMessage}'.");
@@ -460,27 +551,32 @@ namespace GameFrameX.UI.Runtime
             }
         }
 
+        [UnityEngine.Scripting.Preserve]
         public void SetShowUIFormHandler(IUIFormShowHandler uiFormShowHandler)
         {
             m_UIManager.SetUIFormShowHandler(uiFormShowHandler);
         }
 
+        [UnityEngine.Scripting.Preserve]
         public void SetHideUIFormHandler(IUIFormHideHandler uiFormHideHandler)
         {
             m_UIManager.SetUIFormHideHandler(uiFormHideHandler);
         }
 
         /*
+        [UnityEngine.Scripting.Preserve]
         private void OnOpenUIFormUpdate(object sender, OpenUIFormUpdateEventArgs e)
         {
             m_EventComponent.Fire(this, e);
         }
 
+        [UnityEngine.Scripting.Preserve]
         private void OnOpenUIFormDependencyAsset(object sender, OpenUIFormDependencyAssetEventArgs e)
         {
             m_EventComponent.Fire(this, e);
         }*/
 
+        [UnityEngine.Scripting.Preserve]
         private void OnCloseUIFormComplete(object sender, CloseUIFormCompleteEventArgs e)
         {
             m_EventComponent.Fire(this, e);

@@ -44,11 +44,13 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭界面完成事件编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static readonly string EventId = typeof(CloseUIFormCompleteEventArgs).FullName;
 
         /// <summary>
         /// 初始化关闭界面完成事件的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public CloseUIFormCompleteEventArgs()
         {
             SerialId = 0;
@@ -60,6 +62,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取关闭界面完成事件编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public override string Id
         {
             get { return EventId; }
@@ -68,21 +71,25 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面序列编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int SerialId { get; private set; }
 
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string UIFormAssetName { get; private set; }
 
         /// <summary>
         /// 获取界面所属的界面组。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public IUIGroup UIGroup { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
@@ -93,6 +100,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="uiGroup">界面所属的界面组。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>创建的关闭界面完成事件。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static CloseUIFormCompleteEventArgs Create(int serialId, string uiFormAssetName, IUIGroup uiGroup, object userData)
         {
             CloseUIFormCompleteEventArgs closeUIFormCompleteEventArgs = ReferencePool.Acquire<CloseUIFormCompleteEventArgs>();
@@ -106,6 +114,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 清理关闭界面完成事件。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public override void Clear()
         {
             SerialId = 0;

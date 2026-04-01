@@ -40,11 +40,17 @@ namespace GameFrameX.UI.Runtime
     [UnityEngine.Scripting.Preserve]
     public sealed partial class UIGroup : IUIGroup
     {
+        [UnityEngine.Scripting.Preserve]
         private readonly string m_Name;
+        [UnityEngine.Scripting.Preserve]
         private int m_Depth;
+        [UnityEngine.Scripting.Preserve]
         private bool m_Pause;
+        [UnityEngine.Scripting.Preserve]
         private readonly IUIGroupHelper m_UIGroupHelper;
+        [UnityEngine.Scripting.Preserve]
         private readonly GameFrameworkLinkedList<UIFormInfo> m_UIFormInfos;
+        [UnityEngine.Scripting.Preserve]
         private LinkedListNode<UIFormInfo> m_CachedNode;
 
         /// <summary>
@@ -53,6 +59,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="name">界面组名称。</param>
         /// <param name="depth">界面组深度。</param>
         /// <param name="uiGroupHelper">界面组辅助器。</param>
+        [UnityEngine.Scripting.Preserve]
         public UIGroup(string name, int depth, IUIGroupHelper uiGroupHelper)
         {
             if (string.IsNullOrEmpty(name))
@@ -76,6 +83,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string Name
         {
             get { return m_Name; }
@@ -84,6 +92,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面组深度。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int Depth
         {
             get { return m_Depth; }
@@ -103,6 +112,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面组是否暂停。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool Pause
         {
             get { return m_Pause; }
@@ -121,6 +131,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组中界面数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int UIFormCount
         {
             get { return m_UIFormInfos.Count; }
@@ -129,6 +140,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取当前界面。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public IUIForm CurrentUIForm
         {
             get { return m_UIFormInfos.First?.Value.UIForm; }
@@ -137,6 +149,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组辅助器。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public IUIGroupHelper Helper
         {
             get { return m_UIGroupHelper; }
@@ -147,6 +160,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        [UnityEngine.Scripting.Preserve]
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
             var current = m_UIFormInfos.First;
@@ -169,6 +183,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="serialId">界面序列编号。</param>
         /// <returns>界面组中是否存在界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasUIForm(int serialId)
         {
             foreach (var uiFormInfo in m_UIFormInfos)
@@ -187,6 +202,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="fullName">界面资源完整名称。</param>
         /// <returns>界面组中是否存在界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasUIFormFullName(string fullName)
         {
             if (string.IsNullOrEmpty(fullName))
@@ -210,6 +226,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <returns>界面组中是否存在界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasUIForm(string uiFormAssetName)
         {
             if (string.IsNullOrEmpty(uiFormAssetName))
@@ -233,6 +250,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="serialId">界面序列编号。</param>
         /// <returns>要获取的界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IUIForm GetUIForm(int serialId)
         {
             foreach (var uiFormInfo in m_UIFormInfos)
@@ -251,6 +269,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <returns>要获取的界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IUIForm GetUIForm(string uiFormAssetName)
         {
             if (string.IsNullOrEmpty(uiFormAssetName))
@@ -274,6 +293,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <returns>要获取的界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IUIForm[] GetUIForms(string uiFormAssetName)
         {
             if (string.IsNullOrEmpty(uiFormAssetName))
@@ -298,6 +318,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <param name="results">要获取的界面。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetUIForms(string uiFormAssetName, List<IUIForm> results)
         {
             if (string.IsNullOrEmpty(uiFormAssetName))
@@ -324,6 +345,7 @@ namespace GameFrameX.UI.Runtime
         /// 从界面组中获取所有界面。
         /// </summary>
         /// <returns>界面组中的所有界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IUIForm[] GetAllUIForms()
         {
             var results = new List<IUIForm>();
@@ -339,6 +361,7 @@ namespace GameFrameX.UI.Runtime
         /// 从界面组中获取所有界面。
         /// </summary>
         /// <param name="results">界面组中的所有界面。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetAllUIForms(List<IUIForm> results)
         {
             if (results == null)
@@ -357,6 +380,7 @@ namespace GameFrameX.UI.Runtime
         /// 往界面组增加界面。
         /// </summary>
         /// <param name="uiForm">要增加的界面。</param>
+        [UnityEngine.Scripting.Preserve]
         public void AddUIForm(IUIForm uiForm)
         {
             m_UIFormInfos.AddFirst(UIFormInfo.Create(uiForm));
@@ -367,6 +391,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiForm">要移除的界面。</param>
         /// <param name="isSkipPause">是否跳过暂停。</param>
+        [UnityEngine.Scripting.Preserve]
         public void RemoveUIForm(IUIForm uiForm, bool isSkipPause = false)
         {
             UIFormInfo uiFormInfo = GetUIFormInfo(uiForm);
@@ -409,6 +434,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiForm">要激活的界面。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void RefocusUIForm(IUIForm uiForm, object userData)
         {
             UIFormInfo uiFormInfo = GetUIFormInfo(uiForm);
@@ -426,6 +452,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 刷新界面组。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public void Refresh()
         {
             LinkedListNode<UIFormInfo> current = m_UIFormInfos.First;
@@ -517,6 +544,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <param name="results">要获取的界面列表。</param>
+        [UnityEngine.Scripting.Preserve]
         public void InternalGetUIForms(string uiFormAssetName, List<IUIForm> results)
         {
             foreach (var uiFormInfo in m_UIFormInfos)
@@ -534,6 +562,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="uiFormAssetName">界面资源名称。</param>
         /// <param name="uiForm">要检查的界面。</param>
         /// <returns>是否存在指定界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool InternalHasInstanceUIForm(string uiFormAssetName, IUIForm uiForm)
         {
             foreach (var uiFormInfo in m_UIFormInfos)
@@ -551,6 +580,7 @@ namespace GameFrameX.UI.Runtime
         /// 获取界面组中的所有界面。
         /// </summary>
         /// <param name="results">要获取的界面列表。</param>
+        [UnityEngine.Scripting.Preserve]
         public void InternalGetAllUIForms(List<IUIForm> results)
         {
             foreach (var uiFormInfo in m_UIFormInfos)
@@ -559,6 +589,7 @@ namespace GameFrameX.UI.Runtime
             }
         }
 
+        [UnityEngine.Scripting.Preserve]
         private UIFormInfo GetUIFormInfo(IUIForm uiForm)
         {
             if (uiForm == null)

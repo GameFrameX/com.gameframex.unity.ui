@@ -40,13 +40,16 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面组深度
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public readonly int Depth;
 
         /// <summary>
         /// 界面组名称
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public readonly string Name;
 
+        [UnityEngine.Scripting.Preserve]
         public UIGroupDefine(int depth, string name)
         {
             Depth = depth;

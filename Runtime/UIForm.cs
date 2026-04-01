@@ -41,34 +41,55 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面。
     /// </summary>
-    [UnityEngine.Scripting.Preserve]
     [Serializable]
+    [UnityEngine.Scripting.Preserve]
     public abstract class UIForm : MonoBehaviour, IUIForm
     {
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_Available = false;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_Visible = false;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_IsInit = false;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_IsDisableRecycling = false;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_IsCenter = false;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_IsDisableClosing = false;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private int m_SerialId;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private int m_OriginalLayer = 0;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private string m_UIFormAssetName;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private string m_AssetPath;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private int m_DepthInUIGroup;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_PauseCoveredUIForm;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private string m_FullName;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_EnableShowAnimation;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private string m_ShowAnimationName;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_EnableHideAnimation;
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private string m_HideAnimationName;
+        [UnityEngine.Scripting.Preserve]
         private IUIGroup m_UIGroup;
+        [UnityEngine.Scripting.Preserve]
         private UIEventSubscriber m_EventSubscriber = null;
+        [UnityEngine.Scripting.Preserve]
         private object m_UserData = null;
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object UserData
         {
             get { return m_UserData; }
@@ -77,6 +98,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面事件订阅器。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected UIEventSubscriber EventSubscriber
         {
             get { return m_EventSubscriber; }
@@ -85,21 +107,25 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面是否来自对象池。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected bool IsFromPool { get; set; }
 
         /// <summary>
         /// 获取界面是否已被销毁。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected bool IsDisposed { get; set; }
 
         /// <summary>
         /// 界面回收开始时间
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public DateTime ReleaseStartTime { get; private set; } = DateTime.MaxValue;
 
         /// <summary>
         /// 获取界面序列编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int SerialId
         {
             get { return m_SerialId; }
@@ -108,6 +134,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面完整名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string FullName
         {
             get { return m_FullName; }
@@ -116,6 +143,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string Name
         {
             get { return gameObject.name; }
@@ -125,6 +153,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面是否可用。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool Available
         {
             get { return m_Available; }
@@ -133,6 +162,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否启用显示动画
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool EnableShowAnimation
         {
             get { return m_EnableShowAnimation; }
@@ -142,6 +172,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 显示动画名称
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string ShowAnimationName
         {
             get { return m_ShowAnimationName; }
@@ -151,6 +182,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否启用隐藏动画
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool EnableHideAnimation
         {
             get { return m_EnableHideAnimation; }
@@ -160,6 +192,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 隐藏动画名称
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string HideAnimationName
         {
             get { return m_HideAnimationName; }
@@ -169,9 +202,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面是否可见。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual bool Visible
         {
             get { return m_Available && m_Visible; }
+            [UnityEngine.Scripting.Preserve]
             protected set
             {
                 if (!m_Available)
@@ -193,6 +228,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string UIFormAssetName
         {
             get { return m_UIFormAssetName; }
@@ -201,24 +237,29 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否禁用回收，禁用回收的界面不会被回收
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool IsDisableRecycling
         {
             get { return m_IsDisableRecycling; }
+            [UnityEngine.Scripting.Preserve]
             protected set { m_IsDisableRecycling = value; }
         }
 
         /// <summary>
         /// 是否禁用关闭，禁用关闭的界面不会被关闭
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool IsDisableClosing
         {
             get { return m_IsDisableClosing; }
+            [UnityEngine.Scripting.Preserve]
             protected set { m_IsDisableClosing = value; }
         }
 
         /// <summary>
         /// 是否可以回收，true:界面可以被回收，false:界面不可以被回收
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool IsCanRecycle
         {
             get
@@ -235,29 +276,35 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面回收间隔，单位：秒
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int RecycleInterval { get; private set; }
 
         /// <summary>
         /// 是否开启组件居中，true:组件生成后默认父组件居中
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool IsCenter
         {
             get { return m_IsCenter; }
+            [UnityEngine.Scripting.Preserve]
             protected set { m_IsCenter = value; }
         }
 
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string AssetPath
         {
             get { return m_AssetPath; }
+            [UnityEngine.Scripting.Preserve]
             protected set { m_AssetPath = value; }
         }
 
         /// <summary>
         /// 获取界面实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object Handle
         {
             get { return gameObject; }
@@ -266,6 +313,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面所属的界面组。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual IUIGroup UIGroup
         {
             get { return m_UIGroup; }
@@ -275,6 +323,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面深度。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int DepthInUIGroup
         {
             get { return m_DepthInUIGroup; }
@@ -283,16 +332,19 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取是否暂停被覆盖的界面。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool PauseCoveredUIForm
         {
             get { return m_PauseCoveredUIForm; }
         }
 
+        [UnityEngine.Scripting.Preserve]
         public bool IsAwake { get; private set; }
 
         /// <summary>
         /// 界面初始化前执行
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnAwake()
         {
             IsAwake = true;
@@ -302,6 +354,7 @@ namespace GameFrameX.UI.Runtime
         /// Unity生命周期Awake方法
         /// 在此处初始化事件订阅器并订阅本地化语言变更事件
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         private void Awake()
         {
             m_EventSubscriber = UIEventSubscriber.Create(this);
@@ -313,6 +366,7 @@ namespace GameFrameX.UI.Runtime
         /// Unity生命周期OnEnable方法
         /// 在界面启用时触发事件订阅
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         private void OnEnable()
         {
             OnEventSubscribe();
@@ -322,6 +376,7 @@ namespace GameFrameX.UI.Runtime
         /// Unity生命周期OnDisable方法
         /// 在界面禁用时取消事件订阅,忽略本地化语言变更事件的订阅
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         private void OnDisable()
         {
             OnEventUnSubscribe();
@@ -332,6 +387,7 @@ namespace GameFrameX.UI.Runtime
         /// Unity生命周期OnDestroy方法
         /// 在界面销毁时执行清理操作
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         private void OnDestroy()
         {
             Dispose();
@@ -342,6 +398,7 @@ namespace GameFrameX.UI.Runtime
         /// 在界面启用(OnEnable)时触发,可在此处订阅界面所需的事件
         /// 继承类通过重写此方法来注册自己需要的事件
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected virtual void OnEventSubscribe()
         {
         }
@@ -351,6 +408,7 @@ namespace GameFrameX.UI.Runtime
         /// 在界面禁用(OnDisable)时触发,可在此处取消订阅界面的事件
         /// 继承类通过重写此方法来取消注册自己的事件
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected virtual void OnEventUnSubscribe()
         {
         }
@@ -358,6 +416,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面初始化。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected virtual void InitView()
         {
         }
@@ -375,6 +434,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。</param>
         /// <param name="isFullScreen">是否全屏</param>
         /// <param name="recycleInterval"></param>
+        [UnityEngine.Scripting.Preserve]
         public void Init(int serialId, string uiFormAssetPath, string uiFormAssetName, IUIGroup uiGroup, Action<IUIForm> onInitAction, bool pauseCoveredUIForm, bool isNewInstance, object userData, int recycleInterval, bool isFullScreen = false)
         {
             RecycleInterval = recycleInterval;
@@ -424,10 +484,12 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 初始化界面。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnInit()
         {
         }
 
+        [UnityEngine.Scripting.Preserve]
         private void OnLocalizationLanguageChanged(object sender, GameEventArgs e)
         {
             UpdateLocalization();
@@ -436,6 +498,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面回收。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnRecycle()
         {
             m_DepthInUIGroup = 0;
@@ -446,6 +509,7 @@ namespace GameFrameX.UI.Runtime
         /// 界面打开。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnOpen(object userData)
         {
             m_Available = true;
@@ -457,6 +521,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 绑定事件
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void BindEvent()
         {
         }
@@ -464,6 +529,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 加载数据
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void LoadData()
         {
         }
@@ -471,6 +537,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面更新本地化。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void UpdateLocalization()
         {
         }
@@ -480,6 +547,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="handler">界面显示处理接口</param>
         /// <param name="complete">完成回调</param>
+        [UnityEngine.Scripting.Preserve]
         public abstract void Show(IUIFormShowHandler handler, Action complete);
 
         /// <summary>
@@ -487,6 +555,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="isShutdown">是否是关闭界面管理器时触发。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnClose(bool isShutdown, object userData)
         {
             if (gameObject != null)
@@ -510,11 +579,13 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="handler">界面隐藏处理接口</param>
         /// <param name="complete">完成回调</param>
+        [UnityEngine.Scripting.Preserve]
         public abstract void Hide(IUIFormHideHandler handler, Action complete);
 
         /// <summary>
         /// 界面暂停。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnPause()
         {
             m_Available = false;
@@ -524,6 +595,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面暂停恢复。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnResume()
         {
             m_Available = true;
@@ -533,6 +605,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面遮挡。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnCover()
         {
         }
@@ -540,6 +613,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面遮挡恢复。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnReveal()
         {
         }
@@ -548,6 +622,7 @@ namespace GameFrameX.UI.Runtime
         /// 界面激活。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnRefocus(object userData)
         {
         }
@@ -557,6 +632,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        [UnityEngine.Scripting.Preserve]
         public virtual void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
         }
@@ -566,6 +642,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiGroupDepth">界面组深度。</param>
         /// <param name="depthInUIGroup">界面在界面组中的深度。</param>
+        [UnityEngine.Scripting.Preserve]
         public void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
         {
             m_DepthInUIGroup = depthInUIGroup;
@@ -574,6 +651,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 销毁界面.
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public virtual void Dispose()
         {
             if (IsDisposed)
@@ -595,11 +673,13 @@ namespace GameFrameX.UI.Runtime
         /// 设置界面的可见性。
         /// </summary>
         /// <param name="visible">界面的可见性。</param>
+        [UnityEngine.Scripting.Preserve]
         protected abstract void InternalSetVisible(bool visible);
 
         /// <summary>
         /// 设置界面为全屏
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         protected internal abstract void MakeFullScreen();
     }
 }

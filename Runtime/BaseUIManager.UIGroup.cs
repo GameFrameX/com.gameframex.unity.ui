@@ -40,11 +40,13 @@ namespace GameFrameX.UI.Runtime
     /// </summary>
     public partial class BaseUIManager
     {
+        [UnityEngine.Scripting.Preserve]
         protected readonly Dictionary<string, UIGroup> m_UIGroups = new Dictionary<string, UIGroup>(StringComparer.Ordinal);
 
         /// <summary>
         /// 获取界面组数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int UIGroupCount
         {
             get { return m_UIGroups.Count; }
@@ -55,6 +57,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiGroupName">界面组名称。</param>
         /// <returns>是否存在界面组。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasUIGroup(string uiGroupName)
         {
             GameFrameworkGuard.NotNullOrEmpty(uiGroupName, nameof(uiGroupName));
@@ -66,6 +69,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiGroupName">界面组名称。</param>
         /// <returns>要获取的界面组。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IUIGroup GetUIGroup(string uiGroupName)
         {
             GameFrameworkGuard.NotNullOrEmpty(uiGroupName, nameof(uiGroupName));
@@ -82,6 +86,7 @@ namespace GameFrameX.UI.Runtime
         /// 获取所有界面组。
         /// </summary>
         /// <returns>所有界面组。</returns>
+        [UnityEngine.Scripting.Preserve]
         public IUIGroup[] GetAllUIGroups()
         {
             int index = 0;
@@ -98,6 +103,7 @@ namespace GameFrameX.UI.Runtime
         /// 获取所有界面组。
         /// </summary>
         /// <param name="results">所有界面组。</param>
+        [UnityEngine.Scripting.Preserve]
         public void GetAllUIGroups(List<IUIGroup> results)
         {
             GameFrameworkGuard.NotNull(results, nameof(results));
@@ -115,6 +121,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="uiGroupName">界面组名称。</param>
         /// <param name="uiGroupHelper">界面组辅助器。</param>
         /// <returns>是否增加界面组成功。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool AddUIGroup(string uiGroupName, IUIGroupHelper uiGroupHelper)
         {
             return AddUIGroup(uiGroupName, 0, uiGroupHelper);
@@ -127,6 +134,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="uiGroupDepth">界面组深度。</param>
         /// <param name="uiGroupHelper">界面组辅助器。</param>
         /// <returns>是否增加界面组成功。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool AddUIGroup(string uiGroupName, int uiGroupDepth, IUIGroupHelper uiGroupHelper)
         {
             GameFrameworkGuard.NotNullOrEmpty(uiGroupName, nameof(uiGroupName));
@@ -146,6 +154,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiGroupName">界面组名称。</param>
         /// <param name="userData">用户自定义数据。</param>
+        [UnityEngine.Scripting.Preserve]
         public void CloseUIGroup(string uiGroupName, object userData)
         {
             GameFrameworkGuard.NotNullOrEmpty(uiGroupName, nameof(uiGroupName));

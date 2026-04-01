@@ -72,6 +72,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="isFullScreen">是否全屏</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>界面的序列编号。</returns>
+        [UnityEngine.Scripting.Preserve]
         public async Task<IUIForm> OpenUIAsync(string uiFormAssetPath, Type uiFormType, bool pauseCoveredUIForm, object userData = null, bool isFullScreen = false)
         {
             return await m_UIManager.OpenUIFormAsync(uiFormAssetPath, uiFormType, pauseCoveredUIForm, userData, isFullScreen);

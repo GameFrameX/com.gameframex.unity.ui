@@ -45,6 +45,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="uiFormAsset">要实例化的界面资源。</param>
         /// <returns>实例化后的界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public abstract object InstantiateUIForm(object uiFormAsset);
 
         /// <summary>
@@ -54,6 +55,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="uiFormType">界面逻辑类型</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>界面。</returns>
+        [UnityEngine.Scripting.Preserve]
         public abstract IUIForm CreateUIForm(object uiFormInstance, Type uiFormType, object userData);
 
         /// <summary>
@@ -64,6 +66,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="assetHandle">资源句柄。</param>
         /// <param name="uiFormAssetPath">界面资源路径。</param>
         /// <param name="uiFormAssetName">界面资源名称。</param>
+        [UnityEngine.Scripting.Preserve]
         public abstract void ReleaseUIForm(object uiFormAsset, object uiFormInstance, object assetHandle, string uiFormAssetPath, string uiFormAssetName);
     }
 }

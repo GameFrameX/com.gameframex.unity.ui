@@ -36,16 +36,19 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 打开界面时加载依赖资源事件。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed class OpenUIFormDependencyAssetEventArgs : GameEventArgs
     {
         /// <summary>
         /// 打开界面时加载依赖资源事件编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static readonly string EventId = typeof(OpenUIFormDependencyAssetEventArgs).FullName;
 
         /// <summary>
         /// 初始化打开界面时加载依赖资源事件的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public OpenUIFormDependencyAssetEventArgs()
         {
             SerialId = 0;
@@ -61,6 +64,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取打开界面时加载依赖资源事件编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public override string Id
         {
             get { return EventId; }
@@ -69,41 +73,49 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面序列编号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int SerialId { get; private set; }
 
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string UIFormAssetName { get; private set; }
 
         /// <summary>
         /// 获取界面组名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string UIGroupName { get; private set; }
 
         /// <summary>
         /// 获取是否暂停被覆盖的界面。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public bool PauseCoveredUIForm { get; private set; }
 
         /// <summary>
         /// 获取被加载的依赖资源名称。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string DependencyAssetName { get; private set; }
 
         /// <summary>
         /// 获取当前已加载依赖资源数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int LoadedCount { get; private set; }
 
         /// <summary>
         /// 获取总共加载依赖资源数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int TotalCount { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public object UserData { get; private set; }
 
         /// <summary>
@@ -118,6 +130,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="totalCount">总共加载依赖资源数量。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>创建的打开界面时加载依赖资源事件。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static OpenUIFormDependencyAssetEventArgs Create(int serialId, string uiFormAssetName, string uiGroupName, bool pauseCoveredUIForm, string dependencyAssetName, int loadedCount, int totalCount, object userData)
         {
             OpenUIFormDependencyAssetEventArgs openUIFormDependencyAssetEventArgs = ReferencePool.Acquire<OpenUIFormDependencyAssetEventArgs>();
@@ -135,6 +148,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 清理打开界面时加载依赖资源事件。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public override void Clear()
         {
             SerialId = 0;

@@ -38,22 +38,28 @@ namespace GameFrameX.UI.Runtime
     public partial class UIComponent : GameFrameworkComponent
     {
         [Serializable]
+        [UnityEngine.Scripting.Preserve]
         private sealed class UIGroup
         {
+            [UnityEngine.Scripting.Preserve]
             [SerializeField] private string m_Name = null;
 
+            [UnityEngine.Scripting.Preserve]
             [SerializeField] private int m_Depth = 0;
 
+            [UnityEngine.Scripting.Preserve]
             public string Name
             {
                 get { return m_Name; }
             }
 
+            [UnityEngine.Scripting.Preserve]
             public int Depth
             {
                 get { return m_Depth; }
             }
 
+            [UnityEngine.Scripting.Preserve]
             public UIGroup(int depth, string name)
             {
                 this.m_Depth = depth;

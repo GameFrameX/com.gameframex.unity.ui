@@ -38,11 +38,13 @@ namespace GameFrameX.UI.Runtime
     /// 只能应用于类，分组名称不能为空。
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
+    [UnityEngine.Scripting.Preserve]
     public sealed class OptionUIGroupAttribute : Attribute
     {
         /// <summary>
         /// 分组名称
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string GroupName { get; private set; }
 
         /// <summary>
@@ -50,6 +52,7 @@ namespace GameFrameX.UI.Runtime
         /// </summary>
         /// <param name="groupName">分组名称，不能为空</param>
         /// <exception cref="Exception">分组名称为空时抛出异常</exception>
+        [UnityEngine.Scripting.Preserve]
         public OptionUIGroupAttribute(string groupName)
         {
             GroupName = groupName;

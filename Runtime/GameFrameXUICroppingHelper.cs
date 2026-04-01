@@ -35,12 +35,13 @@ using UnityEngine.Scripting;
 
 namespace GameFrameX.UI.Runtime
 {
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public class GameFrameXUICroppingHelper : MonoBehaviour
     {
+        [UnityEngine.Scripting.Preserve]
         private Type[] m_Types;
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         private void Start()
         {
             m_Types = new[]
