@@ -250,6 +250,19 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
+        /// 获取或设置是否启用自动回收界面。
+        /// </summary>
+        /// <remarks>
+        /// Gets or sets whether auto release of UI forms is enabled.
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        public bool EnableAutoReleaseUIForm
+        {
+            get { return m_EnableAutoReleaseUIForm; }
+            set { m_EnableAutoReleaseUIForm = value; }
+        }
+
+        /// <summary>
         /// 获取是否启用界面显示动画。
         /// </summary>
         /// <remarks>

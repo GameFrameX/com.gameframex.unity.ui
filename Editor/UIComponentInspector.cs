@@ -44,6 +44,7 @@ namespace GameFrameX.UI.Editor
 
         // private SerializedProperty m_EnableOpenUIFormUpdateEvent = null;
         // private SerializedProperty m_EnableOpenUIFormDependencyAssetEvent = null;
+        private SerializedProperty m_EnableAutoReleaseUIForm = null;
         private SerializedProperty m_EnableCloseUIFormCompleteEvent = null;
         private SerializedProperty m_InstanceAutoReleaseInterval = null;
         private SerializedProperty m_InstanceCapacity = null;
@@ -81,6 +82,7 @@ namespace GameFrameX.UI.Editor
                 // EditorGUILayout.PropertyField(m_EnableOpenUIFormUpdateEvent);
                 // EditorGUILayout.PropertyField(m_EnableOpenUIFormDependencyAssetEvent);
                 EditorGUILayout.PropertyField(m_EnableCloseUIFormCompleteEvent);
+                EditorGUILayout.PropertyField(m_EnableAutoReleaseUIForm);
                 EditorGUILayout.IntSlider(m_RecycleInterval, 10, 600, "Recycle Interval");
                 EditorGUILayout.PropertyField(m_IsEnableUIShowAnimation);
                 EditorGUILayout.PropertyField(m_IsEnableUIHideAnimation);
@@ -181,6 +183,7 @@ namespace GameFrameX.UI.Editor
             // m_EnableOpenUIFormUpdateEvent = serializedObject.FindProperty("m_EnableOpenUIFormUpdateEvent");
             // m_EnableOpenUIFormDependencyAssetEvent = serializedObject.FindProperty("m_EnableOpenUIFormDependencyAssetEvent");
             m_EnableCloseUIFormCompleteEvent = serializedObject.FindProperty("m_EnableCloseUIFormCompleteEvent");
+            m_EnableAutoReleaseUIForm = serializedObject.FindProperty("m_EnableAutoReleaseUIForm");
             m_InstanceAutoReleaseInterval = serializedObject.FindProperty("m_InstanceAutoReleaseInterval");
             m_InstanceCapacity = serializedObject.FindProperty("m_InstanceCapacity");
             m_InstanceExpireTime = serializedObject.FindProperty("m_InstanceExpireTime");
