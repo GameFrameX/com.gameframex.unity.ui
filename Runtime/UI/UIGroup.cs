@@ -523,10 +523,21 @@ namespace GameFrameX.UI.Runtime
             bool pause = m_Pause;
             bool cover = false;
             int depth = UIFormCount;
-            while (current != null && current.Value != null)
+
+            while (current != null)
             {
                 LinkedListNode<UIFormInfo> next = current.Next;
-                current.Value.UIForm.OnDepthChanged(Depth, depth--);
+                UIFormInfo info = current.Value;
+
+                if (info == null)
+                {
+                    return;
+                }
+
+                // 更新深度
+                info.UIForm.OnDepthChanged(Depth, depth--);
+
+                // 检查回调后节点是否仍有效
                 if (current.Value == null)
                 {
                     return;
@@ -534,73 +545,123 @@ namespace GameFrameX.UI.Runtime
 
                 if (pause)
                 {
-                    if (!current.Value.Covered)
-                    {
-                        current.Value.Covered = true;
-                        current.Value.UIForm.OnCover();
-                        if (current.Value == null)
-                        {
-                            return;
-                        }
-                    }
-
-                    if (!current.Value.Paused)
-                    {
-                        current.Value.Paused = true;
-                        current.Value.UIForm.OnPause();
-                        if (current.Value == null)
-                        {
-                            return;
-                        }
-                    }
+                    // 暂停模式：标记为覆盖和暂停
+                    if (TryMarkCovered(info, current)) return;
+                    if (TryMarkPaused(info, current)) return;
                 }
                 else
                 {
-                    if (current.Value.Paused)
-                    {
-                        current.Value.Paused = false;
-                        current.Value.UIForm.OnResume();
-                        if (current.Value == null)
-                        {
-                            return;
-                        }
-                    }
+                    // 正常模式：恢复暂停状态
+                    if (TryResume(info, current)) return;
 
-                    if (current.Value.UIForm.PauseCoveredUIForm)
+                    // 检查是否需要暂停后续界面
+                    if (info.UIForm.PauseCoveredUIForm)
                     {
                         pause = true;
                     }
 
+                    // 处理覆盖状态
                     if (cover)
                     {
-                        if (!current.Value.Covered)
-                        {
-                            current.Value.Covered = true;
-                            current.Value.UIForm.OnCover();
-                            if (current.Value == null)
-                            {
-                                return;
-                            }
-                        }
+                        if (TryMarkCovered(info, current)) return;
                     }
                     else
                     {
-                        if (current.Value.Covered)
-                        {
-                            current.Value.Covered = false;
-                            current.Value.UIForm.OnReveal();
-                            if (current.Value == null)
-                            {
-                                return;
-                            }
-                        }
-
+                        if (TryReveal(info, current)) return;
                         cover = true;
                     }
                 }
 
                 current = next;
             }
+        }
+
+        /// <summary>
+        /// 尝试标记界面为覆盖状态。
+        /// </summary>
+        /// <remarks>
+        /// Tries to mark the UI form as covered.
+        /// </remarks>
+        /// <param name="info">界面信息 / The UI form info.</param>
+        /// <param name="node">当前链表节点 / The current linked list node.</param>
+        /// <returns>是否需要终止刷新 / Whether to terminate the refresh.</returns>
+        [UnityEngine.Scripting.Preserve]
+        private bool TryMarkCovered(UIFormInfo info, LinkedListNode<UIFormInfo> node)
+        {
+            if (info.Covered)
+            {
+                return false;
+            }
+
+            info.Covered = true;
+            info.UIForm.OnCover();
+            return node.Value == null;
+        }
+
+        /// <summary>
+        /// 尝试标记界面为暂停状态。
+        /// </summary>
+        /// <remarks>
+        /// Tries to mark the UI form as paused.
+        /// </remarks>
+        /// <param name="info">界面信息 / The UI form info.</param>
+        /// <param name="node">当前链表节点 / The current linked list node.</param>
+        /// <returns>是否需要终止刷新 / Whether to terminate the refresh.</returns>
+        [UnityEngine.Scripting.Preserve]
+        private bool TryMarkPaused(UIFormInfo info, LinkedListNode<UIFormInfo> node)
+        {
+            if (info.Paused)
+            {
+                return false;
+            }
+
+            info.Paused = true;
+            info.UIForm.OnPause();
+            return node.Value == null;
+        }
+
+        /// <summary>
+        /// 尝试恢复界面暂停状态。
+        /// </summary>
+        /// <remarks>
+        /// Tries to resume the UI form from pause.
+        /// </remarks>
+        /// <param name="info">界面信息 / The UI form info.</param>
+        /// <param name="node">当前链表节点 / The current linked list node.</param>
+        /// <returns>是否需要终止刷新 / Whether to terminate the refresh.</returns>
+        [UnityEngine.Scripting.Preserve]
+        private bool TryResume(UIFormInfo info, LinkedListNode<UIFormInfo> node)
+        {
+            if (!info.Paused)
+            {
+                return false;
+            }
+
+            info.Paused = false;
+            info.UIForm.OnResume();
+            return node.Value == null;
+        }
+
+        /// <summary>
+        /// 尝试显示界面（取消覆盖状态）。
+        /// </summary>
+        /// <remarks>
+        /// Tries to reveal the UI form from cover.
+        /// </remarks>
+        /// <param name="info">界面信息 / The UI form info.</param>
+        /// <param name="node">当前链表节点 / The current linked list node.</param>
+        /// <returns>是否需要终止刷新 / Whether to terminate the refresh.</returns>
+        [UnityEngine.Scripting.Preserve]
+        private bool TryReveal(UIFormInfo info, LinkedListNode<UIFormInfo> node)
+        {
+            if (!info.Covered)
+            {
+                return false;
+            }
+
+            info.Covered = false;
+            info.UIForm.OnReveal();
+            return node.Value == null;
         }
 
         /// <summary>
