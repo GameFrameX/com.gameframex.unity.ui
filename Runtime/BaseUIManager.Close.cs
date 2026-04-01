@@ -35,6 +35,9 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面管理器。
     /// </summary>
+    /// <remarks>
+    /// UI manager.
+    /// </remarks>
     public partial class BaseUIManager
     {
         [UnityEngine.Scripting.Preserve]
@@ -43,6 +46,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭界面完成事件。
         /// </summary>
+        /// <remarks>
+        /// Event triggered when a UI form is closed.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public event EventHandler<CloseUIFormCompleteEventArgs> CloseUIFormComplete
         {
@@ -53,16 +59,22 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 回收界面实例对象。
         /// </summary>
-        /// <param name="uiForm"></param>
-        /// <param name="isDispose">是否销毁释放</param>
+        /// <remarks>
+        /// Recycles the UI form instance object.
+        /// </remarks>
+        /// <param name="uiForm">要回收的界面实例。 / The UI form instance to recycle.</param>
+        /// <param name="isDispose">是否销毁释放。 / Whether to dispose and release.</param>
         [UnityEngine.Scripting.Preserve]
         protected abstract void RecycleUIForm(IUIForm uiForm, bool isDispose = false);
 
         /// <summary>
         /// 关闭界面。
         /// </summary>
-        /// <param name="serialId">要关闭界面的序列编号。</param>
-        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        /// <remarks>
+        /// Closes a UI form.
+        /// </remarks>
+        /// <param name="serialId">要关闭界面的序列编号。 / The serial ID of the UI form to close.</param>
+        /// <param name="isNowRecycle">是否立即回收界面，默认是否。 / Whether to recycle the UI form immediately, default is false.</param>
         [UnityEngine.Scripting.Preserve]
         public void CloseUIForm(int serialId, bool isNowRecycle = false)
         {
@@ -72,9 +84,12 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭界面。
         /// </summary>
-        /// <param name="serialId">要关闭界面的序列编号。</param>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        /// <remarks>
+        /// Closes a UI form.
+        /// </remarks>
+        /// <param name="serialId">要关闭界面的序列编号。 / The serial ID of the UI form to close.</param>
+        /// <param name="userData">用户自定义数据。 / User custom data.</param>
+        /// <param name="isNowRecycle">是否立即回收界面，默认是否。 / Whether to recycle the UI form immediately, default is false.</param>
         [UnityEngine.Scripting.Preserve]
         public void CloseUIForm(int serialId, object userData, bool isNowRecycle = false)
         {
@@ -91,8 +106,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭界面。
         /// </summary>
-        /// <param name="uiForm">要关闭的界面。</param>
-        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        /// <remarks>
+        /// Closes a UI form.
+        /// </remarks>
+        /// <param name="uiForm">要关闭的界面。 / The UI form to close.</param>
+        /// <param name="isNowRecycle">是否立即回收界面，默认是否。 / Whether to recycle the UI form immediately, default is false.</param>
         [UnityEngine.Scripting.Preserve]
         public void CloseUIForm(IUIForm uiForm, bool isNowRecycle = false)
         {
@@ -102,9 +120,12 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭界面。
         /// </summary>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
-        /// <typeparam name="T"></typeparam>
+        /// <remarks>
+        /// Closes a UI form by type.
+        /// </remarks>
+        /// <typeparam name="T">界面类型。 / The type of the UI form.</typeparam>
+        /// <param name="userData">用户自定义数据。 / User custom data.</param>
+        /// <param name="isNowRecycle">是否立即回收界面，默认是否。 / Whether to recycle the UI form immediately, default is false.</param>
         [UnityEngine.Scripting.Preserve]
         public void CloseUIForm<T>(object userData, bool isNowRecycle = false) where T : IUIForm
         {
@@ -130,9 +151,12 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭界面。
         /// </summary>
-        /// <param name="uiForm">要关闭的界面。</param>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        /// <remarks>
+        /// Closes a UI form.
+        /// </remarks>
+        /// <param name="uiForm">要关闭的界面。 / The UI form to close.</param>
+        /// <param name="userData">用户自定义数据。 / User custom data.</param>
+        /// <param name="isNowRecycle">是否立即回收界面，默认是否。 / Whether to recycle the UI form immediately, default is false.</param>
         [UnityEngine.Scripting.Preserve]
         public void CloseUIForm(IUIForm uiForm, object userData, bool isNowRecycle = false)
         {
@@ -201,7 +225,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭所有已加载的界面。
         /// </summary>
-        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        /// <remarks>
+        /// Closes all loaded UI forms.
+        /// </remarks>
+        /// <param name="isNowRecycle">是否立即回收界面，默认是否。 / Whether to recycle UI forms immediately, default is false.</param>
         [UnityEngine.Scripting.Preserve]
         public void CloseAllLoadedUIForms(bool isNowRecycle = false)
         {
@@ -211,8 +238,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭所有已加载的界面。
         /// </summary>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        /// <remarks>
+        /// Closes all loaded UI forms.
+        /// </remarks>
+        /// <param name="userData">用户自定义数据。 / User custom data.</param>
+        /// <param name="isNowRecycle">是否立即回收界面，默认是否。 / Whether to recycle UI forms immediately, default is false.</param>
         [UnityEngine.Scripting.Preserve]
         public void CloseAllLoadedUIForms(object userData, bool isNowRecycle = false)
         {
@@ -231,6 +261,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭所有正在加载的界面。
         /// </summary>
+        /// <remarks>
+        /// Closes all loading UI forms.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void CloseAllLoadingUIForms()
         {
@@ -245,8 +278,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 释放所有已加载的界面。
         /// </summary>
-        /// <param name="userData">用户自定义数据。</param>
-        /// <param name="isNowRecycle">是否立即回收界面,默认是否</param>
+        /// <remarks>
+        /// Releases all loaded UI forms.
+        /// </remarks>
+        /// <param name="isNowRecycle">是否立即回收界面，默认是否。 / Whether to recycle UI forms immediately, default is false.</param>
+        /// <param name="userData">用户自定义数据。 / User custom data.</param>
         [UnityEngine.Scripting.Preserve]
         public void ReleaseAllLoadedUIForms(bool isNowRecycle = false, object userData = null)
         {

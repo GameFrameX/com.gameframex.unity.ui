@@ -35,13 +35,19 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面管理器。
     /// </summary>
+    /// <remarks>
+    /// UI manager.
+    /// </remarks>
     public partial class BaseUIManager
     {
         /// <summary>
         /// 是否存在界面。
         /// </summary>
-        /// <param name="serialId">界面序列编号。</param>
-        /// <returns>是否存在界面。</returns>
+        /// <remarks>
+        /// Checks if a UI form exists.
+        /// </remarks>
+        /// <param name="serialId">界面序列编号。 / The UI form serial ID.</param>
+        /// <returns>是否存在界面。 / Whether the UI form exists.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool HasUIForm(int serialId)
         {
@@ -59,8 +65,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否存在界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <returns>是否存在界面。</returns>
+        /// <remarks>
+        /// Checks if a UI form exists.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称。 / The UI form asset name.</param>
+        /// <returns>是否存在界面。 / Whether the UI form exists.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool HasUIForm(string uiFormAssetName)
         {
@@ -80,8 +89,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面。
         /// </summary>
-        /// <param name="serialId">界面序列编号。</param>
-        /// <returns>要获取的界面。</returns>
+        /// <remarks>
+        /// Gets a UI form by serial ID.
+        /// </remarks>
+        /// <param name="serialId">界面序列编号。 / The UI form serial ID.</param>
+        /// <returns>要获取的界面。 / The UI form to get.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm GetUIForm(int serialId)
         {
@@ -100,8 +112,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <returns>要获取的界面。</returns>
+        /// <remarks>
+        /// Gets a UI form by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称。 / The UI form asset name.</param>
+        /// <returns>要获取的界面。 / The UI form to get.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm GetUIForm(string uiFormAssetName)
         {
@@ -122,8 +137,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <returns>要获取的界面。</returns>
+        /// <remarks>
+        /// Gets all UI forms by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称。 / The UI form asset name.</param>
+        /// <returns>要获取的界面数组。 / The array of UI forms to get.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm[] GetUIForms(string uiFormAssetName)
         {
@@ -141,8 +159,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <param name="results">要获取的界面。</param>
+        /// <remarks>
+        /// Gets all UI forms by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称。 / The UI form asset name.</param>
+        /// <param name="results">要获取的界面列表。 / The list of UI forms to get.</param>
         [UnityEngine.Scripting.Preserve]
         public void GetUIForms(string uiFormAssetName, List<IUIForm> results)
         {
@@ -158,7 +179,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取所有已加载的界面。
         /// </summary>
-        /// <returns>所有已加载的界面。</returns>
+        /// <remarks>
+        /// Gets all loaded UI forms.
+        /// </remarks>
+        /// <returns>所有已加载的界面。 / All loaded UI forms.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm[] GetAllLoadedUIForms()
         {
@@ -174,7 +198,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取所有已加载的界面。
         /// </summary>
-        /// <param name="results">所有已加载的界面。</param>
+        /// <remarks>
+        /// Gets all loaded UI forms.
+        /// </remarks>
+        /// <param name="results">所有已加载的界面列表。 / The list of all loaded UI forms.</param>
         [UnityEngine.Scripting.Preserve]
         public void GetAllLoadedUIForms(List<IUIForm> results)
         {
@@ -190,7 +217,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取所有正在加载界面的序列编号。
         /// </summary>
-        /// <returns>所有正在加载界面的序列编号。</returns>
+        /// <remarks>
+        /// Gets all loading UI form serial IDs.
+        /// </remarks>
+        /// <returns>所有正在加载界面的序列编号。 / All loading UI form serial IDs.</returns>
         [UnityEngine.Scripting.Preserve]
         public int[] GetAllLoadingUIFormSerialIds()
         {
@@ -207,7 +237,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取所有正在加载界面的序列编号。
         /// </summary>
-        /// <param name="results">所有正在加载界面的序列编号。</param>
+        /// <remarks>
+        /// Gets all loading UI form serial IDs.
+        /// </remarks>
+        /// <param name="results">所有正在加载界面的序列编号列表。 / The list of all loading UI form serial IDs.</param>
         [UnityEngine.Scripting.Preserve]
         public void GetAllLoadingUIFormSerialIds(List<int> results)
         {
@@ -223,8 +256,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否正在加载界面。
         /// </summary>
-        /// <param name="serialId">界面序列编号。</param>
-        /// <returns>是否正在加载界面。</returns>
+        /// <remarks>
+        /// Checks if a UI form is loading by serial ID.
+        /// </remarks>
+        /// <param name="serialId">界面序列编号。 / The UI form serial ID.</param>
+        /// <returns>是否正在加载界面。 / Whether the UI form is loading.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool IsLoadingUIForm(int serialId)
         {
@@ -234,8 +270,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否正在加载界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <returns>是否正在加载界面。</returns>
+        /// <remarks>
+        /// Checks if a UI form is loading by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称。 / The UI form asset name.</param>
+        /// <returns>是否正在加载界面。 / Whether the UI form is loading.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool IsLoadingUIForm(string uiFormAssetName)
         {
@@ -247,8 +286,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否是合法的界面。
         /// </summary>
-        /// <param name="uiForm">界面。</param>
-        /// <returns>界面是否合法。</returns>
+        /// <remarks>
+        /// Checks if a UI form is valid.
+        /// </remarks>
+        /// <param name="uiForm">界面。 / The UI form.</param>
+        /// <returns>界面是否合法。 / Whether the UI form is valid.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool IsValidUIForm(IUIForm uiForm)
         {
@@ -263,8 +305,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否存在界面。
         /// </summary>
-        /// <param name="fullName">完整界面名称</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Checks if a UI form exists by full name.
+        /// </remarks>
+        /// <param name="fullName">完整界面名称。 / The full name of the UI form.</param>
+        /// <returns>是否存在界面。 / Whether the UI form exists.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool HasUIFormFullName(string fullName)
         {

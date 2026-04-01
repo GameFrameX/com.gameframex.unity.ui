@@ -30,116 +30,173 @@
 namespace GameFrameX.UI.Runtime
 {
     /// <summary>
-    /// 界面组名称常量
+    /// 界面组名称常量。
     /// </summary>
+    /// <remarks>
+    /// UI group name constants.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class UIGroupNameConstants
     {
         /// <summary>
-        /// 隐藏
+        /// 隐藏。
         /// </summary>
+        /// <remarks>
+        /// Hidden.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Hidden = "Hidden";
 
         /// <summary>
-        /// 背景
+        /// 背景。
         /// </summary>
+        /// <remarks>
+        /// Background.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Background = "Background";
 
         /// <summary>
-        /// 场景
+        /// 场景。
         /// </summary>
+        /// <remarks>
+        /// Scene.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Scene = "Scene";
 
         /// <summary>
-        /// 世界
+        /// 世界。
         /// </summary>
+        /// <remarks>
+        /// World.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string World = "World";
 
         /// <summary>
-        /// 战斗
+        /// 战斗。
         /// </summary>
+        /// <remarks>
+        /// Battle.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Battle = "Battle";
 
         /// <summary>
-        /// 头顶
+        /// 头顶。
         /// </summary>
+        /// <remarks>
+        /// HUD (Heads Up Display).
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Hud = "Hud";
 
         /// <summary>
-        /// 地图
+        /// 地图。
         /// </summary>
+        /// <remarks>
+        /// Map.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Map = "Map";
 
         /// <summary>
-        /// 底板
+        /// 底板。
         /// </summary>
+        /// <remarks>
+        /// Floor.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Floor = "Floor";
 
         /// <summary>
-        /// 正常
+        /// 正常。
         /// </summary>
+        /// <remarks>
+        /// Normal.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Normal = "Normal";
 
         /// <summary>
-        /// 固定
+        /// 固定。
         /// </summary>
+        /// <remarks>
+        /// Fixed.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Fixed = "Fixed";
 
         /// <summary>
-        /// 窗口
+        /// 窗口。
         /// </summary>
+        /// <remarks>
+        /// Window.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Window = "Window";
 
         /// <summary>
-        /// 提示
+        /// 提示。
         /// </summary>
+        /// <remarks>
+        /// Tip.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Tip = "Tip";
 
         /// <summary>
-        /// 引导
+        /// 引导。
         /// </summary>
+        /// <remarks>
+        /// Guide.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Guide = "Guide";
 
         /// <summary>
-        /// 黑板
+        /// 黑板。
         /// </summary>
+        /// <remarks>
+        /// Blackboard.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string BlackBoard = "BlackBoard";
 
         /// <summary>
-        /// 对话
+        /// 对话。
         /// </summary>
+        /// <remarks>
+        /// Dialogue.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Dialogue = "Dialogue";
 
         /// <summary>
-        /// Loading 
+        /// 加载中。
         /// </summary>
+        /// <remarks>
+        /// Loading.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Loading = "Loading";
 
         /// <summary>
-        /// 通知
+        /// 通知。
         /// </summary>
+        /// <remarks>
+        /// Notify.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string Notify = "Notify";
 
         /// <summary>
-        /// 系统顶级
+        /// 系统顶级。
         /// </summary>
+        /// <remarks>
+        /// System top level.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public const string System = "System";
     }

@@ -35,28 +35,66 @@ namespace GameFrameX.UI.Runtime
 {
     public partial class UIComponent : GameFrameworkComponent
     {
+        /// <summary>
+        /// 界面组配置类。
+        /// </summary>
+        /// <remarks>
+        /// UI group configuration class.
+        /// </remarks>
         [Serializable]
         [UnityEngine.Scripting.Preserve]
         private sealed class UIGroup
         {
+            /// <summary>
+            /// 界面组名称。
+            /// </summary>
+            /// <remarks>
+            /// The name of the UI group.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             [SerializeField] private string m_Name = null;
 
+            /// <summary>
+            /// 界面组深度。
+            /// </summary>
+            /// <remarks>
+            /// The depth of the UI group.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             [SerializeField] private int m_Depth = 0;
 
+            /// <summary>
+            /// 获取界面组名称。
+            /// </summary>
+            /// <remarks>
+            /// Gets the name of the UI group.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public string Name
             {
                 get { return m_Name; }
             }
 
+            /// <summary>
+            /// 获取界面组深度。
+            /// </summary>
+            /// <remarks>
+            /// Gets the depth of the UI group.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public int Depth
             {
                 get { return m_Depth; }
             }
 
+            /// <summary>
+            /// 初始化界面组配置的新实例。
+            /// </summary>
+            /// <remarks>
+            /// Initializes a new instance of the <see cref="UIGroup"/> class.
+            /// </remarks>
+            /// <param name="depth">界面组深度。 / The depth of the UI group.</param>
+            /// <param name="name">界面组名称。 / The name of the UI group.</param>
             [UnityEngine.Scripting.Preserve]
             public UIGroup(int depth, string name)
             {

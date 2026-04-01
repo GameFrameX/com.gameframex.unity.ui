@@ -38,8 +38,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面。
         /// </summary>
-        /// <param name="serialId">界面序列编号。</param>
-        /// <returns>要获取的界面。</returns>
+        /// <remarks>
+        /// Gets a UI form by serial ID.
+        /// </remarks>
+        /// <param name="serialId">界面序列编号。 / The UI form serial ID.</param>
+        /// <returns>要获取的界面。 / The UI form to get.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm GetUIForm(int serialId)
         {
@@ -49,8 +52,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <returns>要获取的界面。</returns>
+        /// <remarks>
+        /// Gets a UI form by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称。 / The UI form asset name.</param>
+        /// <returns>要获取的界面。 / The UI form to get.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm GetUIForm(string uiFormAssetName)
         {
@@ -60,8 +66,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <returns>要获取的界面。</returns>
+        /// <remarks>
+        /// Gets all UI forms by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称。 / The UI form asset name.</param>
+        /// <returns>要获取的界面数组。 / The array of UI forms to get.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm[] GetUIForms(string uiFormAssetName)
         {
@@ -78,8 +87,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面。
         /// </summary>
-        /// <param name="uiFormAssetName">界面资源名称。</param>
-        /// <param name="results">要获取的界面。</param>
+        /// <remarks>
+        /// Gets all UI forms by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称。 / The UI form asset name.</param>
+        /// <param name="results">要获取的界面列表。 / The list of UI forms to get.</param>
         [UnityEngine.Scripting.Preserve]
         public void GetUIForms(string uiFormAssetName, List<IUIForm> results)
         {
@@ -98,10 +110,13 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 根据界面逻辑类型获取界面列表,会返回所有符合条件的集合
+        /// 根据界面逻辑类型获取界面列表，会返回所有符合条件的集合。
         /// </summary>
-        /// <typeparam name="T">界面逻辑类型</typeparam>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets the list of UI forms by logic type, returns all matching instances.
+        /// </remarks>
+        /// <typeparam name="T">界面逻辑类型。 / The UI form logic type.</typeparam>
+        /// <returns>符合条件的界面列表。 / The list of matching UI forms.</returns>
         public List<T> GetLoadedList<T>() where T : class, IUIForm
         {
             var fullName = typeof(T).FullName;
@@ -121,8 +136,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取已加载且正在显示的UI。
         /// </summary>
-        /// <param name="type">UI的具体类型。</param>
-        /// <returns>返回已加载且正在显示的UI实例，如果未找到则返回null。</returns>
+        /// <remarks>
+        /// Gets a loaded and showing UI form by type.
+        /// </remarks>
+        /// <param name="type">UI的具体类型。 / The type of the UI form.</param>
+        /// <returns>返回已加载且正在显示的UI实例，如果未找到则返回null。 / The loaded and showing UI form instance, or null if not found.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm GetLoadedAndShowing(Type type)
         {
@@ -142,8 +160,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取已加载且正在显示的UI。
         /// </summary>
-        /// <typeparam name="T">UI的具体类型。</typeparam>
-        /// <returns>返回已加载且正在显示的UI实例，如果未找到则返回null。</returns>
+        /// <remarks>
+        /// Gets a loaded and showing UI form by type.
+        /// </remarks>
+        /// <typeparam name="T">UI的具体类型。 / The type of the UI form.</typeparam>
+        /// <returns>返回已加载且正在显示的UI实例，如果未找到则返回null。 / The loaded and showing UI form instance, or null if not found.</returns>
         public T GetLoadedAndShowing<T>() where T : class, IUIForm
         {
             var fullName = typeof(T).FullName;
@@ -160,10 +181,13 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 获取已加载且正在显示的UI
+        /// 获取已加载且正在显示的UI。
         /// </summary>
-        /// <param name="uiFormAssetName"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Checks if a loaded and showing UI form exists by asset name.
+        /// </remarks>
+        /// <param name="uiFormAssetName">界面资源名称。 / The UI form asset name.</param>
+        /// <returns>是否存在已加载且正在显示的UI。 / Whether a loaded and showing UI form exists.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool HasLoadedAndShowing(string uiFormAssetName)
         {
@@ -180,10 +204,13 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 根据界面逻辑类型获取界面。只要找到任意的一个即返回
+        /// 根据界面逻辑类型获取界面。只要找到任意的一个即返回。
         /// </summary>
-        /// <param name="type">逻辑界面类型</param>
-        /// <returns>返回已加载的UI实例，如果未找到则返回null。</returns>
+        /// <remarks>
+        /// Gets a loaded UI form by logic type. Returns the first match found.
+        /// </remarks>
+        /// <param name="type">逻辑界面类型。 / The UI form logic type.</param>
+        /// <returns>返回已加载的UI实例，如果未找到则返回null。 / The loaded UI form instance, or null if not found.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm GetLoaded(Type type)
         {
@@ -201,10 +228,13 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 根据界面逻辑类型获取界面。只要找到任意的一个即返回
+        /// 根据界面逻辑类型获取界面。只要找到任意的一个即返回。
         /// </summary>
-        /// <typeparam name="T">逻辑界面类型</typeparam>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets a loaded UI form by logic type. Returns the first match found.
+        /// </remarks>
+        /// <typeparam name="T">逻辑界面类型。 / The UI form logic type.</typeparam>
+        /// <returns>返回已加载的UI实例，如果未找到则返回null。 / The loaded UI form instance, or null if not found.</returns>
         public T GetLoaded<T>() where T : class, IUIForm
         {
             var fullName = typeof(T).FullName;
@@ -223,7 +253,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取所有已加载的界面。
         /// </summary>
-        /// <returns>所有已加载的界面。</returns>
+        /// <remarks>
+        /// Gets all loaded UI forms.
+        /// </remarks>
+        /// <returns>所有已加载的界面。 / All loaded UI forms.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIForm[] GetAllLoadedUIForms()
         {
@@ -240,7 +273,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取所有已加载的界面。
         /// </summary>
-        /// <param name="results">所有已加载的界面。</param>
+        /// <remarks>
+        /// Gets all loaded UI forms.
+        /// </remarks>
+        /// <param name="results">所有已加载的界面列表。 / The list of all loaded UI forms.</param>
         [UnityEngine.Scripting.Preserve]
         public void GetAllLoadedUIForms(List<IUIForm> results)
         {
@@ -261,7 +297,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取所有正在加载界面的序列编号。
         /// </summary>
-        /// <returns>所有正在加载界面的序列编号。</returns>
+        /// <remarks>
+        /// Gets all loading UI form serial IDs.
+        /// </remarks>
+        /// <returns>所有正在加载界面的序列编号。 / All loading UI form serial IDs.</returns>
         [UnityEngine.Scripting.Preserve]
         public int[] GetAllLoadingUIFormSerialIds()
         {
@@ -271,7 +310,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取所有正在加载界面的序列编号。
         /// </summary>
-        /// <param name="results">所有正在加载界面的序列编号。</param>
+        /// <remarks>
+        /// Gets all loading UI form serial IDs.
+        /// </remarks>
+        /// <param name="results">所有正在加载界面的序列编号列表。 / The list of all loading UI form serial IDs.</param>
         [UnityEngine.Scripting.Preserve]
         public void GetAllLoadingUIFormSerialIds(List<int> results)
         {

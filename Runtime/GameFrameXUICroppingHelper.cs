@@ -33,12 +33,30 @@ using UnityEngine.Scripting;
 
 namespace GameFrameX.UI.Runtime
 {
+    /// <summary>
+    /// UI代码裁剪辅助器。
+    /// </summary>
+    /// <remarks>
+    /// UI code cropping helper for preventing code stripping.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public class GameFrameXUICroppingHelper : MonoBehaviour
     {
+        /// <summary>
+        /// 需要保留的类型数组。
+        /// </summary>
+        /// <remarks>
+        /// Array of types to preserve from code stripping.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         private Type[] m_Types;
 
+        /// <summary>
+        /// Unity生命周期Start方法。
+        /// </summary>
+        /// <remarks>
+        /// Unity lifecycle Start method. Initializes types to preserve.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         private void Start()
         {

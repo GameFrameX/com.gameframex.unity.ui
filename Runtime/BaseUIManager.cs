@@ -40,30 +40,45 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 当前加载的界面实例对象池。
         /// </summary>
+        /// <remarks>
+        /// Dictionary of currently loading UI form instances.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected readonly Dictionary<int, string> m_UIFormsBeingLoaded = new Dictionary<int, string>();
 
         /// <summary>
         /// 需要释放的界面实例对象池。
         /// </summary>
+        /// <remarks>
+        /// HashSet of UI form instances to be released on load.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected readonly HashSet<int> m_UIFormsToReleaseOnLoad = new HashSet<int>();
 
         /// <summary>
         /// 待释放的界面实例队列。
         /// </summary>
+        /// <remarks>
+        /// Queue of UI form instances waiting to be recycled.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         private Queue<IUIForm> m_RecycleQueue = new Queue<IUIForm>();
 
         /// <summary>
         /// 界面实例对象池回收间隔秒数。
         /// </summary>
+        /// <remarks>
+        /// UI form instance pool recycle interval in seconds.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected int m_RecycleInterval = 60;
 
         /// <summary>
         /// 界面实例对象池回收时间。
         /// </summary>
+        /// <remarks>
+        /// UI form instance pool recycle time.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected float m_RecycleTime = 0;
 
@@ -73,24 +88,36 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 资源管理器。
         /// </summary>
+        /// <remarks>
+        /// The asset manager.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected IAssetManager m_AssetManager;
 
         /// <summary>
         /// 界面辅助器。
         /// </summary>
+        /// <remarks>
+        /// The UI form helper.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected IUIFormHelper m_UIFormHelper;
 
         /// <summary>
         /// 对象池管理器。
         /// </summary>
+        /// <remarks>
+        /// The object pool manager.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected IObjectPoolManager m_ObjectPoolManager;
 
         /// <summary>
         /// 获取或设置界面实例对象池自动释放可释放对象的间隔秒数。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the auto release interval in seconds for the UI form instance pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public float InstanceAutoReleaseInterval
         {
@@ -101,6 +128,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池的回收间隔秒数。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the recycle interval in seconds for the UI form instance pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int RecycleInterval
         {
@@ -111,6 +141,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池的容量。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the capacity of the UI form instance pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int InstanceCapacity
         {
@@ -124,6 +157,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置是否启用界面隐藏动画。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets whether to enable UI form hide animation.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool IsEnableUIHideAnimation
         {
@@ -134,6 +170,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置界面实例对象池对象过期秒数。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the expire time in seconds for the UI form instance pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public float InstanceExpireTime
         {
@@ -145,12 +184,18 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取或设置是否启用界面显示动画。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets whether to enable UI form show animation.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         private bool m_IsEnableUIShowAnimation = false;
 
         /// <summary>
         /// 获取或设置是否启用界面显示动画。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets whether to enable UI form show animation.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool IsEnableUIShowAnimation
         {
@@ -170,8 +215,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 界面管理器轮询。
         /// </summary>
-        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
-        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        /// <remarks>
+        /// Updates the UI manager.
+        /// </remarks>
+        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。 / The logical elapsed time in seconds.</param>
+        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。 / The real elapsed time in seconds.</param>
         [UnityEngine.Scripting.Preserve]
         protected override void Update(float elapseSeconds, float realElapseSeconds)
         {
@@ -190,6 +238,9 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 关闭并清理界面管理器。
         /// </summary>
+        /// <remarks>
+        /// Shuts down and cleans up the UI manager.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected override void Shutdown()
         {
@@ -204,7 +255,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 设置对象池管理器。
         /// </summary>
-        /// <param name="objectPoolManager">对象池管理器。</param>
+        /// <remarks>
+        /// Sets the object pool manager.
+        /// </remarks>
+        /// <param name="objectPoolManager">对象池管理器。 / The object pool manager.</param>
         [UnityEngine.Scripting.Preserve]
         public void SetObjectPoolManager(IObjectPoolManager objectPoolManager)
         {
@@ -217,7 +271,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 设置资源管理器。
         /// </summary>
-        /// <param name="assetManager">资源管理器。</param>
+        /// <remarks>
+        /// Sets the asset manager.
+        /// </remarks>
+        /// <param name="assetManager">资源管理器。 / The asset manager.</param>
         [UnityEngine.Scripting.Preserve]
         public virtual void SetResourceManager(IAssetManager assetManager)
         {
@@ -229,7 +286,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 设置界面辅助器。
         /// </summary>
-        /// <param name="uiFormHelper">界面辅助器。</param>
+        /// <remarks>
+        /// Sets the UI form helper.
+        /// </remarks>
+        /// <param name="uiFormHelper">界面辅助器。 / The UI form helper.</param>
         [UnityEngine.Scripting.Preserve]
         public void SetUIFormHelper(IUIFormHelper uiFormHelper)
         {
@@ -239,9 +299,12 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 设置界面显示处理接口
+        /// 设置界面显示处理接口。
         /// </summary>
-        /// <param name="handler">界面显示处理接口</param>
+        /// <remarks>
+        /// Sets the UI form show handler.
+        /// </remarks>
+        /// <param name="handler">界面显示处理接口。 / The UI form show handler.</param>
         [UnityEngine.Scripting.Preserve]
         public void SetUIFormShowHandler(IUIFormShowHandler handler)
         {
@@ -249,9 +312,12 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 设置界面隐藏处理接口
+        /// 设置界面隐藏处理接口。
         /// </summary>
-        /// <param name="handler">界面隐藏处理接口</param>
+        /// <remarks>
+        /// Sets the UI form hide handler.
+        /// </remarks>
+        /// <param name="handler">界面隐藏处理接口。 / The UI form hide handler.</param>
         [UnityEngine.Scripting.Preserve]
         public void SetUIFormHideHandler(IUIFormHideHandler handler)
         {

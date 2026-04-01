@@ -34,30 +34,44 @@ namespace GameFrameX.UI.Runtime
     /// <summary>
     /// 界面组辅助器基类。
     /// </summary>
+    /// <remarks>
+    /// Base class for UI group helpers.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public abstract class UIGroupHelperBase : MonoBehaviour, IUIGroupHelper
     {
         /// <summary>
         /// 获取界面组深度。
         /// </summary>
+        /// <remarks>
+        /// Gets the depth of the UI group.
+        /// </remarks>
+        /// <value>界面组深度 / UI group depth</value>
         [UnityEngine.Scripting.Preserve]
         public abstract int Depth { get; protected set; }
 
         /// <summary>
         /// 设置界面组深度。
         /// </summary>
-        /// <param name="depth">界面组深度。</param>
+        /// <remarks>
+        /// Sets the depth of the UI group.
+        /// </remarks>
+        /// <param name="depth">界面组深度 / UI group depth</param>
         [UnityEngine.Scripting.Preserve]
         public abstract void SetDepth(int depth);
 
         /// <summary>
         /// 创建界面组。
         /// </summary>
-        /// <param name="root">根节点。</param>
-        /// <param name="groupName">界面组名称。</param>
-        /// <param name="uiGroupHelperTypeName">界面组辅助器类型名。</param>
-        /// <param name="customUIGroupHelper">自定义的界面组辅助器.</param>
-        /// <param name="depth">界面组深度。</param>
+        /// <remarks>
+        /// Creates a UI group.
+        /// </remarks>
+        /// <param name="root">根节点 / Root transform</param>
+        /// <param name="groupName">界面组名称 / UI group name</param>
+        /// <param name="uiGroupHelperTypeName">界面组辅助器类型名 / UI group helper type name</param>
+        /// <param name="customUIGroupHelper">自定义的界面组辅助器 / Custom UI group helper</param>
+        /// <param name="depth">界面组深度 / UI group depth</param>
+        /// <returns>界面组辅助器实例 / UI group helper instance</returns>
         [UnityEngine.Scripting.Preserve]
         public abstract IUIGroupHelper Handler(Transform root, string groupName, string uiGroupHelperTypeName, IUIGroupHelper customUIGroupHelper, int depth = 0);
     }

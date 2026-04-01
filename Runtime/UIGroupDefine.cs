@@ -30,23 +30,42 @@
 namespace GameFrameX.UI.Runtime
 {
     /// <summary>
-    /// 界面组
+    /// 界面组定义。
     /// </summary>
+    /// <remarks>
+    /// UI group definition.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class UIGroupDefine
     {
         /// <summary>
-        /// 界面组深度
+        /// 界面组深度。
         /// </summary>
+        /// <remarks>
+        /// The depth of the UI group.
+        /// </remarks>
+        /// <value>界面组深度 / UI group depth</value>
         [UnityEngine.Scripting.Preserve]
         public readonly int Depth;
 
         /// <summary>
-        /// 界面组名称
+        /// 界面组名称。
         /// </summary>
+        /// <remarks>
+        /// The name of the UI group.
+        /// </remarks>
+        /// <value>界面组名称 / UI group name</value>
         [UnityEngine.Scripting.Preserve]
         public readonly string Name;
 
+        /// <summary>
+        /// 初始化界面组定义的新实例。
+        /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the <see cref="UIGroupDefine"/> class.
+        /// </remarks>
+        /// <param name="depth">界面组深度 / The depth of the UI group</param>
+        /// <param name="name">界面组名称 / The name of the UI group</param>
         [UnityEngine.Scripting.Preserve]
         public UIGroupDefine(int depth, string name)
         {

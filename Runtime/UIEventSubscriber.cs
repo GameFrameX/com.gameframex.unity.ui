@@ -35,8 +35,11 @@ using GameFrameX.Runtime;
 namespace GameFrameX.UI.Runtime
 {
     /// <summary>
-    /// UI事件订阅器
+    /// UI事件订阅器。
     /// </summary>
+    /// <remarks>
+    /// UI event subscriber for managing event subscriptions.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class UIEventSubscriber : IReference
     {
@@ -44,14 +47,24 @@ namespace GameFrameX.UI.Runtime
         private readonly GameFrameworkMultiDictionary<string, EventHandler<GameEventArgs>> m_DicEventHandler;
 
         /// <summary>
-        /// 持有者
+        /// 持有者。
         /// </summary>
+        /// <remarks>
+        /// Gets the owner of this subscriber.
+        /// </remarks>
+        /// <value>持有者对象 / Owner object</value>
         [UnityEngine.Scripting.Preserve]
         public object Owner { get; private set; }
 
         [UnityEngine.Scripting.Preserve]
         private readonly List<string> m_removeList;
 
+        /// <summary>
+        /// 初始化UI事件订阅器的新实例。
+        /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the <see cref="UIEventSubscriber"/> class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public UIEventSubscriber()
         {
@@ -61,11 +74,14 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 检查订阅
+        /// 检查并订阅事件。
         /// </summary>
-        /// <param name="id">消息ID</param>
-        /// <param name="handler">处理对象</param>
-        /// <exception cref="Exception"></exception>
+        /// <remarks>
+        /// Checks and subscribes to an event.
+        /// </remarks>
+        /// <param name="id">消息ID / Event ID</param>
+        /// <param name="handler">处理对象 / Event handler</param>
+        /// <exception cref="Exception">当 <paramref name="handler"/> 为 null 时抛出 / Thrown when <paramref name="handler"/> is null</exception>
         [UnityEngine.Scripting.Preserve]
         public void CheckSubscribe(string id, EventHandler<GameEventArgs> handler)
         {
@@ -79,11 +95,14 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 取消订阅
+        /// 取消订阅事件。
         /// </summary>
-        /// <param name="id">消息ID</param>
-        /// <param name="handler">处理对象</param>
-        /// <exception cref="Exception"></exception>
+        /// <remarks>
+        /// Unsubscribes from an event.
+        /// </remarks>
+        /// <param name="id">消息ID / Event ID</param>
+        /// <param name="handler">处理对象 / Event handler</param>
+        /// <exception cref="Exception">当指定的事件不存在时抛出 / Thrown when the specified event does not exist</exception>
         [UnityEngine.Scripting.Preserve]
         public void UnSubscribe(string id, EventHandler<GameEventArgs> handler)
         {
@@ -96,10 +115,13 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 触发事件
+        /// 触发事件。
         /// </summary>
-        /// <param name="id">消息ID</param>
-        /// <param name="e">消息对象</param>
+        /// <remarks>
+        /// Fires an event.
+        /// </remarks>
+        /// <param name="id">消息ID / Event ID</param>
+        /// <param name="e">消息对象 / Event arguments</param>
         [UnityEngine.Scripting.Preserve]
         public void Fire(string id, GameEventArgs e)
         {
@@ -122,8 +144,12 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 取消所有订阅
+        /// 取消所有订阅。
         /// </summary>
+        /// <remarks>
+        /// Unsubscribes from all events.
+        /// </remarks>
+        /// <param name="ignoreList">要忽略的事件ID列表 / List of event IDs to ignore</param>
         [UnityEngine.Scripting.Preserve]
         public void UnSubscribeAll(List<string> ignoreList = null)
         {
@@ -160,10 +186,13 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 创建事件订阅器
+        /// 创建事件订阅器。
         /// </summary>
-        /// <param name="owner">持有者</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Creates a UI event subscriber.
+        /// </remarks>
+        /// <param name="owner">持有者 / Owner object</param>
+        /// <returns>创建的事件订阅器 / The created event subscriber</returns>
         [UnityEngine.Scripting.Preserve]
         public static UIEventSubscriber Create(object owner)
         {
@@ -174,8 +203,11 @@ namespace GameFrameX.UI.Runtime
         }
 
         /// <summary>
-        /// 清理
+        /// 清理事件订阅器。
         /// </summary>
+        /// <remarks>
+        /// Clears the event subscriber.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void Clear()
         {

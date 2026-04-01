@@ -37,8 +37,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 是否存在界面组。
         /// </summary>
-        /// <param name="uiGroupName">界面组名称。</param>
-        /// <returns>是否存在界面组。</returns>
+        /// <remarks>
+        /// Checks if a UI group exists.
+        /// </remarks>
+        /// <param name="uiGroupName">界面组名称。 / The UI group name.</param>
+        /// <returns>是否存在界面组。 / Whether the UI group exists.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool HasUIGroup(string uiGroupName)
         {
@@ -48,8 +51,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取界面组。
         /// </summary>
-        /// <param name="uiGroupName">界面组名称。</param>
-        /// <returns>要获取的界面组。</returns>
+        /// <remarks>
+        /// Gets a UI group by name.
+        /// </remarks>
+        /// <param name="uiGroupName">界面组名称。 / The UI group name.</param>
+        /// <returns>要获取的界面组。 / The UI group to get.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIGroup GetUIGroup(string uiGroupName)
         {
@@ -59,7 +65,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取所有界面组。
         /// </summary>
-        /// <returns>所有界面组。</returns>
+        /// <remarks>
+        /// Gets all UI groups.
+        /// </remarks>
+        /// <returns>所有界面组。 / All UI groups.</returns>
         [UnityEngine.Scripting.Preserve]
         public IUIGroup[] GetAllUIGroups()
         {
@@ -69,7 +78,10 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取所有界面组。
         /// </summary>
-        /// <param name="results">所有界面组。</param>
+        /// <remarks>
+        /// Gets all UI groups.
+        /// </remarks>
+        /// <param name="results">所有界面组列表。 / The list of all UI groups.</param>
         [UnityEngine.Scripting.Preserve]
         public void GetAllUIGroups(List<IUIGroup> results)
         {
@@ -79,8 +91,11 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 增加界面组。
         /// </summary>
-        /// <param name="uiGroupName">界面组名称。</param>
-        /// <returns>是否增加界面组成功。</returns>
+        /// <remarks>
+        /// Adds a UI group.
+        /// </remarks>
+        /// <param name="uiGroupName">界面组名称。 / The UI group name.</param>
+        /// <returns>是否增加界面组成功。 / Whether the UI group was added successfully.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool AddUIGroup(string uiGroupName)
         {
@@ -90,9 +105,12 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 增加界面组。
         /// </summary>
-        /// <param name="uiGroupName">界面组名称。</param>
-        /// <param name="depth">界面组深度。</param>
-        /// <returns>是否增加界面组成功。</returns>
+        /// <remarks>
+        /// Adds a UI group.
+        /// </remarks>
+        /// <param name="uiGroupName">界面组名称。 / The UI group name.</param>
+        /// <param name="depth">界面组深度。 / The UI group depth.</param>
+        /// <returns>是否增加界面组成功。 / Whether the UI group was added successfully.</returns>
         [UnityEngine.Scripting.Preserve]
         public bool AddUIGroup(string uiGroupName, int depth)
         {

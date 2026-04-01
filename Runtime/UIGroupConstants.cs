@@ -30,116 +30,173 @@
 namespace GameFrameX.UI.Runtime
 {
     /// <summary>
-    /// 界面组常量
+    /// 界面组常量。
     /// </summary>
+    /// <remarks>
+    /// UI group constants.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class UIGroupConstants
     {
         /// <summary>
-        /// 隐藏
+        /// 隐藏。
         /// </summary>
+        /// <remarks>
+        /// Hidden.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Hidden = new UIGroupDefine(40, UIGroupNameConstants.Hidden);
 
         /// <summary>
-        /// 背景
+        /// 背景。
         /// </summary>
+        /// <remarks>
+        /// Background.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Background = new UIGroupDefine(35, UIGroupNameConstants.Background);
 
         /// <summary>
-        /// 场景
+        /// 场景。
         /// </summary>
+        /// <remarks>
+        /// Scene.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Scene = new UIGroupDefine(30, UIGroupNameConstants.Scene);
 
         /// <summary>
-        /// 世界
+        /// 世界。
         /// </summary>
+        /// <remarks>
+        /// World.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine World = new UIGroupDefine(27, UIGroupNameConstants.World);
 
         /// <summary>
-        /// 战斗
+        /// 战斗。
         /// </summary>
+        /// <remarks>
+        /// Battle.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Battle = new UIGroupDefine(25, UIGroupNameConstants.Battle);
 
         /// <summary>
-        /// 头顶
+        /// 头顶。
         /// </summary>
+        /// <remarks>
+        /// HUD (Heads Up Display).
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Hud = new UIGroupDefine(22, UIGroupNameConstants.Hud);
 
         /// <summary>
-        /// 地图
+        /// 地图。
         /// </summary>
+        /// <remarks>
+        /// Map.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Map = new UIGroupDefine(20, UIGroupNameConstants.Map);
 
         /// <summary>
-        /// 底板
+        /// 底板。
         /// </summary>
+        /// <remarks>
+        /// Floor.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Floor = new UIGroupDefine(15, UIGroupNameConstants.Floor);
 
         /// <summary>
-        /// 正常
+        /// 正常。
         /// </summary>
+        /// <remarks>
+        /// Normal.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Normal = new UIGroupDefine(10, UIGroupNameConstants.Normal);
 
         /// <summary>
-        /// 固定
+        /// 固定。
         /// </summary>
+        /// <remarks>
+        /// Fixed.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Fixed = new UIGroupDefine(0, UIGroupNameConstants.Fixed);
 
         /// <summary>
-        /// 窗口
+        /// 窗口。
         /// </summary>
+        /// <remarks>
+        /// Window.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Window = new UIGroupDefine(-10, UIGroupNameConstants.Window);
 
         /// <summary>
-        /// 提示
+        /// 提示。
         /// </summary>
+        /// <remarks>
+        /// Tip.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Tip = new UIGroupDefine(-15, UIGroupNameConstants.Tip);
 
         /// <summary>
-        /// 引导
+        /// 引导。
         /// </summary>
+        /// <remarks>
+        /// Guide.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Guide = new UIGroupDefine(-20, UIGroupNameConstants.Guide);
 
         /// <summary>
-        /// 黑板
+        /// 黑板。
         /// </summary>
+        /// <remarks>
+        /// Blackboard.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine BlackBoard = new UIGroupDefine(-22, UIGroupNameConstants.BlackBoard);
 
         /// <summary>
-        /// 对话
+        /// 对话。
         /// </summary>
+        /// <remarks>
+        /// Dialogue.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Dialogue = new UIGroupDefine(-23, UIGroupNameConstants.Dialogue);
 
         /// <summary>
-        /// Loading 
+        /// 加载中。
         /// </summary>
+        /// <remarks>
+        /// Loading.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Loading = new UIGroupDefine(-25, UIGroupNameConstants.Loading);
 
         /// <summary>
-        /// 通知
+        /// 通知。
         /// </summary>
+        /// <remarks>
+        /// Notify.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine Notify = new UIGroupDefine(-30, UIGroupNameConstants.Notify);
 
         /// <summary>
-        /// 系统顶级
+        /// 系统顶级。
         /// </summary>
+        /// <remarks>
+        /// System top level.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static readonly UIGroupDefine System = new UIGroupDefine(-35, UIGroupNameConstants.System);
     }
