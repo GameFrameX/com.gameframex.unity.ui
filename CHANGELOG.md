@@ -1,3 +1,15 @@
+# [2.9.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.8.0...2.9.0) (2026-04-01)
+
+
+### Bug Fixes
+
+* **ui:** 为UI模块添加代码裁剪支持 ([d4d706d](https://github.com/gameframex/com.gameframex.unity.ui/commit/d4d706de495b6fc517cef9232c5c2ae0bafffa1e))
+
+
+### Features
+
+* **UI:** 添加自动回收界面功能开关 ([5f1b03e](https://github.com/gameframex/com.gameframex.unity.ui/commit/5f1b03e9c46c192789b33da9961f92166da52220))
+
 # [2.8.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.7.0...2.8.0) (2026-03-27)
 
 
