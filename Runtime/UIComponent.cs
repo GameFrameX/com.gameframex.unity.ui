@@ -644,7 +644,7 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         private void OnOpenUIFormFailure(object sender, OpenUIFormFailureEventArgs e)
         {
-            Log.Warning($"Open UI form failure, asset name '{e.UIFormAssetName}',  pause covered UI form '{e.PauseCoveredUIForm}', error message '{e.ErrorMessage}'.");
+            Log.Warning("Open UI form failure, asset name '{0}', pause covered UI form '{1}', error message '{2}'.", e.UIFormAssetName, e.PauseCoveredUIForm, e.ErrorMessage);
             if (m_EnableOpenUIFormFailureEvent)
             {
                 m_EventComponent.Fire(this, e);

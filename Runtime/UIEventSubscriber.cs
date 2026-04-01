@@ -87,7 +87,7 @@ namespace GameFrameX.UI.Runtime
         {
             if (handler == null)
             {
-                throw new Exception("Event handler is invalid.");
+                throw new GameFrameworkException("Event handler is invalid.");
             }
 
             m_DicEventHandler.Add(id, handler);
@@ -108,7 +108,7 @@ namespace GameFrameX.UI.Runtime
         {
             if (!m_DicEventHandler.Remove(id, handler))
             {
-                throw new Exception(Utility.Text.Format("Event '{0}' not exists specified handler.", id.ToString()));
+                throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not exists specified handler.", id.ToString()));
             }
 
             GameEntry.GetComponent<EventComponent>().Unsubscribe(id, handler);

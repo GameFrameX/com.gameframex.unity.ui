@@ -699,10 +699,7 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         public virtual void OnClose(bool isShutdown, object userData)
         {
-            if (gameObject != null)
-            {
-                gameObject.SetLayerRecursively(m_OriginalLayer);
-            }
+            gameObject?.SetLayerRecursively(m_OriginalLayer);
 
             m_Available = false;
             Visible = false;
