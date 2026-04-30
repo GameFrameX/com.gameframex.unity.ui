@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.9.0...2.10.0) (2026-04-30)
+
+
+### Features
+
+* **UI:** 添加界面单实例打开模式 ([f87b455](https://github.com/gameframex/com.gameframex.unity.ui/commit/f87b455bb14dac413fb5d202db26ff4465621baf))
+
 # [2.9.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.8.0...2.9.0) (2026-04-01)
 
 
