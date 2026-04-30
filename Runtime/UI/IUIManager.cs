@@ -86,6 +86,14 @@ namespace GameFrameX.UI.Runtime
         bool IsEnableUIHideAnimation { get; set; }
 
         /// <summary>
+        /// 获取或设置是否启用界面单实例打开模式。
+        /// </summary>
+        /// <remarks>
+        /// Gets or sets whether singleton mode is enabled when opening UI forms.
+        /// </remarks>
+        bool EnableUIFormSingleton { get; set; }
+
+        /// <summary>
         /// 获取或设置界面实例对象池对象过期秒数。
         /// </summary>
         /// <remarks>

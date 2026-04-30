@@ -27,6 +27,7 @@
 //   Official Documentation: https://gameframex.doc.alianblank.com/
 //  ==========================================================================================
 
+using System;
 using System.Collections.Generic;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.ObjectPool;
@@ -201,6 +202,42 @@ namespace GameFrameX.UI.Runtime
         {
             get { return m_IsEnableUIShowAnimation; }
             set { m_IsEnableUIShowAnimation = value; }
+        }
+
+        [UnityEngine.Scripting.Preserve]
+        private bool m_EnableUIFormSingleton = true;
+
+        /// <summary>
+        /// 获取或设置是否启用界面单实例打开模式。
+        /// </summary>
+        /// <remarks>
+        /// Gets or sets whether singleton mode is enabled when opening UI forms.
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        public bool EnableUIFormSingleton
+        {
+            get { return m_EnableUIFormSingleton; }
+            set { m_EnableUIFormSingleton = value; }
+        }
+
+        /// <summary>
+        /// 是否对指定界面类型采用单实例打开模式。
+        /// </summary>
+        /// <remarks>
+        /// Determines whether singleton open mode should be used for the specified UI form type.
+        /// </remarks>
+        /// <param name="uiFormType">界面类型。/ The UI form type.</param>
+        /// <returns>是否采用单实例模式。/ Whether singleton mode should be used.</returns>
+        [UnityEngine.Scripting.Preserve]
+        protected bool UseSingletonOpenMode(Type uiFormType)
+        {
+            if (!EnableUIFormSingleton || uiFormType == null)
+            {
+                return false;
+            }
+
+            var allowMultiAttr = Attribute.GetCustomAttribute(uiFormType, typeof(OptionUIAllowMultiInstanceAttribute)) as OptionUIAllowMultiInstanceAttribute;
+            return allowMultiAttr == null || !allowMultiAttr.Enable;
         }
 
         [UnityEngine.Scripting.Preserve]

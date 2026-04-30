@@ -104,6 +104,15 @@ namespace GameFrameX.UI.Runtime
         [SerializeField] private bool m_IsEnableUIHideAnimation = false;
 
         /// <summary>
+        /// 是否启用界面单实例打开模式。
+        /// </summary>
+        /// <remarks>
+        /// Whether to enable singleton mode when opening UI forms.
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        [SerializeField] private bool m_EnableUIFormSingleton = true;
+
+        /// <summary>
         /// UI 自动回收间隔时间/秒。
         /// </summary>
         /// <remarks>
@@ -284,6 +293,26 @@ namespace GameFrameX.UI.Runtime
         public bool IsEnableUIHideAnimation
         {
             get { return m_UIManager.IsEnableUIHideAnimation; }
+        }
+
+        /// <summary>
+        /// 获取或设置是否启用界面单实例打开模式。
+        /// </summary>
+        /// <remarks>
+        /// Gets or sets whether singleton mode is enabled when opening UI forms.
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        public bool EnableUIFormSingleton
+        {
+            get { return m_EnableUIFormSingleton; }
+            set
+            {
+                m_EnableUIFormSingleton = value;
+                if (m_UIManager != null)
+                {
+                    m_UIManager.EnableUIFormSingleton = value;
+                }
+            }
         }
 
         /// <summary>
@@ -481,6 +510,7 @@ namespace GameFrameX.UI.Runtime
             m_UIManager.RecycleInterval = m_RecycleInterval;
             m_UIManager.IsEnableUIHideAnimation = m_IsEnableUIHideAnimation;
             m_UIManager.IsEnableUIShowAnimation = m_IsEnableUIShowAnimation;
+            m_UIManager.EnableUIFormSingleton = m_EnableUIFormSingleton;
             // m_UIManager.InstancePriority = m_InstancePriority;
 
             m_CustomUIGroupHelper = Helper.CreateHelper(m_UIGroupHelperTypeName, m_CustomUIGroupHelper);
