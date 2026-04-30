@@ -204,22 +204,6 @@ namespace GameFrameX.UI.Runtime
             set { m_IsEnableUIShowAnimation = value; }
         }
 
-        [UnityEngine.Scripting.Preserve]
-        private bool m_EnableUIFormSingleton = true;
-
-        /// <summary>
-        /// 获取或设置是否启用界面单实例打开模式。
-        /// </summary>
-        /// <remarks>
-        /// Gets or sets whether singleton mode is enabled when opening UI forms.
-        /// </remarks>
-        [UnityEngine.Scripting.Preserve]
-        public bool EnableUIFormSingleton
-        {
-            get { return m_EnableUIFormSingleton; }
-            set { m_EnableUIFormSingleton = value; }
-        }
-
         /// <summary>
         /// 是否对指定界面类型采用单实例打开模式。
         /// </summary>
@@ -231,7 +215,7 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         protected bool UseSingletonOpenMode(Type uiFormType)
         {
-            if (!EnableUIFormSingleton || uiFormType == null)
+            if (uiFormType == null)
             {
                 return false;
             }
