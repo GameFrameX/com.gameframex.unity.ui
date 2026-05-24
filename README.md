@@ -1,50 +1,46 @@
-﻿# Game Frame X UI
+<div align="center">
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
-[![Unity Version](https://img.shields.io/badge/unity-2019.4+-green.svg)](https://unity3d.com/get-unity/download)
-[![Version](https://img.shields.io/badge/version-2.0.0-orange.svg)](package.json)
+<img src="https://download.alianblank.com/gameframex/gameframex_logo_320.png" alt="GameFrameX Logo" width="160" height="160" />
 
-**Game Frame X UI** 是 GameFrameX 框架的 UI 组件，提供了完整的 UI 管理解决方案，支持 UGUI 和 FairyGUI 两种 UI 系统。
+# Game Frame X UI
 
-## 📋 目录
+[![License](https://img.shields.io/github/license/GameFrameX/com.gameframex.unity.ui)](https://github.com/GameFrameX/com.gameframex.unity.ui/blob/main/LICENSE.md)
+[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.ui)](https://github.com/GameFrameX/com.gameframex.unity.ui/releases)
 
-- [特性](#特性)
-- [安装](#安装)
-- [快速开始](#快速开始)
-- [核心概念](#核心概念)
-- [API 文档](#api-文档)
-- [UI 组层级](#ui-组层级)
-- [事件系统](#事件系统)
-- [最佳实践](#最佳实践)
-- [示例代码](#示例代码)
-- [依赖项](#依赖项)
-- [版本历史](#版本历史)
-- [许可证](#许可证)
+All-in-One Solution for Indie Game Development · Empowering Indie Developers' Dreams
 
-## ✨ 特性
+[Documentation](https://gameframex.doc.alianblank.com) | [Quick Start](https://gameframex.doc.alianblank.com) | [QQ Group](https://qm.qq.com/q/urKenB9AU)
 
-- 🎯 **统一的 UI 管理接口** - 支持 UGUI 和 FairyGUI
-- 🏗️ **分层 UI 系统** - 预定义的 UI 组层级管理
-- 🔄 **对象池管理** - 自动回收和复用 UI 实例
-- 📡 **事件驱动** - 完整的 UI 生命周期事件
-- ⚡ **异步加载** - 支持异步 UI 加载和依赖管理
-- 🎨 **灵活配置** - 可配置的 UI 组和辅助器
-- 🔧 **编辑器支持** - 完整的 Unity 编辑器集成
+**English** | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
 
-## 📦 安装
+</div>
 
-### 方式一：Package Manager (推荐)
+**Game Frame X UI** is the UI component of the GameFrameX framework, providing a complete UI management solution that supports both UGUI and FairyGUI UI systems.
 
-1. 打开 Unity Package Manager
-2. 点击 "+" 按钮，选择 "Add package from git URL"
-3. 输入以下 URL：
+## Features
+
+- Unified UI management interface - supports UGUI and FairyGUI
+- Layered UI system - predefined UI group hierarchy management
+- Object pool management - automatic recycling and reuse of UI instances
+- Event-driven - complete UI lifecycle events
+- Asynchronous loading - supports async UI loading and dependency management
+- Flexible configuration - configurable UI groups and helpers
+- Editor support - complete Unity editor integration
+
+## Installation
+
+### Option 1: Package Manager (Recommended)
+
+1. Open Unity Package Manager
+2. Click the "+" button and select "Add package from git URL"
+3. Enter the following URL:
    ```
    https://github.com/gameframex/com.gameframex.unity.ui.git
    ```
 
-### 方式二：manifest.json
+### Option 2: manifest.json
 
-在项目的 `Packages/manifest.json` 文件中添加：
+Add to your project's `Packages/manifest.json` file:
 
 ```json
 {
@@ -54,291 +50,226 @@
 }
 ```
 
-### 方式三：本地安装
+### Option 3: Local Installation
 
-1. 下载或克隆此仓库
-2. 将文件夹放置到项目的 `Packages` 目录下
-3. Unity 会自动识别并加载包
+1. Download or clone this repository
+2. Place the folder in your project's `Packages` directory
+3. Unity will automatically recognize and load the package
 
-## 🚀 快速开始
+## Quick Start
 
-### 1. 添加 UI 组件
+### 1. Add UI Component
 
-在场景中创建一个 GameObject 并添加 `UIComponent` 组件：
+Create a GameObject in the scene and add the `UIComponent` component:
 
 ```csharp
-// 获取 UI 组件
+// Get the UI component
 var uiComponent = GameEntry.GetComponent<UIComponent>();
 ```
 
-### 2. 创建 UI 窗体
+### 2. Create a UI Form
 
 ```csharp
-// 继承 UIForm 创建自定义 UI
+// Inherit from UIForm to create a custom UI
 public class MainMenuUI : UIForm
 {
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
-        // 初始化 UI 逻辑
+        // Initialize UI logic
     }
 
     protected override void OnOpen(object userData)
     {
         base.OnOpen(userData);
-        // UI 打开时的逻辑
+        // Logic when UI opens
     }
 
     protected override void OnClose(bool isShutdown, object userData)
     {
         base.OnClose(isShutdown, userData);
-        // UI 关闭时的逻辑
+        // Logic when UI closes
     }
 }
 ```
 
-### 3. 打开和关闭 UI
+### 3. Open and Close UI
 
 ```csharp
-// 打开 UI
+// Open UI
 uiComponent.OpenUIForm("MainMenuUI", "UI/MainMenu");
 
-// 异步打开 UI
+// Open UI asynchronously
 await uiComponent.OpenUIFormAsync("MainMenuUI", "UI/MainMenu");
 
-// 关闭 UI
+// Close UI
 uiComponent.CloseUIForm("MainMenuUI");
 
-// 关闭所有 UI
+// Close all UI
 uiComponent.CloseAllLoadedUIForms();
 ```
 
-## 🏗️ 核心概念
+## Core Concepts
 
-### UI 管理器 (IUIManager)
+### UI Manager (IUIManager)
 
-UI 管理器是整个 UI 系统的核心，负责：
-- UI 窗体的生命周期管理
-- UI 组的管理和层级控制
-- 对象池的管理和回收
-- 事件的分发和处理
+The UI Manager is the core of the entire UI system, responsible for:
+- UI form lifecycle management
+- UI group management and hierarchy control
+- Object pool management and recycling
+- Event dispatching and handling
 
-### UI 窗体 (UIForm)
+### UI Form (UIForm)
 
-UI 窗体是所有 UI 界面的基类，提供：
-- 标准的生命周期方法
-- 可见性控制
-- 暂停和恢复功能
-- 用户数据传递
+The UI Form is the base class for all UI interfaces, providing:
+- Standard lifecycle methods
+- Visibility control
+- Pause and resume functionality
+- User data passing
 
-### UI 组 (UIGroup)
+### UI Group (UIGroup)
 
-UI 组用于管理 UI 的层级关系，每个组有不同的深度值：
-- 深度值越小，显示层级越高
-- 支持组内 UI 的排序和管理
-- 可配置组的辅助器
+UI Groups manage the hierarchy of UIs, each with a different depth value:
+- Lower depth values mean higher display priority
+- Supports sorting and management of UIs within groups
+- Configurable group helpers
 
-## 📚 API 文档
+## API Documentation
 
-### UIComponent 主要方法
+### UIComponent Main Methods
 
-#### 打开 UI 窗体
+#### Open UI Form
 
 ```csharp
-/// <summary>
-/// 打开界面。
-/// </summary>
-/// <param name="uiFormAssetName">界面资源名称。</param>
-/// <param name="uiGroupName">界面组名称。</param>
-/// <param name="priority">加载界面资源的优先级。</param>
-/// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
-/// <param name="userData">用户自定义数据。</param>
-/// <returns>界面的序列编号。</returns>
 public int OpenUIForm(string uiFormAssetName, string uiGroupName, int priority = 0, bool pauseCoveredUIForm = true, object userData = null)
 
-/// <summary>
-/// 异步打开界面。
-/// </summary>
-/// <param name="uiFormAssetName">界面资源名称。</param>
-/// <param name="uiGroupName">界面组名称。</param>
-/// <param name="priority">加载界面资源的优先级。</param>
-/// <param name="pauseCoveredUIForm">是否暂停被覆盖的界面。</param>
-/// <param name="userData">用户自定义数据。</param>
-/// <returns>界面实例。</returns>
 public Task<IUIForm> OpenUIFormAsync(string uiFormAssetName, string uiGroupName, int priority = 0, bool pauseCoveredUIForm = true, object userData = null)
 ```
 
-#### 关闭 UI 窗体
+#### Close UI Form
 
 ```csharp
-/// <summary>
-/// 关闭界面。
-/// </summary>
-/// <param name="serialId">要关闭界面的序列编号。</param>
-/// <param name="userData">用户自定义数据。</param>
 public void CloseUIForm(int serialId, object userData = null)
 
-/// <summary>
-/// 关闭界面。
-/// </summary>
-/// <param name="uiForm">要关闭的界面。</param>
-/// <param name="userData">用户自定义数据。</param>
 public void CloseUIForm(IUIForm uiForm, object userData = null)
 ```
 
-#### 获取 UI 窗体
+#### Get UI Form
 
 ```csharp
-/// <summary>
-/// 获取界面。
-/// </summary>
-/// <param name="serialId">要获取界面的序列编号。</param>
-/// <returns>要获取的界面。</returns>
 public IUIForm GetUIForm(int serialId)
 
-/// <summary>
-/// 获取界面。
-/// </summary>
-/// <param name="uiFormAssetName">要获取界面的资源名称。</param>
-/// <returns>要获取的界面。</returns>
 public IUIForm GetUIForm(string uiFormAssetName)
 ```
 
-### UIForm 生命周期方法
+### UIForm Lifecycle Methods
 
 ```csharp
-/// <summary>
-/// 界面初始化。
-/// </summary>
-/// <param name="userData">用户自定义数据。</param>
 protected virtual void OnInit(object userData) { }
-
-/// <summary>
-/// 界面回收。
-/// </summary>
 protected virtual void OnRecycle() { }
-
-/// <summary>
-/// 界面打开。
-/// </summary>
-/// <param name="userData">用户自定义数据。</param>
 protected virtual void OnOpen(object userData) { }
-
-/// <summary>
-/// 界面关闭。
-/// </summary>
-/// <param name="isShutdown">是否是关闭界面管理器时触发。</param>
-/// <param name="userData">用户自定义数据。</param>
 protected virtual void OnClose(bool isShutdown, object userData) { }
-
-/// <summary>
-/// 界面暂停。
-/// </summary>
 protected virtual void OnPause() { }
-
-/// <summary>
-/// 界面暂停恢复。
-/// </summary>
 protected virtual void OnResume() { }
 ```
 
-## 🎯 UI 组层级
+## UI Group Hierarchy
 
-框架预定义了以下 UI 组层级（按深度值排序）：
+The framework predefines the following UI group hierarchy (sorted by depth value):
 
-| 组名 | 深度值 | 描述 |
-|------|--------|------|
-| System | -35 | 系统顶级界面 |
-| Notify | -30 | 通知界面 |
-| Loading | -25 | 加载界面 |
-| Dialogue | -23 | 对话界面 |
-| BlackBoard | -22 | 黑板界面 |
-| Guide | -20 | 引导界面 |
-| Tip | -15 | 提示界面 |
-| Window | -10 | 窗口界面 |
-| Fixed | 0 | 固定界面 |
-| Normal | 10 | 普通界面 |
-| Floor | 15 | 底板界面 |
-| Map | 20 | 地图界面 |
-| Hud | 22 | 头顶界面 |
-| Battle | 25 | 战斗界面 |
-| World | 27 | 世界界面 |
-| Scene | 30 | 场景界面 |
-| Background | 35 | 背景界面 |
-| Hidden | 40 | 隐藏界面 |
+| Group Name | Depth | Description |
+|------------|-------|-------------|
+| System | -35 | System top-level interface |
+| Notify | -30 | Notification interface |
+| Loading | -25 | Loading interface |
+| Dialogue | -23 | Dialogue interface |
+| BlackBoard | -22 | Blackboard interface |
+| Guide | -20 | Guide interface |
+| Tip | -15 | Tip interface |
+| Window | -10 | Window interface |
+| Fixed | 0 | Fixed interface |
+| Normal | 10 | Normal interface |
+| Floor | 15 | Floor interface |
+| Map | 20 | Map interface |
+| Hud | 22 | Head-up display interface |
+| Battle | 25 | Battle interface |
+| World | 27 | World interface |
+| Scene | 30 | Scene interface |
+| Background | 35 | Background interface |
+| Hidden | 40 | Hidden interface |
 
-## 📡 事件系统
+## Event System
 
-框架提供了完整的 UI 事件系统：
+The framework provides a complete UI event system:
 
-### 事件类型
+### Event Types
 
-- `OpenUIFormSuccessEventArgs` - UI 打开成功事件
-- `OpenUIFormFailureEventArgs` - UI 打开失败事件
-- `CloseUIFormCompleteEventArgs` - UI 关闭完成事件
-- `UIFormVisibleChangedEventArgs` - UI 可见性改变事件
+- `OpenUIFormSuccessEventArgs` - UI open success event
+- `OpenUIFormFailureEventArgs` - UI open failure event
+- `CloseUIFormCompleteEventArgs` - UI close complete event
+- `UIFormVisibleChangedEventArgs` - UI visibility changed event
 
-### 事件订阅示例
+### Event Subscription Example
 
 ```csharp
-// 订阅 UI 打开成功事件
+// Subscribe to UI open success event
 GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
 
 private void OnOpenUIFormSuccess(object sender, GameEventArgs e)
 {
     var args = (OpenUIFormSuccessEventArgs)e;
-    Debug.Log($"UI {args.UIForm.UIFormAssetName} 打开成功");
+    Debug.Log($"UI {args.UIForm.UIFormAssetName} opened successfully");
 }
 ```
 
-## 💡 最佳实践
+## Best Practices
 
-### 1. UI 资源命名规范
+### 1. UI Resource Naming Convention
 
 ```csharp
-// 推荐的命名方式
-"UI/MainMenu"      // 主菜单
-"UI/Battle/HUD"    // 战斗 HUD
-"UI/Shop/ItemList" // 商店物品列表
+// Recommended naming
+"UI/MainMenu"      // Main menu
+"UI/Battle/HUD"    // Battle HUD
+"UI/Shop/ItemList" // Shop item list
 ```
 
-### 2. UI 数据传递
+### 2. UI Data Passing
 
 ```csharp
-// 使用强类型数据类
+// Use strongly typed data class
 public class ShopUIData
 {
     public int PlayerId { get; set; }
     public List<Item> Items { get; set; }
 }
 
-// 打开 UI 时传递数据
+// Pass data when opening UI
 var shopData = new ShopUIData { PlayerId = 123, Items = itemList };
 uiComponent.OpenUIForm("ShopUI", "Normal", userData: shopData);
 
-// 在 UI 中接收数据
+// Receive data in UI
 protected override void OnOpen(object userData)
 {
     var shopData = userData as ShopUIData;
     if (shopData != null)
     {
-        // 使用数据初始化 UI
+        // Initialize UI with data
     }
 }
 ```
 
-### 3. UI 性能优化
+### 3. UI Performance Optimization
 
 ```csharp
-// 配置对象池参数
-uiComponent.InstanceCapacity = 16;        // 对象池容量
-uiComponent.InstanceExpireTime = 60f;     // 对象过期时间
-uiComponent.RecycleInterval = 60;         // 回收间隔
+// Configure object pool parameters
+uiComponent.InstanceCapacity = 16;        // Object pool capacity
+uiComponent.InstanceExpireTime = 60f;     // Object expiration time
+uiComponent.RecycleInterval = 60;         // Recycle interval
 ```
 
-## 📝 示例代码
+## Usage Examples
 
-### 完整的 UI 窗体示例
+### Complete UI Form Example
 
 ```csharp
 using GameFrameX.UI.Runtime;
@@ -354,8 +285,8 @@ public class MainMenuUI : UIForm
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
-        
-        // 绑定按钮事件
+
+        // Bind button events
         startButton.onClick.AddListener(OnStartButtonClick);
         settingsButton.onClick.AddListener(OnSettingsButtonClick);
         exitButton.onClick.AddListener(OnExitButtonClick);
@@ -364,51 +295,51 @@ public class MainMenuUI : UIForm
     protected override void OnOpen(object userData)
     {
         base.OnOpen(userData);
-        
-        // 播放打开动画
+
+        // Play open animation
         PlayOpenAnimation();
     }
 
     protected override void OnClose(bool isShutdown, object userData)
     {
         base.OnClose(isShutdown, userData);
-        
-        // 清理资源
+
+        // Cleanup resources
         CleanupResources();
     }
 
     private void OnStartButtonClick()
     {
-        // 关闭当前 UI 并打开游戏 UI
+        // Close current UI and open game UI
         UIComponent.CloseUIForm(this);
         UIComponent.OpenUIForm("GameUI", "Normal");
     }
 
     private void OnSettingsButtonClick()
     {
-        // 打开设置 UI
+        // Open settings UI
         UIComponent.OpenUIForm("SettingsUI", "Window");
     }
 
     private void OnExitButtonClick()
     {
-        // 退出游戏
+        // Exit game
         Application.Quit();
     }
 
     private void PlayOpenAnimation()
     {
-        // 实现打开动画
+        // Implement open animation
     }
 
     private void CleanupResources()
     {
-        // 清理资源
+        // Cleanup resources
     }
 }
 ```
 
-### UI 管理器使用示例
+### UI Manager Usage Example
 
 ```csharp
 public class UIManager : MonoBehaviour
@@ -418,22 +349,22 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         uiComponent = GameEntry.GetComponent<UIComponent>();
-        
-        // 配置 UI 组件
+
+        // Configure UI component
         ConfigureUIComponent();
-        
-        // 打开主菜单
+
+        // Open main menu
         OpenMainMenu();
     }
 
     private void ConfigureUIComponent()
     {
-        // 设置对象池参数
+        // Set object pool parameters
         uiComponent.InstanceCapacity = 20;
         uiComponent.InstanceExpireTime = 120f;
         uiComponent.RecycleInterval = 60;
-        
-        // 订阅事件
+
+        // Subscribe to events
         GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnUIFormOpenSuccess);
         GameEntry.Event.Subscribe(OpenUIFormFailureEventArgs.EventId, OnUIFormOpenFailure);
     }
@@ -443,64 +374,50 @@ public class UIManager : MonoBehaviour
         try
         {
             var mainMenuUI = await uiComponent.OpenUIFormAsync("MainMenuUI", "Normal");
-            Debug.Log("主菜单打开成功");
+            Debug.Log("Main menu opened successfully");
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"主菜单打开失败: {ex.Message}");
+            Debug.LogError($"Failed to open main menu: {ex.Message}");
         }
     }
 
     private void OnUIFormOpenSuccess(object sender, GameEventArgs e)
     {
         var args = (OpenUIFormSuccessEventArgs)e;
-        Debug.Log($"UI 打开成功: {args.UIForm.UIFormAssetName}");
+        Debug.Log($"UI opened successfully: {args.UIForm.UIFormAssetName}");
     }
 
     private void OnUIFormOpenFailure(object sender, GameEventArgs e)
     {
         var args = (OpenUIFormFailureEventArgs)e;
-        Debug.LogError($"UI 打开失败: {args.UIFormAssetName}, 错误: {args.ErrorMessage}");
+        Debug.LogError($"Failed to open UI: {args.UIForm.UIFormAssetName}, Error: {args.ErrorMessage}");
     }
 }
 ```
 
-## 🔗 依赖项
+## Dependencies
 
-此包依赖以下 GameFrameX 组件：
+This package depends on the following GameFrameX components:
 
-- `com.gameframex.unity` (>= 1.1.1) - 核心框架
-- `com.gameframex.unity.asset` (>= 1.0.6) - 资源管理
-- `com.gameframex.unity.event` (>= 1.0.0) - 事件系统
-- `com.gameframex.unity.localization` (>= 1.0.0) - 本地化支持
+- `com.gameframex.unity` (>= 1.1.1) - Core framework
+- `com.gameframex.unity.asset` (>= 1.0.6) - Asset management
+- `com.gameframex.unity.event` (>= 1.0.0) - Event system
+- `com.gameframex.unity.localization` (>= 1.0.0) - Localization support
 
-## 📋 版本历史
+## Changelog
 
 ### 2.0.0 (2025-06-12)
-- 重大版本更新
-- 优化 UI 管理器架构
-- 改进对象池性能
+- Major version update
+- Optimized UI manager architecture
+- Improved object pool performance
 
 ### 1.2.7 (2025-06-11)
-- 修复 UI 回收后参数重置问题
-- 优化异步加载性能
+- Fixed UI parameter reset after recycling
+- Optimized async loading performance
 
-查看完整的 [CHANGELOG.md](CHANGELOG.md) 了解详细的版本历史。
+See the full [CHANGELOG.md](CHANGELOG.md) for detailed version history.
 
-## 📄 许可证
+## License
 
-本项目采用 MIT 许可证 - 查看 [LICENSE.md](LICENSE.md) 文件了解详情。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 📞 联系方式
-
-- 文档地址: https://gameframex.doc.alianblank.com
-- 作者: Blank (alianblank@outlook.com)
-- 仓库地址: https://github.com/gameframex/com.gameframex.unity.ui
-
----
-
-**Game Frame X** - 独立游戏前后端一体化解决方案，独立游戏开发者的圆梦大使。
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
