@@ -1,3 +1,10 @@
+## [2.10.2](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.1...2.10.2) (2026-05-28)
+
+
+### Bug Fixes
+
+* **ui:** 修复 OnClose 中潜在的空引用异常 ([3a0bd98](https://github.com/gameframex/com.gameframex.unity.ui/commit/3a0bd982af8e61536c77486267d00f08304a77d3))
+
 ## [2.10.1](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.0...2.10.1) (2026-05-28)
 
 
