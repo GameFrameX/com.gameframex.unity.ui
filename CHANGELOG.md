@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.0...2.10.1) (2026-05-28)
+
+
+### Bug Fixes
+
+* **ci:** 统一 .github 工作流配置 ([7cd823b](https://github.com/gameframex/com.gameframex.unity.ui/commit/7cd823b0708fca122fa4b5a6fa752d561412f5fd))
+
 # [2.10.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.9.0...2.10.0) (2026-04-30)
 
 
