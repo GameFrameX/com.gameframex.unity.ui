@@ -1,3 +1,10 @@
+## [2.10.3](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.2...2.10.3) (2026-06-05)
+
+
+### Bug Fixes
+
+* **ui:** 将 OptionUIAllowMultiInstanceAttribute 默认值改为 true ([b0290fe](https://github.com/gameframex/com.gameframex.unity.ui/commit/b0290fe533ffcd0dc5ded3998c4afea7129e7bf2))
+
 ## [2.10.2](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.1...2.10.2) (2026-05-28)
 
 
