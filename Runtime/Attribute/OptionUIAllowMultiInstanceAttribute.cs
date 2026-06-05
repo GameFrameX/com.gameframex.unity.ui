@@ -58,7 +58,7 @@ namespace GameFrameX.UI.Runtime
         /// </remarks>
         /// <param name="enable">是否允许多实例打开。/ Whether to allow multi-instance opening.</param>
         [UnityEngine.Scripting.Preserve]
-        public OptionUIAllowMultiInstanceAttribute(bool enable = false)
+        public OptionUIAllowMultiInstanceAttribute(bool enable = true)
         {
             Enable = enable;
         }
