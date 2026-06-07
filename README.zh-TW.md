@@ -62,56 +62,36 @@
 
 ## 快速開始
 
-### 1. 添加 UI 組件
+### 安裝
 
-在場景中創建一個 GameObject 並添加 `UIComponent` 組件：
+編輯 Unity 專案的 `Packages/manifest.json`，添加 `scopedRegistries` 部分：
 
-```csharp
-// 獲取 UI 組件
-var uiComponent = GameEntry.GetComponent<UIComponent>();
-```
-
-### 2. 創建 UI 窗體
-
-```csharp
-// 繼承 UIForm 創建自定義 UI
-public class MainMenuUI : UIForm
+```json
 {
-    protected override void OnInit(object userData)
+  "scopedRegistries": [
     {
-        base.OnInit(userData);
-        // 初始化 UI 邏輯
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
     }
-
-    protected override void OnOpen(object userData)
-    {
-        base.OnOpen(userData);
-        // UI 打開時的邏輯
-    }
-
-    protected override void OnClose(bool isShutdown, object userData)
-    {
-        base.OnClose(isShutdown, userData);
-        // UI 關閉時的邏輯
-    }
+  ]
 }
 ```
 
-### 3. 打開和關閉 UI
+`scopes` 控制哪些套件透過此註冊表解析。只有以 `com.gameframex` 開頭的套件才會從這個註冊表取得。
 
-```csharp
-// 打開 UI
-uiComponent.OpenUIForm("MainMenuUI", "UI/MainMenu");
+Then add the package to `dependencies`:
 
-// 異步打開 UI
-await uiComponent.OpenUIFormAsync("MainMenuUI", "UI/MainMenu");
-
-// 關閉 UI
-uiComponent.CloseUIForm("MainMenuUI");
-
-// 關閉所有 UI
-uiComponent.CloseAllLoadedUIForms();
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity.ui": "2.10.3"
+  }
+}
 ```
+
 
 ## 核心概念
 

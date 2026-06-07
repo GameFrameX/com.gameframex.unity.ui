@@ -62,56 +62,36 @@
 
 ## 빠른 시작
 
-### 1. UI 컴포넌트 추가
+### 설치
 
-장면에 GameObject를 만들고 `UIComponent` 컴포넌트를 추가합니다:
+Unity 프로젝트의 `Packages/manifest.json`을 편집하여 `scopedRegistries` 섹션을 추가하세요:
 
-```csharp
-// UI 컴포넌트 가져오기
-var uiComponent = GameEntry.GetComponent<UIComponent>();
-```
-
-### 2. UI 폼 만들기
-
-```csharp
-// UIForm을 상속하여 커스텀 UI 만들기
-public class MainMenuUI : UIForm
+```json
 {
-    protected override void OnInit(object userData)
+  "scopedRegistries": [
     {
-        base.OnInit(userData);
-        // UI 로직 초기화
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
     }
-
-    protected override void OnOpen(object userData)
-    {
-        base.OnOpen(userData);
-        // UI 열기 시 로직
-    }
-
-    protected override void OnClose(bool isShutdown, object userData)
-    {
-        base.OnClose(isShutdown, userData);
-        // UI 닫기 시 로직
-    }
+  ]
 }
 ```
 
-### 3. UI 열기 및 닫기
+`scopes`는 이 레지스트리를 통해 어떤 패키지를 해석할지 제어합니다. `com.gameframex`로 시작하는 패키지만 이 레지스트리에서 가져옵니다.
 
-```csharp
-// UI 열기
-uiComponent.OpenUIForm("MainMenuUI", "UI/MainMenu");
+Then add the package to `dependencies`:
 
-// 비동기로 UI 열기
-await uiComponent.OpenUIFormAsync("MainMenuUI", "UI/MainMenu");
-
-// UI 닫기
-uiComponent.CloseUIForm("MainMenuUI");
-
-// 모든 UI 닫기
-uiComponent.CloseAllLoadedUIForms();
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity.ui": "2.10.3"
+  }
+}
 ```
+
 
 ## 핵심 개념
 

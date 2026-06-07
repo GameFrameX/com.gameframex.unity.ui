@@ -62,56 +62,36 @@ Add to your project's `Packages/manifest.json` file:
 
 ## Quick Start
 
-### 1. Add UI Component
+### Installation
 
-Create a GameObject in the scene and add the `UIComponent` component:
+Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
 
-```csharp
-// Get the UI component
-var uiComponent = GameEntry.GetComponent<UIComponent>();
-```
-
-### 2. Create a UI Form
-
-```csharp
-// Inherit from UIForm to create a custom UI
-public class MainMenuUI : UIForm
+```json
 {
-    protected override void OnInit(object userData)
+  "scopedRegistries": [
     {
-        base.OnInit(userData);
-        // Initialize UI logic
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
     }
-
-    protected override void OnOpen(object userData)
-    {
-        base.OnOpen(userData);
-        // Logic when UI opens
-    }
-
-    protected override void OnClose(bool isShutdown, object userData)
-    {
-        base.OnClose(isShutdown, userData);
-        // Logic when UI closes
-    }
+  ]
 }
 ```
 
-### 3. Open and Close UI
+`scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
 
-```csharp
-// Open UI
-uiComponent.OpenUIForm("MainMenuUI", "UI/MainMenu");
+Then add the package to `dependencies`:
 
-// Open UI asynchronously
-await uiComponent.OpenUIFormAsync("MainMenuUI", "UI/MainMenu");
-
-// Close UI
-uiComponent.CloseUIForm("MainMenuUI");
-
-// Close all UI
-uiComponent.CloseAllLoadedUIForms();
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity.ui": "2.10.3"
+  }
+}
 ```
+
 
 ## Core Concepts
 

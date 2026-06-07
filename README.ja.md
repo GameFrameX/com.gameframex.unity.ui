@@ -62,56 +62,36 @@
 
 ## クイックスタート
 
-### 1. UI コンポーネントの追加
+### インストール
 
-シーンに GameObject を作成し、`UIComponent` コンポーネントを追加します：
+Unity プロジェクトの `Packages/manifest.json` を編集し、`scopedRegistries` セクションを追加してください：
 
-```csharp
-// UI コンポーネントを取得
-var uiComponent = GameEntry.GetComponent<UIComponent>();
-```
-
-### 2. UI フォームの作成
-
-```csharp
-// UIForm を継承してカスタム UI を作成
-public class MainMenuUI : UIForm
+```json
 {
-    protected override void OnInit(object userData)
+  "scopedRegistries": [
     {
-        base.OnInit(userData);
-        // UI ロジックの初期化
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
     }
-
-    protected override void OnOpen(object userData)
-    {
-        base.OnOpen(userData);
-        // UI オープン時のロジック
-    }
-
-    protected override void OnClose(bool isShutdown, object userData)
-    {
-        base.OnClose(isShutdown, userData);
-        // UI クローズ時のロジック
-    }
+  ]
 }
 ```
 
-### 3. UI のオープンとクローズ
+`scopes` は、どのパッケージをこのレジストリから解決するかを制御します。`com.gameframex` で始まるパッケージのみがこのレジストリから取得されます。
 
-```csharp
-// UI を開く
-uiComponent.OpenUIForm("MainMenuUI", "UI/MainMenu");
+Then add the package to `dependencies`:
 
-// 非同期で UI を開く
-await uiComponent.OpenUIFormAsync("MainMenuUI", "UI/MainMenu");
-
-// UI を閉じる
-uiComponent.CloseUIForm("MainMenuUI");
-
-// すべての UI を閉じる
-uiComponent.CloseAllLoadedUIForms();
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity.ui": "2.10.3"
+  }
+}
 ```
+
 
 ## コアコンセプト
 
