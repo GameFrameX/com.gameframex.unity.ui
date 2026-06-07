@@ -92,7 +92,6 @@ Then add the package to `dependencies`:
 }
 ```
 
-
 ## Core Concepts
 
 ### UI Manager (IUIManager)
@@ -404,4 +403,4 @@ See the full [CHANGELOG.md](CHANGELOG.md) for detailed version history.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+See [LICENSE.md](LICENSE.md) for license information.

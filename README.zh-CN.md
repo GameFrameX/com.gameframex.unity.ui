@@ -92,7 +92,6 @@ Then add the package to `dependencies`:
 }
 ```
 
-
 ## 核心概念
 
 ### UI 管理器 (IUIManager)
@@ -442,4 +441,4 @@ public class UIManager : MonoBehaviour
 
 ## 开源协议
 
-本项目采用 MIT 许可证 - 查看 [LICENSE.md](LICENSE.md) 文件了解详情。
+详见 [LICENSE.md](LICENSE.md) 文件。
