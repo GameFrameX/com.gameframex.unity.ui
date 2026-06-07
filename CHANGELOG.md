@@ -1,3 +1,10 @@
+## [2.10.4](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.3...2.10.4) (2026-06-07)
+
+
+### Bug Fixes
+
+* 补全包规范文件（LICENSE/CHANGELOG/URL 字段/unity 字段） ([058eda3](https://github.com/gameframex/com.gameframex.unity.ui/commit/058eda36be097f9e5e351c4cea26e6a0ea8e9853))
+
 ## [2.10.3](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.2...2.10.3) (2026-06-05)
 
 
