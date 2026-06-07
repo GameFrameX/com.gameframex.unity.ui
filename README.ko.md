@@ -1,22 +1,24 @@
 <div align="center">
 
-<img src="https://download.alianblank.com/gameframex/gameframex_logo_320.png" alt="GameFrameX Logo" width="160" height="160" />
+<img src="https://download.alianblank.com/gameframex/gameframex_logo_320.png" alt="Game Frame X Logo" width="160" />
 
 # Game Frame X UI
 
 [![License](https://img.shields.io/github/license/GameFrameX/com.gameframex.unity.ui)](https://github.com/GameFrameX/com.gameframex.unity.ui/blob/main/LICENSE.md)
 [![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.ui)](https://github.com/GameFrameX/com.gameframex.unity.ui/releases)
+[![Documentation](https://img.shields.io/badge/Documentation-docs-blue)](https://gameframex.doc.alianblank.com)
 
 인디 게임 개발자를 위한 올인원 솔루션 · 인디 개발자의 꿈을 실현
 
-[문서](https://gameframex.doc.alianblank.com) | [빠른 시작](https://gameframex.doc.alianblank.com) | [QQ 그룹](https://qm.qq.com/q/urKenB9AU)
+<br />
+
+[문서](https://gameframex.doc.alianblank.com) · [빠른 시작](#quick-start) · [QQ 그룹](https://qm.qq.com/q/urKenB9AU)
+
+<br />
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md) | **한국어**
 
 </div>
-
-**Game Frame X UI** 는 GameFrameX 프레임워크의 UI 컴포넌트로, UGUI와 FairyGUI 두 가지 UI 시스템을 지원하는 완전한 UI 관리 솔루션을 제공합니다.
-
 ## 기능 특징
 
 - 통합 UI 관리 인터페이스 - UGUI 및 FairyGUI 지원

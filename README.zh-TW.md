@@ -1,22 +1,24 @@
 <div align="center">
 
-<img src="https://download.alianblank.com/gameframex/gameframex_logo_320.png" alt="GameFrameX Logo" width="160" height="160" />
+<img src="https://download.alianblank.com/gameframex/gameframex_logo_320.png" alt="Game Frame X Logo" width="160" />
 
 # Game Frame X UI
 
 [![License](https://img.shields.io/github/license/GameFrameX/com.gameframex.unity.ui)](https://github.com/GameFrameX/com.gameframex.unity.ui/blob/main/LICENSE.md)
 [![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.ui)](https://github.com/GameFrameX/com.gameframex.unity.ui/releases)
+[![Documentation](https://img.shields.io/badge/Documentation-docs-blue)](https://gameframex.doc.alianblank.com)
 
 獨立遊戲前後端一體化解決方案 · 獨立遊戲開發者的圓夢大使
 
-[文檔](https://gameframex.doc.alianblank.com) | [快速開始](https://gameframex.doc.alianblank.com) | [QQ群](https://qm.qq.com/q/urKenB9AU)
+<br />
+
+[文檔](https://gameframex.doc.alianblank.com) · [快速開始](#quick-start) · [QQ群](https://qm.qq.com/q/urKenB9AU)
+
+<br />
 
 [English](README.md) | [简体中文](README.zh-CN.md) | **繁體中文** | [日本語](README.ja.md) | [한국어](README.ko.md)
 
 </div>
-
-**Game Frame X UI** 是 GameFrameX 框架的 UI 組件，提供了完整的 UI 管理解決方案，支持 UGUI 和 FairyGUI 兩種 UI 系統。
-
 ## 功能特性
 
 - 統一的 UI 管理接口 - 支持 UGUI 和 FairyGUI
