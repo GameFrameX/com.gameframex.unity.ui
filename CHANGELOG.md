@@ -1,3 +1,10 @@
+## [2.10.5](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.4...2.10.5) (2026-06-08)
+
+
+### Bug Fixes
+
+* **ui:** 修复事件参数直接传递引用导致引用失效的问题 ([3de2194](https://github.com/gameframex/com.gameframex.unity.ui/commit/3de2194e411b1bf15a2ae38dfb4d97696dd272a1))
+
 ## [2.10.4](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.3...2.10.4) (2026-06-07)
 
 
