@@ -651,7 +651,7 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         private void OnOpenUIFormSuccess(object sender, OpenUIFormSuccessEventArgs e)
         {
-            m_EventComponent.Fire(this, e);
+            m_EventComponent.Fire(this, OpenUIFormSuccessEventArgs.Create(e.UIForm, e.Duration, e.UserData));
         }
 
         [UnityEngine.Scripting.Preserve]
@@ -660,7 +660,7 @@ namespace GameFrameX.UI.Runtime
             Log.Warning("Open UI form failure, asset name '{0}', pause covered UI form '{1}', error message '{2}'.", e.UIFormAssetName, e.PauseCoveredUIForm, e.ErrorMessage);
             if (m_EnableOpenUIFormFailureEvent)
             {
-                m_EventComponent.Fire(this, e);
+                m_EventComponent.Fire(this, OpenUIFormFailureEventArgs.Create(e.SerialId, e.UIFormAssetName, e.PauseCoveredUIForm, e.ErrorMessage, e.UserData));
             }
         }
 
@@ -692,7 +692,7 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         private void OnCloseUIFormComplete(object sender, CloseUIFormCompleteEventArgs e)
         {
-            m_EventComponent.Fire(this, e);
+            m_EventComponent.Fire(this, CloseUIFormCompleteEventArgs.Create(e.SerialId, e.UIFormAssetName, e.UIGroup, e.UserData));
         }
     }
 }
