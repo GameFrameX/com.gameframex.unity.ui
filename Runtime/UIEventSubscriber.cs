@@ -43,8 +43,7 @@ namespace GameFrameX.UI.Runtime
     [UnityEngine.Scripting.Preserve]
     public sealed class UIEventSubscriber : IReference
     {
-        [UnityEngine.Scripting.Preserve]
-        private readonly GameFrameworkMultiDictionary<string, EventHandler<GameEventArgs>> m_DicEventHandler;
+        [UnityEngine.Scripting.Preserve] private readonly GameFrameworkMultiDictionary<string, EventHandler<GameEventArgs>> m_DicEventHandler;
 
         /// <summary>
         /// 持有者。
@@ -56,8 +55,29 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         public object Owner { get; private set; }
 
-        [UnityEngine.Scripting.Preserve]
-        private readonly List<string> m_removeList;
+        /// <summary>
+        /// 待移除的事件ID列表。
+        /// </summary>
+        [UnityEngine.Scripting.Preserve] private readonly List<string> m_removeList;
+
+        /// <summary>
+        /// 事件组件。
+        /// </summary>
+        private EventComponent CachedEventComponent
+        {
+            get
+            {
+                var cache = _eventComponentCache;
+                if (cache != null)
+                {
+                    return cache;
+                }
+
+                return _eventComponentCache = GameEntry.GetComponent<EventComponent>();
+            }
+        }
+
+        private EventComponent _eventComponentCache;
 
         /// <summary>
         /// 初始化UI事件订阅器的新实例。
@@ -91,7 +111,7 @@ namespace GameFrameX.UI.Runtime
             }
 
             m_DicEventHandler.Add(id, handler);
-            GameEntry.GetComponent<EventComponent>().CheckSubscribe(id, handler);
+            CachedEventComponent.CheckSubscribe(id, handler);
         }
 
         /// <summary>
@@ -111,7 +131,7 @@ namespace GameFrameX.UI.Runtime
                 throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not exists specified handler.", id.ToString()));
             }
 
-            GameEntry.GetComponent<EventComponent>().Unsubscribe(id, handler);
+            CachedEventComponent.Unsubscribe(id, handler);
         }
 
         /// <summary>
@@ -139,7 +159,7 @@ namespace GameFrameX.UI.Runtime
                     }
                 }
 
-                GameEntry.GetComponent<EventComponent>().Fire(this, e);
+                CachedEventComponent.Fire(this, e);
             }
         }
 
@@ -166,9 +186,10 @@ namespace GameFrameX.UI.Runtime
                 }
 
                 m_removeList.Add(item.Key);
+
                 foreach (var eventHandler in item.Value)
                 {
-                    GameEntry.GetComponent<EventComponent>().Unsubscribe(item.Key, eventHandler);
+                    CachedEventComponent.CheckUnsubscribe(item.Key, eventHandler);
                 }
             }
 
@@ -213,6 +234,7 @@ namespace GameFrameX.UI.Runtime
         {
             m_DicEventHandler.Clear();
             m_removeList.Clear();
+            _eventComponentCache = null;
             Owner = null;
         }
     }
