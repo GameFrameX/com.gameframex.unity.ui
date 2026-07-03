@@ -57,6 +57,7 @@ namespace GameFrameX.UI.Editor
         // private SerializedProperty m_InstancePriority = null;
         private SerializedProperty m_InstanceUGUIRoot = null;
         private SerializedProperty m_InstanceFairyGUIRoot = null;
+        private SerializedProperty m_DesignResolutionComponent = null;
         private SerializedProperty m_UIGroups = null;
 
         private HelperInfo<UIFormHelperBase> m_UIFormHelperInfo = new HelperInfo<UIFormHelperBase>("UIForm");
@@ -165,6 +166,8 @@ namespace GameFrameX.UI.Editor
                 EditorGUILayout.PropertyField(m_InstanceUGUIRoot);
                 EditorGUILayout.HelpBox("设置为FairyGUI的根节点", MessageType.Info);
                 EditorGUILayout.PropertyField(m_InstanceFairyGUIRoot);
+                EditorGUILayout.HelpBox("设置 UI 设计分辨率配置组件。为空时运行时会自动在 UI 节点上创建默认配置。", MessageType.Info);
+                EditorGUILayout.PropertyField(m_DesignResolutionComponent);
 
                 if (m_UIGroups.arraySize <= 0)
                 {
@@ -208,6 +211,7 @@ namespace GameFrameX.UI.Editor
             // m_InstancePriority = serializedObject.FindProperty("m_InstancePriority");
             m_InstanceUGUIRoot = serializedObject.FindProperty("m_InstanceUGUIRoot");
             m_InstanceFairyGUIRoot = serializedObject.FindProperty("m_InstanceFairyGUIRoot");
+            m_DesignResolutionComponent = serializedObject.FindProperty("m_DesignResolutionComponent");
             m_IsEnableUIShowAnimation = serializedObject.FindProperty("m_IsEnableUIShowAnimation");
             m_IsEnableUIHideAnimation = serializedObject.FindProperty("m_IsEnableUIHideAnimation");
             m_UIGroups = serializedObject.FindProperty("m_UIGroups");

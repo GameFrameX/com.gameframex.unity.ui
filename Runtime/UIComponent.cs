@@ -161,6 +161,15 @@ namespace GameFrameX.UI.Runtime
         [SerializeField] private Transform m_InstanceFairyGUIRoot = null;
 
         /// <summary>
+        /// UI 设计分辨率配置组件。
+        /// </summary>
+        /// <remarks>
+        /// Shared UI design resolution component for UGUI and FairyGUI runtime roots.
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        [SerializeField] private UIDesignResolutionComponent m_DesignResolutionComponent = null;
+
+        /// <summary>
         /// UI 表单帮助器类型名。
         /// </summary>
         /// <remarks>
@@ -247,6 +256,18 @@ namespace GameFrameX.UI.Runtime
         public Transform FairyGUIRoot
         {
             get { return m_InstanceFairyGUIRoot; }
+        }
+
+        /// <summary>
+        /// 获取 UI 设计分辨率配置组件。
+        /// </summary>
+        /// <remarks>
+        /// Gets the shared UI design resolution component.
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        public UIDesignResolutionComponent DesignResolution
+        {
+            get { return EnsureDesignResolutionComponent(); }
         }
 
         /// <summary>
@@ -370,26 +391,29 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         protected override void Awake()
         {
+            EnsureDesignResolutionComponent();
+            ApplyDefaultRuntimeBackend();
             ImplementationComponentType = Utility.Assembly.GetType(componentType);
             InterfaceComponentType = typeof(IUIManager);
             base.Awake();
+            if (!IsRuntimeComponentReady)
+            {
+                return;
+            }
+
             var namespaceName = ImplementationComponentType.Namespace;
 
 #if ENABLE_UI_FAIRYGUI
             if (!namespaceName.StartsWithFast("GameFrameX.UI.FairyGUI.Runtime"))
             {
                 Debug.LogError("UI组件的 ComponentType 设置错误。请设置和 UI 系统一致的组件.");
+                enabled = false;
                 return;
             }
 
-            if (m_InstanceFairyGUIRoot == null)
-            {
-                Debug.LogError("UI组件的 FAIRY GUI Root 设置错误。请设置");
-                return;
-            }
-
+            m_InstanceFairyGUIRoot = EnsureFairyGUIRoot();
             m_InstanceFairyGUIRoot.gameObject.SetActive(true);
-            if (m_InstanceUGUIRoot != null)
+            if (IsValidTransform(m_InstanceUGUIRoot))
             {
                 m_InstanceUGUIRoot.gameObject.SetActive(false);
             }
@@ -398,31 +422,29 @@ namespace GameFrameX.UI.Runtime
             if (!namespaceName.StartsWithFast("GameFrameX.UI.UGUI.Runtime"))
             {
                 Debug.LogError("UI组件的 ComponentType 设置错误。请设置和 UI 系统一致的组件.");
+                enabled = false;
                 return;
             }
 
-            if (m_InstanceFairyGUIRoot != null)
+            if (IsValidTransform(m_InstanceFairyGUIRoot))
             {
                 m_InstanceFairyGUIRoot.gameObject.SetActive(false);
             }
 
-            if (m_InstanceUGUIRoot == null)
-            {
-                Debug.LogError("UI组件的 UGUI Root 设置错误。请设置");
-                return;
-            }
-
+            m_InstanceUGUIRoot = EnsureUGUIRoot();
             m_InstanceUGUIRoot.gameObject.SetActive(true);
 #endif
             if (!m_UIFormHelperTypeName.StartsWithFast(namespaceName))
             {
                 Debug.LogError("UI组件的 UI Form Helper 设置错误。请设置和 ComponentType 类型 一致.");
+                enabled = false;
                 return;
             }
 
             if (!m_UIGroupHelperTypeName.StartsWithFast(namespaceName))
             {
                 Debug.LogError("UI组件的 UI Group Helper 设置错误。请设置和 ComponentType 类型 一致.");
+                enabled = false;
                 return;
             }
 
@@ -459,6 +481,11 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         private void Start()
         {
+            if (m_UIManager == null)
+            {
+                return;
+            }
+
             BaseComponent baseComponent = GameEntry.GetComponent<BaseComponent>();
             if (baseComponent == null)
             {
@@ -490,7 +517,7 @@ namespace GameFrameX.UI.Runtime
                 return;
             }
 
-            m_CustomUIGroupHelper.name = "UI Group Helper";
+            m_CustomUIGroupHelper.name = "UIGroupHelper";
             Transform transform = m_CustomUIGroupHelper.transform;
             transform.SetParent(this.transform);
             transform.localScale = Vector3.one;
@@ -503,21 +530,21 @@ namespace GameFrameX.UI.Runtime
                 return;
             }
 
-            uiFormHelper.name = "UI Form Helper";
+            uiFormHelper.name = "UIFormHelper";
             transform = uiFormHelper.transform;
             transform.SetParent(this.transform);
             transform.localScale = Vector3.one;
 
             m_UIManager.SetUIFormHelper(uiFormHelper);
 #if ENABLE_UI_UGUI
-            if (m_InstanceUGUIRoot == null)
+            m_InstanceUGUIRoot = EnsureUGUIRoot();
+            if (!IsValidTransform(m_InstanceUGUIRoot))
             {
-                m_InstanceUGUIRoot = new GameObject("UI Form Instances").transform;
-                m_InstanceUGUIRoot.SetParent(gameObject.transform);
-                m_InstanceUGUIRoot.localScale = Vector3.one;
+                Log.Error("UGUI root is invalid.");
+                return;
             }
 
-            m_InstanceUGUIRoot.gameObject.layer = LayerMask.NameToLayer("UI");
+            SetRuntimeRootLayer(m_InstanceUGUIRoot);
 #endif
             for (int i = 0; i < m_UIGroups.Length; i++)
             {
@@ -528,6 +555,134 @@ namespace GameFrameX.UI.Runtime
                     continue;
                 }
             }
+        }
+
+        private void ApplyDefaultRuntimeBackend()
+        {
+            if (!string.IsNullOrEmpty(componentType))
+            {
+                return;
+            }
+
+#if ENABLE_UI_UGUI
+            componentType = "GameFrameX.UI.UGUI.Runtime.UIManager";
+            m_UIFormHelperTypeName = "GameFrameX.UI.UGUI.Runtime.UGUIFormHelper";
+            m_UIGroupHelperTypeName = "GameFrameX.UI.UGUI.Runtime.UGUIUIGroupHelper";
+#elif ENABLE_UI_FAIRYGUI
+            componentType = "GameFrameX.UI.FairyGUI.Runtime.UIManager";
+            m_UIFormHelperTypeName = "GameFrameX.UI.FairyGUI.Runtime.FairyGUIFormHelper";
+            m_UIGroupHelperTypeName = "GameFrameX.UI.FairyGUI.Runtime.FairyGUIUIGroupHelper";
+#endif
+        }
+
+        private Transform CreateRuntimeRoot(string rootName)
+        {
+            var root = new GameObject(rootName).transform;
+            root.SetParent(transform);
+            root.localScale = Vector3.one;
+            return root;
+        }
+
+        private Transform EnsureUGUIRoot()
+        {
+            m_InstanceUGUIRoot = EnsureRuntimeRoot(m_InstanceUGUIRoot, "UGUIRoot");
+            return m_InstanceUGUIRoot;
+        }
+
+        private Transform EnsureFairyGUIRoot()
+        {
+            m_InstanceFairyGUIRoot = EnsureRuntimeRoot(m_InstanceFairyGUIRoot, "FairyGUIRoot");
+            return m_InstanceFairyGUIRoot;
+        }
+
+        private Transform EnsureRuntimeRoot(Transform root, string rootName)
+        {
+            return IsValidTransform(root) ? root : CreateRuntimeRoot(rootName);
+        }
+
+        private static bool IsValidTransform(Transform transform)
+        {
+            if (!transform)
+            {
+                return false;
+            }
+
+            try
+            {
+                return transform.gameObject != null;
+            }
+            catch (MissingReferenceException)
+            {
+                return false;
+            }
+        }
+
+        private static void SetRuntimeRootLayer(Transform root)
+        {
+            if (!IsValidTransform(root))
+            {
+                return;
+            }
+
+            var uiLayer = LayerMask.NameToLayer("UI");
+            if (uiLayer >= 0)
+            {
+                root.gameObject.SetLayerRecursively(uiLayer);
+            }
+        }
+
+        private UIDesignResolutionComponent EnsureDesignResolutionComponent()
+        {
+            if (m_DesignResolutionComponent != null)
+            {
+                return m_DesignResolutionComponent;
+            }
+
+            m_DesignResolutionComponent = FindSceneDesignResolutionComponent();
+            if (m_DesignResolutionComponent == null)
+            {
+                m_DesignResolutionComponent = GetComponent<UIDesignResolutionComponent>();
+                if (m_DesignResolutionComponent == null)
+                {
+                    m_DesignResolutionComponent = gameObject.AddComponent<UIDesignResolutionComponent>();
+                }
+            }
+
+            return m_DesignResolutionComponent;
+        }
+
+        private UIDesignResolutionComponent FindSceneDesignResolutionComponent()
+        {
+            var designResolutionComponents = Resources.FindObjectsOfTypeAll<UIDesignResolutionComponent>();
+            for (int i = 0; i < designResolutionComponents.Length; i++)
+            {
+                var designResolutionComponent = designResolutionComponents[i];
+                if (!designResolutionComponent)
+                {
+                    continue;
+                }
+
+                try
+                {
+                    var gameObject = designResolutionComponent.gameObject;
+                    if (!gameObject)
+                    {
+                        continue;
+                    }
+
+                    var scene = gameObject.scene;
+                    if (scene.IsValid() && scene.isLoaded)
+                    {
+                        return designResolutionComponent;
+                    }
+                }
+                catch (MissingReferenceException)
+                {
+                    continue;
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
