@@ -120,10 +120,17 @@ namespace GameFrameX.UI.Runtime
             }
 
 #if ENABLE_UI_FAIRYGUI
-            UIGroupHelperBase uiGroupHelper = (UIGroupHelperBase)m_CustomUIGroupHelper.Handler(m_InstanceFairyGUIRoot, uiGroupName, m_UIGroupHelperTypeName, m_CustomUIGroupHelper, depth);
+            var root = EnsureFairyGUIRoot();
 #else
-            UIGroupHelperBase uiGroupHelper = (UIGroupHelperBase)m_CustomUIGroupHelper.Handler(m_InstanceUGUIRoot, uiGroupName, m_UIGroupHelperTypeName, m_CustomUIGroupHelper, depth);
+            var root = EnsureUGUIRoot();
 #endif
+            if (!IsValidTransform(root))
+            {
+                Log.Error("UI group root is invalid.");
+                return false;
+            }
+
+            UIGroupHelperBase uiGroupHelper = (UIGroupHelperBase)m_CustomUIGroupHelper.Handler(root, uiGroupName, m_UIGroupHelperTypeName, m_CustomUIGroupHelper, depth);
             if (uiGroupHelper == null)
             {
                 Log.Error("Can not create UI group helper.");
