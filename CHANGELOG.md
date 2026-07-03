@@ -1,3 +1,15 @@
+# [2.11.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.6...2.11.0) (2026-07-03)
+
+
+### Bug Fixes
+
+* **ui:** UI 分组创建切换使用 EnsureUGUIRoot/EnsureFairyGUIRoot ([2c93c2a](https://github.com/gameframex/com.gameframex.unity.ui/commit/2c93c2a9859e9bab8fc93d57f0e7c60574100e5f))
+
+
+### Features
+
+* **ui:** 新增 UIDesignResolutionComponent 并接入 UIComponent ([4eb1159](https://github.com/gameframex/com.gameframex.unity.ui/commit/4eb11592088d2bb6bc4d5c2b15638af4e4ba1a5c))
+
 ## [2.10.6](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.5...2.10.6) (2026-06-16)
 
 
