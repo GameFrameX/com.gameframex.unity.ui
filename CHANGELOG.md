@@ -1,3 +1,10 @@
+## [2.11.1](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.11.0...2.11.1) (2026-07-30)
+
+
+### Bug Fixes
+
+* **dependencies:** 更新依赖项版本以提高兼容性和功能 ([f5edf8c](https://github.com/gameframex/com.gameframex.unity.ui/commit/f5edf8cb646a54a25366940a5fa3c0c57ef62778))
+
 # [2.11.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.10.6...2.11.0) (2026-07-03)
 
 
