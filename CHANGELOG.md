@@ -1,3 +1,10 @@
+## [2.11.2](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.11.1...2.11.2) (2026-08-24)
+
+
+### Bug Fixes
+
+* **ui:** 修正 UIFormInstanceObject 初始化传入资产名 ([ea04a3c](https://github.com/gameframex/com.gameframex.unity.ui/commit/ea04a3c98231198992515aeae79d3644d597c2ce))
+
 ## [2.11.1](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.11.0...2.11.1) (2026-07-30)
 
 
