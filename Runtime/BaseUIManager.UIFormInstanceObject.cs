@@ -76,7 +76,7 @@ namespace GameFrameX.UI.Runtime
                 }
 
                 var uiFormInstanceObject = ReferencePool.Acquire<UIFormInstanceObject>();
-                uiFormInstanceObject.Initialize(uiFormAssetPath, uiFormInstance);
+                uiFormInstanceObject.Initialize(uiFormAssetName, uiFormInstance);
                 uiFormInstanceObject.m_UIFormAsset = uiFormAsset;
                 uiFormInstanceObject.m_UIFormAssetPath = uiFormAssetPath;
                 uiFormInstanceObject.m_UIFormAssetName = uiFormAssetName;
