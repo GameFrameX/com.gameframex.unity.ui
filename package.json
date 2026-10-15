@@ -2,7 +2,7 @@
     "name": "com.gameframex.unity.ui",
     "displayName": "Game Frame X UI",
     "category": "GameFrameX",
-    "description": "GameFrameX UI — Unity UI-framework-agnostic form management package. Handles opening, closing, grouping, and lifecycle of UI forms with depth-based layering, async form loading via the asset system with object pooling, configurable show/hide animations, and event notifications for open/close lifecycle. Docs: https://gameframex.doc.alianblank.com\n\nGameFrameX UI — Unity 跨 UI 框架的窗体管理功能包。处理 UI 窗体的打开、关闭、分组和生命周期，支持基于深度的分层，通过资源系统异步加载窗体并集成对象池，可配置显示/隐藏动画，以及打开/关闭生命周期的事件通知。文档：https://gameframex.doc.alianblank.com",
+    "description": "GameFrameX UI — Unity UI management package. Opens forms asynchronously returning Task<IUIForm> (full-screen or normal, optionally pausing covered forms), manages UI groups with depth sorting, form visibility, show / hide animations, instance pooling with auto-release, design-resolution scaling, and rich open / close event notifications. Helper backends (FairyGUI / UGUI) self-register through a backend registry, and configuration moves to code-level UIOptions (GameFrameXOptions.Configure: event toggles, pool params, helper factories). Docs: https://gameframex.doc.alianblank.com\n\nGameFrameX UI — Unity 界面管理功能包。异步打开界面返回 Task<IUIForm>（全屏或普通、可暂停被覆盖界面），管理界面组深度排序、界面可见性、显示/隐藏动画、实例池化与自动释放、设计分辨率适配，并发布完整的打开/关闭事件通知。Helper 后端（FairyGUI / UGUI）经后端注册表自注册，配置收敛为代码级 UIOptions（GameFrameXOptions.Configure：事件开关、池参数、Helper 工厂）。文档：https://gameframex.doc.alianblank.com",
     "version": "3.0.0",
     "unity": "2019.4",
     "keywords": [
