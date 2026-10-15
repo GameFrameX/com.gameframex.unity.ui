@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/gameframex/com.gameframex.unity.ui/compare/3.0.0...3.0.1) (2026-10-15)
+
+
+### Bug Fixes
+
+* **dependencies:** asset 依赖升至 5.0.0 ([22a2719](https://github.com/gameframex/com.gameframex.unity.ui/commit/22a2719ef000ede8aaa14dddb1e5fabefc423149))
+
 # [3.0.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.11.2...3.0.0) (2026-10-15)
 
 
