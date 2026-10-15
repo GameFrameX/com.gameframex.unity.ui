@@ -169,7 +169,7 @@ namespace GameFrameX.UI.Runtime
         /// Gets or sets the UI form name.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        public string Name
+        public virtual string Name
         {
             get { return gameObject.name; }
             set { gameObject.name = value; }
@@ -704,7 +704,7 @@ namespace GameFrameX.UI.Runtime
                 var currentGameObject = gameObject;
                 if (currentGameObject != null)
                 {
-                    currentGameObject.SetLayerRecursively(m_OriginalLayer);
+                    currentGameObject.SetLayer(m_OriginalLayer);
                 }
             }
 

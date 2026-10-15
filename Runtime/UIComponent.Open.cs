@@ -46,6 +46,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="uiFormAssetPath">界面所在路径。 / The asset path of the UI form.</param>
         /// <param name="userData">传递给UI的用户数据。 / User custom data passed to the UI form.</param>
         /// <returns>返回打开的UI实例。 / The opened UI form instance.</returns>
+        [UnityEngine.Scripting.Preserve]
         public async Task<T> OpenFullScreenAsync<T>(string uiFormAssetPath, object userData = null) where T : class, IUIForm
         {
             return await OpenUIFormAsync<T>(uiFormAssetPath, true, userData, true);
@@ -60,6 +61,7 @@ namespace GameFrameX.UI.Runtime
         /// <typeparam name="T">UI的具体类型。 / The type of the UI form.</typeparam>
         /// <param name="userData">传递给UI的用户数据。 / User custom data passed to the UI form.</param>
         /// <returns>返回打开的UI实例。 / The opened UI form instance.</returns>
+        [UnityEngine.Scripting.Preserve]
         public async Task<T> OpenFullScreenAsync<T>(object userData = null) where T : class, IUIForm
         {
             var uiFormAssetName = typeof(T).Name;
@@ -114,6 +116,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。 / User custom data.</param>
         /// <param name="isFullScreen">是否全屏。 / Whether the UI form is full screen.</param>
         /// <returns>界面的序列编号。 / The serial ID of the UI form.</returns>
+        [UnityEngine.Scripting.Preserve]
         public async Task<T> OpenUIFormAsync<T>(bool pauseCoveredUIForm, object userData = null, bool isFullScreen = false) where T : class, IUIForm
         {
             var uiFormAssetName = typeof(T).Name;
@@ -132,6 +135,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。 / User custom data.</param>
         /// <param name="isFullScreen">是否全屏。 / Whether the UI form is full screen.</param>
         /// <returns>界面的序列编号。 / The serial ID of the UI form.</returns>
+        [UnityEngine.Scripting.Preserve]
         public async Task<T> OpenAsync<T>(string uiFormAssetPath, object userData = null, bool isFullScreen = false) where T : class, IUIForm
         {
             return await OpenUIFormAsync<T>(uiFormAssetPath, false, userData, isFullScreen);
@@ -149,6 +153,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。 / User custom data.</param>
         /// <param name="isFullScreen">是否全屏。 / Whether the UI form is full screen.</param>
         /// <returns>界面的序列编号。 / The serial ID of the UI form.</returns>
+        [UnityEngine.Scripting.Preserve]
         public async Task<T> OpenAsync<T>(string uiFormAssetPath, bool pauseCoveredUIForm, object userData = null, bool isFullScreen = false) where T : class, IUIForm
         {
             return await OpenUIFormAsync<T>(uiFormAssetPath, pauseCoveredUIForm, userData, isFullScreen);
@@ -164,6 +169,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="userData">用户自定义数据。 / User custom data.</param>
         /// <param name="isFullScreen">是否全屏。 / Whether the UI form is full screen.</param>
         /// <returns>界面的序列编号。 / The serial ID of the UI form.</returns>
+        [UnityEngine.Scripting.Preserve]
         public async Task<T> OpenAsync<T>(object userData = null, bool isFullScreen = false) where T : class, IUIForm
         {
             var uiFormAssetName = typeof(T).Name;

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.UI.Runtime
 {
@@ -9,7 +8,7 @@ namespace GameFrameX.UI.Runtime
     /// <remarks>
     /// Shared UI design resolution settings used by UGUI and FairyGUI adapters.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     [DisallowMultipleComponent]
     [AddComponentMenu("GameFrameX/UI Design Resolution")]
     public sealed class UIDesignResolutionComponent : MonoBehaviour
@@ -17,7 +16,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// UI 缩放模式。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public enum UIScaleMode
         {
             ConstantPixelSize,
@@ -28,7 +27,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 屏幕适配方式。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public enum UIScreenMatchMode
         {
             MatchWidthOrHeight,
@@ -36,41 +35,41 @@ namespace GameFrameX.UI.Runtime
             MatchHeight
         }
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private UIScaleMode m_ScaleMode = UIScaleMode.ScaleWithScreenSize;
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private UIScreenMatchMode m_ScreenMatchMode = UIScreenMatchMode.MatchWidthOrHeight;
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private int m_DesignWidth = 1920;
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private int m_DesignHeight = 1080;
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         [Range(0f, 1f)]
         [SerializeField] private float m_MatchWidthOrHeight = 0.5f;
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private float m_ConstantScaleFactor = 1f;
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private float m_ReferencePixelsPerUnit = 100f;
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private float m_FallbackScreenDPI = 96f;
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private float m_DefaultSpriteDPI = 96f;
 
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         [SerializeField] private bool m_IgnoreOrientation = false;
 
         /// <summary>
         /// 获取 UI 缩放模式。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public UIScaleMode ScaleMode
         {
             get { return m_ScaleMode; }
@@ -80,7 +79,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取屏幕适配方式。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public UIScreenMatchMode ScreenMatchMode
         {
             get { return m_ScreenMatchMode; }
@@ -90,7 +89,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取设计分辨率宽度。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public int DesignWidth
         {
             get { return Mathf.Max(1, m_DesignWidth); }
@@ -100,7 +99,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取设计分辨率高度。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public int DesignHeight
         {
             get { return Mathf.Max(1, m_DesignHeight); }
@@ -110,7 +109,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取宽高混合适配权重。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public float MatchWidthOrHeight
         {
             get { return Mathf.Clamp01(m_MatchWidthOrHeight); }
@@ -120,7 +119,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取固定像素缩放值。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public float ConstantScaleFactor
         {
             get { return Mathf.Max(0.01f, m_ConstantScaleFactor); }
@@ -130,7 +129,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取每单位参考像素。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public float ReferencePixelsPerUnit
         {
             get { return Mathf.Max(1f, m_ReferencePixelsPerUnit); }
@@ -140,7 +139,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取备用屏幕 DPI。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public float FallbackScreenDPI
         {
             get { return Mathf.Max(1f, m_FallbackScreenDPI); }
@@ -150,7 +149,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取默认精灵 DPI。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public float DefaultSpriteDPI
         {
             get { return Mathf.Max(1f, m_DefaultSpriteDPI); }
@@ -160,7 +159,7 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 获取是否忽略横竖屏方向。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public bool IgnoreOrientation
         {
             get { return m_IgnoreOrientation; }

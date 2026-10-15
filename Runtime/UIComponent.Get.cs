@@ -117,6 +117,7 @@ namespace GameFrameX.UI.Runtime
         /// </remarks>
         /// <typeparam name="T">界面逻辑类型。 / The UI form logic type.</typeparam>
         /// <returns>符合条件的界面列表。 / The list of matching UI forms.</returns>
+        [UnityEngine.Scripting.Preserve]
         public List<T> GetLoadedList<T>() where T : class, IUIForm
         {
             var fullName = typeof(T).FullName;
@@ -165,6 +166,7 @@ namespace GameFrameX.UI.Runtime
         /// </remarks>
         /// <typeparam name="T">UI的具体类型。 / The type of the UI form.</typeparam>
         /// <returns>返回已加载且正在显示的UI实例，如果未找到则返回null。 / The loaded and showing UI form instance, or null if not found.</returns>
+        [UnityEngine.Scripting.Preserve]
         public T GetLoadedAndShowing<T>() where T : class, IUIForm
         {
             var fullName = typeof(T).FullName;
@@ -235,6 +237,7 @@ namespace GameFrameX.UI.Runtime
         /// </remarks>
         /// <typeparam name="T">逻辑界面类型。 / The UI form logic type.</typeparam>
         /// <returns>返回已加载的UI实例，如果未找到则返回null。 / The loaded UI form instance, or null if not found.</returns>
+        [UnityEngine.Scripting.Preserve]
         public T GetLoaded<T>() where T : class, IUIForm
         {
             var fullName = typeof(T).FullName;

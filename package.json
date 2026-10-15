@@ -1,42 +1,42 @@
 {
-  "name": "com.gameframex.unity.ui",
-  "displayName": "Game Frame X UI",
-  "category": "GameFrameX",
-  "description": "GameFrameX UI — Unity UI-framework-agnostic form management package. Handles opening, closing, grouping, and lifecycle of UI forms with depth-based layering, async form loading via the asset system with object pooling, configurable show/hide animations, and event notifications for open/close lifecycle. Docs: https://gameframex.doc.alianblank.com\n\nGameFrameX UI — Unity 跨 UI 框架的窗体管理功能包。处理 UI 窗体的打开、关闭、分组和生命周期，支持基于深度的分层，通过资源系统异步加载窗体并集成对象池，可配置显示/隐藏动画，以及打开/关闭生命周期的事件通知。文档：https://gameframex.doc.alianblank.com",
-  "version": "2.11.2",
-  "unity": "2019.4",
-  "keywords": [
-    "GameFrameX",
-    "UI"
-  ],
-  "repository": {
     "name": "com.gameframex.unity.ui",
-    "url": "git+https://github.com/gameframex/com.gameframex.unity.ui.git",
-    "type": "git"
-  },
-  "author": {
-    "name": "Blank",
-    "email": "alianblank@outlook.com",
-    "url": "https://gameframex.doc.alianblank.com"
-  },
-  "dependencies": {
-    "com.gameframex.unity": "2.5.1",
-    "com.gameframex.unity.asset": "3.1.1",
-    "com.gameframex.unity.event": "1.3.0",
-    "com.gameframex.unity.localization": "2.3.1",
-    "com.gameframex.unity.tuyoogame.yooasset": "2.9.4",
-    "com.gameframex.unity.cysharp.unitask": "2.6.2"
-  },
-  "devDependencies": {
-    "semantic-release": "^24.2.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.cnb.cool/GameFrameX/npm/-/packages/"
-  },
-  "documentationUrl": "https://gameframex.doc.alianblank.com",
-  "changelogUrl": "https://github.com/gameframex/com.gameframex.unity.ui/blob/main/CHANGELOG.md",
-  "licensesUrl": "https://github.com/gameframex/com.gameframex.unity.ui/blob/main/LICENSE.md"
+    "displayName": "Game Frame X UI",
+    "category": "GameFrameX",
+    "description": "GameFrameX UI — Unity UI-framework-agnostic form management package. Handles opening, closing, grouping, and lifecycle of UI forms with depth-based layering, async form loading via the asset system with object pooling, configurable show/hide animations, and event notifications for open/close lifecycle. Docs: https://gameframex.doc.alianblank.com\n\nGameFrameX UI — Unity 跨 UI 框架的窗体管理功能包。处理 UI 窗体的打开、关闭、分组和生命周期，支持基于深度的分层，通过资源系统异步加载窗体并集成对象池，可配置显示/隐藏动画，以及打开/关闭生命周期的事件通知。文档：https://gameframex.doc.alianblank.com",
+    "version": "3.0.0",
+    "unity": "2019.4",
+    "keywords": [
+        "GameFrameX",
+        "UI"
+    ],
+    "repository": {
+        "name": "com.gameframex.unity.ui",
+        "url": "git+https://github.com/gameframex/com.gameframex.unity.ui.git",
+        "type": "git"
+    },
+    "author": {
+        "name": "Blank",
+        "email": "alianblank@outlook.com",
+        "url": "https://gameframex.doc.alianblank.com"
+    },
+    "dependencies": {
+        "com.gameframex.unity": "3.0.0",
+        "com.gameframex.unity.asset": "4.0.0",
+        "com.gameframex.unity.event": "2.0.0",
+        "com.gameframex.unity.localization": "3.0.0",
+        "com.gameframex.unity.tuyoogame.yooasset": "3.1.0",
+        "com.gameframex.unity.cysharp.unitask": "2.6.2"
+    },
+    "devDependencies": {
+        "semantic-release": "^24.2.0",
+        "@semantic-release/changelog": "^6.0.3",
+        "@semantic-release/git": "^10.0.1"
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://npm.cnb.cool/GameFrameX/npm/-/packages/"
+    },
+    "documentationUrl": "https://gameframex.doc.alianblank.com",
+    "changelogUrl": "https://github.com/gameframex/com.gameframex.unity.ui/blob/main/CHANGELOG.md",
+    "licensesUrl": "https://github.com/gameframex/com.gameframex.unity.ui/blob/main/LICENSE.md"
 }

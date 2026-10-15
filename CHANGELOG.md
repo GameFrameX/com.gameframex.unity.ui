@@ -1,3 +1,35 @@
+## [Unreleased]
+
+### ⚠ BREAKING CHANGES
+
+* **ui:** 新增 `UIOptions` 启动配置（`GameFrameXOptions.Configure`，首场景加载前注入；字段默认值同原 Inspector 序列化默认）
+* **ui:** 组件值参数序列化字段移除，编辑期配置入口收敛到代码 Options；Play 期经活视图 / 模块 API 调整
+* **ui:** Helper 实现选择从类型名字符串改为 `Func` 工厂闭包（Custom 引用优先）；UI Helper 后端（FairyGUI / UGUI）改为后端注册表自注册默认实现
+
+### Features
+
+* **ui:** `UIForm.Name` 改为 `virtual`，允许派生界面（如 FairyGUI `FUI`）重写名称设置以同步双端命名
+
+# [3.0.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.11.2...3.0.0) (2026-10-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **module:** 模块契约全接口化：删除 `GameFrameworkModule` 抽象基类，改为 `IGameFrameworkModule` 标记接口 + 可选能力接口
+
+**新契约形态与迁移对照：**
+
+| 旧基类成员 | 新契约 | 迁移方式 |
+|---|---|---|
+| `: GameFrameworkModule` | `IGameFrameworkModule` | 声明处直接替换（标记接口，可注册进 `GameFrameworkEntry`） |
+| `override void Update(float, float)` | `IUpdatableModule` | 真实实现改 `public`；空实现删除（未实现者不再被轮询） |
+| `override void Shutdown()` | `IShutdownableModule` | 真实实现改 `public`；空实现删除（未实现者不再被关闭） |
+| `override int Priority` | `IPrioritizedModule` | 改 `public int Priority { get; }`；未实现视为 0 |
+
+本包变更：`BaseUIManager` 实现 `IUpdatableModule`、`IShutdownableModule`（ugui / fairygui 派生类经继承自动获得能力）。
+
+`GameFrameworkEntry.Update` 仅分派 `IUpdatableModule`；`Shutdown` 按优先级反序仅分派 `IShutdownableModule`；tick 与关闭顺序与旧实现完全一致。能力方法仅由宿主入口调用，业务侧继续通过 `GetModule<IXxxManager>()` 访问模块。
+
 ## [2.11.2](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.11.1...2.11.2) (2026-08-24)
 
 

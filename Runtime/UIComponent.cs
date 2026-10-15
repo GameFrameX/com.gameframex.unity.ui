@@ -27,6 +27,7 @@
 //   Official Documentation: https://gameframex.doc.alianblank.com/
 //  ==========================================================================================
 
+using System;
 using System.Collections.Generic;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.Event.Runtime;
@@ -45,6 +46,7 @@ namespace GameFrameX.UI.Runtime
     [DisallowMultipleComponent]
     [AddComponentMenu("GameFrameX/UI")]
     [UnityEngine.Scripting.Preserve]
+    [GameFrameXAutoComponent(1400)]
     public partial class UIComponent : GameFrameworkComponent
     {
         [UnityEngine.Scripting.Preserve]
@@ -53,16 +55,16 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         private IUIManager m_UIManager = null;
         [UnityEngine.Scripting.Preserve]
-        private EventComponent m_EventComponent = null;
+        private IEventManager m_EventManager = null;
 
         [UnityEngine.Scripting.Preserve]
         private readonly List<IUIForm> m_InternalUIFormResults = new List<IUIForm>();
 
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private bool m_EnableOpenUIFormSuccessEvent = true;
+        private bool m_EnableOpenUIFormSuccessEvent = true;
 
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private bool m_EnableOpenUIFormFailureEvent = true;
+        private bool m_EnableOpenUIFormFailureEvent = true;
 
         // [SerializeField] private bool m_EnableOpenUIFormUpdateEvent = false;
         //
@@ -74,7 +76,7 @@ namespace GameFrameX.UI.Runtime
         /// Whether to enable auto release of UI forms.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private bool m_EnableAutoReleaseUIForm = true;
+        private bool m_EnableAutoReleaseUIForm = true;
 
         /// <summary>
         /// 是否在关闭 UI 时触发完成事件。
@@ -83,7 +85,7 @@ namespace GameFrameX.UI.Runtime
         /// Whether to trigger completion event when closing UI forms.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private bool m_EnableCloseUIFormCompleteEvent = true;
+        private bool m_EnableCloseUIFormCompleteEvent = true;
 
         /// <summary>
         /// 是否启用 UI 显示动画。
@@ -92,7 +94,7 @@ namespace GameFrameX.UI.Runtime
         /// Whether to enable UI show animation.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private bool m_IsEnableUIShowAnimation = false;
+        private bool m_IsEnableUIShowAnimation = false;
 
         /// <summary>
         /// 是否启用 UI 隐藏动画。
@@ -101,7 +103,7 @@ namespace GameFrameX.UI.Runtime
         /// Whether to enable UI hide animation.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private bool m_IsEnableUIHideAnimation = false;
+        private bool m_IsEnableUIHideAnimation = false;
 
         /// <summary>
         /// UI 自动回收间隔时间/秒。
@@ -110,7 +112,7 @@ namespace GameFrameX.UI.Runtime
         /// UI auto release interval time in seconds.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private float m_InstanceAutoReleaseInterval = 60f;
+        private float m_InstanceAutoReleaseInterval = 60f;
 
         /// <summary>
         /// UI 实例容量。
@@ -119,7 +121,7 @@ namespace GameFrameX.UI.Runtime
         /// UI instance capacity.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private int m_InstanceCapacity = 16;
+        private int m_InstanceCapacity = 16;
 
         /// <summary>
         /// UI 实例过期时间/秒。
@@ -128,7 +130,7 @@ namespace GameFrameX.UI.Runtime
         /// UI instance expire time in seconds.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private float m_InstanceExpireTime = 60f;
+        private float m_InstanceExpireTime = 60f;
 
         /// <summary>
         /// UI 回收间隔时间/秒。
@@ -170,13 +172,13 @@ namespace GameFrameX.UI.Runtime
         [SerializeField] private UIDesignResolutionComponent m_DesignResolutionComponent = null;
 
         /// <summary>
-        /// UI 表单帮助器类型名。
+        /// UI 表单帮助器工厂。
         /// </summary>
         /// <remarks>
-        /// UI form helper type name.
+        /// UI form helper factory.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private string m_UIFormHelperTypeName = "GameFrameX.UI.FairyGUI.Runtime.FairyGUIFormHelper";
+        private Func<UIFormHelperBase> m_UIFormHelperFactory = null;
 
         /// <summary>
         /// 自定义 UI 表单帮助器。
@@ -188,13 +190,13 @@ namespace GameFrameX.UI.Runtime
         [SerializeField] private UIFormHelperBase m_CustomUIFormHelper = null;
 
         /// <summary>
-        /// UI 组帮助器类型名。
+        /// UI 组帮助器工厂。
         /// </summary>
         /// <remarks>
-        /// UI group helper type name.
+        /// UI group helper factory.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        [SerializeField] private string m_UIGroupHelperTypeName = "GameFrameX.UI.FairyGUI.Runtime.FairyGUIUIGroupHelper";
+        private Func<UIGroupHelperBase> m_UIGroupHelperFactory = null;
 
         /// <summary>
         /// 自定义 UI 组帮助器。
@@ -393,8 +395,25 @@ namespace GameFrameX.UI.Runtime
         {
             EnsureDesignResolutionComponent();
             ApplyDefaultRuntimeBackend();
+            if (GameFrameXOptions.TryGet<UIOptions>(out var uiOptions))
+            {
+                m_EnableOpenUIFormSuccessEvent = uiOptions.EnableOpenUIFormSuccessEvent;
+                m_EnableOpenUIFormFailureEvent = uiOptions.EnableOpenUIFormFailureEvent;
+                m_EnableAutoReleaseUIForm = uiOptions.EnableAutoReleaseUIForm;
+                m_EnableCloseUIFormCompleteEvent = uiOptions.EnableCloseUIFormCompleteEvent;
+                m_IsEnableUIShowAnimation = uiOptions.IsEnableUIShowAnimation;
+                m_IsEnableUIHideAnimation = uiOptions.IsEnableUIHideAnimation;
+                m_InstanceAutoReleaseInterval = uiOptions.InstanceAutoReleaseInterval;
+                m_InstanceCapacity = uiOptions.InstanceCapacity;
+                m_InstanceExpireTime = uiOptions.InstanceExpireTime;
+                m_UIFormHelperFactory = uiOptions.UIFormHelperFactory;
+                m_UIGroupHelperFactory = uiOptions.UIGroupHelperFactory;
+            }
             ImplementationComponentType = Utility.Assembly.GetType(componentType);
             InterfaceComponentType = typeof(IUIManager);
+            var backendNamespace = ImplementationComponentType != null ? ImplementationComponentType.Namespace : null;
+            m_UIFormHelperFactory = m_UIFormHelperFactory ?? UIHelperBackendFactory.ResolveFormHelperFactory(backendNamespace);
+            m_UIGroupHelperFactory = m_UIGroupHelperFactory ?? UIHelperBackendFactory.ResolveUIGroupHelperFactory(backendNamespace);
             base.Awake();
             if (!IsRuntimeComponentReady)
             {
@@ -434,16 +453,16 @@ namespace GameFrameX.UI.Runtime
             m_InstanceUGUIRoot = EnsureUGUIRoot();
             m_InstanceUGUIRoot.gameObject.SetActive(true);
 #endif
-            if (!m_UIFormHelperTypeName.StartsWithFast(namespaceName))
+            if (m_UIFormHelperFactory == null && m_CustomUIFormHelper == null)
             {
-                Debug.LogError("UI组件的 UI Form Helper 设置错误。请设置和 ComponentType 类型 一致.");
+                Debug.LogError("UI组件的 UI Form Helper 工厂未注册。请确认已编译对应的 UI 后端包（FairyGUI / UGUI）.");
                 enabled = false;
                 return;
             }
 
-            if (!m_UIGroupHelperTypeName.StartsWithFast(namespaceName))
+            if (m_UIGroupHelperFactory == null && m_CustomUIGroupHelper == null)
             {
-                Debug.LogError("UI组件的 UI Group Helper 设置错误。请设置和 ComponentType 类型 一致.");
+                Debug.LogError("UI组件的 UI Group Helper 工厂未注册。请确认已编译对应的 UI 后端包（FairyGUI / UGUI）.");
                 enabled = false;
                 return;
             }
@@ -493,8 +512,8 @@ namespace GameFrameX.UI.Runtime
                 return;
             }
 
-            m_EventComponent = GameEntry.GetComponent<EventComponent>();
-            if (m_EventComponent == null)
+            m_EventManager = GameFrameworkEntry.GetModule<IEventManager>();
+            if (m_EventManager == null)
             {
                 Log.Fatal("Event component is invalid.");
                 return;
@@ -510,7 +529,7 @@ namespace GameFrameX.UI.Runtime
             m_UIManager.IsEnableUIShowAnimation = m_IsEnableUIShowAnimation;
             // m_UIManager.InstancePriority = m_InstancePriority;
 
-            m_CustomUIGroupHelper = Helper.CreateHelper(m_UIGroupHelperTypeName, m_CustomUIGroupHelper);
+            m_CustomUIGroupHelper = Helper.CreateHelper(m_UIGroupHelperFactory, m_CustomUIGroupHelper);
             if (m_CustomUIGroupHelper == null)
             {
                 Log.Error("Can not create UI Group helper.");
@@ -523,19 +542,19 @@ namespace GameFrameX.UI.Runtime
             transform.localScale = Vector3.one;
 
 
-            UIFormHelperBase uiFormHelper = Helper.CreateHelper(m_UIFormHelperTypeName, m_CustomUIFormHelper);
-            if (uiFormHelper == null)
+            m_CustomUIFormHelper = Helper.CreateHelper(m_UIFormHelperFactory, m_CustomUIFormHelper);
+            if (m_CustomUIFormHelper == null)
             {
                 Log.Error("Can not create UI form helper.");
                 return;
             }
 
-            uiFormHelper.name = "UIFormHelper";
-            transform = uiFormHelper.transform;
+            m_CustomUIFormHelper.name = "UIFormHelper";
+            transform = m_CustomUIFormHelper.transform;
             transform.SetParent(this.transform);
             transform.localScale = Vector3.one;
 
-            m_UIManager.SetUIFormHelper(uiFormHelper);
+            m_UIManager.SetUIFormHelper(m_CustomUIFormHelper);
 #if ENABLE_UI_UGUI
             m_InstanceUGUIRoot = EnsureUGUIRoot();
             if (!IsValidTransform(m_InstanceUGUIRoot))
@@ -566,12 +585,8 @@ namespace GameFrameX.UI.Runtime
 
 #if ENABLE_UI_UGUI
             componentType = "GameFrameX.UI.UGUI.Runtime.UIManager";
-            m_UIFormHelperTypeName = "GameFrameX.UI.UGUI.Runtime.UGUIFormHelper";
-            m_UIGroupHelperTypeName = "GameFrameX.UI.UGUI.Runtime.UGUIUIGroupHelper";
 #elif ENABLE_UI_FAIRYGUI
             componentType = "GameFrameX.UI.FairyGUI.Runtime.UIManager";
-            m_UIFormHelperTypeName = "GameFrameX.UI.FairyGUI.Runtime.FairyGUIFormHelper";
-            m_UIGroupHelperTypeName = "GameFrameX.UI.FairyGUI.Runtime.FairyGUIUIGroupHelper";
 #endif
         }
 
@@ -627,7 +642,7 @@ namespace GameFrameX.UI.Runtime
             var uiLayer = LayerMask.NameToLayer("UI");
             if (uiLayer >= 0)
             {
-                root.gameObject.SetLayerRecursively(uiLayer);
+                root.gameObject.SetLayer(uiLayer);
             }
         }
 
@@ -806,7 +821,7 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         private void OnOpenUIFormSuccess(object sender, OpenUIFormSuccessEventArgs e)
         {
-            m_EventComponent.Fire(this, OpenUIFormSuccessEventArgs.Create(e.UIForm, e.Duration, e.UserData));
+            m_EventManager.Fire(this, OpenUIFormSuccessEventArgs.Create(e.UIForm, e.Duration, e.UserData));
         }
 
         [UnityEngine.Scripting.Preserve]
@@ -815,7 +830,7 @@ namespace GameFrameX.UI.Runtime
             Log.Warning("Open UI form failure, asset name '{0}', pause covered UI form '{1}', error message '{2}'.", e.UIFormAssetName, e.PauseCoveredUIForm, e.ErrorMessage);
             if (m_EnableOpenUIFormFailureEvent)
             {
-                m_EventComponent.Fire(this, OpenUIFormFailureEventArgs.Create(e.SerialId, e.UIFormAssetName, e.PauseCoveredUIForm, e.ErrorMessage, e.UserData));
+                m_EventManager.Fire(this, OpenUIFormFailureEventArgs.Create(e.SerialId, e.UIFormAssetName, e.PauseCoveredUIForm, e.ErrorMessage, e.UserData));
             }
         }
 
@@ -835,19 +850,19 @@ namespace GameFrameX.UI.Runtime
         [UnityEngine.Scripting.Preserve]
         private void OnOpenUIFormUpdate(object sender, OpenUIFormUpdateEventArgs e)
         {
-            m_EventComponent.Fire(this, e);
+            m_EventManager.Fire(this, e);
         }
 
         [UnityEngine.Scripting.Preserve]
         private void OnOpenUIFormDependencyAsset(object sender, OpenUIFormDependencyAssetEventArgs e)
         {
-            m_EventComponent.Fire(this, e);
+            m_EventManager.Fire(this, e);
         }*/
 
         [UnityEngine.Scripting.Preserve]
         private void OnCloseUIFormComplete(object sender, CloseUIFormCompleteEventArgs e)
         {
-            m_EventComponent.Fire(this, CloseUIFormCompleteEventArgs.Create(e.SerialId, e.UIFormAssetName, e.UIGroup, e.UserData));
+            m_EventManager.Fire(this, CloseUIFormCompleteEventArgs.Create(e.SerialId, e.UIFormAssetName, e.UIGroup, e.UserData));
         }
     }
 }

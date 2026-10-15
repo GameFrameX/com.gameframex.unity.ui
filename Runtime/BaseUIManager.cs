@@ -36,7 +36,7 @@ using GameFrameX.Runtime;
 namespace GameFrameX.UI.Runtime
 {
     [UnityEngine.Scripting.Preserve]
-    public abstract partial class BaseUIManager : GameFrameworkModule, IUIManager
+    public abstract partial class BaseUIManager : IGameFrameworkModule, IUIManager, IUpdatableModule, IShutdownableModule
     {
         /// <summary>
         /// 当前加载的界面实例对象池。
@@ -181,7 +181,6 @@ namespace GameFrameX.UI.Runtime
             set { m_InstancePool.ExpireTime = value; }
         }
 
-
         /// <summary>
         /// 获取或设置是否启用界面显示动画。
         /// </summary>
@@ -242,7 +241,7 @@ namespace GameFrameX.UI.Runtime
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。 / The logical elapsed time in seconds.</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。 / The real elapsed time in seconds.</param>
         [UnityEngine.Scripting.Preserve]
-        protected override void Update(float elapseSeconds, float realElapseSeconds)
+        public void Update(float elapseSeconds, float realElapseSeconds)
         {
             while (m_RecycleQueue.Count > 0)
             {
@@ -263,7 +262,7 @@ namespace GameFrameX.UI.Runtime
         /// Shuts down and cleans up the UI manager.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        protected override void Shutdown()
+        public void Shutdown()
         {
             m_IsShutdown = true;
             CloseAllLoadedUIForms();

@@ -38,30 +38,13 @@ namespace GameFrameX.UI.Editor
     [CustomEditor(typeof(UIComponent))]
     internal sealed class UIComponentInspector : ComponentTypeComponentInspector
     {
-        private SerializedProperty m_EnableOpenUIFormSuccessEvent = null;
-
-        private SerializedProperty m_EnableOpenUIFormFailureEvent = null;
-
-        // private SerializedProperty m_EnableOpenUIFormUpdateEvent = null;
-        // private SerializedProperty m_EnableOpenUIFormDependencyAssetEvent = null;
-        private SerializedProperty m_EnableAutoReleaseUIForm = null;
-        private SerializedProperty m_EnableCloseUIFormCompleteEvent = null;
-        private SerializedProperty m_InstanceAutoReleaseInterval = null;
-        private SerializedProperty m_InstanceCapacity = null;
-        private SerializedProperty m_IsEnableUIShowAnimation = null;
-        private SerializedProperty m_IsEnableUIHideAnimation = null;
-
-        private SerializedProperty m_InstanceExpireTime = null;
         private SerializedProperty m_RecycleInterval = null;
-
-        // private SerializedProperty m_InstancePriority = null;
         private SerializedProperty m_InstanceUGUIRoot = null;
         private SerializedProperty m_InstanceFairyGUIRoot = null;
         private SerializedProperty m_DesignResolutionComponent = null;
         private SerializedProperty m_UIGroups = null;
-
-        private HelperInfo<UIFormHelperBase> m_UIFormHelperInfo = new HelperInfo<UIFormHelperBase>("UIForm");
-        private HelperInfo<UIGroupHelperBase> m_UIGroupHelperInfo = new HelperInfo<UIGroupHelperBase>("UIGroup");
+        private SerializedProperty m_CustomUIFormHelper = null;
+        private SerializedProperty m_CustomUIGroupHelper = null;
 
         public override void OnInspectorGUI()
         {
@@ -73,92 +56,17 @@ namespace GameFrameX.UI.Editor
 
             EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
             {
-                m_UIFormHelperInfo.Draw();
-                m_UIGroupHelperInfo.Draw();
+                EditorGUILayout.PropertyField(m_CustomUIFormHelper);
+                EditorGUILayout.PropertyField(m_CustomUIGroupHelper);
 
-                EditorGUILayout.HelpBox("以上的组件前缀的命名空间必须设置为一致，否则将会初始化失败", MessageType.Warning);
-
-                EditorGUILayout.HelpBox("是否启用打开界面成功事件。启用后，当界面打开成功时会触发相应事件。", MessageType.Info);
-                EditorGUILayout.PropertyField(m_EnableOpenUIFormSuccessEvent);
-
-                EditorGUILayout.HelpBox("是否启用打开界面失败事件。启用后，当界面打开失败时会触发相应事件。", MessageType.Info);
-                EditorGUILayout.PropertyField(m_EnableOpenUIFormFailureEvent);
-
-                // EditorGUILayout.PropertyField(m_EnableOpenUIFormUpdateEvent);
-                // EditorGUILayout.PropertyField(m_EnableOpenUIFormDependencyAssetEvent);
-
-                EditorGUILayout.HelpBox("是否启用关闭界面完成事件。启用后，当界面关闭完成时会触发相应事件。", MessageType.Info);
-                EditorGUILayout.PropertyField(m_EnableCloseUIFormCompleteEvent);
-
-                EditorGUILayout.HelpBox("是否启用自动回收界面。禁用后，关闭界面时不会自动释放资源，适用于需要缓存复用的场景。", MessageType.Info);
-                EditorGUILayout.PropertyField(m_EnableAutoReleaseUIForm);
+                EditorGUILayout.HelpBox("以上的两个自定义 Helper 的命名空间必须与组件 ComponentType 一致，否则将会初始化失败（Helper 类型名已迁移至 UIOptions）", MessageType.Warning);
 
                 EditorGUILayout.HelpBox("界面回收间隔时间（秒）。设置对象池自动回收可回收对象的时间间隔，范围 10-600 秒。", MessageType.Info);
                 EditorGUILayout.IntSlider(m_RecycleInterval, 10, 600, "Recycle Interval");
-
-                EditorGUILayout.HelpBox("是否启用界面显示动画。启用后，界面打开时会播放显示动画效果。", MessageType.Info);
-                EditorGUILayout.PropertyField(m_IsEnableUIShowAnimation);
-
-                EditorGUILayout.HelpBox("是否启用界面隐藏动画。启用后，界面关闭时会播放隐藏动画效果。", MessageType.Info);
-                EditorGUILayout.PropertyField(m_IsEnableUIHideAnimation);
             }
             EditorGUI.EndDisabledGroup();
 
-            EditorGUILayout.HelpBox("界面实例对象池自动释放可释放对象的间隔秒数。对象池将按此间隔定期检查并释放过期对象。", MessageType.Info);
-            float instanceAutoReleaseInterval = EditorGUILayout.DelayedFloatField("Instance Auto Release Interval", m_InstanceAutoReleaseInterval.floatValue);
-            if (instanceAutoReleaseInterval != m_InstanceAutoReleaseInterval.floatValue)
-            {
-                if (EditorApplication.isPlaying)
-                {
-                    t.InstanceAutoReleaseInterval = instanceAutoReleaseInterval;
-                }
-                else
-                {
-                    m_InstanceAutoReleaseInterval.floatValue = instanceAutoReleaseInterval;
-                }
-            }
 
-            EditorGUILayout.HelpBox("界面实例对象池的容量。池中最多可缓存的界面实例数量，超出容量的实例将被释放。", MessageType.Info);
-            int instanceCapacity = EditorGUILayout.DelayedIntField("Instance Capacity", m_InstanceCapacity.intValue);
-            if (instanceCapacity != m_InstanceCapacity.intValue)
-            {
-                if (EditorApplication.isPlaying)
-                {
-                    t.InstanceCapacity = instanceCapacity;
-                }
-                else
-                {
-                    m_InstanceCapacity.intValue = instanceCapacity;
-                }
-            }
-
-            EditorGUILayout.HelpBox("界面实例对象池对象过期秒数。界面关闭后在此时间内可被复用，超过此时间将被自动释放。", MessageType.Info);
-            float instanceExpireTime = EditorGUILayout.DelayedFloatField("Instance Expire Time", m_InstanceExpireTime.floatValue);
-            if (instanceExpireTime != m_InstanceExpireTime.floatValue)
-            {
-                if (EditorApplication.isPlaying)
-                {
-                    t.InstanceExpireTime = instanceExpireTime;
-                }
-                else
-                {
-                    m_InstanceExpireTime.floatValue = instanceExpireTime;
-                }
-            }
-
-            /*
-            int instancePriority = EditorGUILayout.DelayedIntField("Instance Priority", m_InstancePriority.intValue);
-            if (instancePriority != m_InstancePriority.intValue)
-            {
-                if (EditorApplication.isPlaying)
-                {
-                    t.InstancePriority = instancePriority;
-                }
-                else
-                {
-                    m_InstancePriority.intValue = instancePriority;
-                }
-            }*/
 
             EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
             {
@@ -179,6 +87,10 @@ namespace GameFrameX.UI.Editor
             }
             EditorGUI.EndDisabledGroup();
 
+            // C9 活视图：编辑态提示 UIOptions 入口；Play 态实时参数可改（优先经 UIComponent 公开属性写管理器+字段），
+            // 两个 Helper 工厂为启动期型只读；RecycleInterval 无对应 Options 成员不在此绘制。
+            GameFrameXOptionsLiveViewUtility.DrawLiveView(t, typeof(UIOptions));
+
             if (EditorApplication.isPlaying && IsPrefabInHierarchy(t.gameObject))
             {
                 EditorGUILayout.LabelField("UI Group Count", t.UIGroupCount.ToString());
@@ -198,26 +110,13 @@ namespace GameFrameX.UI.Editor
 
         protected override void Enable()
         {
-            m_EnableOpenUIFormSuccessEvent = serializedObject.FindProperty("m_EnableOpenUIFormSuccessEvent");
-            m_EnableOpenUIFormFailureEvent = serializedObject.FindProperty("m_EnableOpenUIFormFailureEvent");
-            // m_EnableOpenUIFormUpdateEvent = serializedObject.FindProperty("m_EnableOpenUIFormUpdateEvent");
-            // m_EnableOpenUIFormDependencyAssetEvent = serializedObject.FindProperty("m_EnableOpenUIFormDependencyAssetEvent");
-            m_EnableCloseUIFormCompleteEvent = serializedObject.FindProperty("m_EnableCloseUIFormCompleteEvent");
-            m_EnableAutoReleaseUIForm = serializedObject.FindProperty("m_EnableAutoReleaseUIForm");
-            m_InstanceAutoReleaseInterval = serializedObject.FindProperty("m_InstanceAutoReleaseInterval");
-            m_InstanceCapacity = serializedObject.FindProperty("m_InstanceCapacity");
-            m_InstanceExpireTime = serializedObject.FindProperty("m_InstanceExpireTime");
             m_RecycleInterval = serializedObject.FindProperty("m_RecycleInterval");
-            // m_InstancePriority = serializedObject.FindProperty("m_InstancePriority");
             m_InstanceUGUIRoot = serializedObject.FindProperty("m_InstanceUGUIRoot");
             m_InstanceFairyGUIRoot = serializedObject.FindProperty("m_InstanceFairyGUIRoot");
             m_DesignResolutionComponent = serializedObject.FindProperty("m_DesignResolutionComponent");
-            m_IsEnableUIShowAnimation = serializedObject.FindProperty("m_IsEnableUIShowAnimation");
-            m_IsEnableUIHideAnimation = serializedObject.FindProperty("m_IsEnableUIHideAnimation");
             m_UIGroups = serializedObject.FindProperty("m_UIGroups");
-
-            m_UIFormHelperInfo.Init(serializedObject);
-            m_UIGroupHelperInfo.Init(serializedObject);
+            m_CustomUIFormHelper = serializedObject.FindProperty("m_CustomUIFormHelper");
+            m_CustomUIGroupHelper = serializedObject.FindProperty("m_CustomUIGroupHelper");
 
             RefreshTypeNames();
         }
@@ -225,8 +124,6 @@ namespace GameFrameX.UI.Editor
         protected override void RefreshTypeNames()
         {
             RefreshComponentTypeNames(typeof(IUIManager));
-            m_UIFormHelperInfo.Refresh();
-            m_UIGroupHelperInfo.Refresh();
             serializedObject.ApplyModifiedProperties();
         }
     }

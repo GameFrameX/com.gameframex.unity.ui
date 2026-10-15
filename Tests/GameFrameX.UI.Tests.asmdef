@@ -1,0 +1,19 @@
+{
+    "name": "GameFrameX.UI.Tests",
+    "rootNamespace": "GameFrameX.UI.Tests",
+    "references": [
+        "GameFrameX.UI.Runtime",
+        "GameFrameX.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

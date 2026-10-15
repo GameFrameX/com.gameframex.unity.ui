@@ -66,13 +66,12 @@ namespace GameFrameX.UI.Runtime
         /// <remarks>
         /// Creates a UI group.
         /// </remarks>
-        /// <param name="root">根节点 / Root transform</param>
+        /// <param name="root">根节点 / The root transform</param>
         /// <param name="groupName">界面组名称 / UI group name</param>
-        /// <param name="uiGroupHelperTypeName">界面组辅助器类型名 / UI group helper type name</param>
         /// <param name="customUIGroupHelper">自定义的界面组辅助器 / Custom UI group helper</param>
         /// <param name="depth">界面组深度 / UI group depth</param>
         /// <returns>界面组辅助器实例 / UI group helper instance</returns>
         [UnityEngine.Scripting.Preserve]
-        public abstract IUIGroupHelper Handler(Transform root, string groupName, string uiGroupHelperTypeName, IUIGroupHelper customUIGroupHelper, int depth = 0);
+        public abstract IUIGroupHelper Handler(Transform root, string groupName, IUIGroupHelper customUIGroupHelper, int depth = 0);
     }
 }

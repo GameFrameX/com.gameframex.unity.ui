@@ -130,18 +130,12 @@ namespace GameFrameX.UI.Runtime
                 return false;
             }
 
-            UIGroupHelperBase uiGroupHelper = (UIGroupHelperBase)m_CustomUIGroupHelper.Handler(root, uiGroupName, m_UIGroupHelperTypeName, m_CustomUIGroupHelper, depth);
+            UIGroupHelperBase uiGroupHelper = (UIGroupHelperBase)m_CustomUIGroupHelper.Handler(root, uiGroupName, m_CustomUIGroupHelper, depth);
             if (uiGroupHelper == null)
             {
                 Log.Error("Can not create UI group helper.");
                 return false;
             }
-            // UIGroupHelperBase uiGroupHelper = Helper.CreateHelper(m_UIGroupHelperTypeName, m_CustomUIGroupHelper);
-            // if (uiGroupHelper == null)
-            // {
-            //     Log.Error("Can not create UI group helper.");
-            //     return false;
-            // }
 
             /*
             uiGroupHelper.name = Utility.Text.Format("UI Group - {0}", uiGroupName);

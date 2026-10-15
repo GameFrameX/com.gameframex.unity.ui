@@ -29,7 +29,6 @@
 
 using System;
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.UI.Runtime
 {

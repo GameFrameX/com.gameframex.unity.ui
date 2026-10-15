@@ -63,21 +63,21 @@ namespace GameFrameX.UI.Runtime
         /// <summary>
         /// 事件组件。
         /// </summary>
-        private EventComponent CachedEventComponent
+        private IEventManager CachedEventManager
         {
             get
             {
-                var cache = _eventComponentCache;
+                var cache = _eventManagerCache;
                 if (cache != null)
                 {
                     return cache;
                 }
 
-                return _eventComponentCache = GameEntry.GetComponent<EventComponent>();
+                return _eventManagerCache = GameFrameworkEntry.GetModule<IEventManager>();
             }
         }
 
-        private EventComponent _eventComponentCache;
+        private IEventManager _eventManagerCache;
 
         /// <summary>
         /// 初始化UI事件订阅器的新实例。
@@ -111,7 +111,7 @@ namespace GameFrameX.UI.Runtime
             }
 
             m_DicEventHandler.Add(id, handler);
-            CachedEventComponent.CheckSubscribe(id, handler);
+            CachedEventManager.CheckSubscribe(id, handler);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace GameFrameX.UI.Runtime
                 throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not exists specified handler.", id.ToString()));
             }
 
-            CachedEventComponent.Unsubscribe(id, handler);
+            CachedEventManager.Unsubscribe(id, handler);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace GameFrameX.UI.Runtime
                     }
                 }
 
-                CachedEventComponent.Fire(this, e);
+                CachedEventManager.Fire(this, e);
             }
         }
 
@@ -189,7 +189,7 @@ namespace GameFrameX.UI.Runtime
 
                 foreach (var eventHandler in item.Value)
                 {
-                    CachedEventComponent.CheckUnsubscribe(item.Key, eventHandler);
+                    CachedEventManager.CheckUnsubscribe(item.Key, eventHandler);
                 }
             }
 
@@ -234,7 +234,7 @@ namespace GameFrameX.UI.Runtime
         {
             m_DicEventHandler.Clear();
             m_removeList.Clear();
-            _eventComponentCache = null;
+            _eventManagerCache = null;
             Owner = null;
         }
     }
