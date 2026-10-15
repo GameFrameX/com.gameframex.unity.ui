@@ -1,3 +1,13 @@
+# [3.0.0](https://github.com/gameframex/com.gameframex.unity.ui/compare/2.11.2...3.0.0) (2026-10-15)
+
+
+* feat(ui)!: 界面模块薄入口化并新增 UIOptions 与后端注册表 ([62854c5](https://github.com/gameframex/com.gameframex.unity.ui/commit/62854c5ede915b84a17528b8d074d45b7d3f7c59))
+
+
+### BREAKING CHANGES
+
+* 组件序列化字段移除，编辑期配置入口收敛到代码 UIOptions；Helper 选择方式变更。
+
 ## [Unreleased]
 
 ### ⚠ BREAKING CHANGES
