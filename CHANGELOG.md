@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/gameframex/com.gameframex.unity.ui/compare/3.0.1...3.0.2) (2026-11-10)
+
+
+### Bug Fixes
+
+* **ui:** 添加完整 link.xml 防代码裁剪保护 ([aaef976](https://github.com/gameframex/com.gameframex.unity.ui/commit/aaef976a1525d0fa72a6f8978b833b9b6157a2cb))
+
 ## [3.0.1](https://github.com/gameframex/com.gameframex.unity.ui/compare/3.0.0...3.0.1) (2026-10-15)
 
 
